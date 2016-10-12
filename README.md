@@ -52,10 +52,12 @@ Keypair: aws-eb
 
 Next hook up the git branch:
 ```
-eb use interswellar-pred
+eb use interswellar-prod
 ```
 
 After commiting code changes, run
 ```
 eb deploy
 ```
+
+Please do not deploy non-working code. Test locally first.
