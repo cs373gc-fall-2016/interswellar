@@ -34,3 +34,28 @@ Verify eb is installed:
 ```
 eb --version
 ```
+
+Initialize shell
+```
+eb init
+```
+
+This will start a bunch of questions: 
+Region: Select US East
+AWS key: <AWS Key>
+Secret Key: <Secret Key>
+Application: interswellar
+Platform: Python
+Version: Python 3.4 (first one)
+SSH: yes
+Keypair: aws-eb
+
+Next hook up the git branch:
+```
+eb use interswellar-pred
+```
+
+After commiting code changes, run
+```
+eb deploy
+```
