@@ -43,16 +43,16 @@ export PATH=~/.local/bin:$PATH
 Note that you should add the export line to your .bashrc or .zsh to have your 
 path set correctly each time.
 
-Initialize eb
+Initialize eb (can run multiple times if you screw up)
 ```
-eb init
+eb init -i
 ```
 
 You will now take a quiz. Here are the answers:
 
-* Region: Select US East
-* AWS key: <AWS Key>
-* Secret Key: <Secret Key>
+* Region: US East
+* AWS key: `<AWS Key>`
+* Secret Key: `<Secret Key>`
 * Application: interswellar
 * Platform: Python
 * Version: Python 3.4 (first one)
