@@ -48,15 +48,16 @@ Initialize eb
 eb init
 ```
 
-This will start a bunch of questions: 
-Region: Select US East
-AWS key: <AWS Key>
-Secret Key: <Secret Key>
-Application: interswellar
-Platform: Python
-Version: Python 3.4 (first one)
-SSH: yes
-Keypair: aws-eb
+You will now take a quiz. Here are the answers:
+
+* Region: Select US East
+* AWS key: <AWS Key>
+* Secret Key: <Secret Key>
+* Application: interswellar
+* Platform: Python
+* Version: Python 3.4 (first one)
+* SSH: yes
+* Keypair: aws-eb
 
 Our API key and secret key can be found in the Slack.
 
