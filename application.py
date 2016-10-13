@@ -1,10 +1,4 @@
-from flask import Flask
-application = Flask(__name__)
-
-@application.route('/')
-def hello_world():
-    return '<h1>Hello World!</h1>'
+from interswellar import app as application
 
 if __name__ == "__main__":
-    application.debug = True
-    application.run()
+	application.run(debug=True)

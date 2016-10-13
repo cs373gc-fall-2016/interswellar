@@ -5,37 +5,45 @@ spaaace
 
 Set up your environment:
 ```
-git clone git@github.com:TheFireFerret/interswellar.git
-cd interswellar
-pyvenv-3.5 ~/interswellar
-source ~/interswellar/bin/activate
-pip install -r requirements.txt
+sudo apt-get install -y python-virtualenv
+virtualenv -p python3.4 ~/venv/interswellar
 ```
 
-Run locally:
+Get the code and install dependencies:
+```
+git clone git@github.com:TheFireFerret/interswellar.git
+cd interswellar
+source ~/venv/interswellar/bin/activate
+pip install -r requirements.txt
+deactivate
+```
+
+To run locally, first make sure you are in your virtualenv (if not, run 
+`source ~/venv/interswellar/bin/activate`). Then:
 ```
 python application.py
 ```
+(Control-C to quit the app)
 
-# Deploy to AWS
 
-First, install the elastic beanstalk shell (not in the interstellar venv)
+# Manually deploy changes to AWS (not recommended)
+
+This is not the recommended way to deploy code. The recommended way to deploy
+code is through Travis CI; so only use this method if Travis is broken or we
+haven't set it up yet.
+
+If you are still in the interswellar virtualenv, get out of it by running 
+`deactivate`
+
+Set up your environment:
 ```
-deactivate
 pip install --upgrade --user awsebcli
-```
-
-Add `~/.local/bin` to your path in your .bashrc or .zsh
-```
 export PATH=~/.local/bin:$PATH
 ```
+Note that you should add the export line to your .bashrc or .zsh to have your 
+path set correctly each time.
 
-Verify eb is installed:
-```
-eb --version
-```
-
-Initialize shell
+Initialize eb
 ```
 eb init
 ```
@@ -50,14 +58,26 @@ Version: Python 3.4 (first one)
 SSH: yes
 Keypair: aws-eb
 
-Next hook up the git branch:
+Our API key and secret key can be found in the Slack.
+
+
+To deploy the code, first make sure it is passing all tests and looks okay 
+locally. Additionally, we will only deploy from the master branch, so merge
+your code accordingly.
+
 ```
-eb use interswellar-prod
+git checkout master
+git pull --ff-only origin master
+export interswellar_latest=$(eb status | grep "Deployed Version:" | sed 's/\s*Deployed Version:\s*//')
+eb deploy interswellar-prod
+eb open interswellar-prod
 ```
 
-After commiting code changes, run
+Verify your changes on the site. If everything looks good, you're done! If 
+something looks broken, roll back the changes:
+
 ```
-eb deploy
+eb deploy --version $interswellar_latest interswellar-prod
 ```
 
 Please do not deploy non-working code. Test locally first.
