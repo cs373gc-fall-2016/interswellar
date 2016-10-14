@@ -12,4 +12,4 @@ class ViewsTest(unittest.TestCase):
 
     def test_empty_db(self):
         rv = self.app.get('/')
-        self.assertEqual(rv.data, b'<h1>Hello from Flask!</h1>')
+        self.assertEqual(rv.data, b"<h1>My God, it\'s full of stars!</h1>")
