@@ -5,5 +5,5 @@ from interswellar import app
 
 @app.route('/')
 def index():
-    """ Returns 'Hello World' """
-    return '<h1>Hello from Flask!</h1>'
+    """ Returns 'My God, it's full of stars!' """
+    return "<h1>My God, it\'s full of stars!</h1>"
