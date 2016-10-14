@@ -1,5 +1,5 @@
-# interswellar
-spaaace
+# interswellar [![Build Status](https://travis-ci.org/TheFireFerret/interswellar.svg?branch=master)](https://travis-ci.org/TheFireFerret/interswellar)
+spaaace  
 
 # Local development
 
