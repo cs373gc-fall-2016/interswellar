@@ -1,5 +1,5 @@
 lint:
-	find . -type f \( -name "*.py" -and -not -name "*_test.py" \) | xargs pylint -r n -d locally-disabled
+	find . -type f \( -name "*.py" -and -not -name "*_test.py" \) | xargs pylint -r n -d locally-disabled -d cyclic-import
 
 test:
 	coverage run --branch --source . -m unittest discover interswellar/ -p '*_test.py'
