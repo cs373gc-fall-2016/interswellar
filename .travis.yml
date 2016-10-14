@@ -1,0 +1,28 @@
+sudo: required
+dist: trusty
+
+language: python
+
+python:
+  - "3.4"
+
+before_install:
+  - pip install --upgrade pip
+
+install:
+  - pip install -r requirements.txt
+  - pip install pylint
+  - pip install coverage
+
+before_script:
+  - uname -a
+  - printenv | sort
+
+script:
+  - date
+  - ls -al
+  - make lint
+  - make test
+
+notifications:
+  email: false
