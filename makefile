@@ -1,0 +1,9 @@
+lint:
+	find . -type f \( -name "*.py" -and -not -name "*_test.py" \) | xargs pylint -r n -d locally-disabled
+
+test:
+	coverage run --branch --source . -m unittest discover interswellar/ -p '*_test.py'
+	coverage report -m
+
+run:
+	python application.py

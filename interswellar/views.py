@@ -1,5 +1,9 @@
+""" The views for the app """
+
 from interswellar import app
+
 
 @app.route('/')
 def index():
-	return '<h1>Hello from Flask!</h1>'
+    """ Returns 'Hello World' """
+    return '<h1>Hello from Flask!</h1>'
