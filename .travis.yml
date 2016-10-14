@@ -2,24 +2,35 @@ sudo: required
 dist: trusty
 language: python
 python:
-- '3.4'
+  - '3.4'
+
 before_install:
-- pip install --upgrade pip
+  - pip install --upgrade pip
+
 install:
-- pip install -r requirements.txt
-- pip install pylint
-- pip install coverage
+  - pip install -r requirements.txt
+  - pip install pylint
+  - pip install coverage
+
 before_script:
-- uname -a
-- printenv | sort
+  - uname -a
+  - printenv | sort
+
 script:
-- date
-- ls -al
-- make lint
-- make test
-notifications:
-  email: false
-env:
-  global:
-  - secure: QYERG3PMlhczspSF7gCy0h6pPiAfYhWVv+CdId8A+hIeHCQAmT6AjrD5epPQ5CmjhAwrxqSziv81dztm/MWpdM+6E/2uIa4472vE1D43c5b6YKdLH4geO8spBf3TyVRDxItrHQTAl6w91nNjuTa5HK9/ZLqLzqupTEd+3+BMRcjx2JSbGcdi6/dWl6Fyi7Dz+4d2IdnRVqDvGG4CRAgiusebIJYXwjK0EDXkOKAKTTqfmDKo87/jZPulHQDRpDjOKGeoJIpMqbQWuO0bCCJWE1I9etoKCAQBur/awWFMmUFaJcgti1DSBLXC7NPEabb7Lj9FKJLR/ONPOPxVM8J5Mc5HKrJFDkCz9dPJeoVV6yI7xR6KVCq5N/pG7v5ai9gUie3myx3Mz4tixB/xoS+BvUdPT+ToNpvZmF+XKNeG07pJerfkQgsMeCsAgao6VJfPFlzIwVkSqltC1MQl3IFslfPD/2ilO5QVL0hIqKUaH+nNzVeanxGFzups65qG9LWyRZpgTQ57t5W5ECc0Yfvs2kOyyvxO0W07fWkaCVj/6NvF1G+6pHPOAsUJaeJ0lvWdo/dGpg4VOL2uYuqP2CYvpFdqEwwiRtbGbrbMHGGxspdB0R/mrgKI6OjG9VGh6dYuKPLpCFjEnTsvwztL1Kree1y84XBP7RdqZ7nVJdWv10Q=
-  - secure: FyV3DrEiPRzGQLcKT2vEmQkjBOqK8mBwxX5wBtYVt8jSf9RUF/qeM77dr9qdkcEzrSw9Agel3radGKV3N4PiR70nGVSkuzM7i9k4eVxMhxqgqTj4QC3u7LtjfnbGOxwDCmMNnzMnKhjTUfrWVKvwjYKwVI7eoi1GIG/pE0mHzjKb3H/081UZLyjm5lRhbtsqCZ5Nm+oE4/bQxuqTnYtv51oshbMf//J7qJJk1fbjoXJnNybrsqm60VfwPMGzBWN6+PCsCZIn4e+tFzgMrLt3p/BlnRUQpKiUgk3IB18A5b6k5EArxtKHsIcH5f2Z/rhl+zshGvUIDAFz/EoMuPNhfTeGJeZkomOPQuvbfif1kqa2dPd9Y0Qs0Y3GUMPIVR0AcN5lywLYs1RXq++QYLzFWMZdt/VGCj4Bn+JaLVihCtgWqYJwySu2k8SmQgwSyHAZ/9DrZIXYU+lMoAZD+MFhhdjIhTpsJ/Q+iCI5vV60U//TFSElkEK/FewYzXz2KVhT6rj5i8Eco+2tpKUcgL6voB8E8ZMEaYgtNWU1c4dB1Pw0EVYPsadFO29wMe2i/Klz7xDhEIPi85K92/qGNRzYPBP674ypMJoOd8DDggUKQMeW08PRqJVUUOSWea4XfGQ2lsLdv72hDJ/xXrrwj2M6y1hrDtjdE7OMhGD8KnAALzg=
+  - date
+  - ls -al
+  - make lint
+  - make test
+
+deploy:
+  - provider: elasticbeanstalk
+    app: interswellar
+    env: interswellar-prod
+    bucket_name: elasticbeanstalk-us-east-1-963903243898
+    region: us-east-1
+    access_key_id:  
+      secure: QYERG3PMlhczspSF7gCy0h6pPiAfYhWVv+CdId8A+hIeHCQAmT6AjrD5epPQ5CmjhAwrxqSziv81dztm/MWpdM+6E/2uIa4472vE1D43c5b6YKdLH4geO8spBf3TyVRDxItrHQTAl6w91nNjuTa5HK9/ZLqLzqupTEd+3+BMRcjx2JSbGcdi6/dWl6Fyi7Dz+4d2IdnRVqDvGG4CRAgiusebIJYXwjK0EDXkOKAKTTqfmDKo87/jZPulHQDRpDjOKGeoJIpMqbQWuO0bCCJWE1I9etoKCAQBur/awWFMmUFaJcgti1DSBLXC7NPEabb7Lj9FKJLR/ONPOPxVM8J5Mc5HKrJFDkCz9dPJeoVV6yI7xR6KVCq5N/pG7v5ai9gUie3myx3Mz4tixB/xoS+BvUdPT+ToNpvZmF+XKNeG07pJerfkQgsMeCsAgao6VJfPFlzIwVkSqltC1MQl3IFslfPD/2ilO5QVL0hIqKUaH+nNzVeanxGFzups65qG9LWyRZpgTQ57t5W5ECc0Yfvs2kOyyvxO0W07fWkaCVj/6NvF1G+6pHPOAsUJaeJ0lvWdo/dGpg4VOL2uYuqP2CYvpFdqEwwiRtbGbrbMHGGxspdB0R/mrgKI6OjG9VGh6dYuKPLpCFjEnTsvwztL1Kree1y84XBP7RdqZ7nVJdWv10Q=
+    secret_access_key:
+      secure: FyV3DrEiPRzGQLcKT2vEmQkjBOqK8mBwxX5wBtYVt8jSf9RUF/qeM77dr9qdkcEzrSw9Agel3radGKV3N4PiR70nGVSkuzM7i9k4eVxMhxqgqTj4QC3u7LtjfnbGOxwDCmMNnzMnKhjTUfrWVKvwjYKwVI7eoi1GIG/pE0mHzjKb3H/081UZLyjm5lRhbtsqCZ5Nm+oE4/bQxuqTnYtv51oshbMf//J7qJJk1fbjoXJnNybrsqm60VfwPMGzBWN6+PCsCZIn4e+tFzgMrLt3p/BlnRUQpKiUgk3IB18A5b6k5EArxtKHsIcH5f2Z/rhl+zshGvUIDAFz/EoMuPNhfTeGJeZkomOPQuvbfif1kqa2dPd9Y0Qs0Y3GUMPIVR0AcN5lywLYs1RXq++QYLzFWMZdt/VGCj4Bn+JaLVihCtgWqYJwySu2k8SmQgwSyHAZ/9DrZIXYU+lMoAZD+MFhhdjIhTpsJ/Q+iCI5vV60U//TFSElkEK/FewYzXz2KVhT6rj5i8Eco+2tpKUcgL6voB8E8ZMEaYgtNWU1c4dB1Pw0EVYPsadFO29wMe2i/Klz7xDhEIPi85K92/qGNRzYPBP674ypMJoOd8DDggUKQMeW08PRqJVUUOSWea4XfGQ2lsLdv72hDJ/xXrrwj2M6y1hrDtjdE7OMhGD8KnAALzg=
+    on:
+      branch: master
