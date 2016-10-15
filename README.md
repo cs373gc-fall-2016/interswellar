@@ -28,6 +28,31 @@ python application.py
 ```
 (Control-C to quit the app)
 
+Don't forget to develop on a dev branch! Never commit code changes directly to master (see below for deployment).
+
+# Deploying changes
+
+First, merge in the master branch to your local dev branch and fix any merge conflicts locally. For this example, 'dev' will be
+the name of our dev branch.
+
+```
+git checkout dev
+git pull origin master
+git merge origin/master
+<fix any merge conflicts and commit changes if necessary>
+git push origin dev
+```
+
+Your dev branch should now be building on Travis. If the build fails on Travis, your change is not safe to deploy. Either fix your code or fix the tests. Assuming the build passes, log in to the AWS console (interswellar.signin.aws.amazon.com/console) (credentials are in the slack) and note the current version of the site (Elastic Beanstalk > Actions > Application Versions).
+
+```
+git checkout master
+git merge origin/master
+git merge dev
+git push origin master
+```
+
+The master branch with your changes incorporated will now be building on Travis. Assuming the build passes, Travis will then deploy the new version of the code to Elastic Beanstalk. Once the deploy completes, verify your changes on the production site (note that at present we do not have a staging environment, so your change is live! Be careful!). If anything looks broken or wrong, rollback to the last stable version through the AWS console. (Elastic Beanstalk > Actions > Application Versions > {select last build} > Deploy).
 
 # Manually deploy changes to AWS (not recommended)
 
