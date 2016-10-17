@@ -1,3 +1,4 @@
+// jQuery for carousel 
 var $item = $('.carousel .item');
 var $wHeight = $(window).height();
 
