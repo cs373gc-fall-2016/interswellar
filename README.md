@@ -1,4 +1,4 @@
-# interswellar [![Build Status](https://travis-ci.org/TheFireFerret/interswellar.svg?branch=master)](https://travis-ci.org/TheFireFerret/interswellar)
+# interswellar [![Build Status](https://travis-ci.org/cs373gc-fall-2016/interswellar.svg?branch=master)](https://travis-ci.org/cs373gc-fall-2016/interswellar)  
 spaaace  
 
 http://interswellar.me  
