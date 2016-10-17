@@ -14,7 +14,7 @@ virtualenv -p python3.4 ~/venv/interswellar
 
 Get the code and install dependencies:
 ```
-git clone git@github.com:TheFireFerret/interswellar.git
+git clone git@github.com:cs373gc-fall-2016/interswellar.git
 cd interswellar
 source ~/venv/interswellar/bin/activate
 pip install -r requirements.txt
