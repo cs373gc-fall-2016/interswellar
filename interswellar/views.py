@@ -35,8 +35,9 @@ def about():
 
 def get_commits():
     """ gets number of commits for each team member """
+    headers = {'Authorization': 'token %s' % "9e2d14bd33ce161a79db34fef226868d104c5a82"}
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors'
-    response = requests.get(url).text
+    response = requests.get(url, headers=headers).text
     parsed = json.loads(response)
     return {user['author']['login'] : user['total'] for user in parsed}
 
@@ -44,7 +45,8 @@ def get_commits():
 def get_issues():
     """ get number of issues for each team member """
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all'
-    response = requests.get(url).text
+    headers = {'Authorization': 'token %s' % "9e2d14bd33ce161a79db34fef226868d104c5a82"}
+    response = requests.get(url, headers=headers).text
     parsed = json.loads(response)
     num_issues = defaultdict(int)
     for issue in parsed:

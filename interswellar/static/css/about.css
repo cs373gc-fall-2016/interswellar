@@ -72,3 +72,15 @@
     padding: 20px;
     background-color: black;
 }
+
+/* Small screen CSS tweaks  */
+@media screen and (max-width: 767px) {
+    .buffer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .col-md-4 .col-md-12 .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
