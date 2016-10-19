@@ -1,0 +1,76 @@
+body {
+	font-size: 150%;
+}
+
+.parallax-window-about {
+	min-height: 500px;
+	background: transparent;
+}
+
+.parallax-window-team {
+	min-height: 1500px;
+	background: transparent;
+}
+
+.parallax-window-stats{
+	min-height: 500px;
+	background: transparent;
+}
+
+.parallax-window-tools{
+	min-height: 500px;
+	background: transparent;
+}
+
+.inner {
+	align-self: center;
+}
+
+.about {
+	padding: 20px;
+	background-color: #000;
+}
+
+.centered {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+.buffer {
+	padding: 10px;
+}
+
+.profile-pic {
+	max-width:75%;
+	max-height:75%;
+}
+
+/* title of each box of info */
+.header {
+    width: 75%;
+    margin: 0 auto; 
+    padding: 14px 24px;
+    border: 0 none;
+    font-size: 125%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    margin-bottom: 10px;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.section-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 300%;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+}

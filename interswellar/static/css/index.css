@@ -1,91 +1,154 @@
 /* Carousel backgrounds */
 .full-screen {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-  z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.centered {
+    text-align: center;
 }
 
 /* black background for fades */
 body {
-  background-color: black;
+    background-color: black;
+    font-family: "lato", sans-serif;
+    color: #fff;
 }
 
 /* Content bar */
 .jumbotron{
-	background-color:#000;
-	text-align:center;
-	position: absolute;
-	top: 40%;
-	left: 0;
-	right: 0;
-	margin-top: -60px;
-  z-index: 5;
+    background-color:#000;
+    text-align:center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    z-index: 5;
 }
+
 
 /* Title text */
 .title {
-	font-family: "lato", sans-serif;
-	font-weight: 500;
-	font-size: 6vw;
-	letter-spacing: 10px;
-	color: #FFF;
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 6vw;
+    letter-spacing: 10px;
+    color: #FFF;
+}
+
+.menu-title {
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: #FFF;
 }
 
 /* Title text container */
 .title-box {
-  margin-bottom: 2vw;
-  margin-top: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+}
+
+/* Navigation bar */
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a.nav-link:hover, 
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    background-color: #fff;
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Nav bar menu collapse */
+@media (max-width: 900px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
 }
 
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
-  .btn {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .title-box {
-    margin-bottom: 5vw;
-    margin-top: 0vw;
-  }
-  .jumbotron{
-    top: 35%;
-  }
+    .btn {
+        width: 100%;
+    }
 }
 
 /*  Button stuff */
 .btn {
-  padding: 14px 24px;
-  border: 0 none;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: #fff;
-  border: 2px solid #fff;
-  color: #000;
-  margin-bottom: 5px;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
+    padding: 14px 24px;
+    font-size: 125%;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    margin-bottom: 5px;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .dropdown-toggle.btn {
-  background: #000;
-  border-color: #fff;
-  color: #fff;
+    background: #000;
+    border-color: #fff;
+    color: #fff;
 }
 
 .btn:active, .btn.active {
-  background: #000;
-  border-color: #fff;
-  box-shadow: none;
+    background: #000;
+    border-color: #fff;
+    box-shadow: none;
 }
 
 .btn-primary.outline:active, .btn-primary.outline.active {
-  border-color: #007299;
-  color: #007299;
-  box-shadow: none;
+    border-color: #007299;
+    color: #007299;
+    box-shadow: none;
 }
 
 /* Carousel fade effect */
