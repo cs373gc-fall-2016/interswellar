@@ -1,5 +1,5 @@
 """ The views for the app """
-# pylint: disable=unused-import, bad-continuation, import-error
+# pylint: disable=unused-import,bad-continuation,line-too-long,import-error
 from collections import defaultdict
 import json
 import requests
@@ -51,3 +51,4 @@ def get_issues():
         if 'pull_request' not in issue:
             num_issues[issue['user']['login']] += 1
     return num_issues
+    
