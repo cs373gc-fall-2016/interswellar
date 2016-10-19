@@ -45,3 +45,40 @@ class Exoplanet(BASE):
         return "<Exoplanet(name='%s', mass=%f, radius=%f, orbital_period=%d, "  \
             "year_discovered=%d)>" % (self.name, self.mass, self.radius,
                                       self.orbital_period, self.year_discovered)
+
+# pylint: disable=too-few-public-methods
+class Constellation(BASE):
+    """model for constellations"""
+    __tablename__ = 'constellations'
+
+    # pylint: disable=invalid-name
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    IAU_abbreviation = Column(String)
+    family = Column(String)
+    etymology = Column(String)
+    area = Column(Float)
+    # bordering constellations, stars, planets
+
+    def __repr__(self):
+        return "<Constellation(name='%s', IAU_abbreviation='%s', family='%s', "  \
+            "etymology='%s', area='%s')>" % (self.name, self.IAU_abbreviation,
+                                             self.family, self.etymology, self.area)
+
+# pylint: disable=too-few-public-methods
+class Publication(BASE):
+    """model for publication"""
+    __tablename__ = 'publications'
+
+    # pylint: disable=invalid-name
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    year = Column(Integer)
+    authors = Column(String)
+    journal = Column(String)
+    abstract = Column(String)
+    # stars discovered, planets discovered
+
+    def __repr__(self):
+        return "<Publication(name='%s', year=%f, authors='%s', journal='%s', abstract='%s')>" % (
+            self.name, self.year, self.authors, self.journal, self.abstract)
