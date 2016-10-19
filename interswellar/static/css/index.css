@@ -1,125 +1,139 @@
 /* Carousel backgrounds */
 .full-screen {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-  z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.centered {
+    text-align: center;
 }
 
 /* black background for fades */
 body {
-  background-color: black;
-  font-family: "lato", sans-serif;
+    background-color: black;
+    font-family: "lato", sans-serif;
+    color: #fff;
 }
 
 /* Content bar */
 .jumbotron{
-	background-color:#000;
-	text-align:center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-	left: 0;
-	right: 0;
-  z-index: 5;
+    background-color:#000;
+    text-align:center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    z-index: 5;
 }
 
 
 /* Title text */
 .title {
-	font-family: "lato", sans-serif;
-	font-weight: 500;
-	font-size: 6vw;
-	letter-spacing: 10px;
-	color: #FFF;
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 6vw;
+    letter-spacing: 10px;
+    color: #FFF;
 }
 
 .menu-title {
-  font-family: "lato", sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  color: #FFF;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: #FFF;
 }
 
 /* Title text container */
 .title-box {
-  margin-bottom: 2vw;
-  margin-top: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
 }
 
 /* Navigation bar */
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus, 
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a.nav-link:hover, 
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-  background-color: #fff;
-  color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
-  color: #fff;
+    color: #fff;
+}
+
+.navbar-inverse {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
-  .btn {
-    width: 100%;
-  }
+    .btn {
+        width: 100%;
+    }
 }
 
 /*  Button stuff */
 .btn {
-  padding: 14px 24px;
-  border: 0 none;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: #fff;
-  border: 2px solid #fff;
-  color: #000;
-  margin-bottom: 5px;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
+    padding: 14px 24px;
+    font-size: 125%;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    margin-bottom: 5px;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .dropdown-toggle.btn {
-  background: #000;
-  border-color: #fff;
-  color: #fff;
+    background: #000;
+    border-color: #fff;
+    color: #fff;
 }
 
 .btn:active, .btn.active {
-  background: #000;
-  border-color: #fff;
-  box-shadow: none;
+    background: #000;
+    border-color: #fff;
+    box-shadow: none;
 }
 
 .btn-primary.outline:active, .btn-primary.outline.active {
-  border-color: #007299;
-  color: #007299;
-  box-shadow: none;
+    border-color: #007299;
+    color: #007299;
+    box-shadow: none;
 }
 
 /* Carousel fade effect */
 .carousel-fade .carousel-inner > .item {
-  transition-property: opacity;
+    transition-property: opacity;
 }
 .carousel-fade .carousel-inner > .item,
 .carousel-fade .carousel-inner > .item.active.left {
-  opacity: 0;
+    opacity: 0;
 }
 .carousel-fade .carousel-inner > .item.active,
 .carousel-fade .carousel-inner > .item.next.left {
-  opacity: 1;
+    opacity: 1;
 }
 .carousel-fade .carousel-inner > .next,
 .carousel-fade .carousel-inner > .prev,
 .carousel-fade .carousel-inner > .active.left,
 .carousel-fade .carousel-inner > .active.right {
-  left: 0;
+    left: 0;
 }
 .carousel-fade .carousel-inner > .item.next,
 .carousel-fade .carousel-inner > .item.active.right,
 .carousel-fade .carousel-inner > .item.prev,
 .carousel-fade .carousel-inner > .item.active.left {
-  transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
