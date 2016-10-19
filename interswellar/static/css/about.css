@@ -78,9 +78,26 @@
     .buffer {
         padding-top: 10px;
         padding-bottom: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
-    .col-md-4 .col-md-12 .container-fluid {
+
+    .col-md-4{
         padding-right: 0px;
         padding-left: 0px;
+    }
+    .col-md-12 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .centered {
+        display: block;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
