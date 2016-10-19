@@ -15,16 +15,11 @@
 	left: 0;
 	right: 0;
 	margin-top: -60px;
-	/*padding-left: 10px;*/
   z-index: 1;
 }
 
 /* Title text */
 .title {
-/*  	background: -webkit-linear-gradient(white, #38495a);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;*/
-
 	font-family: "lato", sans-serif;
 	font-weight: 500;
 	font-size: 6vw;
@@ -48,7 +43,6 @@
   .title-box {
     margin-bottom: 5vw;
     margin-top: 0vw;
-
   }
   .jumbotron{
     top: 35%;
@@ -65,6 +59,10 @@
   background: #fff;
   border: 2px solid #fff;
   color: #000;
+  margin-bottom: 5px;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .dropdown-toggle.btn {
@@ -84,11 +82,4 @@
   color: #007299;
   box-shadow: none;
 }
-
-.btn {
-  -webkit-border-radius: 0 !important;
-     -moz-border-radius: 0 !important;
-          border-radius: 0 !important;
-}
-
 
