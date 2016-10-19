@@ -3,12 +3,17 @@ body {
 }
 
 .parallax-window-about {
-	min-height: 300px;
+	min-height: 500px;
 	background: transparent;
 }
 
 .parallax-window-team {
-	min-height: 550px;
+	min-height: 1500px;
+	background: transparent;
+}
+
+.parallax-window-stats{
+	min-height: 500px;
 	background: transparent;
 }
 
