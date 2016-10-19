@@ -42,3 +42,12 @@ class ModelsTest(unittest.TestCase):
         constellations = models.Constellation.query.all()
         self.assertTrue(constellation in constellations)
         self.assertEqual(len(constellations), 1)
+
+    def test_publication(self):
+        publication = models.Publication(
+            id=1, name='discovery of new star', year=1986, authors='Carl Sagan, Neil Degrasse Tyson', journal='Harvard Stars', abstract='We found a new star.')
+        db.session.add(publication)
+        db.session.commit()
+        publications = models.Publication.query.all()
+        self.assertTrue(publication in publications)
+        self.assertEqual(len(publications), 1)
