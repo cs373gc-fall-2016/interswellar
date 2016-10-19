@@ -5,8 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # pylint: disable=C0103
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object('interswellar.config.TestingConfig')
 # pylint: disable=C0103
 db = SQLAlchemy(app)
 
