@@ -17,6 +17,11 @@ body {
 	background: transparent;
 }
 
+.parallax-window-tools{
+	min-height: 500px;
+	background: transparent;
+}
+
 .inner {
 	align-self: center;
 }
