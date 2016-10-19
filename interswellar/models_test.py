@@ -24,3 +24,12 @@ class ModelsTest(unittest.TestCase):
         stars = models.Star.query.all()
         self.assertTrue(star in stars)
         self.assertEqual(len(stars), 1)
+
+    def test_exoplant(self):
+        exoplanet = models.Exoplanet(
+            id=1, name='earth', mass=0.2, radius=1.0, orbital_period=5000, year_discovered=0)
+        db.session.add(exoplanet)
+        db.session.commit()
+        exoplanets = models.Exoplanet.query.all()
+        self.assertTrue(exoplanet in exoplanets)
+        self.assertEqual(len(exoplanets), 1)
