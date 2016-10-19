@@ -3,7 +3,12 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	z-index: -5;
+  z-index: 1;
+}
+
+/* black background for fades */
+body {
+  background-color: black;
 }
 
 /* Content bar */
@@ -15,7 +20,7 @@
 	left: 0;
 	right: 0;
 	margin-top: -60px;
-  z-index: 1;
+  z-index: 5;
 }
 
 /* Title text */
@@ -83,3 +88,27 @@
   box-shadow: none;
 }
 
+/* Carousel fade effect */
+.carousel-fade .carousel-inner > .item {
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner > .item,
+.carousel-fade .carousel-inner > .item.active.left {
+    opacity: 0;
+}
+.carousel-fade .carousel-inner > .item.active,
+.carousel-fade .carousel-inner > .item.next.left {
+    opacity: 1;
+}
+.carousel-fade .carousel-inner > .next,
+.carousel-fade .carousel-inner > .prev,
+.carousel-fade .carousel-inner > .active.left,
+.carousel-fade .carousel-inner > .active.right {
+    left: 0;
+}
+.carousel-fade .carousel-inner > .item.next,
+.carousel-fade .carousel-inner > .item.active.right,
+.carousel-fade .carousel-inner > .item.prev,
+.carousel-fade .carousel-inner > .item.active.left {
+    transform: translate3d(0, 0, 0);
+}
