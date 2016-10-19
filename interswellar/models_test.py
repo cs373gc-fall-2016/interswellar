@@ -33,3 +33,12 @@ class ModelsTest(unittest.TestCase):
         exoplanets = models.Exoplanet.query.all()
         self.assertTrue(exoplanet in exoplanets)
         self.assertEqual(len(exoplanets), 1)
+
+    def test_constellation(self):
+        constellation = models.Constellation(
+            id=1, name='big dipper', abbrev='big dp', family='arris', meaning='laddle', area=56.54)
+        db.session.add(constellation)
+        db.session.commit()
+        constellations = models.Constellation.query.all()
+        self.assertTrue(constellation in constellations)
+        self.assertEqual(len(constellations), 1)
