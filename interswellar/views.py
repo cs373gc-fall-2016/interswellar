@@ -35,18 +35,16 @@ def about():
 
 def get_commits():
     """ gets number of commits for each team member """
-    headers = {'Authorization': 'token %s' % "9e2d14bd33ce161a79db34fef226868d104c5a82"}
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors'
-    response = requests.get(url, headers=headers).text
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors?client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+    response = requests.get(url).text
     parsed = json.loads(response)
     return {user['author']['login'] : user['total'] for user in parsed}
 
 
 def get_issues():
     """ get number of issues for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all'
-    headers = {'Authorization': 'token %s' % "9e2d14bd33ce161a79db34fef226868d104c5a82"}
-    response = requests.get(url, headers=headers).text
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+    response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = defaultdict(int)
     for issue in parsed:
