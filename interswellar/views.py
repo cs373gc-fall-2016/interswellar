@@ -12,6 +12,10 @@ def index():
     """ Returns splash page """
     return render_template('index.html')
 
+@app.route('/stars')
+def stars():
+    return render_template('stars.html')
+
 
 @app.route('/about')
 def about():
