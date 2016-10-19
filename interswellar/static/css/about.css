@@ -1,7 +1,4 @@
-body {
-	font-size: 150%;
-}
-
+/* parallax stuff */
 .parallax-window-about {
 	min-height: 500px;
 	background: transparent;
@@ -22,19 +19,20 @@ body {
 	background: transparent;
 }
 
+/* center aligns content if it's in a .centered */
 .inner {
 	align-self: center;
-}
-
-.about {
-	padding: 20px;
-	background-color: #000;
 }
 
 .centered {
 	position: relative;
 	display: flex;
 	justify-content: center;
+}
+
+.about {
+    padding: 20px;
+    background-color: #000;
 }
 
 .buffer {
