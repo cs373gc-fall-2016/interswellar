@@ -20,7 +20,7 @@ class Star(db.Model):
     exoplanets = db.relationship("Exoplanet", backref="star")
     constellation_id = db.Column(
         db.Integer, db.ForeignKey("constellations.id"))
-    publication = db.Column(db.Integer, db.ForeignKey("publications.id"))
+    publication_id = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
         return "<Star(name='%s', mass=%f, luminosity=%f, temperature=%f, radius=%f)>" % (
@@ -42,7 +42,7 @@ class Exoplanet(db.Model):
     orbital_period = db.Column(db.Integer)
     year_discovered = db.Column(db.Integer)
     star_id = db.Column(db.Integer, db.ForeignKey("stars.id"))
-    publication = db.Column(db.Integer, db.ForeignKey("publications.id"))
+    publication_id = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
         return "<Exoplanet(name='%s', mass=%f, radius=%f, orbital_period=%d, "  \
@@ -68,9 +68,9 @@ class Constellation(db.Model):
     # bordering constellations
 
     def __repr__(self):
-        return "<Constellation(name='%s', IAU_abbreviation='%s', family='%s', "  \
-            "etymology='%s', area='%s')>" % (self.name, self.IAU_abbreviation,
-                                             self.family, self.etymology, self.area)
+        return "<Constellation(name='%s', abbrev='%s', family='%s', "  \
+            "meaning='%s', area='%s')>" % (self.name, self.abbrev,
+                                           self.family, self.meaning, self.area)
 
 # pylint: disable=too-few-public-methods
 
