@@ -1,45 +1,48 @@
 """models for database"""
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
-from sqlalchemy.orm import relationship
-
-BASE = declarative_base()
+from interswellar import db
 
 # pylint: disable=too-few-public-methods
-class Star(BASE):
+
+
+class Star(db.Model):
+
     """model for stars"""
     __tablename__ = 'stars'
 
     # pylint: disable=invalid-name
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    mass = Column(Float)
-    luminosity = Column(Float)
-    temperature = Column(Float)
-    radius = Column(Float)
-    exoplanets = relationship("Exoplanet", back_populates="star")
-    # constellation, publication discovered
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    mass = db.Column(db.Float)
+    luminosity = db.Column(db.Float)
+    temperature = db.Column(db.Float)
+    radius = db.Column(db.Float)
+    exoplanets = db.relationship("Exoplanet", backref="star")
+    constellation_id = db.Column(
+        db.Integer, db.ForeignKey("constellations.id"))
+    publication = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
         return "<Star(name='%s', mass=%f, luminosity=%f, temperature=%f, radius=%f)>" % (
             self.name, self.mass, self.luminosity, self.temperature, self.radius)
 
 # pylint: disable=too-few-public-methods
-class Exoplanet(BASE):
+
+
+class Exoplanet(db.Model):
+
     """model for exoplanets"""
     __tablename__ = 'exoplanets'
 
     # pylint: disable=invalid-name
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    mass = Column(Float)
-    radius = Column(Float)
-    orbital_period = Column(Integer)
-    year_discovered = Column(Integer)
-    star_id = Column(Integer, ForeignKey("star.id"))
-    star = relationship("Star", back_populates="exoplanets")
-    # constellation, publication discovered
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    mass = db.Column(db.Float)
+    radius = db.Column(db.Float)
+    orbital_period = db.Column(db.Integer)
+    year_discovered = db.Column(db.Integer)
+    star_id = db.Column(db.Integer, db.ForeignKey("stars.id"))
+    publication = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
         return "<Exoplanet(name='%s', mass=%f, radius=%f, orbital_period=%d, "  \
@@ -47,18 +50,22 @@ class Exoplanet(BASE):
                                       self.orbital_period, self.year_discovered)
 
 # pylint: disable=too-few-public-methods
-class Constellation(BASE):
+
+
+class Constellation(db.Model):
+
     """model for constellations"""
     __tablename__ = 'constellations'
 
     # pylint: disable=invalid-name
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    IAU_abbreviation = Column(String)
-    family = Column(String)
-    etymology = Column(String)
-    area = Column(Float)
-    # bordering constellations, stars, planets
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    abbrev = db.Column(db.String)
+    family = db.Column(db.String)
+    meaning = db.Column(db.String)
+    area = db.Column(db.Float)
+    stars = db.relationship("Star", backref="constellation")
+    # bordering constellations
 
     def __repr__(self):
         return "<Constellation(name='%s', IAU_abbreviation='%s', family='%s', "  \
@@ -66,18 +73,22 @@ class Constellation(BASE):
                                              self.family, self.etymology, self.area)
 
 # pylint: disable=too-few-public-methods
-class Publication(BASE):
+
+
+class Publication(db.Model):
+
     """model for publication"""
     __tablename__ = 'publications'
 
     # pylint: disable=invalid-name
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    year = Column(Integer)
-    authors = Column(String)
-    journal = Column(String)
-    abstract = Column(String)
-    # stars discovered, planets discovered
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    year = db.Column(db.Integer)
+    authors = db.Column(db.String)
+    journal = db.Column(db.String)
+    abstract = db.Column(db.String)
+    stars = db.relationship("Star", backref="publication")
+    exoplanets = db.relationship("Exoplanet", backref="publication")
 
     def __repr__(self):
         return "<Publication(name='%s', year=%f, authors='%s', journal='%s', abstract='%s')>" % (

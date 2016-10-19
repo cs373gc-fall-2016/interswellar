@@ -11,7 +11,6 @@ install:
 - pip install -r requirements.txt
 - pip install pylint
 - pip install coverage
-- pip install sqlalchemy
 
 before_script:
 - uname -a
