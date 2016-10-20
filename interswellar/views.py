@@ -15,16 +15,54 @@ def index():
     return render_template('index.html')
 
 
+# @app.route('/stars')
+# def stars():
+#     """ Returns stars page """
+#     data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+#     return render_template('tables.html', data=data, title="STARS")
+
 @app.route('/stars')
 def stars():
     """ Returns stars page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 2,
+            "objects": [
+                {
+                    "id": 1,
+                    "name": "Kepler-9",
+                    "luminosity": 13.9,
+                    "mass": 1.07,
+                    "radius": 1.02,
+                    "temperature": 5777.00,
+                    "constellation": {"id": 1, "abbrev": "Lyr"},
+                    "exoplanets": [
+                        {"id": 1, "name": "Kepler-9a"},
+                        {"id": 2, "name": "Kepler-9b"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ],
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                },
+                {
+                    "id": 2,
+                    "name": "HIP 64690",
+                    "luminosity": 0.810,
+                    "mass": 0.95,
+                    "radius": 0.93,
+                    "temperature": 5679.00,
+                    "constellation": {"id": 1, "abbrev": "Oct"},
+                    "exoplanets": [],
+                    "discoverer": {"id": 1, "ref": "2011A&A...534A..58P"}
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="STARS")
 
 @app.route('/stars/<variable>')
 def star(variable):
     """ Returns page for a single star """
-    data = {"id": 1, "name": "Kepler-9", "luminosity": 13.9, "mass": 1.07, "radius": 1.02, "temperature": 5777.00,"constellation": {"id": 1, "abbrev": "Lyr"}, "exoplanets": [{"id": 1, "name": "Kepler-9a"},{"id": 2, "name": "Kepler-9b"},{"id": 3, "name": "Kepler-9d"}],"discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}}
+    data = {"id": 1, "name": "Kepler-9", "luminosity": 13.9, "mass": 1.07, "radius": 1.02, "temperature": 5777.00, "constellation": {"id": 1, "abbrev": "Lyr"}, "exoplanets": [{"id": 1, "name": "Kepler-9a"}, {"id": 2, "name": "Kepler-9b"}, {"id": 3, "name": "Kepler-9d"}], "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}}
     return render_template('detail.html', data=data)
 
 @app.route('/exoplanets')
