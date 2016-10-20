@@ -10,7 +10,6 @@ class ViewsTest(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
 
-
     def test_empty_db(self):
         view = self.app.get('/')
         self.assertNotEqual(view.data, '')
