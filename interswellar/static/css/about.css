@@ -94,3 +94,19 @@
         padding-bottom: 40px;
     }
 }
+
+.table-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 6vw;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+}
+
+@media all and (min-width: 767px) {
+    .table-title{
+        font-size: 3vw;
+    }
+}
