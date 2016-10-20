@@ -47,6 +47,7 @@ String.prototype.replaceAll = function(search, replacement) {
 					$.each(data[key], function(index, planet) {
 					    console.log(planet);
 					    links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
+					    links += "<div class='clearfix visible-xs-block'></div>"
 					});
 					data[key] = links;
 				};
