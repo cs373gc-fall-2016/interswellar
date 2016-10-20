@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/instance.css">
+
+
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    <script type="text/javascript">
+
+        var data = {{data|tojson}};
+        console.log(data);
+
+        $('#name').text(data.name);
+        $('#IAU_abbreviation').text(data.IAU_abbreviation);
+        $('#family').text(data.family);
+        $('#meaning').text(data.meaning);
+        $('#area').text(data.area);
+    </script>
+
+    <div class="section-title">
+        {{data.name}}
+    </div>
+
+        <div class="container-fluid inner">
+            <div class="col-md-4 buffer">
+            <div class="panel-heading">Bordering Constellations</div>
+            <div class="table-responsive">
+                <table class="table">
+                    {% for b_const in data.bordering_constellations %}
+                    <tr>
+                        <td>{{b_const}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            </div>
+            <div class="col-md-4 buffer">
+                <div class="about">
+                    <div class="header">
+                        PURPOSE
+                    </div>
+                    <p>
+                        It's a fez. I wear a fez now. Fezes are cool. I'm the Doctor, I'm worse than everyone's aunt. *catches himself* And that is not how I'm introducing myself. Annihilate? No. No violence. I won't stand for it. Not now, not ever, do you understand me?! I'm the Doctor, the Oncoming Storm - and you basically meant beat them in a football match, didn't you?
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 buffer">
+                <div class="about">
+                    <div class="header">
+                        INTENDED USERS
+                    </div>
+                    <p>
+                        There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor. There's so many poorly chosen words in that sentence. No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>
