@@ -50,7 +50,7 @@ class ModelsTest(unittest.TestCase):
 
     def test_publication(self):
         publication = models.Publication(
-            id=1, name='discovery of new star', year=1986, authors='Carl Sagan, Neil Degrasse Tyson', journal='Harvard Stars', abstract='We found a new star.')
+            id=1, title='discovery of new star', year=1986, authors='Carl Sagan, Neil Degrasse Tyson', journal='Harvard Stars', abstract='We found a new star.')
         db.session.add(publication)
         db.session.commit()
         publications = models.Publication.query.all()
