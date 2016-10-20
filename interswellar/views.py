@@ -68,41 +68,204 @@ def star(variable):
 @app.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 3,
+            "objects": [
+                {
+                    "id": 1,
+                    "name": "Kepler-9b",
+                    "mass": 80.09,
+                    "radius": 9.438,
+                    "orbital_period": 1662336,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                },
+                {
+                    "id": 2,
+                    "name": "Kepler-9c",
+                    "mass": 54.249,
+                    "radius": 9.225,
+                    "orbital_period": 3361824,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                },
+                {
+                    "id": 3,
+                    "name": "Kepler-9d",
+                    "mass": "unknown",
+                    "radius": 1.6,
+                    "orbital_period": 137376,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="EXOPLANETS")
 
 @app.route('/exoplanets/<variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    data = ['{"name": "Kepler-24 b", "mass": 33.0000, "radius": 2.020, "orbital_period": "unknown", "discovery_year": "2011", "star": "Kepler-24", "constellation": "Lyra", "discovered_by": "http://adsabs.harvard.edu/abs/2014ApJ...787...80H"}', '{"name": "HD 49674 b", "mass": 33.40000, "radius": 2.020, "orbital_period": "unknown", "discovery_year": "2002", "star": "HD 49674", "constellation": "Auriga", "discovered_by": "http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2003ApJ...582..455B"}']
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('exoplanet.html', data=json_obj)
+    data = {
+            "id": 2,
+            "name": "Kepler-9c",
+            "mass": 54.249,
+            "radius": 9.225,
+            "orbital_period": 3361824,
+            "year_discovered": 2010,
+            "star": {
+                "id": 1,
+                "name": "Kepler-9",
+                "constellation": {"id": 1, "abbrev":"Lyr"}
+            },
+            "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+        }
+    return render_template('detail.html', data=data)
 
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 2,
+            "objects": [
+                {
+                    "id": 1,
+                    "abbrev": "Lyr",
+                    "name": "Lyra",
+                    "family": "Hercules",
+                    "meaning": "lyre / harp",
+                    "area": 286,
+                    "stars": [
+                        {
+                            "id": 1,
+                            "name": "Kepler-9",
+                            "exoplanets": [
+                                {"id": 1, "name": "Kepler-9a"},
+                                {"id": 2, "name": "Kepler-9b"},
+                                {"id": 3, "name": "Kepler-9d"}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "abbrev": "Oct",
+                    "name": "Octans",
+                    "family": "La Caille",
+                    "meaning": "octant (instrument)",
+                    "area": 291,
+                    "stars": [
+                        {
+                            "id": 2,
+                            "name": "HIP 64690",
+                            "exoplanets": []
+                        }
+                    ]
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="CONSTELLATIONS")
 
 @app.route('/constellations/<variable>')
 def constellation(variable):
     """ Returns page for single constellation """
-    data = ['{"name": "Lyra", "IAU_abbreviation": "Lyr", "family": "Hercules", "meaning": "lyre / harp", "area": 286, "bordering_constellations": ["Draco", "Hercules", "Vulpecula", "Cygsnus"], "stars": ["Kepler-24", "Kepler-9"] }']
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('constellation.html', data=json_obj)
+    data = {"id": 1,
+            "abbrev": "Lyr",
+            "name": "Lyra",
+            "family": "Hercules",
+            "meaning": "lyre / harp",
+            "area": 286,
+            "stars": [
+                {
+                    "id": 1,
+                    "name": "Kepler-9",
+                    "exoplanets": [
+                        {"id": 1, "name": "Kepler-9a"},
+                        {"id": 2, "name": "Kepler-9b"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ]
+                }
+            ]
+        }
+    return render_template('detail.html', data=data)
 
 @app.route('/publications')
 def publications():
     """ Returns publications page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 2,
+            "objects": [
+                {
+                    "id": 1,
+                    "ref": "2013A&A...566A.126A",
+                    "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
+                    "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
+                    "stars": [
+                        {"id": 1, "name": "Kepler-9"}
+                    ],
+                    "planets": [
+                        {"id": 1, "name": "Kepler-9b"},
+                        {"id": 2, "name": "Kepler-9c"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ]
+                },
+                {
+                    "id": 2,
+                    "ref": "2011A&A...534A..58P",
+                    "title": "The HARPS search for Earth-like planets in the habitable zone. I. Very low-mass planets around HD 20794, HD 85512, and HD 192310",
+                    "authors": "Pepe, F.; Lovis, C.; Ségransan, D.; Benz, W.; Bouchy, F.; Dumusque, X.; Mayor, M.; Queloz, D.; Santos, N. C.; Udry, S.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. In 2009 we started an intense radial-velocity monitoring of a few nearby, slowly-rotating...",
+                    "stars": [
+                        {"id": 2, "name": "HIP 64690"}
+                    ],
+                    "planets": []
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="PUBLICATIONS")
-
 @app.route('/publications/<variable>')
 def publication(variable):
     """ Returns page for single publication """
-    data = ['{"name": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone", "year": "2013", "authors": ["Anglada-Escudé, Guillem","Tuomi, Mikko","Gerlach, Enrico","Barnes, Rory"], "journal": "Astronomy & Astrophysics", "abstract": "Context. Since low-mass stars have low luminosities, orbits...", "stars_discovered": ["HD 285968", "HD 40307", "HD 69830"], "planets_discovered": ["GJ 581 d", "GJ 1214 b"]}']
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('publication.html', data=json_obj)
+    data = {
+            "id": 1,
+            "ref": "2013A&A...566A.126A",
+            "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
+            "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
+            "journal": "Astronomy & Astrophysics",
+            "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
+            "stars": [
+                {"id": 1, "name": "Kepler-9"}
+            ],
+            "planets": [
+                {"id": 1, "name": "Kepler-9b"},
+                {"id": 2, "name": "Kepler-9c"},
+                {"id": 3, "name": "Kepler-9d"}
+            ]
+        }
+    return render_template('detail.html', data=data)
 
 @app.route('/about')
 def about():
