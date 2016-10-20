@@ -1,14 +1,12 @@
-""" The flask app """
-
+#pylint: skip-file
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from interswellar.config import get_config
 
-# pylint: disable=C0103
+config = get_config(os.environ.get('APP_ENV'))
 app = Flask(__name__)
-app.config.from_object('interswellar.config.TestingConfig')
-# pylint: disable=C0103
+app.config.from_object(config)
 db = SQLAlchemy(app)
 
-# pylint: disable=C0413
-# pylint: disable=R0401
 import interswellar.views

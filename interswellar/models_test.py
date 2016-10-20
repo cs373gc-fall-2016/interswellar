@@ -9,7 +9,6 @@ class ModelsTest(unittest.TestCase):
     """ Tests the models """
 
     def setUp(self):
-        app.config.from_object('interswellar.config.TestingConfig')
         db.create_all()
 
     def tearDown(self):
