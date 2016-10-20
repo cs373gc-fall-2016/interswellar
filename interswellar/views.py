@@ -83,7 +83,7 @@ def exoplanets():
                         "name": "Kepler-9",
                         "constellation": {"id": 1, "abbrev":"Lyr"}
                     },
-                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
                 },
                 {
                     "id": 2,
@@ -97,7 +97,7 @@ def exoplanets():
                         "name": "Kepler-9",
                         "constellation": {"id": 1, "abbrev":"Lyr"}
                     },
-                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
                 },
                 {
                     "id": 3,
@@ -111,7 +111,7 @@ def exoplanets():
                         "name": "Kepler-9",
                         "constellation": {"id": 1, "abbrev":"Lyr"}
                     },
-                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
                 }
             ],
             "page": 1,
@@ -134,7 +134,7 @@ def exoplanet(variable):
                 "name": "Kepler-9",
                 "constellation": {"id": 1, "abbrev":"Lyr"}
             },
-            "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+            "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
         }
     return render_template('detail.html', data=data)
 
