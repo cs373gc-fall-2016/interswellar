@@ -7,8 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-	<link rel="stylesheet" href="../static/css/index.css">
-	<link rel="stylesheet" href="../static/css/tables.css">
+
 
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
@@ -29,6 +28,9 @@
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+		<link rel="stylesheet" href="../static/css/index.css">
+	<link rel="stylesheet" href="../static/css/tables.css">
 </head>
 
 <body>
@@ -37,14 +39,16 @@
 	<div class="section-title">
 		{{title}}
 	</div>
-
-	<div id="content" ></div>
+	<div class="col-md-12">
+		<div id="content" ></div>
+	</div>
 
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
     		"bFilter": false,
-    		"bLengthChange": false
+    		"bLengthChange": false,
+        "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
 		});
  
 		new $.fn.dataTable.Responsive( table, {
