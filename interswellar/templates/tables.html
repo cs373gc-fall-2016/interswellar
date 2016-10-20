@@ -29,30 +29,39 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 
-		<link rel="stylesheet" href="../static/css/index.css">
+	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
 </head>
 
 <body>
 	{% include 'nav.html' %}
 
-	<div class="section-title">
+	<div class="table-title">
 		{{title}}
 	</div>
-	<div class="col-md-12">
+<!-- 	<div class="col-md-12">
 		<div id="content" ></div>
+	</div> -->
+
+	<div class='container-fluid tabletron'>
+		<div class="col-md-12 title-box">
+			<div class="col-md-12">
+				<div id="content" ></div>
+			</div>
+		</div>
 	</div>
+
 
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
-    		"bFilter": false,
-    		"bLengthChange": false,
-        "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
+			"bFilter": false,
+			"bLengthChange": false,
+			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
 		});
- 
+
 		new $.fn.dataTable.Responsive( table, {
-		    details: true
+			details: true
 		} );
 	});
 	</script>
@@ -134,6 +143,13 @@
 		document.getElementById('content')
 		);
 	</script>
+
+	<style>
+	html { 
+		background: url(http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg) no-repeat center center fixed; 
+	}
+	</style>
+
 </div>
 </body>
 

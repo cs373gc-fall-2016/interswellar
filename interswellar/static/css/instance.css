@@ -1,0 +1,16 @@
+.section-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 300%;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+}
+
+.panel-default {
+	width:250px;
+	color:black;
+	text-align: center;
+	position:absolute;
+}
