@@ -18,6 +18,13 @@ body {
     font-size: 150%;
 }
 
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 0px solid transparent;
+}
+
 /* Content bar */
 .jumbotron{
     background-color:rgba(0, 0, 0, .7);
