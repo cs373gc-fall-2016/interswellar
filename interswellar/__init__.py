@@ -17,6 +17,8 @@ def load_config(app_env):
         'prod': config.ProductionConfig
     }
     app.config.from_object(configs[app_env])
+    print("Loading %s configuration: Using db '%s'" %
+        (app_env, db.engine.url))
 
 
 import interswellar.views

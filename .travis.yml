@@ -38,3 +38,6 @@ deploy:
       secure: "gftT/kMtsuY82WKV30HlujlWLmSttFKwqpQoeF1GcaWPIt7cOslLKsZISgU/bnLFQy78pR/kkvEZ0ebLAP4MeWvPHr48IXFiCGnyrgAF9U2yBSGm5HsnNH577AlhWt7wvgHkZKnD9Y766LYcPOCFFHf7nsA5hjqz4qd3CZfLsJ/BCRRlpuxf+xx1htyd9ybzpLDIFHXc+YYjHKM1P+rpj/EUGpgh6hipmXQ/And5M4G7QpTzUbCxb8D6gC8tD1ldinOrOVIxhuny1oveTaOQkXWCc/YIjonTKEIhnYrvQYXqiI06/xzZnsj8SqvXob3wJW7REBQ+p01BlvxeLFg0zOTkFuBvuBc/r/+zbV9D+k40pmLOs6hFKRA6B9IT6b3VZWGtgwguvRsalQZRfhJlVRelWa6EJiBHt1zo04AYeC5ZqEIfA0GJlyy7rqzQNWkd9a3GYUxLb42lDzp2tsCXeqpDvjRUj5/4w4urs1lSRY4R+zWrNAQPBdxg3jyNfv+mS1JgMkc0vQ+33wmmGQm4ibHs+YQYQta1fLaDLQZNc6zEMFGuBsZ2T7Uq0uTNmT5n+ruBdo9TBKAbXW9JMN4efiQZL64C0IiKn8X1C7FzVMbBmg7kgO9g/HgTvDCMPOd8HCzrbGjU4hLNJaHiXYkF/Ofo5f+FuiZ+ru41FpEOTyo="
     on:
       branch: master
+
+env:
+  - APP_ENV=ci

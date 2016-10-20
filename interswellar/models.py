@@ -23,7 +23,7 @@ class Star(db.Model):
     publication_id = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
-        return "<Star(name='%s', mass=%f, luminosity=%f, temperature=%f, radius=%f)>" % (
+        return "<Star(name='%s', mass=%s, luminosity=%s, temperature=%s, radius=%s)>" % (
             self.name, self.mass, self.luminosity, self.temperature, self.radius)
 
 # pylint: disable=too-few-public-methods
@@ -45,7 +45,7 @@ class Exoplanet(db.Model):
     publication_id = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
-        return "<Exoplanet(name='%s', mass=%f, radius=%f, orbital_period=%d, "  \
+        return "<Exoplanet(name='%s', mass=%s, radius=%s, orbital_period=%d, "  \
             "year_discovered=%d)>" % (self.name, self.mass, self.radius,
                                       self.orbital_period, self.year_discovered)
 
@@ -91,5 +91,5 @@ class Publication(db.Model):
     exoplanets = db.relationship("Exoplanet", backref="publication")
 
     def __repr__(self):
-        return "<Publication(name='%s', year=%f, authors='%s', journal='%s', abstract='%s')>" % (
+        return "<Publication(name='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
             self.name, self.year, self.authors, self.journal, self.abstract)
