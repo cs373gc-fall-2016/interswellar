@@ -2,10 +2,12 @@
 # pylint: disable=unused-import,bad-continuation,line-too-long,import-error
 from collections import defaultdict
 import json
+import traceback
+import html
 import requests
 from interswellar import app
+import interswellar.models as models
 from flask import Flask, render_template
-import sys
 
 
 @app.route('/')
@@ -25,7 +27,6 @@ def star(variable):
     """ Returns page for a single star """
     data = ['{"name": "Kepler-9", "mass": 1.07, "luminosity": 13.9, "temperature": 5777.00, "radius": 1.02, "constellation": "Lyra", "planets": [ "Kepler-9a", "Kepler-9b", "Kepler-9d" ], "discovered_by": "http://adsabs.harvard.edu/abs/2013A%26A...556A.126A"}']
     json_obj = json.loads(data[int(variable)-1])
-    print(json_obj, file=sys.stderr)
     return render_template('star.html', data=json_obj)
 
 @app.route('/exoplanets')
@@ -66,6 +67,19 @@ def about():
         young_issues=issues.get('jedyobidan', 0),
         david_issues=issues.get('dshimo', 0),
         nathan_issues=issues.get('nazopo', 0))
+
+
+@app.route('/checkdb')
+def checkdb():
+    """ Queries the db for some stars to see if it's okay"""
+    try:
+        all_stars = models.Star.query.limit(5).all()
+
+        return 'Database returned the following stars:<br>%s' %  \
+            '<br>'.join(html.escape(s.__repr__()) for s in all_stars)
+    except Exception: #pylint:disable=broad-except
+        traceback.print_exc()
+        return 'Database is not ok. Check stdout for details'
 
 
 def get_commits():
