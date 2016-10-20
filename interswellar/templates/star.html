@@ -30,9 +30,9 @@
 		console.log(data);
 
 		$('#name').text(data.name);
-		$('#luminosity').text(data.luminosity);
 		$('#mass').text(data.mass);
 		$('#radius').text(data.radius);
+		$('#luminosity').text(data.luminosity);
 		$('#temperature').text(data.temperature);
 		$('#discovered_by').text(data.discovered_by);
 		//$('#planets').text(data.planets);
@@ -43,41 +43,82 @@
 		{{data.name}}
 	</div>
 
-		<div class="container-fluid inner">
+	<div class="container-fluid centered">
+
 			<div class="col-md-4 buffer">
-			<div class="panel-heading">Planets</div>
-			<div class="table-responsive">
-				<table class="table">
-					{% for planet in data.planets %}
-					<tr>
-						<td>{{planet}}</td>
-					</tr>
-					{% endfor %}
-				</table>
+				<div class="about">
+					<div class="header">
+						RADIUS
+					</div>
+					<p>
+						{{data.radius}}
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="header">
+						MASS
+					</div>
+					<p>
+						{{data.mass}}
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="header">
+						LUMINOSITY
+					</div>
+					<p>
+						{{data.luminosity}}
+					</p>
+				</div>
 			</div>
 
-			</div>
+
 			<div class="col-md-4 buffer">
 				<div class="about">
 					<div class="header">
-						PURPOSE
+						TEMPERATURE
 					</div>
 					<p>
-						It's a fez. I wear a fez now. Fezes are cool. I'm the Doctor, I'm worse than everyone's aunt. *catches himself* And that is not how I'm introducing myself. Annihilate? No. No violence. I won't stand for it. Not now, not ever, do you understand me?! I'm the Doctor, the Oncoming Storm - and you basically meant beat them in a football match, didn't you?			
+						{{data.temperature}}
 					</p>
 				</div>
 			</div>
 			<div class="col-md-4 buffer">
 				<div class="about">
 					<div class="header">
-						INTENDED USERS
+						PLANETS
+					</div>
+					<!-- <p>
+						link here????
+					</p> -->
+
+					<ul style="list-style: none;">
+						{% for planet in data.planets %}
+							<li>{{planet}}</li>
+						{% endfor %}
+					</ul>
+
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="header">
+						DISCOVERED BY
 					</div>
 					<p>
-						There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor. There's so many poorly chosen words in that sentence. No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide.
+						{{data.discovered_by}}
 					</p>
 				</div>
 			</div>
-		</div>
+
+	</div>
+	</div>
+
+
 
 
 </body>
