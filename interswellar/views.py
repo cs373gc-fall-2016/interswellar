@@ -2,8 +2,11 @@
 # pylint: disable=unused-import,bad-continuation,line-too-long,import-error
 from collections import defaultdict
 import json
+import traceback
+import html
 import requests
 from interswellar import app
+import interswellar.models as models
 from flask import Flask, render_template
 
 
@@ -58,6 +61,19 @@ def about():
         young_issues=issues.get('jedyobidan', 0),
         david_issues=issues.get('dshimo', 0),
         nathan_issues=issues.get('nazopo', 0))
+
+
+@app.route('/checkdb')
+def checkdb():
+    """ Queries the db for some stars to see if it's okay"""
+    try:
+        all_stars = models.Star.query.limit(5).all()
+
+        return 'Database returned the following stars:<br>%s' %  \
+            '<br>'.join(html.escape(s.__repr__()) for s in all_stars)
+    except Exception: #pylint:disable=broad-except
+        traceback.print_exc()
+        return 'Database is not ok. Check stdout for details'
 
 
 def get_commits():

@@ -1,6 +1,8 @@
 Flask==0.11.1
+Flask-SQLAlchemy==2.1
 Jinja2==2.8
 MarkupSafe==0.23
+SQLAlchemy==1.1.2
 Werkzeug==0.11.11
 astroid==1.4.8
 click==6.6
@@ -9,6 +11,7 @@ isort==4.2.5
 itsdangerous==0.24
 lazy-object-proxy==1.2.2
 mccabe==0.5.2
+psycopg2==2.6.2
 pylint==1.6.4
 six==1.10.0
 wrapt==1.10.8
