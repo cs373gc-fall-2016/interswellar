@@ -19,15 +19,15 @@ class APITest(unittest.TestCase):
         )
 
         star = models.Star(
-            id=2, name='star', mass=2.0, luminosity=2.0, temperature=2000, 
+            id=2, name='star', mass=2.0, luminosity=2.0, temperature=2000,
             radius=2.0
         )
         planet = models.Exoplanet(
-            id=2, name='planet', mass=1.0, radius=1.0, orbital_period=1000000, 
+            id=2, name='planet', mass=1.0, radius=1.0, orbital_period=1000000,
             year_discovered=2000
         )
         constel = models.Constellation(
-            id=2, name='constel', abbrev='cst', family='cf', 
+            id=2, name='constel', abbrev='cst', family='cf',
             meaning='A constellation', area=100
         )
 
