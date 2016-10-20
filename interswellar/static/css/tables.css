@@ -1,6 +1,6 @@
 body {
 	font-size: 150%;
-    color: #000000;
+    color: #fff;
 }
 
 
@@ -25,3 +25,8 @@ body {
 .table {
     color : #FFF;
 }
+
+th { 
+    text-transform: uppercase; 
+}
+

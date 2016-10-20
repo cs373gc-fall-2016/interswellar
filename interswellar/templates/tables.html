@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
 
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
 	<!-- Data tables -->
 	<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
 	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
@@ -24,6 +26,9 @@
 	<!-- Data tables -->
 	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 </head>
 
 <body>
@@ -37,7 +42,14 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$('#example').dataTable();
+		var table = $('#example').DataTable({
+    		"bFilter": false,
+    		"bLengthChange": false
+		});
+ 
+		new $.fn.dataTable.Responsive( table, {
+		    details: true
+		} );
 	});
 	</script>
 	<script type="text/babel">
@@ -90,26 +102,26 @@
 			var dataObj = this.props.data;
 			var propertyNames = Object.getOwnPropertyNames(dataObj[0]);
 
-  	 var columns = propertyNames.map(function(col){
-  	 	return (
-  	 		<th>{col}</th>
-  	 		);
-  	 });
-       	return (
-       		<div>
-       		<table id="example" className="table">
-       		<thead>
-       		<tr>
-       		{columns}
-       		</tr>
-       		</thead>
-       		<RowList rowData={this.props.data} />
+			var columns = propertyNames.map(function(col){
+				return (
+					<th>{col}</th>
+					);
+			});
+			return (
+				<div>
+				<table id="example" className="table">
+				<thead>
+				<tr>
+				{columns}
+				</tr>
+				</thead>
+				<RowList rowData={this.props.data} />
 
-       		</table>
-       		</div>
-       		);
-       }
-   });
+				</table>
+				</div>
+				);
+		}
+	});
 
 	ReactDOM.render(
 		<Table data={data} />,

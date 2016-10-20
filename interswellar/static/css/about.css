@@ -75,13 +75,6 @@
 
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
-    .buffer {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
     .col-md-4{
         padding-right: 0px;
         padding-left: 0px;
@@ -90,11 +83,11 @@
         padding-right: 0px;
         padding-left: 0px;
     }
-    .container-fluid {
+
+    .team-info {
         padding-right: 0px;
         padding-left: 0px;
     }
-
     .centered {
         display: block;
         padding-top: 40px;
