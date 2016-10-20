@@ -68,13 +68,74 @@ def star(variable):
 @app.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 3,
+            "objects": [
+                {
+                    "id": 1,
+                    "name": "Kepler-9b",
+                    "mass": 80.09,
+                    "radius": 9.438,
+                    "orbital_period": 1662336,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                },
+                {
+                    "id": 2,
+                    "name": "Kepler-9c",
+                    "mass": 54.249,
+                    "radius": 9.225,
+                    "orbital_period": 3361824,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                },
+                {
+                    "id": 3,
+                    "name": "Kepler-9d",
+                    "mass": "unknown",
+                    "radius": 1.6,
+                    "orbital_period": 137376,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="EXOPLANETS")
 
 @app.route('/exoplanets/<variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    data = ['{"name": "Kepler-24 b", "mass": 33.0000, "radius": 2.020, "orbital_period": "unknown", "discovery_year": "2011", "star": "Kepler-24", "constellation": "Lyra", "discovered_by": "http://adsabs.harvard.edu/abs/2014ApJ...787...80H"}', '{"name": "HD 49674 b", "mass": 33.40000, "radius": 2.020, "orbital_period": "unknown", "discovery_year": "2002", "star": "HD 49674", "constellation": "Auriga", "discovered_by": "http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2003ApJ...582..455B"}']
+    data = {
+            "id": 2,
+            "name": "Kepler-9c",
+            "mass": 54.249,
+            "radius": 9.225,
+            "orbital_period": 3361824,
+            "year_discovered": 2010,
+            "star": {
+                "id": 1,
+                "name": "Kepler-9",
+                "constellation": {"id": 1, "abbrev":"Lyr"}
+            },
+            "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+        }
     json_obj = json.loads(data[int(variable)-1])
     return render_template('exoplanet.html', data=json_obj)
 
