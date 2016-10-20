@@ -136,8 +136,7 @@ def exoplanet(variable):
             },
             "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
         }
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('detail.html', data=json_obj)
+    return render_template('detail.html', data=data)
 
 @app.route('/constellations')
 def constellations():
@@ -206,8 +205,7 @@ def constellation(variable):
                 }
             ]
         }
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('detail.html', data=data, title="PUBLICATIONS")
+    return render_template('detail.html', data=data)
 
 @app.route('/publications')
 def publications():
@@ -247,7 +245,7 @@ def publications():
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=json_obj)
+    return render_template('tables.html', data=data, title="PUBLICATIONS")
 @app.route('/publications/<variable>')
 def publication(variable):
     """ Returns page for single publication """
@@ -267,8 +265,7 @@ def publication(variable):
                 {"id": 3, "name": "Kepler-9d"}
             ]
         }
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('detail.html', data=json_obj)
+    return render_template('detail.html', data=data)
 
 @app.route('/about')
 def about():
