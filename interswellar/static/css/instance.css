@@ -17,16 +17,9 @@ body {
 
 .transparent {
     background-color:rgba(0, 0, 0, .7);
-    /*position: absolute;*/
     text-align:center;
-/*    left: 0;
-    right: 0;*/
     z-index: 5;
     padding-top: 20px;
-/*    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-bottom: 30px;*/
     color: inherit;
 }
 
@@ -57,6 +50,16 @@ ul,li { list-style-type: none;
 	/*background-color:rgba(0, 0, 0, .7);*/
 	margin-top: 50px;
 	text-align: center;
+}
+
+.buffer {
+    padding: 10px;
+}
+
+.about {
+    padding: 20px;
+    background-color: #000;
+    text-align: center;
 }
 
 @media screen and (max-width: 767px) {
