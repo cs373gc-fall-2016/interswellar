@@ -12,3 +12,9 @@ def index():
 def about():
     """ Returns about page """
     return render_template('about.html')
+
+@app.route('/stars')
+def stars():
+	""" Returns stars page """
+	data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+	return render_template('tables.html', data=data, title="STARS")
