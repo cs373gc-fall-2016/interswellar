@@ -1,8 +1,7 @@
 """models for database"""
 
+# pylint: disable=too-few-public-methods,invalid-name
 from interswellar import db
-
-# pylint: disable=too-few-public-methods
 
 
 class Star(db.Model):
@@ -10,7 +9,6 @@ class Star(db.Model):
     """model for stars"""
     __tablename__ = 'stars'
 
-    # pylint: disable=invalid-name
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     mass = db.Column(db.Float)
@@ -26,15 +24,12 @@ class Star(db.Model):
         return "<Star(name='%s', mass=%s, luminosity=%s, temperature=%s, radius=%s)>" % (
             self.name, self.mass, self.luminosity, self.temperature, self.radius)
 
-# pylint: disable=too-few-public-methods
-
 
 class Exoplanet(db.Model):
 
     """model for exoplanets"""
     __tablename__ = 'exoplanets'
 
-    # pylint: disable=invalid-name
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     mass = db.Column(db.Float)
@@ -49,15 +44,12 @@ class Exoplanet(db.Model):
             "year_discovered=%d)>" % (self.name, self.mass, self.radius,
                                       self.orbital_period, self.year_discovered)
 
-# pylint: disable=too-few-public-methods
-
 
 class Constellation(db.Model):
 
     """model for constellations"""
     __tablename__ = 'constellations'
 
-    # pylint: disable=invalid-name
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     abbrev = db.Column(db.String)
@@ -72,15 +64,12 @@ class Constellation(db.Model):
             "meaning='%s', area='%s')>" % (self.name, self.abbrev,
                                            self.family, self.meaning, self.area)
 
-# pylint: disable=too-few-public-methods
-
 
 class Publication(db.Model):
 
     """model for publication"""
     __tablename__ = 'publications'
 
-    # pylint: disable=invalid-name
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     year = db.Column(db.Integer)

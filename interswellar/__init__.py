@@ -2,12 +2,14 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_restless import APIManager
 
 import interswellar.config as config
 
 app = Flask(__name__)
 app.config.from_object(config.DefaultConfig)
 db = SQLAlchemy(app)
+apimanager = APIManager(app, flask_sqlalchemy_db=db)
 
 
 def load_config(app_env):
@@ -27,3 +29,4 @@ def load_config(app_env):
 
 
 import interswellar.views
+import interswellar.api
