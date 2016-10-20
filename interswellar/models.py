@@ -71,14 +71,15 @@ class Publication(db.Model):
     __tablename__ = 'publications'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    ref = db.Column(db.String)
+    title = db.Column(db.String)
     year = db.Column(db.Integer)
     authors = db.Column(db.String)
     journal = db.Column(db.String)
     abstract = db.Column(db.String)
-    stars = db.relationship("Star", backref="publication")
-    exoplanets = db.relationship("Exoplanet", backref="publication")
+    stars = db.relationship("Star", backref="discoverer")
+    exoplanets = db.relationship("Exoplanet", backref="discoverer")
 
     def __repr__(self):
-        return "<Publication(name='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
-            self.name, self.year, self.authors, self.journal, self.abstract)
+        return "<Publication(title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
+            self.title, self.year, self.authors, self.journal, self.abstract)
