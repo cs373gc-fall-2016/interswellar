@@ -26,11 +26,13 @@
 
 <script type="text/javascript">
 // change nav bar active
-	$(function() {
-		$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
-		if (pathname.split("/").length == 1) {
-			$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#");
-		};
-		$('#'+location.pathname.split("/")[1],'#nav').addClass('nav-link');
-	});
+$(function() {
+	$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
+	console.log(location.pathname.split("/").length + "~~~~~~~~~~");
+
+	if (location.pathname.split("/").length == 2) {
+		$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#");
+	};
+	$('#'+location.pathname.split("/")[1],'#nav').addClass('nav-link');
+});
 </script>
