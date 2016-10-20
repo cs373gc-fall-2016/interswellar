@@ -28,14 +28,15 @@
 	var data = {{data|tojson}};
 	console.log(data);
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
+	String.prototype.replaceAll = function(search, replacement) {
+		var target = this;
+		return target.replace(new RegExp(search, 'g'), replacement);
+	};
 
-	$( document ).ready(function() {
-		for (var key in data) {
-			if (key != "name" && key != "id") {
+// Fills in data blocks from JSON
+$( document ).ready(function() {
+	for (var key in data) {
+		if (key != "name" && key != "id") {
 				//links!
 				if (key == "constellation") {
 					data[key] = "<a href='/constellation/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
@@ -45,8 +46,8 @@ String.prototype.replaceAll = function(search, replacement) {
 					var links = "";
 
 					$.each(data[key], function(index, planet) {
-					    console.log(planet);
-					    links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
+						console.log(planet);
+						links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
 					});
 					data[key] = links;
 				};
@@ -60,24 +61,18 @@ String.prototype.replaceAll = function(search, replacement) {
 
 				$('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
 			};
-			// console.log(key + '~~~~' + data[key]);
-
 		}
 
 	});
-	</script>
+</script>
 
-	<div class="table-title">
-		{{data.name}}
-	</div>
+<div class="table-title">
+	{{data.name}}
+</div>
 
+<div id="data" class="container-fluid inner">
 
-	<div id="test"> </div>
-
-	<!-- description of the site, its purpose, its intended users  -->
-	<div id="data" class="container-fluid inner">
-
-	</div>
+</div>
 </div>
 
 <style>
@@ -87,5 +82,4 @@ html {
 </style>
 
 </body>
-
 </html>

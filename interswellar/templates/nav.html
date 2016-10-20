@@ -28,8 +28,6 @@
 // change nav bar active
 $(function() {
 	$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
-	console.log(location.pathname.split("/").length + "~~~~~~~~~~");
-
 	if (location.pathname.split("/").length == 2) {
 		$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#");
 	};
