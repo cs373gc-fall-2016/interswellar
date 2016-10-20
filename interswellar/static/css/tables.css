@@ -115,3 +115,13 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
     content: '-';
     background-color: #000;
 }
+
+@media (min-width: 900px){
+.tabletron {
+    width: 90%;
+}
+
+/*@media (min-width: 768px){
+.tabletron {
+    width: 750px;
+}*/
