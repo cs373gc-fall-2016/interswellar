@@ -6,7 +6,7 @@ import interswellar.models as models
 apimanager.create_api(
     models.Star,
     collection_name='stars',
-    url_prefix='/api/v1'
+    url_prefix='/api/v1',
     include_columns=[
         'id',
         'name',
@@ -14,12 +14,14 @@ apimanager.create_api(
         'luminosity',
         'temperature',
         'radius',
+        'exoplanets',
         'exoplanets.id',
-        'exoplantes.name',
+        'exoplanets.name',
+        'constellation',
         'constellation.id',
         'constellation.name',
+        'publication',
         'publication.id',
         'publication.name',
-    ],
-    **API_KWARGS
+    ]
 )

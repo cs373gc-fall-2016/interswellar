@@ -13,14 +13,32 @@ class APITest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         load_config(os.environ.get('APP_ENV', 'test'))
-        star1 = models.Star(id=1, name='star1', mass=1.0, luminosity=1.0,
-                            temperature=1000, radius=1.0)
-        star2 = models.Star(id=2, name='star2', mass=2.0, luminosity=2.0,
-                            temperature=2000, radius=2.0)
+        rouge_star = models.Star(
+            id=1, name='rouge_star', mass=1.0, luminosity=1.0, temperature=1000,
+            radius=1.0
+        )
+
+        star = models.Star(
+            id=2, name='star', mass=2.0, luminosity=2.0, temperature=2000, 
+            radius=2.0
+        )
+        planet = models.Exoplanet(
+            id=2, name='planet', mass=1.0, radius=1.0, orbital_period=1000000, 
+            year_discovered=2000
+        )
+        constel = models.Constellation(
+            id=2, name='constel', abbrev='cst', family='cf', 
+            meaning='A constellation', area=100
+        )
+
+        planet.star = star
+        star.constellation = constel
 
         db.create_all()
-        db.session.add(star1)
-        db.session.add(star2)
+        db.session.add(rouge_star)
+        db.session.add(star)
+        db.session.add(planet)
+        db.session.add(constel)
         db.session.commit()
 
     @classmethod
@@ -44,8 +62,15 @@ class APITest(unittest.TestCase):
         self.assertEqual(rv.mimetype, 'application/json')
         data = json.loads(rv.data.decode('utf-8'))
         self.assertEqual(data['id'], 1)
-        self.assertEqual(data['name'], 'star1')
+        self.assertEqual(data['name'], 'rouge_star')
         self.assertEqual(data['mass'], 1.0)
         self.assertEqual(data['luminosity'], 1.0)
         self.assertEqual(data['temperature'], 1000)
         self.assertEqual(data['radius'], 1.0)
+
+    def test_stars_relationship(self):
+        rv = self.app.get('/api/v1/stars/2')
+        self.assertEqual(rv.mimetype, 'application/json')
+        data = json.loads(rv.data.decode('utf-8'))
+        self.assertEqual(data['exoplanets'][0]['id'], 2)
+        self.assertEqual(data['constellation']['id'], 2)

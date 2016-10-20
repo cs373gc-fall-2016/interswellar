@@ -56,3 +56,16 @@ class ModelsTest(unittest.TestCase):
         publications = models.Publication.query.all()
         self.assertTrue(publication in publications)
         self.assertEqual(len(publications), 1)
+
+    def test_star_planet_rel(self):
+        star = models.Star(id=2, name='star2', mass=2.0, luminosity=2.0,
+                           temperature=2000, radius=2.0)
+        planet = models.Exoplanet(id=1, name='planet1', mass=1.0, radius=1.0,
+                                  orbital_period=1000000, year_discovered=2000)
+        planet.star = star
+        db.session.add(star)
+        db.session.add(planet)
+        db.session.commit()
+        star_ret = models.Star.query.first()
+        self.assertEqual(star, star_ret)
+        self.assertTrue(planet in star.exoplanets)
