@@ -1,7 +1,4 @@
-body {
-	font-size: 150%;
-}
-
+/* parallax stuff */
 .parallax-window-about {
 	min-height: 500px;
 	background: transparent;
@@ -22,19 +19,20 @@ body {
 	background: transparent;
 }
 
+/* center aligns content if it's in a .centered */
 .inner {
 	align-self: center;
-}
-
-.about {
-	padding: 20px;
-	background-color: #000;
 }
 
 .centered {
 	position: relative;
 	display: flex;
 	justify-content: center;
+}
+
+.about {
+    padding: 20px;
+    background-color: #000;
 }
 
 .buffer {
@@ -73,4 +71,33 @@ body {
     color: #FFF;
     padding: 20px;
     background-color: black;
+}
+
+/* Small screen CSS tweaks  */
+@media screen and (max-width: 767px) {
+    .buffer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .col-md-4{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .col-md-12 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .centered {
+        display: block;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }

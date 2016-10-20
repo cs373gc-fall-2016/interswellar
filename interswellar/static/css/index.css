@@ -15,11 +15,12 @@ body {
     background-color: black;
     font-family: "lato", sans-serif;
     color: #fff;
+    font-size: 150%;
 }
 
 /* Content bar */
 .jumbotron{
-    background-color:#000;
+    background-color:rgba(0, 0, 0, .7);
     text-align:center;
     position: absolute;
     top: 50%;
@@ -28,7 +29,6 @@ body {
     right: 0;
     z-index: 5;
 }
-
 
 /* Title text */
 .title {
