@@ -20,6 +20,26 @@ def stars():
     return render_template('tables.html', data=data, title="STARS")
 
 
+@app.route('/exoplanets')
+def exoplanets():
+    """ Returns exoplanets page """
+    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    return render_template('tables.html', data=data, title="EXOPLANETS")
+
+
+@app.route('/constellations')
+def constellations():
+    """ Returns constellations page """
+    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    return render_template('tables.html', data=data, title="CONSTELLATIONS")
+
+@app.route('/publications')
+def publications():
+    """ Returns publications page """
+    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    return render_template('tables.html', data=data, title="PUBLICATIONS")
+
+
 @app.route('/about')
 def about():
     """ Returns about page with commit and issues count"""

@@ -13,13 +13,22 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">STARS</a></li>
-				<li><a href="#">EXOPLANETS</a></li>
-				<li><a href="#">CONSTELLATIONS</a></li>
-				<li><a href="#">PUBLICATIONS</a></li>
-				<li class="active"><a class="nav-link" href="#">ABOUT<span class="sr-only">(current)</span></a></li>
+			<ul id="nav" class="nav navbar-nav navbar-right">
+				<li id="stars_li"><a id="stars" href="/stars">STARS</a></li>
+				<li id="exoplanets_li"><a id="exoplanets" href="/exoplanets">EXOPLANETS</a></li>
+				<li id="constellations_li"><a id="constellations" href="/constellations">CONSTELLATIONS</a></li>
+				<li id="publications_li"><a id="publications" href="/publications">PUBLICATIONS</a></li>
+				<li id="about_li"><a id="about" href="/about">ABOUT</a></li>
+				<!-- <li class="active"><a class="nav-link" href="#">ABOUT</a></li> -->
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
+
+<script type="text/javascript">
+// change nav bar active
+	$(function() {
+		$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
+		$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#")
+	});
+</script>
