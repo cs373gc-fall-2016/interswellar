@@ -1,4 +1,4 @@
-#pylint: skip-file
+# pylint: skip-file
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config.from_object(config.DefaultConfig)
 db = SQLAlchemy(app)
 
+
 def load_config(app_env):
     configs = {
         'dev': config.DevelopmentConfig,
@@ -18,7 +19,7 @@ def load_config(app_env):
     }
     app.config.from_object(configs[app_env])
     print("Loading %s configuration: Using db '%s'" %
-        (app_env, db.engine.url))
+         (app_env, db.engine.url))
 
 
 import interswellar.views
