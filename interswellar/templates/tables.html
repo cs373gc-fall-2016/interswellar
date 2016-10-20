@@ -71,10 +71,12 @@
 	var RowCells = React.createClass({
 		render: function(){
 			console.log(this.props.rowValues);
-			var val = Object.values(this.props.rowValues).map(function(values){
-				console.log(values);
+			var data = this.props.rowValues;
+
+			var val = Object.keys(this.props.rowValues).map(function(key){
+				console.log(data[key]);
 				return (
-					<td>{values}</td>
+					<td>{data[key]}</td>
 					);
 			});
 
