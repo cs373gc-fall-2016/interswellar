@@ -36,47 +36,85 @@
         $('#area').text(data.area);
     </script>
 
-    <div class="section-title">
+    <div class="table-title">
         {{data.name}}
     </div>
 
-        <div class="container-fluid inner">
-            <div class="col-md-4 buffer">
-            <div class="panel-heading">Bordering Constellations</div>
-            <div class="table-responsive">
-                <table class="table">
-                    {% for b_const in data.bordering_constellations %}
-                    <tr>
-                        <td>{{b_const}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+    <div class="container-fluid centered ">
 
-            </div>
             <div class="col-md-4 buffer">
-                <div class="about">
+                <div class="transparent">
                     <div class="header">
-                        PURPOSE
+                        FAMILY
                     </div>
                     <p>
-                        It's a fez. I wear a fez now. Fezes are cool. I'm the Doctor, I'm worse than everyone's aunt. *catches himself* And that is not how I'm introducing myself. Annihilate? No. No violence. I won't stand for it. Not now, not ever, do you understand me?! I'm the Doctor, the Oncoming Storm - and you basically meant beat them in a football match, didn't you?
+                        {{data.family}}
                     </p>
                 </div>
             </div>
             <div class="col-md-4 buffer">
-                <div class="about">
+                <div class="transparent">
                     <div class="header">
-                        INTENDED USERS
+                        MEANING
                     </div>
                     <p>
-                        There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor. There's so many poorly chosen words in that sentence. No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide.
+                        {{data.meaning}}
                     </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 buffer">
+                <div class="transparent">
+                    <div class="header">
+                        AREA
+                    </div>
+                    <p>
+                        {{data.area}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 buffer ">
+                <div class="transparent">
+                    <div class="header">
+                        IAU ABBREVIATION
+                    </div>
+                    <p>
+                        {{data.IAU_abbreviation}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 buffer">
+                <div class="transparent">
+                    <div class="header">
+                        DISCOVERED BY
+                    </div>
+                    <ul style="list-style: none;">
+                        {% for constellation in data.bordering_constellations %}
+                            <li>{{constellation}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 buffer">
+                <div class="transparent">
+                    <div class="header">
+                        STARS
+                    </div>
+                    <ul style="list-style: none;">
+                        {% for star in data.stars %}
+                            <li>{{star}}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-
+    <style>
+        html {
+            background: url(http://www.dailybackgrounds.com/wp-content/uploads/2015/01/amazing-space-nebula.jpg) no-repeat center center fixed;
+        }
+    </style>
 </body>
 
 </html>

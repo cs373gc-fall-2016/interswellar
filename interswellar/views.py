@@ -9,7 +9,6 @@ from interswellar import app
 import interswellar.models as models
 from flask import Flask, render_template
 
-
 @app.route('/')
 def index():
     """ Returns splash page """
@@ -52,7 +51,7 @@ def constellations():
 def constellation(variable):
     """ Returns page for single constellation """
     data = ['{"name": "Lyra", "IAU_abbreviation": "Lyr", "family": "Hercules", "meaning": "lyre / harp", "area": 286, "bordering_constellations": ["Draco", "Hercules", "Vulpecula", "Cygsnus"], "stars": ["Kepler-24", "Kepler-9"] }']
-    json_obj = json.loads(data[int(variable-1)])
+    json_obj = json.loads(data[int(variable)-1])
     return render_template('constellation.html', data=json_obj)
 
 @app.route('/publications')
