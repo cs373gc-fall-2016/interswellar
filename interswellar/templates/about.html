@@ -6,43 +6,19 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/about.css">
 
 
-	<script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script  src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 	<script defer src='../static/js/parallax.min.js'></script>
 
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">INTERSWELLAR</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">STARS</a></li>
-					<li><a href="#">EXOPLANETS</a></li>
-					<li><a href="#">CONSTELLATIONS</a></li>
-					<li><a href="#">PUBLICATIONS</a></li>
-					<li class="active"><a class="nav-link" href="#">ABOUT<span class="sr-only">(current)</span></a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
+	{% include 'nav.html' %}
 
 
 	<div class="section-title">
@@ -94,7 +70,7 @@
 	<!-- ~~~parallax~~~ -->
 	<div class="parallax-window-team centered" data-parallax="scroll" data-speed = 0 data-bleed = 5 data-image-src="http://apod.nasa.gov/apod/image/1609/IoJupiter_Voyager1_21678.jpg">
 
-		<div class="container-fluid inner">
+		<div class="container-fluid inner team-info">
 			<div class="col-md-12"> 
 				<div class="col-md-4 buffer">
 					<div class="about">
@@ -111,12 +87,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{charlotte_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-
-								72
+								{{charlotte_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -140,11 +115,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{sami_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-								72
+								{{sami_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -169,11 +144,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{denise_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-								72
+								{{denise_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -200,11 +175,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{young_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-								72
+								{{young_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -228,11 +203,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{david_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-								72
+								{{david_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -256,11 +231,11 @@
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
-								542
+								{{nathan_commits}}
 							</div>
 							<div class="col-md-4">
 								<b>Issues:</b></br>
-								72
+								{{nathan_issues}}
 							</div>
 							<div class="col-md-4">
 								<b>Unit Tests:</b></br>
@@ -397,18 +372,20 @@
 
 <!-- ~~~parallax~~~ -->
 <div class="parallax-window-tools centered" data-parallax="scroll" data-bleed = 5 data-speed = 0 data-image-src="http://apod.nasa.gov/apod/image/1609/M51Deep_Perez_2637.jpg">
-	<div class="container-fluid inner">
-		<div class="col-md-12 buffer">
-			<div class="about">
-				<div class="header">
-					BUILT WITH
+<div class="container-fluid inner">
+		<div class="row">
+			<div class="col-md-12 buffer">
+				<div class="about">
+					<div class="header">
+						BUILT WITH
+					</div>
+					<p>
+						love
+					</p>
 				</div>
-				love
 			</div>
 		</div>
 	</div>
-</div>
-
 
 </body>
 </html>

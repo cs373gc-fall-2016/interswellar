@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">INTERSWELLAR</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul id="nav" class="nav navbar-nav navbar-right">
+				<li id="stars_li"><a id="stars" href="/stars">STARS</a></li>
+				<li id="exoplanets_li"><a id="exoplanets" href="/exoplanets">EXOPLANETS</a></li>
+				<li id="constellations_li"><a id="constellations" href="/constellations">CONSTELLATIONS</a></li>
+				<li id="publications_li"><a id="publications" href="/publications">PUBLICATIONS</a></li>
+				<li id="about_li"><a id="about" href="/about">ABOUT</a></li>
+				<!-- <li class="active"><a class="nav-link" href="#">ABOUT</a></li> -->
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+<script type="text/javascript">
+// change nav bar active
+	$(function() {
+		$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
+		$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#");
+		$('#'+location.pathname.split("/")[1],'#nav').addClass('nav-link');
+	});
+</script>

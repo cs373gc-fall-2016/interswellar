@@ -1,0 +1,65 @@
+body {
+	font-size: 150%;
+    color: #fff;
+}
+
+
+.section-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 300%;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+}
+
+.custom-table {
+    position: relative;
+    justify-content: center;
+    color: white;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.table {
+    color : #FFF;
+}
+
+th { 
+    text-transform: uppercase; 
+}
+
+.col-md-12 {
+    padding-right: -15px;
+}
+
+div.dataTables_paginate {
+    text-align: center;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #000;
+    border-color: #fff;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}

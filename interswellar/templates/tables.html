@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>InterSWEllar</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+	<!-- Data tables -->
+	<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+
+	<!-- React -->
+	<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+	<script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+	<script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+	<!-- Data tables -->
+	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+		<link rel="stylesheet" href="../static/css/index.css">
+	<link rel="stylesheet" href="../static/css/tables.css">
+</head>
+
+<body>
+	{% include 'nav.html' %}
+
+	<div class="section-title">
+		{{title}}
+	</div>
+	<div class="col-md-12">
+		<div id="content" ></div>
+	</div>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var table = $('#example').DataTable({
+    		"bFilter": false,
+    		"bLengthChange": false,
+        "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
+		});
+ 
+		new $.fn.dataTable.Responsive( table, {
+		    details: true
+		} );
+	});
+	</script>
+	<script type="text/babel">
+
+	var JSONObject = {{ data|tojson }};
+	var data = JSON.parse(JSONObject);
+	console.log(data);
+
+	var Column = React.createClass({
+		render: function(){
+			return <td>{this.props.data.key}</td>;
+		}
+	});
+
+	var RowCells = React.createClass({
+		render: function(){
+			console.log(this.props.rowValues);
+			var val = Object.values(this.props.rowValues).map(function(values){
+				console.log(values);
+				return (
+					<td>{values}</td>
+					);
+			});
+
+			return (
+				<tr>{val}</tr>
+				);
+		}
+	});
+
+	var RowList = React.createClass({
+		render: function() {
+
+			var rowEntries = this.props.rowData.map(function(row) {
+				console.log(row);
+				return (
+					<RowCells rowValues={row} />
+					);
+			});
+			return (
+				<tbody>
+				{rowEntries}
+				</tbody>
+				);
+		}
+	});	
+
+	var Table = React.createClass({
+		render: function() {
+			var dataObj = this.props.data;
+			var propertyNames = Object.getOwnPropertyNames(dataObj[0]);
+
+			var columns = propertyNames.map(function(col){
+				return (
+					<th>{col}</th>
+					);
+			});
+			return (
+				<div>
+				<table id="example" className="table">
+				<thead>
+				<tr>
+				{columns}
+				</tr>
+				</thead>
+				<RowList rowData={this.props.data} />
+
+				</table>
+				</div>
+				);
+		}
+	});
+
+	ReactDOM.render(
+		<Table data={data} />,
+		document.getElementById('content')
+		);
+	</script>
+</div>
+</body>
+
+
