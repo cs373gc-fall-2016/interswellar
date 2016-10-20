@@ -8,7 +8,6 @@ import requests
 from interswellar import app
 import interswellar.models as models
 from flask import Flask, render_template
-import sys
 
 
 @app.route('/')
@@ -28,7 +27,6 @@ def star(variable):
     """ Returns page for a single star """
     data = ['{"name": "Kepler-9", "mass": 1.07, "luminosity": 13.9, "temperature": 5777.00, "radius": 1.02, "constellation": "Lyra", "planets": [ "Kepler-9a", "Kepler-9b", "Kepler-9d" ], "discovered_by": "http://adsabs.harvard.edu/abs/2013A%26A...556A.126A"}']
     json_obj = json.loads(data[int(variable)-1])
-    print(json_obj, file=sys.stderr)
     return render_template('star.html', data=json_obj)
 
 @app.route('/exoplanets')
