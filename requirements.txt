@@ -1,4 +1,5 @@
 Flask==0.11.1
+Flask-Restless==0.17.0
 Flask-SQLAlchemy==2.1
 Jinja2==2.8
 MarkupSafe==0.23
@@ -11,8 +12,11 @@ isort==4.2.5
 itsdangerous==0.24
 lazy-object-proxy==1.2.2
 mccabe==0.5.2
+mimerender==0.6.0
 psycopg2==2.6.2
 pylint==1.6.4
+python-dateutil==2.5.3
+python-mimeparse==1.6.0
+requests==2.10.0
 six==1.10.0
 wrapt==1.10.8
-requests==2.10.0
