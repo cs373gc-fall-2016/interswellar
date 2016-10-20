@@ -142,13 +142,70 @@ def exoplanet(variable):
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
+    data = {
+            "num_results": 2,
+            "objects": [
+                {
+                    "id": 1,
+                    "abbrev": "Lyr",
+                    "name": "Lyra",
+                    "family": "Hercules",
+                    "meaning": "lyre / harp",
+                    "area": 286,
+                    "stars": [
+                        {
+                            "id": 1,
+                            "name": "Kepler-9",
+                            "exoplanets": [
+                                {"id": 1, "name": "Kepler-9a"},
+                                {"id": 2, "name": "Kepler-9b"},
+                                {"id": 3, "name": "Kepler-9d"}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "abbrev": "Oct",
+                    "name": "Octans",
+                    "family": "La Caille",
+                    "meaning": "octant (instrument)",
+                    "area": 291,
+                    "stars": [
+                        {
+                            "id": 2,
+                            "name": "HIP 64690",
+                            "exoplanets": []
+                        }
+                    ]
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
     return render_template('tables.html', data=data, title="CONSTELLATIONS")
 
 @app.route('/constellations/<variable>')
 def constellation(variable):
     """ Returns page for single constellation """
-    data = ['{"name": "Lyra", "IAU_abbreviation": "Lyr", "family": "Hercules", "meaning": "lyre / harp", "area": 286, "bordering_constellations": ["Draco", "Hercules", "Vulpecula", "Cygsnus"], "stars": ["Kepler-24", "Kepler-9"] }']
+    data = {"id": 1,
+            "abbrev": "Lyr",
+            "name": "Lyra",
+            "family": "Hercules",
+            "meaning": "lyre / harp",
+            "area": 286,
+            "stars": [
+                {
+                    "id": 1,
+                    "name": "Kepler-9",
+                    "exoplanets": [
+                        {"id": 1, "name": "Kepler-9a"},
+                        {"id": 2, "name": "Kepler-9b"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ]
+                }
+            ]
+        }
     json_obj = json.loads(data[int(variable)-1])
     return render_template('constellation.html', data=json_obj)
 
