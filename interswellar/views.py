@@ -137,7 +137,7 @@ def exoplanet(variable):
             "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
         }
     json_obj = json.loads(data[int(variable)-1])
-    return render_template('exoplanet.html', data=json_obj)
+    return render_template('detail.html', data=json_obj)
 
 @app.route('/constellations')
 def constellations():
@@ -207,20 +207,68 @@ def constellation(variable):
             ]
         }
     json_obj = json.loads(data[int(variable)-1])
-    return render_template('constellation.html', data=json_obj)
+    return render_template('detail.html', data=data, title="PUBLICATIONS")
 
 @app.route('/publications')
 def publications():
     """ Returns publications page """
-    data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
-    return render_template('tables.html', data=data, title="PUBLICATIONS")
-
+    data = {
+            "num_results": 2,
+            "objects": [
+                {
+                    "id": 1,
+                    "ref": "2013A&A...566A.126A",
+                    "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
+                    "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
+                    "stars": [
+                        {"id": 1, "name": "Kepler-9"}
+                    ],
+                    "planets": [
+                        {"id": 1, "name": "Kepler-9b"},
+                        {"id": 2, "name": "Kepler-9c"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ]
+                },
+                {
+                    "id": 2,
+                    "ref": "2011A&A...534A..58P",
+                    "title": "The HARPS search for Earth-like planets in the habitable zone. I. Very low-mass planets around HD 20794, HD 85512, and HD 192310",
+                    "authors": "Pepe, F.; Lovis, C.; Ségransan, D.; Benz, W.; Bouchy, F.; Dumusque, X.; Mayor, M.; Queloz, D.; Santos, N. C.; Udry, S.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. In 2009 we started an intense radial-velocity monitoring of a few nearby, slowly-rotating...",
+                    "stars": [
+                        {"id": 2, "name": "HIP 64690"}
+                    ],
+                    "planets": []
+                }
+            ],
+            "page": 1,
+            "total_pages": 1
+        }
+    return render_template('tables.html', data=json_obj)
 @app.route('/publications/<variable>')
 def publication(variable):
     """ Returns page for single publication """
-    data = ['{"name": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone", "year": "2013", "authors": ["Anglada-Escudé, Guillem","Tuomi, Mikko","Gerlach, Enrico","Barnes, Rory"], "journal": "Astronomy & Astrophysics", "abstract": "Context. Since low-mass stars have low luminosities, orbits...", "stars_discovered": ["HD 285968", "HD 40307", "HD 69830"], "planets_discovered": ["GJ 581 d", "GJ 1214 b"]}']
+    data = {
+            "id": 1,
+            "ref": "2013A&A...566A.126A",
+            "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
+            "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
+            "journal": "Astronomy & Astrophysics",
+            "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
+            "stars": [
+                {"id": 1, "name": "Kepler-9"}
+            ],
+            "planets": [
+                {"id": 1, "name": "Kepler-9b"},
+                {"id": 2, "name": "Kepler-9c"},
+                {"id": 3, "name": "Kepler-9d"}
+            ]
+        }
     json_obj = json.loads(data[int(variable)-1])
-    return render_template('publication.html', data=json_obj)
+    return render_template('detail.html', data=json_obj)
 
 @app.route('/about')
 def about():
