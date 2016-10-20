@@ -1,12 +1,18 @@
 import unittest
+import os
 
-from interswellar import db, app
+from interswellar import app, db, load_config
+
 import interswellar.models as models
 
 
 class ModelsTest(unittest.TestCase):
 
     """ Tests the models """
+
+    @classmethod
+    def setUpClass(cls):
+        load_config(os.environ.get('APP_ENV', 'test'))
 
     def setUp(self):
         db.create_all()

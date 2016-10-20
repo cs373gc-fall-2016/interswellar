@@ -1,8 +1,9 @@
 """ The views for the app """
-# pylint: disable=unused-import
 from interswellar import app
 from flask import Flask, render_template
 
+import traceback
+import interswellar.models as models
 
 @app.route('/')
 def index():
@@ -14,3 +15,13 @@ def index():
 def about():
     """ Returns about page """
     return render_template('about.html')
+
+@app.route('/checkdb')
+def checkdb():
+    """ Queries the db for some stars to see if it's okay"""
+    try:
+        stars = models.Star.query.limit(5).all();
+        return 'Database returned the following stars: %s' % stars.__repr__
+    except:
+        traceback.print_exc()
+        return 'Database is not ok. Check stdout for details'

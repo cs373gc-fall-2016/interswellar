@@ -1,36 +1,10 @@
 ''' The different application configs'''
 import os
-
-def get_config(app_env):
-    ''' Returns the correct config based on the current environment'''
-    configs = {
-        'dev': DevelopmentConfig,
-        'ci': IntegrationConfig,
-        'prod': ProductionConfig
-    }
-    return configs.get(app_env, configs['dev'])
-
 #pylint:disable=too-few-public-methods
-class Config(object):
+class DefaultConfig(object):
     ''' The default configuration '''
     TESTING = False
-    DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-#pylint:disable=too-few-public-methods
-class IntegrationConfig(Config):
-    ''' Configuration for Travis CI'''
-    TESTING = True
-
-#pylint:disable=too-few-public-methods
-class DevelopmentConfig(Config):
-    ''' Configuration for local development '''
-    DEBUG = True
-
-#pylint:disable=too-few-public-methods
-class ProductionConfig(Config):
-    ''' Configuration for production '''
+    DEBUG = False    
     SQLALCHEMY_DATABASE_URI = 'postgresql://%s:%s@%s:%s/%s' % (
         os.environ.get('RDS_USERNAME'),
         os.environ.get('RDS_PASSWORD'),
@@ -38,3 +12,25 @@ class ProductionConfig(Config):
         os.environ.get('RDS_PORT'),
         os.environ.get('RDS_DB_NAME')
     )
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+#pylint:disable=too-few-public-methods
+class IntegrationConfig(DefaultConfig):
+    ''' Configuration for Travis CI'''
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:@localhost/interswellar'
+
+#pylint:disable=too-few-public-methods
+class DevelopmentConfig(DefaultConfig):
+    ''' Configuration for local development '''
+    DEBUG = True
+
+class TestingConfig(DefaultConfig):
+    ''' Configuration for local testing '''
+    TESTING = True
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///'
+
+#pylint:disable=too-few-public-methods
+class ProductionConfig(DefaultConfig):
+    ''' Configuration for production '''

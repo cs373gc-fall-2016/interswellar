@@ -2,35 +2,39 @@ sudo: required
 dist: trusty
 language: python
 python:
-- '3.4'
+  - '3.4'
+
+services:
+  - postgresql
 
 before_install:
-- pip install --upgrade pip
+  - pip install --upgrade pip
 
 install:
-- pip install -r requirements.txt
-- pip install pylint
-- pip install coverage
+  - pip install -r requirements.txt
+  - pip install pylint
+  - pip install coverage
 
 before_script:
-- uname -a
-- printenv | sort
+  - uname -a
+  - printenv | sort
+  - psql -c 'create database interswellar;' -U postgres
 
 script:
-- date
-- ls -al
-- make lint
-- make test
+  - date
+  - ls -al
+  - make lint
+  - make test
 
 deploy:
-- provider: elasticbeanstalk
-  app: interswellar
-  env: interswellar-prod
-  bucket_name: elasticbeanstalk-us-east-1-963903243898
-  region: us-east-1
-  access_key_id:
-    secure: "SZAXnOt9THSnOxdh9DAJE+CG6PCSFUvbWzkAfljg22j/X4rFLz2d6sS/FoDoUylcFdpCS6QRcLbHWXBnVJKYoH5HsJkzEc7pxKe5pB3C56VDGoONR0G1w3k+dostExCWCNwVfIFzGtbDgOW3C66FRcJXVIEqIw7zcjNhSAVYAmLfGZQlch9DtidAEhNJG6DI7ocMIWMio3azyqN01ALHTLGbogJtHGOYX2NkSRC0gWzoS8BHgbx+33xAiDxQrRERbGsHoK1/9GIN92arOa3HVJz2ywHpf9fE4hsHZIOueQ2d1kdzYNJvzKYMS5MJUNLpJ/2avcp1KAHozzgU5CxFWf2tUmYnTp8UKbwDuBKKCULGO2exwaVK6vXgZ99fffK8X8AY86ihdtq85nI0xHvdd5iQJB4UF/1ypNv3L/+y7kBUWa7b/h2Z0hVFhYxd09SMN9yT4zsbxQqDKznP+W920IGBPlrHUBVJqzi4Efmrkb+xor2HvaSmm521XRgmYTm7QxPlCva+VD5tsF+xF/8Wg0UNyIdx1jFQ6vhlh0By4a0nuIUZGeDx6PjB7Pfjz4hEIeHm6nl+UNLewhQpABY3OFn6ntLeYRm9TLNdPdv5PVBUxFPiccqvgolokFz7dhm4y9aoSYPaZB6EmUQpOljXYNiF/rhOWUTJkQucX7Ib50o="
-  secret_access_key:
-    secure: "gftT/kMtsuY82WKV30HlujlWLmSttFKwqpQoeF1GcaWPIt7cOslLKsZISgU/bnLFQy78pR/kkvEZ0ebLAP4MeWvPHr48IXFiCGnyrgAF9U2yBSGm5HsnNH577AlhWt7wvgHkZKnD9Y766LYcPOCFFHf7nsA5hjqz4qd3CZfLsJ/BCRRlpuxf+xx1htyd9ybzpLDIFHXc+YYjHKM1P+rpj/EUGpgh6hipmXQ/And5M4G7QpTzUbCxb8D6gC8tD1ldinOrOVIxhuny1oveTaOQkXWCc/YIjonTKEIhnYrvQYXqiI06/xzZnsj8SqvXob3wJW7REBQ+p01BlvxeLFg0zOTkFuBvuBc/r/+zbV9D+k40pmLOs6hFKRA6B9IT6b3VZWGtgwguvRsalQZRfhJlVRelWa6EJiBHt1zo04AYeC5ZqEIfA0GJlyy7rqzQNWkd9a3GYUxLb42lDzp2tsCXeqpDvjRUj5/4w4urs1lSRY4R+zWrNAQPBdxg3jyNfv+mS1JgMkc0vQ+33wmmGQm4ibHs+YQYQta1fLaDLQZNc6zEMFGuBsZ2T7Uq0uTNmT5n+ruBdo9TBKAbXW9JMN4efiQZL64C0IiKn8X1C7FzVMbBmg7kgO9g/HgTvDCMPOd8HCzrbGjU4hLNJaHiXYkF/Ofo5f+FuiZ+ru41FpEOTyo="
-  on:
-    branch: master
+  - provider: elasticbeanstalk
+    app: interswellar
+    env: interswellar-prod
+    bucket_name: elasticbeanstalk-us-east-1-963903243898
+    region: us-east-1
+    access_key_id:
+      secure: "SZAXnOt9THSnOxdh9DAJE+CG6PCSFUvbWzkAfljg22j/X4rFLz2d6sS/FoDoUylcFdpCS6QRcLbHWXBnVJKYoH5HsJkzEc7pxKe5pB3C56VDGoONR0G1w3k+dostExCWCNwVfIFzGtbDgOW3C66FRcJXVIEqIw7zcjNhSAVYAmLfGZQlch9DtidAEhNJG6DI7ocMIWMio3azyqN01ALHTLGbogJtHGOYX2NkSRC0gWzoS8BHgbx+33xAiDxQrRERbGsHoK1/9GIN92arOa3HVJz2ywHpf9fE4hsHZIOueQ2d1kdzYNJvzKYMS5MJUNLpJ/2avcp1KAHozzgU5CxFWf2tUmYnTp8UKbwDuBKKCULGO2exwaVK6vXgZ99fffK8X8AY86ihdtq85nI0xHvdd5iQJB4UF/1ypNv3L/+y7kBUWa7b/h2Z0hVFhYxd09SMN9yT4zsbxQqDKznP+W920IGBPlrHUBVJqzi4Efmrkb+xor2HvaSmm521XRgmYTm7QxPlCva+VD5tsF+xF/8Wg0UNyIdx1jFQ6vhlh0By4a0nuIUZGeDx6PjB7Pfjz4hEIeHm6nl+UNLewhQpABY3OFn6ntLeYRm9TLNdPdv5PVBUxFPiccqvgolokFz7dhm4y9aoSYPaZB6EmUQpOljXYNiF/rhOWUTJkQucX7Ib50o="
+    secret_access_key:
+      secure: "gftT/kMtsuY82WKV30HlujlWLmSttFKwqpQoeF1GcaWPIt7cOslLKsZISgU/bnLFQy78pR/kkvEZ0ebLAP4MeWvPHr48IXFiCGnyrgAF9U2yBSGm5HsnNH577AlhWt7wvgHkZKnD9Y766LYcPOCFFHf7nsA5hjqz4qd3CZfLsJ/BCRRlpuxf+xx1htyd9ybzpLDIFHXc+YYjHKM1P+rpj/EUGpgh6hipmXQ/And5M4G7QpTzUbCxb8D6gC8tD1ldinOrOVIxhuny1oveTaOQkXWCc/YIjonTKEIhnYrvQYXqiI06/xzZnsj8SqvXob3wJW7REBQ+p01BlvxeLFg0zOTkFuBvuBc/r/+zbV9D+k40pmLOs6hFKRA6B9IT6b3VZWGtgwguvRsalQZRfhJlVRelWa6EJiBHt1zo04AYeC5ZqEIfA0GJlyy7rqzQNWkd9a3GYUxLb42lDzp2tsCXeqpDvjRUj5/4w4urs1lSRY4R+zWrNAQPBdxg3jyNfv+mS1JgMkc0vQ+33wmmGQm4ibHs+YQYQta1fLaDLQZNc6zEMFGuBsZ2T7Uq0uTNmT5n+ruBdo9TBKAbXW9JMN4efiQZL64C0IiKn8X1C7FzVMbBmg7kgO9g/HgTvDCMPOd8HCzrbGjU4hLNJaHiXYkF/Ofo5f+FuiZ+ru41FpEOTyo="
+    on:
+      branch: master
