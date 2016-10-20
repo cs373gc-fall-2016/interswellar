@@ -60,6 +60,12 @@ def publications():
     data = '[{"id": 1, "author": "Pete Hunt", "text": "This is one comment", "lol":"ghi"}, {"id": 2, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}, {"id": 3, "author": "Jordan Walke", "text": "This is *another* comment", "lol":"ghi"}]'
     return render_template('tables.html', data=data, title="PUBLICATIONS")
 
+@app.route('/publications/<variable>')
+def publication(variable):
+    """ Returns page for single publication """
+    data = ['{"name": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone", "year": "2013", "authors": ["Anglada-Escudé, Guillem","Tuomi, Mikko","Gerlach, Enrico","Barnes, Rory"], "journal": "Astronomy & Astrophysics", "abstract": "Context. Since low-mass stars have low luminosities, orbits...", "stars_discovered": ["HD 285968", "HD 40307", "HD 69830"], "planets_discovered": ["GJ 581 d", "GJ 1214 b"]}']
+    json_obj = json.loads(data[int(variable)-1])
+    return render_template('publication.html', data=json_obj)
 
 @app.route('/about')
 def about():
