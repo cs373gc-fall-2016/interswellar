@@ -284,7 +284,9 @@ def about():
         denise_issues=issues.get('denisely', 0),
         young_issues=issues.get('jedyobidan', 0),
         david_issues=issues.get('dshimo', 0),
-        nathan_issues=issues.get('nazopo', 0))
+        nathan_issues=issues.get('nazopo', 0),
+        total_commits=get_total_commits(),
+        total_issues=get_total_issues())
 
 
 @app.route('/checkdb')
@@ -307,14 +309,35 @@ def get_commits():
     parsed = json.loads(response)
     return {user['author']['login'] : user['total'] for user in parsed}
 
+def get_total_commits():
+    """ gets number of commits for each team member """
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors?client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+    response = requests.get(url).text
+    parsed = json.loads(response)
+    total = 0
+    for user in parsed:
+        total += user['total']
+    return total
+
 
 def get_issues():
     """ get number of issues for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all&filter=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
     response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = defaultdict(int)
     for issue in parsed:
         if 'pull_request' not in issue:
             num_issues[issue['user']['login']] += 1
+    return num_issues
+
+def get_total_issues():
+    """ get number of issues for each team member """
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?filter=all&state=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+    response = requests.get(url).text
+    parsed = json.loads(response)
+    num_issues = 0
+    for issue in parsed:
+        if 'pull_request' not in issue:
+            num_issues += 1
     return num_issues

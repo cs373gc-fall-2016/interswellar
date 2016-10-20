@@ -30,6 +30,7 @@ class ViewsTest(unittest.TestCase):
 
     def test_get_issues_size(self):
         issues = views.get_issues()
+        print(issues)
         self.assertTrue(len(issues) > -1)
 
     def test_get_issues_contents(self):
@@ -41,3 +42,12 @@ class ViewsTest(unittest.TestCase):
         commits = views.get_issues()
         for person, num in commits.items():
             self.assertTrue(num > -1)
+
+    def test_get_total_commits_size(self):
+        commits = views.get_total_commits()
+        self.assertTrue(commits > -1)
+
+    def test_get_total_issues_size(self):
+        issues = views.get_total_issues()
+        print(issues)
+        self.assertTrue(issues > -1)
