@@ -3,13 +3,10 @@
 from interswellar import apimanager
 import interswellar.models as models
 
-API_KWARGS = {
-    "url_prefix": "/api/v1"
-}
-
 apimanager.create_api(
     models.Star,
     collection_name='stars',
+    url_prefix='/api/v1'
     include_columns=[
         'id',
         'name',
