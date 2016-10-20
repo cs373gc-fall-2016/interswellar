@@ -35,11 +35,33 @@ String.prototype.replaceAll = function(search, replacement) {
 
 	$( document ).ready(function() {
 		for (var key in data) {
-			if (key != "name") {
+			if (key != "name" && key != "id") {
+				//links!
+				if (key == "constellation") {
+					data[key] = "<a href='/constellation/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
+				};
+
+				if (key == "exoplanets") {
+					var links = "";
+
+					$.each(data[key], function(index, planet) {
+					    console.log(planet);
+					    links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
+					});
+					data[key] = links;
+				};
+
+				if (key == "discovered_by") {
+					data[key] = "<a href='/publications/" + data[key]['id'] + "'>" + data[key]['ref'] + "</a>";
+				};
+
 				var str = ("" + data[key]).replaceAll(',', '<br>');
-				$('#data').append("<div class='col-md-4 buffer'><div class='about'><div class='header'>" + key + "</div><p>"+ str +"</p></div></div>");
+				var id = ("" + key).replaceAll('_', ' ');
+
+				$('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
 			};
-			console.log(key);
+			// console.log(key + '~~~~' + data[key]);
+
 		}
 
 	});

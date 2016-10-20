@@ -24,9 +24,8 @@ def stars():
 @app.route('/stars/<variable>')
 def star(variable):
     """ Returns page for a single star """
-    data = ['{"name": "Kepler-9", "mass": 1.07, "luminosity": 13.9, "temperature": 5777.00, "radius": 1.02, "constellation": "Lyra", "planets": [ "Kepler-9a", "Kepler-9b", "Kepler-9d" ], "discovered_by": "http://adsabs.harvard.edu/abs/2013A%26A...556A.126A"}']
-    json_obj = json.loads(data[int(variable)-1])
-    return render_template('star.html', data=json_obj)
+    data = {"id": 1, "name": "Kepler-9", "luminosity": 13.9, "mass": 1.07, "radius": 1.02, "temperature": 5777.00,"constellation": {"id": 1, "abbrev": "Lyr"}, "exoplanets": [{"id": 1, "name": "Kepler-9a"},{"id": 2, "name": "Kepler-9b"},{"id": 3, "name": "Kepler-9d"}],"discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}}
+    return render_template('detail.html', data=data)
 
 @app.route('/exoplanets')
 def exoplanets():
