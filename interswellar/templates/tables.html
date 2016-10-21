@@ -58,7 +58,7 @@
 			"bFilter": false,
 			"bLengthChange": false,
 			"scrollX": true,
-			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
+			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
 		});
 
 		// new $.fn.dataTable.Responsive( table, {
@@ -104,6 +104,7 @@
 		render: function(){
 			var data = this.props.rowValues;
 			var val = Object.keys(this.props.rowValues).map(function(key){
+				console.log(key);
 				var result = "";
 				if (Array.isArray(data[key])){
 					if (data[key].length == 0){
@@ -116,6 +117,10 @@
 					result = ConcatObjs("", data[key]);
 					return <td>{result}</td>
 				} else {
+					if(key == "id"){
+						var url = window.location.href + "/" + key;
+						return <td><a href={url}>{data[key]}</a></td>;
+					}
 					return <td>{data[key]}</td>;
 				}
 			});
@@ -129,6 +134,7 @@
 	var RowList = React.createClass({
 		render: function() {
 			var rowEntries = this.props.rowData.map(function(row) {
+				console.log(row);
 				return (
 					<RowCells rowValues={row} />
 				);
