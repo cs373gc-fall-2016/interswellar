@@ -69,7 +69,7 @@ def stars():
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=data, title="STARS")
+    return render_template('tables.html', data=data, title="STARS", bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
 
 @app.route('/stars/<int:variable>')
 def star(variable):
