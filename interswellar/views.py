@@ -173,7 +173,7 @@ def exoplanets():
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=data, title="EXOPLANETS")
+    return render_template('tables.html', data=data, title="EXOPLANETS", bg_url='/static/images/exoplanet.jpg')
 
 @app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
@@ -289,7 +289,7 @@ def constellations():
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=data, title="CONSTELLATIONS")
+    return render_template('tables.html', data=data, title="CONSTELLATIONS", bg_url='/static/images/constellation.jpg')
 
 @app.route('/constellations/<int:variable>')
 def constellation(variable):
@@ -404,7 +404,7 @@ def publications():
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=data, title="PUBLICATIONS")
+    return render_template('tables.html', data=data, title="PUBLICATIONS", bg_url='/static/images/publication.jpg')
 @app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
