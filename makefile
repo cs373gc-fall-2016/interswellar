@@ -17,4 +17,5 @@ pydoc:
 	python -m pydoc -w interswellar.api_test
 	python -m pydoc -w interswellar.models_test
 	python -m pydoc -w interswellar.views_test
+	python -m pydoc -w interswellar.config
 	
