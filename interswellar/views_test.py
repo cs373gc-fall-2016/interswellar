@@ -1,7 +1,8 @@
-#pylint: disable=missing-docstring,unused-variable
+# pylint: disable=missing-docstring,unused-variable
 import unittest
 from interswellar import app
 import interswellar.views as views
+
 
 class ViewsTest(unittest.TestCase):
 
@@ -13,10 +14,6 @@ class ViewsTest(unittest.TestCase):
     def test_empty_db(self):
         view = self.app.get('/')
         self.assertNotEqual(view.data, '')
-
-    def test_get_commits_size(self):
-        commits = views.get_commits()
-        self.assertEqual(len(commits), 6)
 
     def test_get_commits_contents(self):
         commits = views.get_commits()

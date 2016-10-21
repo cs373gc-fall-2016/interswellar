@@ -19,9 +19,9 @@ def load_config(app_env):
     }
     app.config.from_object(configs[app_env])
     print("Loading %s configuration: Using db '%s@%s/%s'" % (
-        app_env, 
-        db.engine.url.username, 
-        db.engine.url.host, 
+        app_env,
+        db.engine.url.username,
+        db.engine.url.host,
         db.engine.url.database
     ))
 
