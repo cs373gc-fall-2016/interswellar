@@ -19,7 +19,6 @@
 				<li id="constellations_li"><a id="constellations" href="/constellations">CONSTELLATIONS</a></li>
 				<li id="publications_li"><a id="publications" href="/publications">PUBLICATIONS</a></li>
 				<li id="about_li"><a id="about" href="/about">ABOUT</a></li>
-				<!-- <li class="active"><a class="nav-link" href="#">ABOUT</a></li> -->
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
@@ -27,9 +26,11 @@
 
 <script type="text/javascript">
 // change nav bar active
-	$(function() {
-		$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
+$(function() {
+	$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
+	if (location.pathname.split("/").length == 2) {
 		$('#'+location.pathname.split("/")[1],'#nav').attr("href", "#");
-		$('#'+location.pathname.split("/")[1],'#nav').addClass('nav-link');
-	});
+	};
+	$('#'+location.pathname.split("/")[1],'#nav').addClass('nav-link');
+});
 </script>
