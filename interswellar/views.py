@@ -25,7 +25,7 @@ def index():
 def stars():
     """ Returns stars page """
     data = {
-            "num_results": 2,
+            "num_results": 3,
             "objects": [
                 {
                     "id": 1,
@@ -40,7 +40,7 @@ def stars():
                         {"id": 2, "name": "Kepler-9b"},
                         {"id": 3, "name": "Kepler-9d"}
                     ],
-                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
                 },
                 {
                     "id": 2,
@@ -49,21 +49,77 @@ def stars():
                     "mass": 0.95,
                     "radius": 0.93,
                     "temperature": 5679.00,
-                    "constellation": {"id": 1, "abbrev": "Oct"},
+                    "constellation": {"id": 2, "abbrev": "Oct"},
                     "exoplanets": [],
-                    "discoverer": {"id": 1, "ref": "2011A&A...534A..58P"}
+                    "discovered_by": {"id": 2, "ref": "2011A&A...534A..58P"}
+                },
+                {
+                    "id": 3,
+                    "name": "G 674",
+                    "luminosity": 0.016,
+                    "mass": 0.35,
+                    "radius": 0.41,
+                    "temperature": 3600.00,
+                    "constellation": {"id": 3, "abbrev": "Ara"},
+                    "exoplanets": [],
+                    "discovered_by": {"id": 3, "ref": "2007A&A...474..293B"}
+
                 }
             ],
             "page": 1,
             "total_pages": 1
         }
-    return render_template('tables.html', data=data, title="STARS")
+    return render_template('tables.html', data=data, title="STARS", bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
 
-@app.route('/stars/<variable>')
+@app.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
-    data = {"id": 1, "name": "Kepler-9", "luminosity": 13.9, "mass": 1.07, "radius": 1.02, "temperature": 5777.00, "constellation": {"id": 1, "abbrev": "Lyr"}, "exoplanets": [{"id": 1, "name": "Kepler-9a"}, {"id": 2, "name": "Kepler-9b"}, {"id": 3, "name": "Kepler-9d"}], "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}}
-    return render_template('detail.html', data=data)
+    return render_template('detail.html', data=star_helper(variable))
+
+
+def star_helper(var):
+    """ stars helper """
+    if var == 1:
+        return {
+                    "id": 1,
+                    "name": "Kepler-9",
+                    "luminosity": 13.9,
+                    "mass": 1.07,
+                    "radius": 1.02,
+                    "temperature": 5777.00,
+                    "constellation": {"id": 1, "abbrev": "Lyr"},
+                    "exoplanets": [
+                        {"id": 1, "name": "Kepler-9a"},
+                        {"id": 2, "name": "Kepler-9b"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ],
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+    if var == 2:
+        return                 {
+                    "id": 2,
+                    "name": "HIP 64690",
+                    "luminosity": 0.810,
+                    "mass": 0.95,
+                    "radius": 0.93,
+                    "temperature": 5679.00,
+                    "constellation": {"id": 2, "abbrev": "Oct"},
+                    "exoplanets": [],
+                    "discovered_by": {"id": 2, "ref": "2011A&A...534A..58P"}
+                }
+    if var == 3:
+        return                 {
+                    "id": 3,
+                    "name": "G 674",
+                    "luminosity": 0.016,
+                    "mass": 0.35,
+                    "radius": 0.41,
+                    "temperature": 3600.00,
+                    "constellation": {"id": 3, "abbrev": "Ara"},
+                    "exoplanets": [],
+                    "discovered_by": {"id": 3, "ref": "2007A&A...474..293B"}
+                    }
+
 
 @app.route('/exoplanets')
 def exoplanets():
@@ -119,30 +175,66 @@ def exoplanets():
         }
     return render_template('tables.html', data=data, title="EXOPLANETS")
 
-@app.route('/exoplanets/<variable>')
+@app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    data = {
-            "id": 2,
-            "name": "Kepler-9c",
-            "mass": 54.249,
-            "radius": 9.225,
-            "orbital_period": 3361824,
-            "year_discovered": 2010,
-            "star": {
-                "id": 1,
-                "name": "Kepler-9",
-                "constellation": {"id": 1, "abbrev":"Lyr"}
-            },
-            "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
-        }
-    return render_template('detail.html', data=data)
+    return render_template('detail.html', data=exoplanet_helper(variable))
+
+def exoplanet_helper(var):
+    """ exoplanet helper """
+
+    if var == 1:
+        return {
+                    "id": 1,
+                    "name": "Kepler-9b",
+                    "mass": 80.09,
+                    "radius": 9.438,
+                    "orbital_period": 1662336,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+    if var == 2:
+        return {
+                    "id": 2,
+                    "name": "Kepler-9c",
+                    "mass": 54.249,
+                    "radius": 9.225,
+                    "orbital_period": 3361824,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+    if var == 3:
+        return {
+                    "id": 3,
+                    "name": "Kepler-9d",
+                    "mass": "unknown",
+                    "radius": 1.6,
+                    "orbital_period": 137376,
+                    "year_discovered": 2010,
+                    "star": {
+                        "id": 1,
+                        "name": "Kepler-9",
+                        "constellation": {"id": 1, "abbrev":"Lyr"}
+                    },
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
+                }
+
 
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
     data = {
-            "num_results": 2,
+            "num_results": 3,
             "objects": [
                 {
                     "id": 1,
@@ -177,6 +269,21 @@ def constellations():
                             "exoplanets": []
                         }
                     ]
+                },
+                {
+                    "id": 3,
+                    "abbrev": "Ara",
+                    "name": "Ara",
+                    "family": "Hercules",
+                    "meaning": "altar",
+                    "area": 237,
+                    "stars": [
+                        {
+                            "id": 3,
+                            "name": "G 674",
+                            "exoplanets": []
+                        }
+                    ]
                 }
             ],
             "page": 1,
@@ -184,34 +291,74 @@ def constellations():
         }
     return render_template('tables.html', data=data, title="CONSTELLATIONS")
 
-@app.route('/constellations/<variable>')
+@app.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
-    data = {"id": 1,
-            "abbrev": "Lyr",
-            "name": "Lyra",
-            "family": "Hercules",
-            "meaning": "lyre / harp",
-            "area": 286,
-            "stars": [
-                {
+    return render_template('detail.html', data=constellation_helper(variable))
+
+def constellation_helper(var):
+    """ constellation helper """
+
+    if var == 1:
+        return {
                     "id": 1,
-                    "name": "Kepler-9",
-                    "exoplanets": [
-                        {"id": 1, "name": "Kepler-9a"},
-                        {"id": 2, "name": "Kepler-9b"},
-                        {"id": 3, "name": "Kepler-9d"}
+                    "abbrev": "Lyr",
+                    "name": "Lyra",
+                    "family": "Hercules",
+                    "meaning": "lyre / harp",
+                    "area": 286,
+                    "stars": [
+                        {
+                            "id": 1,
+                            "name": "Kepler-9",
+                            "exoplanets": [
+                                {"id": 1, "name": "Kepler-9a"},
+                                {"id": 2, "name": "Kepler-9b"},
+                                {"id": 3, "name": "Kepler-9d"}
+                            ]
+                        }
                     ]
                 }
-            ]
-        }
-    return render_template('detail.html', data=data)
+    if var == 2:
+        return {
+                    "id": 2,
+                    "abbrev": "Oct",
+                    "name": "Octans",
+                    "family": "La Caille",
+                    "meaning": "octant (instrument)",
+                    "area": 291,
+                    "stars": [
+                        {
+                            "id": 2,
+                            "name": "HIP 64690",
+                            "exoplanets": []
+                        }
+                    ]
+                }
+    if var == 3:
+        return {
+                    "id": 3,
+                    "abbrev": "Ara",
+                    "name": "Ara",
+                    "family": "Hercules",
+                    "meaning": "altar",
+                    "area": 237,
+                    "stars": [
+                        {
+                            "id": 3,
+                            "name": "G 674",
+                            "exoplanets": []
+                        }
+                    ]
+                }
+
+
 
 @app.route('/publications')
 def publications():
     """ Returns publications page """
     data = {
-            "num_results": 2,
+            "num_results": 3,
             "objects": [
                 {
                     "id": 1,
@@ -223,7 +370,7 @@ def publications():
                     "stars": [
                         {"id": 1, "name": "Kepler-9"}
                     ],
-                    "planets": [
+                    "exoplanets": [
                         {"id": 1, "name": "Kepler-9b"},
                         {"id": 2, "name": "Kepler-9c"},
                         {"id": 3, "name": "Kepler-9d"}
@@ -239,33 +386,76 @@ def publications():
                     "stars": [
                         {"id": 2, "name": "HIP 64690"}
                     ],
-                    "planets": []
+                    "exoplanets": []
+                },
+                {
+                    "id": 3,
+                    "ref": "2007A&A...474..293B",
+                    "title": "The HARPS search for southern extra-solar planets. X. A m sin i = 11 M_⊕ planet around the nearby spotted M dwarf GJ 674",
+                    "authors": "Bonfils, X.; Mayor, M.; Delfosse, X.; Forveille, T.; Gillon, M.; Perrier, C.; Udry, S.; Bouchy, F.; Lovis, C.; Pepe, F.; Queloz, D.; Santos, N. C.; Bertaux, J.-L.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context: How planet properties depend on stellar mass is a key diagnostic of planetary formation mechanisms...",
+                    "stars": [
+                        {"id": 3, "name": "G 674"}
+                    ],
+                    "exoplanets": []
                 }
             ],
             "page": 1,
             "total_pages": 1
         }
     return render_template('tables.html', data=data, title="PUBLICATIONS")
-@app.route('/publications/<variable>')
+@app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
-    data = {
-            "id": 1,
-            "ref": "2013A&A...566A.126A",
-            "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
-            "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
-            "journal": "Astronomy & Astrophysics",
-            "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
-            "stars": [
-                {"id": 1, "name": "Kepler-9"}
-            ],
-            "planets": [
-                {"id": 1, "name": "Kepler-9b"},
-                {"id": 2, "name": "Kepler-9c"},
-                {"id": 3, "name": "Kepler-9d"}
-            ]
-        }
-    return render_template('detail.html', data=data)
+    return render_template('detail.html', data=publication_helper(variable))
+
+def publication_helper(var):
+    """ publication helper """
+    if var == 1:
+        return {
+                    "id": 1,
+                    "ref": "2013A&A...566A.126A",
+                    "title": "A dynamically-packed planetary system around GJ 667C with three super-Earths in its habitable zone",
+                    "authors": "Anglada-Escudé, Guillem; Tuomi, Mikko; Gerlach, Enrico; Barnes, Rory",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. Since low-mass stars have low luminosities, orbits...",
+                    "stars": [
+                        {"id": 1, "name": "Kepler-9"}
+                    ],
+                    "exoplanets": [
+                        {"id": 1, "name": "Kepler-9b"},
+                        {"id": 2, "name": "Kepler-9c"},
+                        {"id": 3, "name": "Kepler-9d"}
+                    ]
+                }
+    if var == 2:
+        return {
+                    "id": 2,
+                    "ref": "2011A&A...534A..58P",
+                    "title": "The HARPS search for Earth-like planets in the habitable zone. I. Very low-mass planets around HD 20794, HD 85512, and HD 192310",
+                    "authors": "Pepe, F.; Lovis, C.; Ségransan, D.; Benz, W.; Bouchy, F.; Dumusque, X.; Mayor, M.; Queloz, D.; Santos, N. C.; Udry, S.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context. In 2009 we started an intense radial-velocity monitoring of a few nearby, slowly-rotating...",
+                    "stars": [
+                        {"id": 2, "name": "HIP 64690"}
+                    ],
+                    "exoplanets": []
+                }
+    if var == 3:
+        return {
+                    "id": 3,
+                    "ref": "2007A&A...474..293B",
+                    "title": "The HARPS search for southern extra-solar planets. X. A m sin i = 11 M_⊕ planet around the nearby spotted M dwarf GJ 674",
+                    "authors": "Bonfils, X.; Mayor, M.; Delfosse, X.; Forveille, T.; Gillon, M.; Perrier, C.; Udry, S.; Bouchy, F.; Lovis, C.; Pepe, F.; Queloz, D.; Santos, N. C.; Bertaux, J.-L.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context: How planet properties depend on stellar mass is a key diagnostic of planetary formation mechanisms...",
+                    "stars": [
+                        {"id": 3, "name": "G 674"}
+                    ],
+                    "exoplanets": []
+                }
+
 
 @app.route('/about')
 def about():
