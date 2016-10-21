@@ -59,6 +59,7 @@
 			"bLengthChange": false,
 			"scrollX": true,
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
+			"order": [0]
 		});
 
 		// new $.fn.dataTable.Responsive( table, {
@@ -104,7 +105,7 @@
 		render: function(){
 			var data = this.props.rowValues;
 			var val = Object.keys(this.props.rowValues).map(function(key){
-				console.log(key);
+				// console.log(key);
 				var result = "";
 				if (Array.isArray(data[key])){
 					if (data[key].length == 0){
@@ -118,7 +119,8 @@
 					return <td>{result}</td>
 				} else {
 					if(key == "id"){
-						var url = window.location.href + "/" + key;
+						console.log(data[key]);
+						var url = window.location.href + "/" + data[key];
 						return <td><a href={url}>{data[key]}</a></td>;
 					}
 					return <td>{data[key]}</td>;
