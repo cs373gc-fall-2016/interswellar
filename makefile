@@ -9,3 +9,12 @@ test:
 
 run:
 	python application.py
+
+pydoc:
+	python -m pydoc -w interswellar
+	python -m pydoc -w interswellar.views
+	python -m pydoc -w interswellar.api
+	python -m pydoc -w interswellar.api_test
+	python -m pydoc -w interswellar.models_test
+	python -m pydoc -w interswellar.views_test
+	
