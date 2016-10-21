@@ -74,7 +74,8 @@ def stars():
 @app.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
-    return render_template('detail.html', data=star_helper(variable))
+    order = ["name", "luminosity", "mass", "radius", "temperature", "constellation", "exoplanets"]
+    return render_template('detail.html', data=star_helper(variable), key_order=order)
 
 
 def star_helper(var):
@@ -178,7 +179,8 @@ def exoplanets():
 @app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    return render_template('detail.html', data=exoplanet_helper(variable))
+    order = ["name", "mass", "radius", "orbital_period", "year_discovered", "star", "discovered_by"]
+    return render_template('detail.html', data=exoplanet_helper(variable), key_order=order)
 
 def exoplanet_helper(var):
     """ exoplanet helper """
@@ -294,7 +296,8 @@ def constellations():
 @app.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
-    return render_template('detail.html', data=constellation_helper(variable))
+    order = ["abbrev", "name", "family", "meaning", "area", "stars"]
+    return render_template('detail.html', data=constellation_helper(variable), key_order=order)
 
 def constellation_helper(var):
     """ constellation helper """
@@ -408,7 +411,8 @@ def publications():
 @app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
-    return render_template('detail.html', data=publication_helper(variable))
+    order = ["title", "journal", "abstract", "stars", "exoplanets", "ref", "authors"]
+    return render_template('detail.html', data=publication_helper(variable), key_order=order)
 
 def publication_helper(var):
     """ publication helper """

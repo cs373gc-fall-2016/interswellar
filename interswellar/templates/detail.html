@@ -35,7 +35,8 @@
 
 // Fills in data blocks from JSON
 $( document ).ready(function() {
-	for (var key in data) {
+	{% for key in key_order %}
+	var key = "{{key}}"
 		if (key != "name" && key != "id") {
 				//links!
 				if (key == "constellation") {
@@ -76,7 +77,7 @@ $( document ).ready(function() {
 
 				$('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
 			};
-		}
+		{% endfor %}
 
 	});
 </script>
