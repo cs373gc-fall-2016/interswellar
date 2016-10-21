@@ -39,7 +39,7 @@ $( document ).ready(function() {
 		if (key != "name" && key != "id") {
 				//links!
 				if (key == "constellation") {
-					data[key] = "<a href='/constellation/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
+					data[key] = "<a href='/constellations/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
 				};
 
 				if (key == "exoplanets") {
@@ -55,6 +55,21 @@ $( document ).ready(function() {
 				if (key == "discovered_by") {
 					data[key] = "<a href='/publications/" + data[key]['id'] + "'>" + data[key]['ref'] + "</a>";
 				};
+
+				if (key == "stars") {
+					var links = "";
+
+					$.each(data[key], function(index, star) {
+						console.log(star);
+						links += "<a href='/stars/" + star['id'] + "'>" + star['name'] + "</a><br>";
+					});
+					data[key] = links;
+				};
+
+				if (key == "star") {
+					data[key] = "<a href='/stars/" + data[key]['id'] + "'>" + data[key]['name'] + "</a>";
+				};
+
 
 				var str = ("" + data[key]).replaceAll(',', '<br>');
 				var id = ("" + key).replaceAll('_', ' ');
@@ -76,8 +91,8 @@ $( document ).ready(function() {
 </div>
 
 <style>
-html { 
-	background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed; 
+html {
+	background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
 }
 </style>
 
