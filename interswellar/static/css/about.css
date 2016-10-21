@@ -63,6 +63,23 @@
     border-radius: 0 !important;
 }
 
+.data-header {
+    margin: 0 auto; 
+    padding: 14px 24px;
+    border: 0 none;
+    font-size: 125%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    margin-bottom: 10px;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
 .section-title {
     text-align: center;
     font-family: "lato", sans-serif;
