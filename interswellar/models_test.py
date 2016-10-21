@@ -21,7 +21,7 @@ class ModelsTest(unittest.TestCase):
         db.session.close()
         db.drop_all()
 
-    def test_stars(self):
+    def test_stars1(self):
         star = models.Star(id=1, name='Sun', mass=1.0,
                            luminosity=1.0, temperature=5000, radius=1.0)
         db.session.add(star)
@@ -29,6 +29,111 @@ class ModelsTest(unittest.TestCase):
         stars = models.Star.query.all()
         self.assertTrue(star in stars)
         self.assertEqual(len(stars), 1)
+
+    def test_stars2(self):
+        star1 = models.Star(id=2, name='Aries', mass=3.0,
+                            luminosity=4.0, temperature=7000, radius=3.0)
+        star2 = models.Star(id=3, name='Lummes', mass=5.0,
+                            luminosity=3.0, temperature=6000, radius=2.7)
+        db.session.add(star1)
+        db.session.add(star2)
+        db.session.commit()
+        stars = models.Star.query.all()
+        self.assertTrue(star1 in stars)
+        self.assertTrue(star2 in stars)
+        self.assertEqual(len(stars), 2)
+
+    def test_stars3(self):
+        star1 = models.Star(id=4, name='Aries', mass=3.0,
+                            luminosity=4.0, temperature=7000, radius=3.0)
+        star2 = models.Star(id=3, name='Scobe', mass=9.0,
+                            luminosity=2.0, temperature=6500, radius=2.5)
+        star3 = models.Star(id=7, name='Wishful', mass=5.0,
+                            luminosity=8.0, temperature=6900, radius=2.3)
+        db.session.add(star1)
+        db.session.add(star2)
+        db.session.add(star3)
+        db.session.commit()
+        stars = models.Star.query.all()
+        self.assertTrue(star1 in stars)
+        self.assertTrue(star2 in stars)
+        self.assertTrue(star3 in stars)
+        self.assertEqual(len(stars), 3)
+
+    def test_stars4(self):
+        star1 = models.Star(id=2, name='Sun', mass=1.0,
+                            luminosity=1.0, temperature=5000, radius=1.0)
+        star2 = models.Star(id=4, name='Aries', mass=3.0,
+                            luminosity=4.0, temperature=7050, radius=3.0)
+        star3 = models.Star(id=3, name='Scobe', mass=9.0,
+                            luminosity=2.0, temperature=6500, radius=2.5)
+        star4 = models.Star(id=7, name='Wishful', mass=5.0,
+                            luminosity=8.0, temperature=6900, radius=2.3)
+        db.session.add(star1)
+        db.session.add(star2)
+        db.session.add(star3)
+        db.session.add(star4)
+        db.session.commit()
+        stars = models.Star.query.all()
+        self.assertTrue(star1 in stars)
+        self.assertTrue(star2 in stars)
+        self.assertTrue(star3 in stars)
+        self.assertTrue(star4 in stars)
+        self.assertEqual(len(stars), 4)
+
+    def test_stars5(self):
+        star1 = models.Star(id=2, name='Aries', mass=3.0,
+                            luminosity=4.0, temperature=7000, radius=3.0)
+        star2 = models.Star(id=3, name='Lummes', mass=5.0,
+                            luminosity=3.0, temperature=6000, radius=2.7)
+        star3 = models.Star(id=4, name='Forceless', mass=5.0,
+                            luminosity=2.0, temperature=9500, radius=2.2)
+        star4 = models.Star(id=7, name='Wishful', mass=5.0,
+                            luminosity=8.0, temperature=6900, radius=2.3)
+        star5 = models.Star(id=8, name='Scobe', mass=9.0,
+                            luminosity=2.0, temperature=6500, radius=2.5)
+        db.session.add(star1)
+        db.session.add(star2)
+        db.session.add(star3)
+        db.session.add(star4)
+        db.session.add(star5)
+        db.session.commit()
+        stars = models.Star.query.all()
+        self.assertTrue(star1 in stars)
+        self.assertTrue(star2 in stars)
+        self.assertTrue(star3 in stars)
+        self.assertTrue(star4 in stars)
+        self.assertTrue(star5 in stars)
+        self.assertEqual(len(stars), 5)
+
+    def test_stars6(self):
+        star1 = models.Star(id=4, name='Aries', mass=3.0,
+                            luminosity=4.0, temperature=7000, radius=3.0)
+        star2 = models.Star(id=3, name='Scobe', mass=9.0,
+                            luminosity=2.0, temperature=6500, radius=2.5)
+        star3 = models.Star(id=7, name='Wishful', mass=5.0,
+                            luminosity=8.0, temperature=6940, radius=2.3)
+        star4 = models.Star(id=9, name='Scobe', mass=9.0,
+                            luminosity=2.0, temperature=6500, radius=2.5)
+        star5 = models.Star(id=2, name='Spiteful', mass=5.0,
+                            luminosity=8.0, temperature=6800, radius=2.9)
+        star6 = models.Star(id=5, name='Relentless', mass=5.0,
+                            luminosity=8.0, temperature=6100, radius=2.1)
+        db.session.add(star1)
+        db.session.add(star2)
+        db.session.add(star3)
+        db.session.add(star4)
+        db.session.add(star5)
+        db.session.add(star6)
+        db.session.commit()
+        stars = models.Star.query.all()
+        self.assertTrue(star1 in stars)
+        self.assertTrue(star2 in stars)
+        self.assertTrue(star3 in stars)
+        self.assertTrue(star4 in stars)
+        self.assertTrue(star5 in stars)
+        self.assertTrue(star6 in stars)
+        self.assertEqual(len(stars), 6)
 
     def test_exoplant(self):
         exoplanet = models.Exoplanet(
