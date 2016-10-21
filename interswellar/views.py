@@ -40,7 +40,7 @@ def stars():
                         {"id": 2, "name": "Kepler-9b"},
                         {"id": 3, "name": "Kepler-9d"}
                     ],
-                    "discoverer": {"id": 1, "ref": "2013A&A...566A.126A"}
+                    "discovered_by": {"id": 1, "ref": "2013A&A...566A.126A"}
                 },
                 {
                     "id": 2,
@@ -51,7 +51,19 @@ def stars():
                     "temperature": 5679.00,
                     "constellation": {"id": 1, "abbrev": "Oct"},
                     "exoplanets": [],
-                    "discoverer": {"id": 1, "ref": "2011A&A...534A..58P"}
+                    "discovered_by": {"id": 1, "ref": "2011A&A...534A..58P"}
+                },
+                {
+                    "id": 3,
+                    "name": "G 674",
+                    "luminosity": 0.016,
+                    "mass": 0.35,
+                    "radius": 0.41,
+                    "temperature": 3600.00,
+                    "constellation": {"id": 2, "abbrev": "Ara"},
+                    "exoplanets": [],
+                    "discovered_by": {"id": 2, "ref": "2007A&A...474..293B"}
+
                 }
             ],
             "page": 1,
@@ -142,7 +154,7 @@ def exoplanet(variable):
 def constellations():
     """ Returns constellations page """
     data = {
-            "num_results": 2,
+            "num_results": 3,
             "objects": [
                 {
                     "id": 1,
@@ -174,6 +186,21 @@ def constellations():
                         {
                             "id": 2,
                             "name": "HIP 64690",
+                            "exoplanets": []
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "abbrev": "Ara",
+                    "name": "Ara",
+                    "family": "Hercules",
+                    "meaning": "altar",
+                    "area": 237,
+                    "stars": [
+                        {
+                            "id": 3,
+                            "name": "G 674",
                             "exoplanets": []
                         }
                     ]
@@ -211,7 +238,7 @@ def constellation(variable):
 def publications():
     """ Returns publications page """
     data = {
-            "num_results": 2,
+            "num_results": 3,
             "objects": [
                 {
                     "id": 1,
@@ -238,6 +265,18 @@ def publications():
                     "abstract": "Context. In 2009 we started an intense radial-velocity monitoring of a few nearby, slowly-rotating...",
                     "stars": [
                         {"id": 2, "name": "HIP 64690"}
+                    ],
+                    "planets": []
+                },
+
+                    "id": 3,
+                    "ref": "2007A&A...474..293B",
+                    "title": "The HARPS search for southern extra-solar planets. X. A m sin i = 11 M_⊕ planet around the nearby spotted M dwarf GJ 674",
+                    "authors": "Bonfils, X.; Mayor, M.; Delfosse, X.; Forveille, T.; Gillon, M.; Perrier, C.; Udry, S.; Bouchy, F.; Lovis, C.; Pepe, F.; Queloz, D.; Santos, N. C.; Bertaux, J.-L.",
+                    "journal": "Astronomy & Astrophysics",
+                    "abstract": "Context: How planet properties depend on stellar mass is a key diagnostic of planetary formation mechanisms...",
+                    "stars": [
+                        {"id": 3, "name": "G 674"}
                     ],
                     "planets": []
                 }
