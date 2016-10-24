@@ -29,7 +29,7 @@ script:
 deploy:
   - provider: elasticbeanstalk
     app: interswellar
-    env: interswellar-prod
+    env: interswellar-stage
     bucket_name: elasticbeanstalk-us-east-1-963903243898
     region: us-east-1
     access_key_id:
