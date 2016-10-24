@@ -20,8 +20,8 @@ apimanager.create_api(
         'constellation',
         'constellation.id',
         'constellation.name',
-        'publication',
-        'publication.id',
-        'publication.name',
+        'discovered_by',
+        'discovered_by.id',
+        'discovered_by.ref',
     ]
 )
