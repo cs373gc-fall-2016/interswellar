@@ -10,12 +10,24 @@
     text-align: center;
 }
 
+.a {
+    text-decoration: underline; 
+    color: white;
+}
+
 /* black background for fades */
 body {
     background-color: black;
     font-family: "lato", sans-serif;
     color: #fff;
     font-size: 150%;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 0px solid transparent;
 }
 
 /* Content bar */
