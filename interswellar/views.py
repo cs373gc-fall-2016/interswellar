@@ -9,6 +9,7 @@ from interswellar import app
 import interswellar.models as models
 from flask import Flask, render_template
 
+from collections import OrderedDict
 
 @app.route('/')
 def index():
@@ -70,6 +71,10 @@ def stars():
         "page": 1,
         "total_pages": 1
     }
+    # data['objects'][0] = OrderedDict([('id', data['objects'][0]['id']), ('name', d), ('mass', 3), ('radius', 4), ('luminosity', 5), ('temperature', 6), ('discovered_by', 7), ('constellation', 8), ('exoplanets', 9)])
+    for i in range(0, data['num_results']):
+        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('name', data['objects'][i]['name']), ('luminosity', data['objects'][i]['luminosity']), ('mass', data['objects'][i]['mass']), ('radius', data['objects'][i]['radius']), ('temperature', data['objects'][i]['temperature']), ('constellation', data['objects'][i]['constellation']), ('exoplanets', data['objects'][i]['exoplanets']), ('discovered_by', data['objects'][i]['discovered_by'])])
+
     return render_template('tables.html', data=data, title="STARS", bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
 
 
@@ -176,6 +181,10 @@ def exoplanets():
         "page": 1,
         "total_pages": 1
     }
+    for i in range(0, data['num_results']):
+        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('name', data['objects'][i]['name']), ('mass', data['objects'][i]['mass']), ('radius', data['objects'][i]['radius']), ('orbital_period', data['objects'][i]['orbital_period']), ('year_discovered', data['objects'][i]['year_discovered']), ('star', data['objects'][i]['star']), ('discovered_by', data['objects'][i]['discovered_by'])])
+
+
     return render_template('tables.html', data=data, title="EXOPLANETS", bg_url='/static/images/exoplanet.jpg')
 
 
@@ -295,6 +304,10 @@ def constellations():
         "page": 1,
         "total_pages": 1
     }
+
+    for i in range(0, data['num_results']):
+        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('abbrev', data['objects'][i]['abbrev']), ('name', data['objects'][i]['name']), ('family', data['objects'][i]['family']), ('meaning', data['objects'][i]['meaning']), ('area', data['objects'][i]['area']), ('stars', data['objects'][i]['stars'])])
+
     return render_template('tables.html', data=data, title="CONSTELLATIONS", bg_url='/static/images/constellation.jpg')
 
 
@@ -412,6 +425,10 @@ def publications():
         "page": 1,
         "total_pages": 1
     }
+
+    for i in range(0, data['num_results']):
+        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('ref', data['objects'][i]['ref']), ('title', data['objects'][i]['title']), ('authors', data['objects'][i]['authors']), ('journal', data['objects'][i]['journal']), ('abstract', data['objects'][i]['abstract']), ('stars', data['objects'][i]['stars']), ('exoplanets', data['objects'][i]['exoplanets'])])
+
     return render_template('tables.html', data=data, title="PUBLICATIONS", bg_url='/static/images/publication.jpg')
 
 
