@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/instance.css">
+
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+</head>
+
+<body >
+    {% include 'nav.html' %}
+
+    <script type="text/javascript">
+
+    var data = {{data|tojson}};
+    console.log(data);
+
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.replace(new RegExp(search, 'g'), replacement);
+    };
+
+// Fills in data blocks from JSON
+$( document ).ready(function() {
+    {% for key in key_order %}
+    var key = "{{key}}"
+        if (key != "name" && key != "id") {
+                //links!
+                if (key == "constellation") {
+                    data[key] = "<a href='/constellations/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
+                };
+
+                if (key == "exoplanets") {
+                    var links = "";
+
+                    $.each(data[key], function(index, planet) {
+                        console.log(planet);
+                        links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
+                    });
+                    data[key] = links;
+                };
+
+                if (key == "discovered_by") {
+                    data[key] = "<a href='/publications/" + data[key]['id'] + "'>" + data[key]['ref'] + "</a>";
+                };
+
+                if (key == "stars") {
+                    var links = "";
+
+                    $.each(data[key], function(index, star) {
+                        console.log(star);
+                        links += "<a href='/stars/" + star['id'] + "'>" + star['name'] + "</a><br>";
+                    });
+                    data[key] = links;
+                };
+
+                if (key == "star") {
+                    data[key] = "<a href='/stars/" + data[key]['id'] + "'>" + data[key]['name'] + "</a>";
+                };
+
+
+                var str = ("" + data[key]).replaceAll(',', '<br>');
+                var id = ("" + key).replaceAll('_', ' ');
+
+                $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
+            };
+        {% endfor %}
+
+    });
+</script>
+
+<div class="table-title">
+    {{data.name}}
+    {{data.title}}
+</div>
+
+<div id="data" class="container-fluid inner">
+
+</div>
+</div>
+
+<style>
+html {
+    background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
+}
+</style>
+
+</body>
+</html>
