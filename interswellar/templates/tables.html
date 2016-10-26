@@ -15,6 +15,9 @@
 	<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
 	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
 
+	<link href="https://cdn.datatables.net/colreorder/1.3.2/css/colReorder.dataTables.min.css" />
+	<link href="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js" />
+
 	<!-- React -->
 	<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
 	<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -55,13 +58,13 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
+			"ordering": false,
 			"bFilter": false,
 			"bLengthChange": false,
 			"scrollX": true,
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
-			"order": [0]
-		});
 
+		});
 		// new $.fn.dataTable.Responsive( table, {
 		// 	details: true
 		// } );
