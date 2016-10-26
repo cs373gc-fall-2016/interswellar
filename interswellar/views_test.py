@@ -46,5 +46,4 @@ class ViewsTest(unittest.TestCase):
 
     def test_get_total_issues_size(self):
         issues = views.get_total_issues()
-        print(issues)
         self.assertTrue(issues > -1)
