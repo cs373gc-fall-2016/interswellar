@@ -1,6 +1,6 @@
 """ The views for the app """
 # pylint: disable=unused-import,bad-continuation,line-too-long,import-error
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import json
 import traceback
 import html
@@ -9,7 +9,6 @@ from interswellar import app
 import interswellar.models as models
 from flask import Flask, render_template
 
-from collections import OrderedDict
 
 @app.route('/')
 def index():
