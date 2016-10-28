@@ -48,7 +48,6 @@ def constellations():
     return render_template('constellation_tables.html')
 
 
-
 @app.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
@@ -60,7 +59,6 @@ def constellation(variable):
 def publications():
     """ Returns publications page """
     return render_template('publication_tables.html')
-
 
 
 @app.route('/publications/<int:variable>')
