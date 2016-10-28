@@ -39,7 +39,11 @@
 
 <div class="table-title">
     {{data.name}}
-    {{data.title}}
+    {% if data.title %}
+        {{data.title}}
+    {% else %}
+        Untitled
+    {% endif %}
 </div>
 
 <div id="data" class="container-fluid inner">
@@ -81,20 +85,22 @@
             <div style="clear: both;"></div>
         </div>
     </div>
-</div>
 
-<div id="data" class="container-fluid inner">
     <div class='col-sm-6 col-lg-4 buffer'>
         <div class='about'>
             <div class='header'>
-                EXOPLANETS
+                STARS
             </div>
             <ul>
-            {% for ep in data.exoplanets %}
-             <li>
-                <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
-             </li>
-            {% endfor %}
+            {% if data.stars %}
+                {% for s in data.stars %}
+                <li>
+                    <a href="/exoplanets/{{s.id}}"> {{s.name}}</a>
+                </li>
+                {% endfor %}
+            {% else %}
+                No Stars
+            {% endif %}
             </ul>
         </div>
     </div

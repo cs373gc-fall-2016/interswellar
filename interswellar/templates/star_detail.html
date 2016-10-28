@@ -53,9 +53,9 @@
             </div>
             <div class = "data-right">
                 {% if data.mass %}
-                    {{data.mass}} M<sub>☉</sub>
+                {{data.mass}} M<sub>☉</sub>
                 {% else %}
-                    Unknown
+                Unknown
                 {% endif %}
             </div>
             <br>
@@ -65,9 +65,9 @@
             </div>
             <div class = "data-right">
                 {% if data.luminosity %}
-                    {{data.luminosity}}
+                {{data.luminosity}}
                 {% else %}
-                    Unknown
+                Unknown
                 {% endif %}
             </div>
             <br>
@@ -77,9 +77,9 @@
             </div>
             <div class = "data-right">
                 {% if data.radius %}
-                    {{data.radius}} R<sub>☉</sub>
+                {{data.radius}} R<sub>☉</sub>
                 {% else %}
-                    Unknown
+                Unknown
                 {% endif %}
             </div>
             <br>
@@ -89,59 +89,53 @@
             </div>
             <div class = "data-right">
                 {% if data.temperature %}
-                    {{data.temperature}} K
+                {{data.temperature}} K
                 {% else %}
-                    Unknown
+                Unknown
                 {% endif %}
             </div>
             <div style="clear: both;"></div>
         </div>
     </div>
-</div>
 
-<div id="data" class="container-fluid inner">
     <div class='col-sm-6 col-lg-4 buffer'>
         <div class='about'>
             <div class='header'>
                 EXOPLANETS
             </div>
             <ul>
-            {% for ep in data.exoplanets %}
-             <li>
-                <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
-             </li>
-            {% endfor %}
+                {% for ep in data.exoplanets %}
+                <li>
+                    <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
+                </li>
+                {% endfor %}
             </ul>
         </div>
-    </div
+    </div>
 
-</div>
 
-<div id="data" class="container-fluid inner">
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                CONSTELLATION
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    CONSTELLATION
+                </div>
+                <div>
+                    {{data.constellation}}
+                </div>
             </div>
-            <div>
-                {{data.constellation}}
+        </div>
+
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    DISCOVERED BY
+                </div>
+                <div>
+                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div id="data" class="container-fluid inner">
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                DISCOVERED BY
-            </div>
-            <div>
-            <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--
 <div id="data" class="container-fluid inner">
