@@ -27,7 +27,6 @@ class ViewsTest(unittest.TestCase):
 
     def test_get_issues_size(self):
         issues = views.get_issues()
-        print(issues)
         self.assertTrue(len(issues) > -1)
 
     def test_get_issues_contents(self):
