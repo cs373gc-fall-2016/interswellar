@@ -27,7 +27,7 @@ def star(variable):
     """ Returns page for a single star """
     data = models.Star.query.get(variable)
     if not data:
-        return render_template('404.html')
+        return render_template('404.html', thing='Star')
     return render_template('star_detail.html', data=data)
 
 
@@ -42,7 +42,7 @@ def exoplanet(variable):
     """ Returns page for single exoplanet """
     data = models.Exoplanet.query.get(variable)
     if not data:
-        return render_template('404.html')
+        return render_template('404.html', thing='Exoplanet')
     return render_template('exoplanet_detail.html', data=data)
 
 
@@ -57,7 +57,7 @@ def constellation(variable):
     """ Returns page for single constellation """
     data = models.Constellation.query.get(variable)
     if not data:
-        return render_template('404.html')
+        return render_template('404.html', thing='Constellation')
     return render_template('constellation_detail.html', data=data)
 
 
@@ -72,7 +72,7 @@ def publication(variable):
     """ Returns page for single publication """
     data = models.Publication.query.get(variable)
     if not data:
-        return render_template('404.html')
+        return render_template('404.html', thing='Publication')
     return render_template('publication_detail.html', data=data)
 
 
@@ -110,6 +110,9 @@ def checkdb():
         traceback.print_exc()
         return 'Database is not ok. Check stdout for details'
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html', thing='Page'), 404
 
 def get_commits():
     """ gets number of commits for each team member """

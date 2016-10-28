@@ -23,22 +23,6 @@
 <body >
     {% include 'nav.html' %}
 
-    <script type="text/javascript">
-
-    var data = {{data|tojson}};
-    console.log(data);
-
-    String.prototype.replaceAll = function(search, replacement) {
-        var target = this;
-        return target.replace(new RegExp(search, 'g'), replacement);
-    };
-
-// Fills in data blocks from JSON
-
-    // $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
-
-
-</script>
 
 <div class="table-title">
     {{data.name}}
