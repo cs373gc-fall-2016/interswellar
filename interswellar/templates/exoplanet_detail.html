@@ -52,7 +52,11 @@
                 MASS
             </div>
             <div class = "data-right">
-                {{data.mass}} M<sub>☉</sub>
+                {% if data.mass %}
+                    {{data.mass}} M<sub>☉</sub>
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -60,7 +64,11 @@
                 RADIUS
             </div>
             <div class = "data-right">
-                {{data.radius}}
+                {% if data.radius %}
+                    {{data.mass}} R<sub>☉</sub>
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -68,7 +76,12 @@
                 ORBITAL PERIOD
             </div>
             <div class = "data-right">
-                {{data.orbital_period}} R<sub>☉</sub>
+
+                {% if data.orbital_period %}
+                    {{data.orbital_period}} days
+                {% else %}
+                 Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -76,7 +89,11 @@
                 YEAR DISCOVERED
             </div>
             <div class = "data-right">
-                {{data.year_discovered}} K
+                {% if data.year_discovered %}
+                    {{data.year_discovered}}
+                {% else %}
+                 Unknown
+                {% endif %}
             </div>
             <div style="clear: both;"></div>
         </div>
@@ -88,7 +105,7 @@
                 STAR
             </div>
             <div>
-            <a href= "/stars/{{data.star.id}}" >{{data.star.name}} </a>
+                <a href= "/stars/{{data.star.id}}" >{{data.star.name}} </a>
             </div>
         </div>
     </div>
@@ -99,7 +116,7 @@
                 DISCOVERED BY
             </div>
             <div>
-            <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+                <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
             </div>
         </div>
     </div>
