@@ -15,13 +15,13 @@ def index():
     """ Returns splash page """
     return render_template('index.html')
 
-
+@app.route('/star')
 @app.route('/stars')
 def stars():
     """ Returns stars page """
     return render_template('star_tables.html')
 
-
+@app.route('/star/<int:variable>')
 @app.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
@@ -30,13 +30,13 @@ def star(variable):
         return render_template('404.html', thing='Star')
     return render_template('star_detail.html', data=data)
 
-
+@app.route('/exoplanet')
 @app.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
     return render_template('exoplanet_tables.html')
 
-
+@app.route('/exoplanet/<int:variable>')
 @app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
@@ -45,13 +45,13 @@ def exoplanet(variable):
         return render_template('404.html', thing='Exoplanet')
     return render_template('exoplanet_detail.html', data=data)
 
-
+@app.route('/constellation')
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
     return render_template('constellation_tables.html')
 
-
+@app.route('/constellation/<int:variable>')
 @app.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
@@ -60,13 +60,13 @@ def constellation(variable):
         return render_template('404.html', thing='Constellation')
     return render_template('constellation_detail.html', data=data)
 
-
+@app.route('/publication')
 @app.route('/publications')
 def publications():
     """ Returns publications page """
     return render_template('publication_tables.html')
 
-
+@app.route('/publication/<int:variable>')
 @app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
