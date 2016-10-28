@@ -1,6 +1,5 @@
 """ Read star data from exoplanet archive """
 
-import math
 import requests
 
 import interswellar.scrape.lib as lib

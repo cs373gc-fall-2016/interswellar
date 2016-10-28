@@ -88,5 +88,9 @@ class Publication(db.Model):
     exoplanets = db.relationship("Exoplanet", backref="discovered_by")
 
     def __repr__(self):
-        return "<Publication(ref='%s', title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
-            self.ref, shorten(self.title), self.year, shorten(self.authors), self.journal, shorten(self.abstract))
+        return "<Publication(ref='%s', title='%s', year=%s, authors='%s', " \
+            "journal='%s', abstract='%s')>" % (
+                self.ref, shorten(
+                    self.title), self.year, shorten(self.authors),
+                self.journal, shorten(self.abstract)
+            )
