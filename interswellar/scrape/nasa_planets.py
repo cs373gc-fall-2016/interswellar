@@ -44,9 +44,9 @@ def extract_ref(link):
     """ Extracts a reference from an a tag pointing to harvard absads """
     patterns = [
         re.compile(r'<a href=http://adsabs.harvard.edu/cgi-bin/nph-bib_query\?'
-                   r'bibcode=([^\s]*) target=ref>.*</a>'),
+                   r'bibcode=([^\s]*)(\s+.*)?>.*</a>'),
         re.compile(r'<a href=http://adsabs.harvard.edu/abs/([^\s]*)'
-                   r' target=ref>.*</a>'),
+                   r'(\s+.*)?>.*</a>'),
     ]
     for pattern in patterns:
         match = pattern.search(link)
