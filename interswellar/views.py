@@ -26,6 +26,8 @@ def stars():
 def star(variable):
     """ Returns page for a single star """
     data = models.Star.query.get(variable)
+    if not data:
+        return render_template('404.html')
     return render_template('star_detail.html', data=data)
 
 
@@ -39,6 +41,8 @@ def exoplanets():
 def exoplanet(variable):
     """ Returns page for single exoplanet """
     data = models.Exoplanet.query.get(variable)
+    if not data:
+        return render_template('404.html')
     return render_template('exoplanet_detail.html', data=data)
 
 
@@ -52,6 +56,8 @@ def constellations():
 def constellation(variable):
     """ Returns page for single constellation """
     data = models.Constellation.query.get(variable)
+    if not data:
+        return render_template('404.html')
     return render_template('constellation_detail.html', data=data)
 
 
@@ -65,6 +71,8 @@ def publications():
 def publication(variable):
     """ Returns page for single publication """
     data = models.Publication.query.get(variable)
+    if not data:
+        return render_template('404.html')
     return render_template('publication_detail.html', data=data)
 
 
