@@ -25,9 +25,6 @@
 
     <script type="text/javascript">
 
-    var data = {{data|tojson}};
-    console.log(data);
-
     String.prototype.replaceAll = function(search, replacement) {
         var target = this;
         return target.replace(new RegExp(search, 'g'), replacement);
@@ -93,11 +90,47 @@
                 EXOPLANETS
             </div>
             <ul>
-                <li>
-                    {{data.exoplanets}}
-                </li>
+            {% for ep in data.exoplanets %}
+             <li>
+                <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
+             </li>
+            {% endfor %}
             </ul>
+        </div>
+    </div
 
+</div>
+
+<div id="data" class="container-fluid inner">
+    <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='about'>
+            <div class='header'>
+                CONSTELLATION
+            </div>
+            <div>
+                {{data.constellation}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="data" class="container-fluid inner">
+    <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='about'>
+            <div class='header'>
+                DISCOVERED BY
+            </div>
+            <div>
+
+                {{data.discovered_by.title}}
+         <!-- {% if data.discovered_by %}
+                No Publications
+            {% else %}
+                {{data.discovered_by.title}}
+            {% endif %} -->
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>
