@@ -73,103 +73,24 @@
 
 	<!-- React -->
 	<script type="text/babel">
-
-	var JSONObject = {{ data|tojson }};
-
-	var Column = React.createClass({
-		render: function(){
-			return <td>{this.props.data.key}</td>;
-		}
-	});
-
-	function ConcatObjs(result, value){
-		if (Array.isArray(value)) return null;
-		for (var key in value){
-			if (key == "name" || key == "ref" || key == "abbrev"){
-				result = value[key] + "\n";
-			}
-		}
-
-		return result;
-	}
-
-	var ListInCell = React.createClass({
-		render: function(){
-			var countArrays = this.props.countArrays;
-			var result = "";
-			var vals = this.props.listValues.map(function(val){ // this.props.listValues is an array of Objects
-				return result = ConcatObjs(result, val);
-			});
-			return <td>{vals}</td>;
-		}
-	});
-
-	var RowCells = React.createClass({
-		render: function(){
-			var data = this.props.rowValues;
-			var val = Object.keys(this.props.rowValues).map(function(key){
-				// console.log(key);
-				var result = "";
-				if (Array.isArray(data[key])){
-					if (data[key].length == 0){
-						return <td>None</td>;
-					}
-					return (
-						<ListInCell listValues={data[key]} />
-					);
-				} else if (data[key] === Object(data[key])){
-					result = ConcatObjs("", data[key]);
-					return <td>{result}</td>
-				} else {
-					if(key == "id"){
-						console.log(data[key]);
-						var url = window.location.href + "/" + data[key];
-						return <td><a href={url}>{data[key]}</a></td>;
-					}
-					return <td>{data[key]}</td>;
-				}
-			});
-
-			return (
-				<tr>{val}</tr>
-			);
-		}
-	});
-
-	var RowList = React.createClass({
-		render: function() {
-			var rowEntries = this.props.rowData.map(function(row) {
-				console.log(row);
-				return (
-					<RowCells rowValues={row} />
-				);
-			});
-			return (
-				<tbody>
-					{rowEntries}
-				</tbody>
-			);
-		}
-	});
-
 	var Table = React.createClass({
 		render: function() {
-			var objects = this.props.data.objects;
-			var propertyNames = Object.getOwnPropertyNames(objects[0]);
-			var columns = propertyNames.map(function(col){
-				return (
-					<th>{col}</th>
-				);
-			});
 			return (
 				<div>
 					<table id="example" className="table">
 						<thead>
 							<tr>
-								{columns}
+								<th>Name</th>
 							</tr>
 						</thead>
-						<RowList rowData={objects} />
+					<tbody>
+					{% for object in data %}
+						<tr>
+							<td>{{object.name}}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+
 					</table>
 				</div>
 			);
@@ -177,7 +98,7 @@
 	});
 
 	ReactDOM.render(
-		<Table data={JSONObject} />,
+		<Table/>,
 		document.getElementById('content')
 		);
 	</script>
