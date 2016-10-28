@@ -52,7 +52,11 @@
                 MASS
             </div>
             <div class = "data-right">
-                {{data.mass}} M<sub>☉</sub>
+                {% if data.mass %}
+                    {{data.mass}} M<sub>☉</sub>
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -60,7 +64,11 @@
                 LUMINOSITY
             </div>
             <div class = "data-right">
-                {{data.luminosity}}
+                {% if data.luminosity %}
+                    {{data.luminosity}}
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -68,7 +76,11 @@
                 RADIUS
             </div>
             <div class = "data-right">
-                {{data.radius}} R<sub>☉</sub>
+                {% if data.radius %}
+                    {{data.radius}} R<sub>☉</sub>
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -76,7 +88,11 @@
                 TEMPERATURE
             </div>
             <div class = "data-right">
-                {{data.temperature}} K
+                {% if data.temperature %}
+                    {{data.temperature}} K
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <div style="clear: both;"></div>
         </div>
@@ -121,17 +137,31 @@
                 DISCOVERED BY
             </div>
             <div>
-
-                {{data.discovered_by.title}}
-         <!-- {% if data.discovered_by %}
-                No Publications
-            {% else %}
-                {{data.discovered_by.title}}
-            {% endif %} -->
+            <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
             </div>
         </div>
     </div>
 </div>
+
+<!--
+<div id="data" class="container-fluid inner">
+    <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='about'>
+            <div class='header'>
+                DISCOVERED BY
+            </div>
+            <div>
+
+                {{data.discovered_by.ref}}
+          {% if data.discovered_by %}
+                No Publications
+            {% else %}
+                {{data.discovered_by.title}}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div> -->
 
 <style>
 html {

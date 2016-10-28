@@ -104,12 +104,7 @@
                 DISCOVERED BY
             </div>
             <div>
-            {{data.discovered_by.title}}
-<!--             {% if data.discovered_by %}
-                No Publications
-            {% else %}
-                {{data.discovered_by.title}}
-            {% endif %} -->
+            <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
             </div>
         </div>
     </div>
