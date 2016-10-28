@@ -4,6 +4,13 @@
 from interswellar import db
 
 
+def shorten(string):
+    """ Shortens a long string to 77 characters or less """
+    if string is None:
+        return None
+    return string[:75] + (string[75:] and '...')
+
+
 class Star(db.Model):
 
     """model for stars"""
@@ -34,14 +41,14 @@ class Exoplanet(db.Model):
     name = db.Column(db.String)
     mass = db.Column(db.Float)
     radius = db.Column(db.Float)
-    orbital_period = db.Column(db.Integer)
+    orbital_period = db.Column(db.Float)
     year_discovered = db.Column(db.Integer)
     star_id = db.Column(db.Integer, db.ForeignKey("stars.id"))
     publication_id = db.Column(db.Integer, db.ForeignKey("publications.id"))
 
     def __repr__(self):
-        return "<Exoplanet(name='%s', mass=%s, radius=%s, orbital_period=%d, "  \
-            "year_discovered=%d)>" % (self.name, self.mass, self.radius,
+        return "<Exoplanet(name='%s', mass=%s, radius=%s, orbital_period=%s, "  \
+            "year_discovered=%s)>" % (self.name, self.mass, self.radius,
                                       self.orbital_period, self.year_discovered)
 
 
@@ -81,5 +88,5 @@ class Publication(db.Model):
     exoplanets = db.relationship("Exoplanet", backref="discovered_by")
 
     def __repr__(self):
-        return "<Publication(title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
-            self.title, self.year, self.authors, self.journal, self.abstract)
+        return "<Publication(ref='%s', title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
+            self.ref, shorten(self.title), self.year, shorten(self.authors), self.journal, shorten(self.abstract))

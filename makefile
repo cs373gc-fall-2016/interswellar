@@ -18,4 +18,8 @@ pydoc:
 	python -m pydoc -w interswellar.models_test
 	python -m pydoc -w interswellar.views_test
 	python -m pydoc -w interswellar.config
-	
+
+clean:
+	rm .coverage
+	rm -f interswellar*.html
+	find . -type d -name __pycache__ | xargs rm -rf
