@@ -8,7 +8,7 @@
 
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/instance.css">
+    <link rel="stylesheet" href="../static/css/details.css">
 
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -25,61 +25,16 @@
 
     <script type="text/javascript">
 
-    var data = {{data|tojson}};
-    console.log(data);
-
     String.prototype.replaceAll = function(search, replacement) {
         var target = this;
         return target.replace(new RegExp(search, 'g'), replacement);
     };
 
 // Fills in data blocks from JSON
-$( document ).ready(function() {
-    {% for key in key_order %}
-    var key = "{{key}}"
-        if (key != "name" && key != "id") {
-                //links!
-                if (key == "constellation") {
-                    data[key] = "<a href='/constellations/" + data[key]['id'] + "'>" + data[key]['abbrev'] + "</a>";
-                };
 
-                if (key == "exoplanets") {
-                    var links = "";
-
-                    $.each(data[key], function(index, planet) {
-                        console.log(planet);
-                        links += "<a href='/exoplanets/" + planet['id'] + "'>" + planet['name'] + "</a><br>";
-                    });
-                    data[key] = links;
-                };
-
-                if (key == "discovered_by") {
-                    data[key] = "<a href='/publications/" + data[key]['id'] + "'>" + data[key]['ref'] + "</a>";
-                };
-
-                if (key == "stars") {
-                    var links = "";
-
-                    $.each(data[key], function(index, star) {
-                        console.log(star);
-                        links += "<a href='/stars/" + star['id'] + "'>" + star['name'] + "</a><br>";
-                    });
-                    data[key] = links;
-                };
-
-                if (key == "star") {
-                    data[key] = "<a href='/stars/" + data[key]['id'] + "'>" + data[key]['name'] + "</a>";
-                };
+    // $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
 
 
-                var str = ("" + data[key]).replaceAll(',', '<br>');
-                var id = ("" + key).replaceAll('_', ' ');
-
-                $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
-            };
-        {% endfor %}
-
-    });
 </script>
 
 <div class="table-title">
@@ -88,9 +43,46 @@ $( document ).ready(function() {
 </div>
 
 <div id="data" class="container-fluid inner">
+    <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='about'>
+            <div class='header'>
+                DATA
+            </div>
+            <div class = "data-left">
+                ABBREVIATION
+            </div>
+            <div class = "data-right">
+                {{data.abbrev}}
+            </div>
+            <br>
+            <div style="clear: both;"></div>
+            <div class = "data-left">
+                MEANING
+            </div>
+            <div class = "data-right">
+                {{data.meaning}}
+            </div>
+            <br>
+            <div style="clear: both;"></div>
+            <div class = "data-left">
+                FAMILY
+            </div>
+            <div class = "data-right">
+                {{data.family}}
+            </div>
+            <br>
+            <div style="clear: both;"></div>
+            <div class = "data-left">
+                AREA
+            </div>
+            <div class = "data-right">
+                {{data.area}}
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
 
-</div>
-</div>
 
 <style>
 html {
