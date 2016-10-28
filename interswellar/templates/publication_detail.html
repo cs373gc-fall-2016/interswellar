@@ -95,11 +95,15 @@
            {% if data.stars %}
                 {% for s in data.stars %}
                 <li>
-                    <a href="/exoplanets/{{s.id}}"> {{s.name}}</a>
+                <div class = 'link'>
+                    <a href="/exoplanets/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                </div>
                 </li>
                 {% endfor %}
             {% else %}
-                No Stars
+                <div class = "no-link">
+                    No Stars
+                </div>
             {% endif %}
             </ul>
         </div>
