@@ -5,7 +5,7 @@ import json
 import traceback
 import html
 import requests
-from interswellar import app
+from interswellar import app, db
 import interswellar.models as models
 from flask import Flask, render_template
 
@@ -19,65 +19,54 @@ def index():
 @app.route('/stars')
 def stars():
     """ Returns stars page """
-    data = requests.get('http://interswellar.me/api/v1/stars').json()
-    for i in range(0, data['num_results']):
-        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('name', data['objects'][i]['name']), ('luminosity', data['objects'][i]['luminosity']), ('mass', data['objects'][i]['mass']), ('radius', data['objects'][i]['radius']), ('temperature', data['objects'][i]['temperature']), ('constellation', data['objects'][i]['constellation']), ('exoplanets', data['objects'][i]['exoplanets']), ('discovered_by', data['objects'][i]['discovered_by'])])
-    return render_template('tables.html', data=data, title="STARS", bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
+    return render_template('star_tables.html')
 
 
 @app.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
-    data = requests.get('http://interswellar.me/api/v1/stars/' + str(variable)).json()
+    data = models.Star.query.get(variable)
     return render_template('star_detail.html', data=data)
 
 
 @app.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    data = requests.get('http://interswellar.me/api/v1/exoplanets').json()
-    for i in range(0, data['num_results']):
-        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('name', data['objects'][i]['name']), ('mass', data['objects'][i]['mass']), ('radius', data['objects'][i]['radius']), ('orbital_period', data['objects'][i]['orbital_period']), ('year_discovered', data['objects'][i]['year_discovered']), ('star', data['objects'][i]['star']), ('discovered_by', data['objects'][i]['discovered_by'])])
-    return render_template('tables.html', data=data, title="EXOPLANETS", bg_url='/static/images/exoplanet.jpg')
+    return render_template('exoplanet_tables.html')
 
 
 @app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    data = requests.get('http://interswellar.me/api/v1/exoplanets/' + str(variable)).json()
+    data = models.Exoplanet.query.get(variable)
     return render_template('exoplanet_detail.html', data=data)
 
 
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
-    data = requests.get('http://interswellar.me/api/v1/constellations').json()
-    for i in range(0, data['num_results']):
-        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('abbrev', data['objects'][i]['abbrev']), ('name', data['objects'][i]['name']), ('family', data['objects'][i]['family']), ('meaning', data['objects'][i]['meaning']), ('area', data['objects'][i]['area']), ('stars', data['objects'][i]['stars'])])
-    return render_template('tables.html', data=data, title="CONSTELLATIONS", bg_url='/static/images/constellation.jpg')
+    return render_template('constellation_tables.html')
+
 
 
 @app.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
-    data = requests.get('http://interswellar.me/api/v1/constellations/' + str(variable)).json()
+    data = models.Constellation.query.get(variable)
     return render_template('constellation_detail.html', data=data)
 
 
 @app.route('/publications')
 def publications():
     """ Returns publications page """
-    data = requests.get('http://interswellar.me/api/v1/publications').json()
+    return render_template('publication_tables.html')
 
-    for i in range(0, data['num_results']):
-        data['objects'][i] = OrderedDict([('id', data['objects'][i]['id']), ('ref', data['objects'][i]['ref']), ('title', data['objects'][i]['title']), ('authors', data['objects'][i]['authors']), ('journal', data['objects'][i]['journal']), ('abstract', data['objects'][i]['abstract']), ('stars', data['objects'][i]['stars']), ('exoplanets', data['objects'][i]['exoplanets'])])
-    return render_template('tables.html', data=data, title="PUBLICATIONS", bg_url='/static/images/publication.jpg')
 
 
 @app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
-    data = requests.get('http://interswellar.me/api/v1/publications/' + str(variable)).json()
+    data = models.Publication.query.get(variable)
     return render_template('publication_detail.html', data=data)
 
 
