@@ -105,7 +105,9 @@
                 STAR
             </div>
             <div>
-                <a href= "/stars/{{data.star.id}}" >{{data.star.name}} </a>
+                <div class = 'link'>
+                    <a href= "/stars/{{data.star.id}}" style= "color:white">{{data.star.name}} </a>
+                </div>
             </div>
         </div>
     </div>
@@ -116,7 +118,16 @@
                 DISCOVERED BY
             </div>
             <div>
-                <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+              <!--  style="color: rgb(255,255,255); text-decoration:underline" -->
+                {% if data.discovered_by.ref %}
+                <div class = 'link'>
+                    <a href="/publications/{{data.discovered_by.id}}" style = "color:white">{{data.discovered_by.ref}}</a>
+                </div>
+                {% else %}
+                    <div class = 'no-link'>
+                        No Publication
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

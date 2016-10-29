@@ -56,7 +56,11 @@
                 REF
             </div>
             <div class = "data-right">
-                {{data.ref}}
+                {% if data.ref %}
+                    {{data.ref}}
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <br>
             <div style="clear: both;"></div>
@@ -64,25 +68,56 @@
                 JOURNAL
             </div>
             <div class = "data-right">
-                {{data.journal}}
+                {% if data.journal %}
+                    {{data.journal}}
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
-            <br>
+<!--             <br>
             <div style="clear: both;"></div>
             <div class = "data-left">
                 AUTHORS
             </div>
             <div class = "data-right">
-                {{data.authors}}
-            </div>
+                {% if data.authors %}
+                    {{data.authors}}
+                {% else %}
+                    Unknown
+                {% endif %}
+            </div> -->
             <br>
             <div style="clear: both;"></div>
             <div class = "data-left">
                 ABSTRACT
             </div>
             <div class = "data-right">
-                {{data.abstract}}
+                {% if data.abstract %}
+                    {{data.abstract}}
+                {% else %}
+                    Unknown
+                {% endif %}
             </div>
             <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='about'>
+            <div class='header'>
+                AUTHORS
+            </div>
+            {% if data.authors %}
+
+                <div class= 'no-link'>
+                    {data.authors}
+                </div>
+
+            {% else %}
+                <div class = 'no-link'>
+                    Unknown
+                </div>
+            {% endif %}
         </div>
     </div>
 
@@ -92,18 +127,24 @@
                 STARS
             </div>
             <ul>
-           {% if data.stars %}
+             {% if data.stars %}
                 {% for s in data.stars %}
-                <li>
-                    <a href="/exoplanets/{{s.id}}"> {{s.name}}</a>
-                </li>
+                    <li>
+                        <div class= 'link'>
+                            <a href="/exoplanets/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                        </div>
+                    </li>
                 {% endfor %}
             {% else %}
-                No Stars
+                <div class= 'no-link'>
+                    No Stars
+                </div>
             {% endif %}
             </ul>
         </div>
     </div
+
+
 
 </div>
 

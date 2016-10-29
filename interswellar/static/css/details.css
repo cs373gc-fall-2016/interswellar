@@ -15,6 +15,26 @@ body {
     margin-bottom: 20px;
 }
 
+/*a:link, a:hover {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 3vw;
+    color: white;
+}*/
+
+.link  {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 2vw;
+    color: white;
+}
+
+.no-link {
+    text-align: center;
+    font-size: 2vw;
+    color: white;
+}
+
 .transparent {
     background-color:rgba(0, 0, 0, .7);
     text-align:center;
