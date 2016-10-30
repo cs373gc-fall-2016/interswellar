@@ -68,7 +68,7 @@
                 <div id='authors' class='no-link'></div>
                 <script>
                     var authors = "{{data.authors}}"
-                    authors = authors.replace("; ", "<br>");
+                    authors = authors.replace(/(; )+/g, "<br>");
                     $('#authors').html(authors);
                 </script>
                 {% else %}
