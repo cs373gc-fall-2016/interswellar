@@ -86,6 +86,7 @@
                 <div class='header'>
                     EXOPLANETS
                 </div>
+                {% if data.exoplanets %}
                 <ul>
                     {% for ep in data.exoplanets %}
                     <li>
@@ -95,6 +96,11 @@
                     </li>
                     {% endfor %}
                 </ul>
+                {% else %}
+                <div class = 'no-link'>
+                    No Exoplanets
+                </div>                
+                {% endif %}
             </div>
         </div>
 
