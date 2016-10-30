@@ -10,162 +10,116 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/details.css">
 
-    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 </head>
 
-<body >
+<body>
     {% include 'nav.html' %}
 
-    <script type="text/javascript">
-
-    String.prototype.replaceAll = function(search, replacement) {
-        var target = this;
-        return target.replace(new RegExp(search, 'g'), replacement);
-    };
-
-// Fills in data blocks from JSON
-
-    // $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
-
-
-</script>
-
-<div class="table-title">
-    {{data.name}}
-    {% if data.title %}
+    <div class="table-title">
+        {% if data.title %}
         {{data.title}}
-    {% else %}
+        {% else %}
         Untitled
-    {% endif %}
-</div>
-
-<div id="data" class="container-fluid inner">
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                DATA
-            </div>
-            <div class = "data-left">
-                REF
-            </div>
-            <div class = "data-right">
-                {% if data.ref %}
-                    {{data.ref}}
-                {% else %}
-                    Unknown
-                {% endif %}
-            </div>
-            <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                JOURNAL
-            </div>
-            <div class = "data-right">
-                {% if data.journal %}
-                    {{data.journal}}
-                {% else %}
-                    Unknown
-                {% endif %}
-            </div>
-<!--             <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                AUTHORS
-            </div>
-            <div class = "data-right">
-                {% if data.authors %}
-                    {{data.authors}}
-                {% else %}
-                    Unknown
-                {% endif %}
-            </div> -->
-            <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                ABSTRACT
-            </div>
-            <div class = "data-right">
-                {% if data.abstract %}
-                    {{data.abstract}}
-                {% else %}
-                    Unknown
-                {% endif %}
-            </div>
-            <div style="clear: both;"></div>
-        </div>
+        {% endif %}
     </div>
 
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                AUTHORS
-            </div>
-            {% if data.authors %}
-
-                <div class= 'no-link'>
-                    {data.authors}
+    <div id="data" class="container-fluid inner">
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    DATA
                 </div>
+                <div class = "data-left">
+                    REF
+                </div>
+                <div class = "data-right">
+                    {% if data.ref %}
+                    {{data.ref}}
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    JOURNAL
+                </div>
+                <div class = "data-right">
+                    {% if data.journal %}
+                    {{data.journal}}
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
 
-            {% else %}
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    AUTHORS
+                </div>
+                {% if data.authors %}
+                <div id='authors' class='no-link'></div>
+                <script>
+                    var authors = "{{data.authors}}"
+                    authors = authors.replace("; ", "<br>");
+                    $('#authors').html(authors);
+                </script>
+                {% else %}
                 <div class = 'no-link'>
                     Unknown
                 </div>
-            {% endif %}
-        </div>
-    </div>
-
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                STARS
+                {% endif %}
             </div>
-            <ul>
-             {% if data.stars %}
-                {% for s in data.stars %}
-                    <li>
-                        <div class= 'link'>
-                            <a href="/exoplanets/{{s.id}}" style = "color:white"> {{s.name}}</a>
-                        </div>
-                    </li>
+        </div>
+
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    STARS
+                </div>
+                <ul>
+                   {% if data.stars %}
+                   {% for s in data.stars %}
+                   <li>
+                    <div class= 'link'>
+                        <a href="/stars/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                    </div>
+                </li>
                 {% endfor %}
-            {% else %}
-                <div class= 'no-link'>
+                {% else %}
+                <div class='no-link'>
                     No Stars
                 </div>
-            {% endif %}
-            </ul>
-        </div>
-    </div
-
-
-
-</div>
-
-<!-- Do we need stars???> -->
-<!-- <div id="data" class="container-fluid inner">
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                STAR
-            </div>
-            <ul>
-            {% for s in data.stars %}
-             <li>
-                <a href="/stars/{{s.id}}"> {{s.name}}</a>
-             </li>
-            {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>
+
+    <div class='col-sm-6 col-lg-8 col-lg-offset-2 buffer'>
+        <div class='about'>
+            <div class='header'>
+                ABSTRACT
+            </div>
+            <div class='abstract'>
+                {% if data.abstract %}
+                {{data.abstract}}
+                {% else %}
+                Unknown
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 </div>
--->
+
+
 
 <style>
 html {

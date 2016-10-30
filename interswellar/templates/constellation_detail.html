@@ -10,85 +10,66 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/details.css">
 
-    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 </head>
 
-<body >
+<body>
     {% include 'nav.html' %}
 
-    <script type="text/javascript">
+    <div class="table-title">
+        {{data.name}}
+    </div>
 
-    String.prototype.replaceAll = function(search, replacement) {
-        var target = this;
-        return target.replace(new RegExp(search, 'g'), replacement);
-    };
-
-// Fills in data blocks from JSON
-
-    // $('#data').append("<div class='col-sm-6 col-lg-4 buffer'><div class='about'><div class='header'>" + id + "</div><p>"+ str +"</p></div></div>");
-
-
-</script>
-
-<div class="table-title">
-    {{data.name}}
-    {{data.title}}
-</div>
-
-<div id="data" class="container-fluid inner">
-    <div class='col-sm-6 col-lg-4 buffer'>
-        <div class='about'>
-            <div class='header'>
-                DATA
+    <div id="data" class="container-fluid inner">
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    DATA
+                </div>
+                <div class = "data-left">
+                    ABBREVIATION
+                </div>
+                <div class = "data-right">
+                    {{data.abbrev}}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    MEANING
+                </div>
+                <div class = "data-right">
+                    {{data.meaning}}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    FAMILY
+                </div>
+                <div class = "data-right">
+                    {{data.family}}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    AREA
+                </div>
+                <div class = "data-right">
+                    {{data.area}}
+                </div>
+                <div style="clear: both;"></div>
             </div>
-            <div class = "data-left">
-                ABBREVIATION
-            </div>
-            <div class = "data-right">
-                {{data.abbrev}}
-            </div>
-            <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                MEANING
-            </div>
-            <div class = "data-right">
-                {{data.meaning}}
-            </div>
-            <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                FAMILY
-            </div>
-            <div class = "data-right">
-                {{data.family}}
-            </div>
-            <br>
-            <div style="clear: both;"></div>
-            <div class = "data-left">
-                AREA
-            </div>
-            <div class = "data-right">
-                {{data.area}}
-            </div>
-            <div style="clear: both;"></div>
         </div>
     </div>
-</div>
 
 
-<style>
-html {
-    background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
-}
-</style>
+    <style>
+    html {
+        background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
+    }
+    </style>
 
 </body>
 </html>

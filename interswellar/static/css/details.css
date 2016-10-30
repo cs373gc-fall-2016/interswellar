@@ -15,12 +15,6 @@ body {
     margin-bottom: 20px;
 }
 
-/*a:link, a:hover {
-    text-decoration: underline;
-    text-align: center;
-    font-size: 3vw;
-    color: white;
-}*/
 
 .link  {
     text-decoration: underline;
@@ -95,6 +89,10 @@ ul,li {
     border-radius: 0 !important;
 }
 
+.abstract {
+    font-size: 1.2em;
+}
+
 @media screen and (max-width: 767px) {
     .buffer {
         padding-top: 10px;
@@ -130,5 +128,4 @@ ul,li {
     .no-link {
         font-size: 1.2em;
     }
-
 }
