@@ -121,7 +121,14 @@ ul,li {
     }
     .data-left {
         font-size: 1.2em;
+    }
 
+    .link {
+        font-size: 1.2em;
+
+    }
+    .no-link {
+        font-size: 1.2em;
     }
 
 }

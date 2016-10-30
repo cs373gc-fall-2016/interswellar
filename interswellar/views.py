@@ -110,9 +110,12 @@ def checkdb():
         traceback.print_exc()
         return 'Database is not ok. Check stdout for details'
 
+
 @app.errorhandler(404)
 def page_not_found(e):
+    """ 404 page"""
     return render_template('404.html', thing='Page'), 404
+
 
 def get_commits():
     """ gets number of commits for each team member """
