@@ -48,7 +48,7 @@
                 </div>
                 <div class = "data-right">
                     {% if data.radius %}
-                    {{data.mass}} R<sub>☉</sub>
+                    {{data.radius}} R<sub>☉</sub>
                     {% else %}
                     Unknown
                     {% endif %}
@@ -63,7 +63,7 @@
                     <span id="op"></span> days
                     <script type="text/javascript">
                     var days = {{data.orbital_period}};
-                    days = (days).toFixed(4);
+                    days = (days).toPrecision(4);
                     $("#op").text(days);
                     </script>
                     {% else %}
