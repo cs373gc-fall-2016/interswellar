@@ -76,10 +76,10 @@
 	<script type="text/babel">
 
     jQuery.extend({
-	    getValues: function(url) {
+	    getValues: function() {
 	        var result = null;
 	        $.ajax({
-	            url: window.location.href.split('/')[0] + "/api/v1/stars?page=1",
+	            url: "/api/v1/stars?page=1",
 	            type: 'get',
 	            dataType: 'json',
 	            async: false,
@@ -171,7 +171,7 @@
 
 	var Table = React.createClass({
 		render: function() {
-			var data = $.getValues("http://www.interswellar.me/api/v1/stars?page=1");
+			var data = $.getValues();
 			// console.log(data);
 			var columns = colNames.map(function(col){
 				return (
