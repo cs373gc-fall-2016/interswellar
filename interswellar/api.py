@@ -83,6 +83,7 @@ apimanager.create_api(
         'stars',
         'stars.id',
         'stars.name',
+        'exoplanets',
         'exoplanets.id',
         'exoplanets.name',
     ]

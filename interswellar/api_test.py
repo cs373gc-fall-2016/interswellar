@@ -30,6 +30,12 @@ class APITest(unittest.TestCase):
             id=2, name='constel', abbrev='cst', family='cf',
             meaning='A constellation', area=100
         )
+        publ = models.Publication(
+            id=1, ref='2008A&A...474..293B', title='Local Star Discovered',
+            authors='Neil deGrasse Tyson', journal='Astronomy & Astrophysics',
+            abstract='Former toaster in sky is actually a star'
+        )
+
 
         planet.star = star
         star.constellation = constel
@@ -39,6 +45,7 @@ class APITest(unittest.TestCase):
         db.session.add(star)
         db.session.add(planet)
         db.session.add(constel)
+        db.session.add(publ)
         db.session.commit()
 
     @classmethod
@@ -74,3 +81,37 @@ class APITest(unittest.TestCase):
         data = json.loads(rv.data.decode('utf-8'))
         self.assertEqual(data['exoplanets'][0]['id'], 2)
         self.assertEqual(data['constellation']['id'], 2)
+
+    def test_planet_single(self):
+        rv = self.app.get('/api/v1/exoplanets')
+        self.assertEqual(rv.mimetype, 'application/json')
+        data = json.loads(rv.data.decode('utf-8'))
+        self.assertEqual(data['objects'][0]['id'], 2)
+        self.assertEqual(data['objects'][0]['name'], 'planet')
+        self.assertEqual(data['objects'][0]['mass'], 1.0)
+        self.assertEqual(data['objects'][0]['radius'], 1.0)
+        self.assertEqual(data['objects'][0]['orbital_period'], 1000000)
+        self.assertEqual(data['objects'][0]['year_discovered'], 2000)
+
+    def test_constellation_single(self):
+        rv = self.app.get('/api/v1/constellations')
+        self.assertEqual(rv.mimetype, 'application/json')
+        data = json.loads(rv.data.decode('utf-8'))
+        self.assertEqual(data['objects'][0]['id'], 2)
+        self.assertEqual(data['objects'][0]['name'], 'constel')
+        self.assertEqual(data['objects'][0]['abbrev'], 'cst')
+        self.assertEqual(data['objects'][0]['family'], 'cf')
+        self.assertEqual(data['objects'][0]['meaning'], 'A constellation')
+        self.assertEqual(data['objects'][0]['area'], 100 )
+
+    def test_publication_single(self):
+        rv = self.app.get('/api/v1/publications')
+        self.assertEqual(rv.mimetype, 'application/json')
+        data = json.loads(rv.data.decode('utf-8'))
+        self.assertEqual(data['objects'][0]['id'], 1)
+        self.assertEqual(data['objects'][0]['ref'], '2008A&A...474..293B')
+        self.assertEqual(data['objects'][0]['title'], 'Local Star Discovered')
+        self.assertEqual(data['objects'][0]['authors'], 'Neil deGrasse Tyson')
+        self.assertEqual(data['objects'][0]['journal'], 'Astronomy & Astrophysics')
+        self.assertEqual(data['objects'][0]['abstract'], 'Former toaster in sky is actually a star')
+
