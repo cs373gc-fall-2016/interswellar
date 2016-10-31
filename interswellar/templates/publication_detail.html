@@ -28,7 +28,7 @@
     </div>
 
     <div id="data" class="container-fluid inner">
-        <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='col-sm-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     DATA
@@ -59,27 +59,7 @@
             </div>
         </div>
 
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    AUTHORS
-                </div>
-                {% if data.authors %}
-                <div id='authors' class='no-link'></div>
-                <script>
-                    var authors = "{{data.authors}}"
-                    authors = authors.replace(/(; )+/g, "<br>");
-                    $('#authors').html(authors);
-                </script>
-                {% else %}
-                <div class = 'no-link'>
-                    Unknown
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='col-sm-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     STARS
@@ -102,7 +82,31 @@
         </div>
     </div>
 
-    <div class='col-sm-6 col-lg-8 col-lg-offset-2 buffer'>
+    <div class="clearfix visible-md visible-sm visible-lg"></div>
+
+    <div class='col-sm-6 col-lg-6 buffer'>
+        <div class='about'>
+            <div class='header'>
+                AUTHORS
+            </div>
+            {% if data.authors %}
+            <div id='authors' class='no-link'></div>
+            <script>
+                var authors = "{{data.authors}}"
+                authors = authors.replace(/(; )+/g, "<br>");
+                $('#authors').html(authors);
+            </script>
+            {% else %}
+            <div class = 'no-link'>
+                Unknown
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <div class='col-sm-6 col-lg-6 buffer'>
         <div class='about'>
             <div class='header'>
                 ABSTRACT
@@ -122,9 +126,9 @@
 
 
 <style>
-html {
-    background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
-}
+    html {
+        background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
+    }
 </style>
 
 </body>
