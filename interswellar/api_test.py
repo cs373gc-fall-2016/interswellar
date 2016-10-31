@@ -17,7 +17,6 @@ class APITest(unittest.TestCase):
             id=1, name='rouge_star', mass=1.0, luminosity=1.0, temperature=1000,
             radius=1.0
         )
-
         star = models.Star(
             id=2, name='star', mass=2.0, luminosity=2.0, temperature=2000,
             radius=2.0
@@ -36,9 +35,9 @@ class APITest(unittest.TestCase):
             abstract='Former toaster in sky is actually a star'
         )
 
-
         planet.star = star
         star.constellation = constel
+#        constel.stars = [rouge_star, star]
 
         db.create_all()
         db.session.add(rouge_star)
@@ -104,6 +103,14 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['objects'][0]['meaning'], 'A constellation')
         self.assertEqual(data['objects'][0]['area'], 100 )
 
+    def test_constellation_relationship(self):
+        rv = self.app.get('/api/v1/constellations')
+        self.assertEqual(rv.mimetype, 'application/json')
+        data = json.loads(rv.data.decode('utf-8'))
+        constel = data['objects'][0]
+#        self.assertEqual(constel[stars][0]['id'], 1)
+#        print(constel) Not wanted behavior. Two attributes one object when adding list of two obj
+    
     def test_publication_single(self):
         rv = self.app.get('/api/v1/publications')
         self.assertEqual(rv.mimetype, 'application/json')
