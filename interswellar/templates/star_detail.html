@@ -104,6 +104,8 @@
             </div>
         </div>
 
+        <div class="clearfix visible-md visible-sm"></div>
+
         <div class='col-sm-6 col-lg-4 buffer'>
             <div class='about'>
                 <div class='header'>
@@ -137,8 +139,10 @@
                 {% endif %}
             </div>
         </div>
+    </div>
 
-        <div class='col-lg-12 buffer'>
+    <div class="row">
+        <div class='col-sm-12 col-lg-12 buffer'>
             <div class='about'>
                 <div class='header'>
                     IMAGE
@@ -146,17 +150,18 @@
                 <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
                 <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
                 <script type="text/javascript">
-                var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1, target: "{{data.name}}"});
+                    var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1, target: "{{data.name}}"});
                 </script>
             </div>
         </div>
     </div>
+</div>
 
-    <style>
+<style>
     html {
         background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
     }
-    </style>
+</style>
 
 </body>
 </html>
