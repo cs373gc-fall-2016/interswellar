@@ -8,7 +8,18 @@ body {
     text-align: center;
     font-family: "lato", sans-serif;
     font-weight: 500;
-    font-size: 3vw;
+    font-size: 2em;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+    margin-bottom: 20px;
+}
+
+.pub-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 3.5vw;
     color: #FFF;
     padding: 20px;
     background-color: black;
