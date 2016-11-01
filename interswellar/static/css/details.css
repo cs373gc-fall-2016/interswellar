@@ -8,7 +8,18 @@ body {
     text-align: center;
     font-family: "lato", sans-serif;
     font-weight: 500;
-    font-size: 3vw;
+    font-size: 2em;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+    margin-bottom: 20px;
+}
+
+.pub-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 3.5vw;
     color: #FFF;
     padding: 20px;
     background-color: black;
@@ -38,6 +49,14 @@ body {
     color: white;
 }
 
+.auth-list {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 1.3em;
+    color: white;
+}
+
 .transparent {
     background-color:rgba(0, 0, 0, .7);
     text-align:center;
@@ -62,6 +81,9 @@ body {
     text-align: center;
 }
 
+.center {
+    text-align: center;
+}
 .about {
     padding: 20px;
     background-color: #000;
@@ -99,6 +121,7 @@ ul,li {
 
 .abstract {
     font-size: 1.2em;
+    text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -116,5 +139,9 @@ ul,li {
     .col-md-12 {
         padding-right: 0px;
         padding-left: 0px;
+    }
+
+    .header {
+        width: 100%;
     }
 }
