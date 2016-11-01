@@ -113,7 +113,7 @@
                 </div>
                 {% if data.constellation %}
                 <div class = 'link'>
-                    <a href="/publications/{{data.discovered_by.id}}" style = "color:white">{{constellation.id}}</a>
+                    <a href="/constellations/{{data.constellation.id}}" style = "color:white">{{data.constellation.name}}</a>
                 </div>
                 {% else %}
                 <div class = 'no-link'>
@@ -139,29 +139,29 @@
                 {% endif %}
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class='col-sm-12 col-lg-12 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    IMAGE
-                </div>
-                <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
-                <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
-                <script type="text/javascript">
+        <div class="row">
+            <div class='col-sm-12 col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        IMAGE
+                    </div>
+                    <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
+                    <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
+                    <script type="text/javascript">
                     var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1, target: "{{data.name}}"});
-                </script>
+                    </script>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
+
+    <style>
     html {
         background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
     }
-</style>
+    </style>
 
 </body>
 </html>

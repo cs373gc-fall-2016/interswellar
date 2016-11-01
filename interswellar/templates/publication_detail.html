@@ -65,71 +65,75 @@
                     STARS
                 </div>
                 <ul>
-                   {% if data.stars %}
-                   {% for s in data.stars %}
-                   <li>
-                    <div class= 'link'>
-                        <a href="/stars/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                    {% if data.stars %}
+                    {% if data.stars|length > 10 %}
+                    <div class="no-link">
+                    {% for s in data.stars %}
+                        <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
+                    {% endfor %}   
                     </div>
-                </li>
-                {% endfor %}
-                {% else %}
-                <div class='no-link'>
-                    No Stars
-                </div>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
 
-    <div class="clearfix visible-md visible-sm visible-lg"></div>
-
-    <div class='col-sm-6 col-lg-6 buffer'>
-        <div class='about'>
-            <div class='header'>
-                AUTHORS
+                    {% else %}
+                    {% for s in data.stars %}
+                    <li>
+                        <div class= 'link'>
+                            <a href="/stars/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% else %}
+                    <div class='no-link'>
+                        No Stars
+                    </div>
+                    {% endif %}
+                </ul>
             </div>
-            {% if data.authors %}
-            <div id='authors' class='no-link'></div>
-            <script>
+        </div>
+
+        <div class="clearfix visible-md visible-sm visible-lg"></div>
+
+        <div class='col-sm-6 col-lg-6 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    AUTHORS
+                </div>
+                {% if data.authors %}
+                <div id='authors' class='no-link'></div>
+                <script>
                 var authors = "{{data.authors}}"
                 authors = authors.replace(/(; )+/g, "<br>");
                 $('#authors').html(authors);
-            </script>
-            {% else %}
-            <div class = 'no-link'>
-                Unknown
-            </div>
-            {% endif %}
-        </div>
-    </div>
-
-
-
-    <div class='col-sm-6 col-lg-6 buffer'>
-        <div class='about'>
-            <div class='header'>
-                ABSTRACT
-            </div>
-            <div class='abstract'>
-                {% if data.abstract %}
-                {{data.abstract}}
+                </script>
                 {% else %}
-                Unknown
+                <div class = 'no-link'>
+                    Unknown
+                </div>
                 {% endif %}
             </div>
         </div>
+
+        <div class='col-sm-6 col-lg-6 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    ABSTRACT
+                </div>
+                <div class='abstract'>
+                    {% if data.abstract %}
+                    {{data.abstract}}
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
-
-
-
-<style>
+    <style>
     html {
         background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
     }
-</style>
+    </style>
 
 </body>
 </html>

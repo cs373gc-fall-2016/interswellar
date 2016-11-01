@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/details.css">
 
+    <link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
+
     <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -24,7 +26,8 @@
     </div>
 
     <div id="data" class="container-fluid inner">
-        <div class='col-sm-6 col-lg-4 buffer'>
+
+        <div class='col-sm-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     DATA
@@ -62,8 +65,54 @@
                 <div style="clear: both;"></div>
             </div>
         </div>
-    </div>
 
+        <div class='col-sm-6 col-lg-6 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    IMAGE
+                </div>
+                <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
+                <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
+                <script type="text/javascript">
+                var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:10, target: "{{data.name}}"});
+                </script>
+            </div>
+        </div>
+
+        <div class='col-sm-6 col-lg-8 col-lg-offset-2 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    STARS
+                </div>
+                <ul>
+                    {% if data.stars %}
+                    {% if data.stars|length > 10 %}
+                    <div class="no-link">
+                        {% for s in data.stars %}
+                        <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
+                        {% endfor %}   
+                    </div>
+
+                    {% else %}
+                    {% for s in data.stars %}
+                    <li>
+                        <div class= 'link'>
+                            <a href="/stars/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% else %}
+                    <div class='no-link'>
+                        No Stars
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
 
     <style>
     html {

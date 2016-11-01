@@ -23,6 +23,16 @@ body {
     color: white;
 }
 
+.link-list {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 2vw;
+    color: white;
+    white-space: nowrap;
+}
+
 .no-link {
     text-align: center;
     font-size: 2vw;
@@ -112,20 +122,20 @@ ul,li {
 /*    .container-fluid {
         padding-right: 0px;
         padding-left: 0px;
-    }*/
+        }*/
 
-    .data-right {
-        font-size: 1.2em;
-    }
-    .data-left {
-        font-size: 1.2em;
-    }
+        .data-right {
+            font-size: 1.2em;
+        }
+        .data-left {
+            font-size: 1.2em;
+        }
 
-    .link {
-        font-size: 1.2em;
+        .link {
+            font-size: 1.2em;
 
+        }
+        .no-link {
+            font-size: 1.2em;
+        }
     }
-    .no-link {
-        font-size: 1.2em;
-    }
-}
