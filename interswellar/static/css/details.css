@@ -38,6 +38,14 @@ body {
     color: white;
 }
 
+.auth-list {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 1.3em;
+    color: white;
+}
+
 .transparent {
     background-color:rgba(0, 0, 0, .7);
     text-align:center;
@@ -62,6 +70,9 @@ body {
     text-align: center;
 }
 
+.center {
+    text-align: center;
+}
 .about {
     padding: 20px;
     background-color: #000;
@@ -99,6 +110,7 @@ ul,li {
 
 .abstract {
     font-size: 1.2em;
+    text-align: center;
 }
 
 @media screen and (max-width: 767px) {

@@ -102,22 +102,20 @@
                 </div>
                 {% if data.authors %}
 
-                <div id='authors'></div>
+                <div id='authors' class='center'></div>
                 <script>
                 var authors = "{{data.authors}}";
                 authorsArray = authors.split("; ");
                 if (authorsArray.length > 10) {
-                    // authors = authors.replace(/(; )+/g, "<br>");
-                    for (var i = Things.length - 1; i >= 0; i--) {
-                        Things[i]
+                    console.log(authorsArray);
+                    for (var i in authorsArray) {
+                        $('#authors').append("<span class='auth-list'>" + authorsArray[i] + "</span>");
                     };
-                    $('#authors').append("<span>" + authors + "</span>");
-
                 } else {
-                    //newline per
-
+                    for (var i in authorsArray) {
+                        $('#authors').append("<span class='no-link'>" + authorsArray[i] + "<br /></span>");
+                    };
                 }
-                // $('#authors').html(authors);
                 </script>
                 {% else %}
                 <div class = 'no-link'>
