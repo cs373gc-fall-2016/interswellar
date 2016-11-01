@@ -70,9 +70,9 @@
                     {% if data.stars %}
                     {% if data.stars|length > 10 %}
                     <div class="no-link">
-                    {% for s in data.stars %}
+                        {% for s in data.stars %}
                         <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
-                    {% endfor %}   
+                        {% endfor %}   
                     </div>
 
                     {% else %}
@@ -101,11 +101,23 @@
                     AUTHORS
                 </div>
                 {% if data.authors %}
-                <div id='authors' class='no-link'></div>
+
+                <div id='authors'></div>
                 <script>
-                var authors = "{{data.authors}}"
-                authors = authors.replace(/(; )+/g, "<br>");
-                $('#authors').html(authors);
+                var authors = "{{data.authors}}";
+                authorsArray = authors.split("; ");
+                if (authorsArray.length > 10) {
+                    // authors = authors.replace(/(; )+/g, "<br>");
+                    for (var i = Things.length - 1; i >= 0; i--) {
+                        Things[i]
+                    };
+                    $('#authors').append("<span>" + authors + "</span>");
+
+                } else {
+                    //newline per
+
+                }
+                // $('#authors').html(authors);
                 </script>
                 {% else %}
                 <div class = 'no-link'>
@@ -124,7 +136,9 @@
                     {% if data.abstract %}
                     {{data.abstract}}
                     {% else %}
-                    Unknown
+                    <div class = 'no-link'>
+                        Unknown
+                    </div>
                     {% endif %}
                 </div>
             </div>

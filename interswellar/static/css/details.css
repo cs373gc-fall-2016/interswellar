@@ -15,11 +15,10 @@ body {
     margin-bottom: 20px;
 }
 
-
 .link  {
     text-decoration: underline;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1vw;
     color: white;
 }
 
@@ -28,15 +27,24 @@ body {
     padding-left: 10px;
     text-decoration: underline;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1vw;
     color: white;
     white-space: nowrap;
 }
 
 .no-link {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1vw;
     color: white;
+}
+
+.big-author-list{
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    /*font-size: 1vw;*/
+    color: white;
+    /*white-space: nowrap;*/
 }
 
 .transparent {
@@ -48,14 +56,14 @@ body {
 }
 
 .data-left {
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
     float: left;
 }
 
 .data-right {
     float: right;
-    font-size: 2vw;
+    font-size: 1vw;
 }
 
 .centered {
