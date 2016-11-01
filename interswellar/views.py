@@ -7,7 +7,7 @@ import html
 import requests
 from interswellar import app, db
 import interswellar.models as models
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 
 @app.route('/')
