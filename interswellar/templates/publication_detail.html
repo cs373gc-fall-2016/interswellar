@@ -21,7 +21,7 @@
 <body>
     {% include 'nav.html' %}
 
-    <div class="table-title">
+    <div class="pub-title">
         {% if data.title %}
         {{data.title}}
         {% else %}
@@ -70,9 +70,9 @@
                     {% if data.stars %}
                     {% if data.stars|length > 10 %}
                     <div class="no-link">
-                    {% for s in data.stars %}
+                        {% for s in data.stars %}
                         <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
-                    {% endfor %}   
+                        {% endfor %}   
                     </div>
 
                     {% else %}
@@ -101,11 +101,21 @@
                     AUTHORS
                 </div>
                 {% if data.authors %}
-                <div id='authors' class='no-link'></div>
+
+                <div id='authors' class='center'></div>
                 <script>
-                var authors = "{{data.authors}}"
-                authors = authors.replace(/(; )+/g, "<br>");
-                $('#authors').html(authors);
+                var authors = "{{data.authors}}";
+                authorsArray = authors.split("; ");
+                if (authorsArray.length > 10) {
+                    console.log(authorsArray);
+                    for (var i in authorsArray) {
+                        $('#authors').append("<span class='auth-list'>" + authorsArray[i] + "</span>");
+                    };
+                } else {
+                    for (var i in authorsArray) {
+                        $('#authors').append("<span class='no-link'>" + authorsArray[i] + "<br /></span>");
+                    };
+                }
                 </script>
                 {% else %}
                 <div class = 'no-link'>
@@ -124,7 +134,9 @@
                     {% if data.abstract %}
                     {{data.abstract}}
                     {% else %}
-                    Unknown
+                    <div class = 'no-link'>
+                        Unknown
+                    </div>
                     {% endif %}
                 </div>
             </div>

@@ -8,18 +8,28 @@ body {
     text-align: center;
     font-family: "lato", sans-serif;
     font-weight: 500;
-    font-size: 3vw;
+    font-size: 2em;
     color: #FFF;
     padding: 20px;
     background-color: black;
     margin-bottom: 20px;
 }
 
+.pub-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 3.5vw;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+    margin-bottom: 20px;
+}
 
-.link  {
+.link {
     text-decoration: underline;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.3em;
     color: white;
 }
 
@@ -28,14 +38,22 @@ body {
     padding-left: 10px;
     text-decoration: underline;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.3em;
     color: white;
     white-space: nowrap;
 }
 
 .no-link {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.3em;
+    color: white;
+}
+
+.auth-list {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 1.3em;
     color: white;
 }
 
@@ -48,22 +66,24 @@ body {
 }
 
 .data-left {
-    font-size: 2vw;
+    font-size: 1.3em;
     font-weight: bold;
     float: left;
 }
 
 .data-right {
     float: right;
-    font-size: 2vw;
+    font-size: 1.3em;
 }
 
 .centered {
-    /*background-color:rgba(0, 0, 0, .7);*/
     margin-top: 50px;
     text-align: center;
 }
 
+.center {
+    text-align: center;
+}
 .about {
     padding: 20px;
     background-color: #000;
@@ -101,6 +121,7 @@ ul,li {
 
 .abstract {
     font-size: 1.2em;
+    text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -119,23 +140,8 @@ ul,li {
         padding-right: 0px;
         padding-left: 0px;
     }
-/*    .container-fluid {
-        padding-right: 0px;
-        padding-left: 0px;
-        }*/
 
-        .data-right {
-            font-size: 1.2em;
-        }
-        .data-left {
-            font-size: 1.2em;
-        }
-
-        .link {
-            font-size: 1.2em;
-
-        }
-        .no-link {
-            font-size: 1.2em;
-        }
+    .header {
+        width: 100%;
     }
+}
