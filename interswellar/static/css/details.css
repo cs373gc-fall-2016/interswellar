@@ -140,4 +140,8 @@ ul,li {
         padding-right: 0px;
         padding-left: 0px;
     }
+
+    .header {
+        width: 100%;
+    }
 }
