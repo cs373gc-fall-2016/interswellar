@@ -1,52 +1,61 @@
-import unittest
 import os
-import json
 
-from interswellar import app, db, load_config
-import interswellar.models as models
+from flask_testing import TestCase
+
+from interswellar import create_app
+from interswellar.models import db, Star, Exoplanet, Constellation, Publication
 
 
-class APITest(unittest.TestCase):
+class APITest(TestCase):
 
     ''' Tests API routes '''
 
-    @classmethod
-    def setUpClass(cls):
-        load_config(os.environ.get('APP_ENV', 'test'))
-        star1 = models.Star(
+    def create_app(self):
+        return create_app(os.environ.get('APP_ENV', 'test'))
+
+    def setUp(self):
+        db.create_all()
+        self.populateDB()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+    def populateDB(self):
+        star1 = Star(
             id=1, name='rouge_star', mass=1.0, luminosity=1.0, temperature=1000,
             radius=1.0
         )
-        star2 = models.Star(
+        star2 = Star(
             id=2, name='star',  mass=2.0, luminosity=2.0, temperature=2000,
             radius=2.0
         )
-        planet1 = models.Exoplanet(
+        planet1 = Exoplanet(
             id=1, name='earth',  mass=1.0, radius=1.0, orbital_period=365,
             year_discovered=0
         )
-        planet2 = models.Exoplanet(
+        planet2 = Exoplanet(
             id=2, name='planet', mass=1.0, radius=1.0, orbital_period=1000000,
             year_discovered=2000
         )
-        planet3 = models.Exoplanet(
+        planet3 = Exoplanet(
             id=3, name='jonathan', mass=88.8, radius=44.4, orbital_period=0,
             year_discovered=1994
         )
-        constel1 = models.Constellation(
+        constel1 = Constellation(
             id=1, name='little_dipper', abbrev='ld', family='dd',
             meaning='Little Dipper', area=100
         )
-        constel2 = models.Constellation(
+        constel2 = Constellation(
             id=2, name='big_dipper',    abbrev='bd', family='dd',
             meaning='Big Dipper',    area=300
         )
-        publ1 = models.Publication(
+        publ1 = Publication(
             id=1, ref='2008A&A...474..293B', title='Local Star Discovered',
             authors='Neil deGrasse Tyson', journal='Astronomy & Astrophysics',
             abstract='Former toaster in sky is actually a star'
         )
-        publ2 = models.Publication(
+        publ2 = Publication(
             id=2, ref='2009A&A...434..421A', title='Bountiful Discoveries made',
             authors='Monkey Monkey, Bill Nye', journal='Astronomy & Astrophycis',
             abstract='This publication lists discoveries of constellation, planets, and stars'
@@ -59,7 +68,6 @@ class APITest(unittest.TestCase):
         star2.exoplanets = [planet1, planet2]
         constel1.stars = [star1, star2]
 
-        db.create_all()
         db.session.add(star1)
         db.session.add(star2)
         db.session.add(planet1)
@@ -71,18 +79,10 @@ class APITest(unittest.TestCase):
         db.session.add(publ2)
         db.session.commit()
 
-    @classmethod
-    def tearDownClass(cls):
-        db.session.close()
-        db.drop_all()
-
-    def setUp(self):
-        self.app = app.test_client()
-
     def test_stars_all(self):
-        rv = self.app.get('/api/v1/stars')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/stars')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['num_results'], 2)
         star1 = data['objects'][0]
         star2 = data['objects'][1]
@@ -95,9 +95,9 @@ class APITest(unittest.TestCase):
         self.assertEqual(star1['temperature'], 1000)
 
     def test_stars_single(self):
-        rv = self.app.get('/api/v1/stars/1')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/stars/1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 1)
         self.assertEqual(data['name'], 'rouge_star')
         self.assertEqual(data['mass'], 1.0)
@@ -106,18 +106,18 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['radius'], 1.0)
 
     def test_stars_relationship(self):
-        rv = self.app.get('/api/v1/stars/2')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/stars/2')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['exoplanets'][0]['id'], 1)
         self.assertEqual(data['exoplanets'][1]['id'], 2)
         self.assertEqual(data['constellation']['id'], 1)
         self.assertEqual(data['discovered_by']['id'], 1)
 
     def test_planet_all(self):
-        rv = self.app.get('/api/v1/exoplanets')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/exoplanets')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['num_results'], 3)
         planet1 = data['objects'][0]
         planet2 = data['objects'][1]
@@ -132,9 +132,9 @@ class APITest(unittest.TestCase):
         self.assertEqual(planet1['year_discovered'], 0)
 
     def test_planet_single(self):
-        rv = self.app.get('/api/v1/exoplanets/2')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/exoplanets/2')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 2)
         self.assertEqual(data['name'], 'planet')
         self.assertEqual(data['mass'], 1.0)
@@ -143,17 +143,17 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['year_discovered'], 2000)
 
     def test_planet_relationship(self):
-        rv = self.app.get('/api/v1/exoplanets/3')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/exoplanets/3')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 3)
         self.assertEqual(data['star']['id'], 1)
         self.assertEqual(data['discovered_by']['id'], 2)
 
     def test_constellation_all(self):
-        rv = self.app.get('/api/v1/constellations')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/constellations')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['num_results'], 2)
         const1 = data['objects'][0]
         const2 = data['objects'][1]
@@ -165,9 +165,9 @@ class APITest(unittest.TestCase):
         self.assertEqual(const2['area'], 300)
 
     def test_constellation_single(self):
-        rv = self.app.get('/api/v1/constellations/1')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/constellations/1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 1)
         self.assertEqual(data['name'], 'little_dipper')
         self.assertEqual(data['abbrev'], 'ld')
@@ -176,17 +176,17 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['area'], 100)
 
     def test_constellation_relationship(self):
-        rv = self.app.get('/api/v1/constellations/1')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/constellations/1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 1)
         self.assertEqual(data['stars'][0]['id'], 1)
         self.assertEqual(data['stars'][1]['id'], 2)
 
     def test_publication_single(self):
-        rv = self.app.get('/api/v1/publications/1')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/publications/1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 1)
         self.assertEqual(data['ref'], '2008A&A...474..293B')
         self.assertEqual(data['title'], 'Local Star Discovered')
@@ -196,9 +196,9 @@ class APITest(unittest.TestCase):
             data['abstract'], 'Former toaster in sky is actually a star')
 
     def test_publication_relationship(self):
-        rv = self.app.get('/api/v1/publications/1')
-        self.assertEqual(rv.mimetype, 'application/json')
-        data = json.loads(rv.data.decode('utf-8'))
+        resp = self.client.get('/api/v1/publications/1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
         self.assertEqual(data['id'], 1)
         stars = data['stars']
         planets = data['exoplanets']
@@ -208,3 +208,4 @@ class APITest(unittest.TestCase):
             self.assertEqual(stars[i]['id'], i + 1)
             self.assertEqual(planets[i]['id'], i + 1)
         self.assertEqual(planets[0]['name'], 'earth')
+

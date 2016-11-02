@@ -1,18 +1,20 @@
-# pylint: disable=missing-docstring,unused-variable
-import unittest
-from interswellar import app
+import os
+
+from flask_testing import TestCase
+
+from interswellar import create_app
 import interswellar.views as views
 
-
-class ViewsTest(unittest.TestCase):
+class ViewsTest(TestCase):
 
     """ Tests the views """
 
-    def setUp(self):
-        self.app = app.test_client()
+    def create_app(self):
+        return create_app(os.environ.get('APP_ENV', 'test'))
 
     def test_empty_db(self):
-        view = self.app.get('/')
+        view = self.client.get('/')
+        self.assertEqual(view.status, '200 OK')
         self.assertNotEqual(view.data, '')
 
     def test_get_commits_contents(self):

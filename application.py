@@ -1,9 +1,9 @@
 """ Launch the application """
 import os
-from interswellar import app as application
-from interswellar import load_config
+from interswellar import create_app
 
-load_config(os.environ.get('APP_ENV', 'dev'))
+#pylint:disable=invalid-name
+application = create_app(os.environ.get('APP_ENV', 'dev'))
 
 if __name__ == "__main__":
     application.config["JSON_SORT_KEYS"] = False

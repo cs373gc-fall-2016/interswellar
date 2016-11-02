@@ -1,22 +1,25 @@
-""" The views for the app """
+""" The public views for the app """
 from collections import defaultdict
 import json
 import traceback
 import html
+
 import requests
-from interswellar import app
+from flask import Blueprint, render_template
+
 import interswellar.models as models
-from flask import render_template
 
+#pylint:disable=invalid-name
+public_views = Blueprint('public_views', __name__)
 
-@app.route('/')
+@public_views.route('/')
 def index():
     """ Returns splash page """
     return render_template('index.html')
 
 
-@app.route('/star')
-@app.route('/stars')
+@public_views.route('/star')
+@public_views.route('/stars')
 def stars():
     """ Returns stars page """
 
@@ -26,8 +29,8 @@ def stars():
     )
 
 
-@app.route('/star/<int:variable>')
-@app.route('/stars/<int:variable>')
+@public_views.route('/star/<int:variable>')
+@public_views.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
     data = models.Star.query.get(variable)
@@ -36,15 +39,15 @@ def star(variable):
     return render_template('star_detail.html', data=data)
 
 
-@app.route('/exoplanet')
-@app.route('/exoplanets')
+@public_views.route('/exoplanet')
+@public_views.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
     return render_template('exoplanet_tables.html', bg_url='/static/images/exoplanet.jpg')
 
 
-@app.route('/exoplanet/<int:variable>')
-@app.route('/exoplanets/<int:variable>')
+@public_views.route('/exoplanet/<int:variable>')
+@public_views.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
     data = models.Exoplanet.query.get(variable)
@@ -53,16 +56,16 @@ def exoplanet(variable):
     return render_template('exoplanet_detail.html', data=data)
 
 
-@app.route('/constellation')
-@app.route('/constellations')
+@public_views.route('/constellation')
+@public_views.route('/constellations')
 def constellations():
     """ Returns constellations page """
 
     return render_template('constellation_tables.html', bg_url='/static/images/constellation.jpg')
 
 
-@app.route('/constellation/<int:variable>')
-@app.route('/constellations/<int:variable>')
+@public_views.route('/constellation/<int:variable>')
+@public_views.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
 
@@ -72,16 +75,16 @@ def constellation(variable):
     return render_template('constellation_detail.html', data=data)
 
 
-@app.route('/publication')
-@app.route('/publications')
+@public_views.route('/publication')
+@public_views.route('/publications')
 def publications():
     """ Returns publications page """
 
     return render_template('publication_tables.html', bg_url='/static/images/publication.jpg')
 
 
-@app.route('/publication/<int:variable>')
-@app.route('/publications/<int:variable>')
+@public_views.route('/publication/<int:variable>')
+@public_views.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
 
@@ -91,7 +94,7 @@ def publication(variable):
     return render_template('publication_detail.html', data=data)
 
 
-@app.route('/about')
+@public_views.route('/about')
 def about():
     """ Returns about page with commit and issues count"""
 
@@ -114,7 +117,7 @@ def about():
                            total_issues=get_total_issues())
 
 
-@app.route('/checkdb')
+@public_views.route('/checkdb')
 def checkdb():
     """ Queries the db for some stars to see if it's okay"""
     try:
@@ -128,7 +131,7 @@ def checkdb():
 
 
 # pylint:disable=unused-argument,invalid-name
-@app.errorhandler(404)
+@public_views.errorhandler(404)
 def page_not_found(e):
     """ 404 page"""
     return render_template('404.html', thing='Page'), 404
