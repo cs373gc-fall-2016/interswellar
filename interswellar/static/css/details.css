@@ -41,6 +41,7 @@ body {
 }
 
 .drop {
+    padding: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
     background: #fff;
