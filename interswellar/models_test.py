@@ -23,7 +23,7 @@ class ModelsTest(unittest.TestCase):
 
     def test_stars1(self):
         star1 = models.Star(id=1, name='Sun', mass=1.0,
-                           luminosity=1.0, temperature=5000, radius=1.0)
+                            luminosity=1.0, temperature=5000, radius=1.0)
         star2 = models.Star(id=3, name='Lummes', mass=5.0,
                             luminosity=3.0, temperature=6000, radius=2.7)
         db.session.add(star1)
@@ -36,7 +36,7 @@ class ModelsTest(unittest.TestCase):
 
     def test_stars2(self):
         star = models.Star(id=2, name='Aries', mass=3.0,
-                            luminosity=4.0, temperature=7000, radius=3.0)
+                           luminosity=4.0, temperature=7000, radius=3.0)
         db.session.add(star)
         db.session.commit()
         stars = models.Star.query.all()
@@ -46,7 +46,7 @@ class ModelsTest(unittest.TestCase):
 
     def test_stars3(self):
         star = models.Star(id=2, name='Aries', mass=3.0,
-                            luminosity=4.0, temperature=7000, radius=3.0)
+                           luminosity=4.0, temperature=7000, radius=3.0)
         db.session.add(star)
         db.session.commit()
         stars = models.Star.query.all()
@@ -59,7 +59,7 @@ class ModelsTest(unittest.TestCase):
         star2 = models.Star(id=3, name='Lummes', mass=5.0,
                             luminosity=3.0, temperature=6000, radius=2.7)
         constellation = models.Constellation(
-            id=1, name='big dipper', abbrev='big dp', 
+            id=1, name='big dipper', abbrev='big dp',
             family='arris', meaning='laddle', area=56.54)
         constellation.stars = [star1, star2]
         db.session.add(star1)
@@ -69,7 +69,6 @@ class ModelsTest(unittest.TestCase):
         constellations = models.Constellation.query.all()
         self.assertIn(star1, constellations[0].stars)
         self.assertIn(star2, constellations[0].stars)
-
 
     def test_exoplant1(self):
         exoplanet1 = models.Exoplanet(
@@ -107,7 +106,7 @@ class ModelsTest(unittest.TestCase):
         exoplanet2 = models.Exoplanet(
             id=2, name='Jupiter', mass=0.4, radius=2.0, orbital_period=8000, year_discovered=12)
         star = models.Star(id=2, name='Aries', mass=3.0,
-                            luminosity=4.0, temperature=7000, radius=3.0)
+                           luminosity=4.0, temperature=7000, radius=3.0)
         star.exoplanets = [exoplanet1, exoplanet2]
         db.session.add(exoplanet1)
         db.session.add(exoplanet2)
