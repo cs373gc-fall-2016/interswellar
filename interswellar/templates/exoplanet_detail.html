@@ -116,7 +116,7 @@
             </div>
         </div>
 
-
+        {% if data.mass %}
         <div class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-sm-8 col-lg-8 col-md-8 buffer'>
             <div class='about'>
                 <div class='header'>
@@ -130,11 +130,6 @@
                         <option value="jupiter">Jupiter Masses</option>
                     </select>
                 </div>
-<!--                     <ul class="dropdown-menu" id='dropmenu'>
-                        <li><a tabindex="1" href="#">EARTH MASSES</a></li>
-                        <li><a tabindex="2" href="#">JUPITER MASSES</a></li>
-                        <li><a tabindex="3" href="#">Maybe Something Else</a></li>
-                    </ul> -->
 
                 <script type="text/javascript">
                 function massChange(type){
@@ -174,6 +169,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         <style>
         html {
