@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
@@ -67,17 +68,84 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
-			"ordering": false,
+			"ordering": true,
 			"bFilter": false,
 			"bLengthChange": false,
 			"scrollX": true,
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
+			"aaSorting": []
 
 		});
-
-		// new $.fn.dataTable.Responsive( table, {
-		// 	details: true
-		// } );
+		// $(th).unbind('click.DT');
+		$('.dataTables_scrollHead thead th').off('click.DT');
+		var handler = function() {
+			$(this).addClass(".sorting_desc")
+  			alert( "The fox jumps over the lazy dog." );
+		};
+		$( '.dataTables_scrollHead thead th' ).bind( "click", function() {
+			if($(this).hasClass("sorting")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting")
+					$(th).removeClass("sorting_asc")
+					$(th).removeClass("sorting_desc")
+				});
+				
+				$(this).addClass("sorting_desc").removeClass("sorting")
+				
+				var content = $(this).text().toLowerCase();
+				
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
+				}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content += "__ref";
+				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}"))
+			}
+			else if($(this).hasClass("sorting_desc")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting").removeClass("sorting_desc") 
+				});
+				
+				$(this).addClass("sorting_asc").removeClass("sorting_desc")
+				$(this).removeClass("sorting")
+				var content = $(this).text().toLowerCase();
+				
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
+				}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content = content+ "__ref";
+				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}"))
+			}
+			else if($(this).hasClass("sorting_asc")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting").removeClass("sorting_asc") 
+				});
+			
+			
+				$(this).addClass("sorting_desc").removeClass("sorting_asc")
+				$(this).removeClass("sorting")
+				var content = $(this).text().toLowerCase();
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
+				}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content += "__ref";
+				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}"))
+			}
+			
+  			// alert( "The quick brown fox jumps over the lazy dog." );		
+		});
+		    
 		 $('#example tbody')
         .on( 'mouseenter', 'td', function () {
             var colIdx = table.cell(this).index().column;
@@ -92,10 +160,11 @@
 	<script type="text/babel">
 
     jQuery.extend({
-	    getValues: function() {
+	    getValues: function(urlName) {
 	        var result = null;
 	        $.ajax({
-	            url: "/api/v1/exoplanets?page=1",
+	        	// "/api/v1/exoplanets?page=1"
+	            url: urlName,
 	            type: 'get',
 	            dataType: 'json',
 	            async: false,
@@ -103,9 +172,14 @@
 	                result = data;
 	            }
 	        });
+	        console.log(result.objects[0]);
 	       return result;
 	    }
 	});
+
+    var globalVar = {
+    	'callback': null
+    };
 
 	var colNames = ['Name', 'Mass', 'Radius', 'Orbital Period', 'Year Discovered', 'Star', 'Discovered By'];
 
@@ -176,7 +250,7 @@
 		render: function() {
 			// console.log(this.props.rowList);
 			var rowEntries = this.props.rowList.objects.map(function(row) {
-				// console.log(row);
+				console.log(row);
 				return (
 					<RowCells rowValues={row} />
 				);
@@ -191,8 +265,18 @@
 
 
 	var Table = React.createClass({
+		getInitialState: function() {
+	        return {
+	            dataForTable: $.getValues("/api/v1/exoplanets?page=1")
+	        };
+    	},
+		componentWillMount() {
+			globalVar.callback = (data) => {
+				this.setState({dataForTable: data})
+			};
+		},
 		render: function() {
-			var data = $.getValues();
+			var data = this.state.dataForTable;
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
@@ -216,7 +300,7 @@
 	});
 
 	ReactDOM.render(
-		<Table/>,
+		<Table />,
 		document.getElementById('content')
 		);
 	</script>
