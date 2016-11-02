@@ -52,9 +52,9 @@ class APITest(unittest.TestCase):
             abstract='This publication lists discoveries of constellation, planets, and stars'
         )
 
-        publ1.exoplanets = [planet1, planet2] 
         planet3.star = star1
-        publ1.exoplanets += [planet3]
+        planet3.discovered_by = publ2
+        publ1.exoplanets = [planet1, planet2]
         publ1.stars = [star1, star2]
         star2.exoplanets = [planet1, planet2]
         constel1.stars = [star1, star2]
@@ -148,7 +148,7 @@ class APITest(unittest.TestCase):
         data = json.loads(rv.data.decode('utf-8'))
         self.assertEqual(data['id'], 3)
         self.assertEqual(data['star']['id'], 1)
-        self.assertEqual(data['discovered_by']['id'], 1)
+        self.assertEqual(data['discovered_by']['id'], 2)
 
     def test_constellation_all(self):
         rv = self.app.get('/api/v1/constellations')
@@ -202,12 +202,9 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['id'], 1)
         stars = data['stars']
         planets = data['exoplanets']
-        print(planets)
         self.assertEqual(len(stars), 2)
-        self.assertEqual(len(planets), 3)
-        self.assertEqual(stars[0]['id'], 1)
-        self.assertEqual(stars[1]['id'], 2)
-        self.assertEqual(planets[0]['id'], 1)
-        self.assertEqual(planets[1]['id'], 2)
-        self.assertEqual(planets[2]['id'], 3)
+        self.assertEqual(len(planets), 2)
+        for i in range(2):
+            self.assertEqual(stars[i]['id'], i + 1)
+            self.assertEqual(planets[i]['id'], i + 1)
         self.assertEqual(planets[0]['name'], 'earth')
