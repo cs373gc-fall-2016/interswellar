@@ -93,7 +93,7 @@
                     {% for ep in data.exoplanets %}
                     <li>
                         <div class = 'link'>
-                            <a href="/exoplanets/{{ep.id}}" style = "color:white"> {{ep.name}}</a>
+                            <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
                         </div>
                     </li>
                     {% endfor %}
@@ -115,7 +115,7 @@
                 </div>
                 {% if data.constellation %}
                 <div class = 'link'>
-                    <a href="/constellations/{{data.constellation.id}}" style = "color:white">{{data.constellation.name}}</a>
+                    <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
                 </div>
                 {% else %}
                 <div class = 'no-link'>
@@ -132,7 +132,7 @@
                 </div>
                 {% if data.discovered_by.ref %}
                 <div class = 'link'>
-                    <a href="/publications/{{data.discovered_by.id}}" style = "color:white">{{data.discovered_by.ref}}</a>
+                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
                 </div>
                 {% else %}
                 <div class = 'no-link'>
