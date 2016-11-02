@@ -18,7 +18,7 @@ class APITest(unittest.TestCase):
             radius=1.0
         )
         star2 = models.Star(
-            id=2, name='star' ,  mass=2.0, luminosity=2.0, temperature=2000,
+            id=2, name='star',  mass=2.0, luminosity=2.0, temperature=2000,
             radius=2.0
         )
         planet1 = models.Exoplanet(
@@ -53,12 +53,9 @@ class APITest(unittest.TestCase):
         )
 
         planet3.star = star1
-        planet3.discovered_by = publ1
         constel1.stars = [star1, star2]
         star2.exoplanets = [planet1, planet2]
-        star2.constellation = constel1
         publ1.stars = [star1, star2]
-        star2.discovered_by = publ1
         publ1.exoplanets = [planet1, planet2, planet3]
 
         db.create_all()
@@ -193,19 +190,20 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['title'], 'Local Star Discovered')
         self.assertEqual(data['authors'], 'Neil deGrasse Tyson')
         self.assertEqual(data['journal'], 'Astronomy & Astrophysics')
-        self.assertEqual(data['abstract'], 'Former toaster in sky is actually a star')
+        self.assertEqual(
+            data['abstract'], 'Former toaster in sky is actually a star')
 
     def test_publication_relationship(self):
         rv = self.app.get('/api/v1/publications/1')
         self.assertEqual(rv.mimetype, 'application/json')
         data = json.loads(rv.data.decode('utf-8'))
         self.assertEqual(data['id'], 1)
-        stars   = data['stars']
+        stars = data['stars']
         planets = data['exoplanets']
         self.assertEqual(len(stars), 2)
         self.assertEqual(len(planets), 3)
         for i in range(3):
             if i < 2:
-                self.assertEqual(stars[i]['id'], i + 1)
-            self.assertEqual(planets[i]['id'], i + 1)
+                self.assertEqual(stars[i]['id'], int(i + 1))
+            self.assertEqual(planets[i]['id'], int(i + 1))
         self.assertEqual(planets[0]['name'], 'earth')
