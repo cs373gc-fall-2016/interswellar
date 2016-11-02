@@ -1,7 +1,9 @@
 """models for database"""
-
 # pylint: disable=too-few-public-methods,invalid-name
-from interswellar import db
+
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 
 class Star(db.Model):

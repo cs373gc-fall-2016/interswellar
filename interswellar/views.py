@@ -1,30 +1,37 @@
-""" The views for the app """
-# pylint: disable=unused-import,bad-continuation,line-too-long,import-error,unused-argument,invalid-name
-from collections import defaultdict, OrderedDict
+""" The public views for the app """
+from collections import defaultdict
 import json
 import traceback
 import html
+
 import requests
-from interswellar import app, db
+from flask import Blueprint, render_template
+
 import interswellar.models as models
-from flask import Flask, render_template, url_for
+
+# pylint:disable=invalid-name
+public_views = Blueprint('public_views', __name__)
 
 
-@app.route('/')
+@public_views.route('/')
 def index():
     """ Returns splash page """
     return render_template('index.html')
 
 
-@app.route('/star')
-@app.route('/stars')
+@public_views.route('/star')
+@public_views.route('/stars')
 def stars():
     """ Returns stars page """
-    return render_template('star_tables.html', bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
+
+    return render_template(
+        'star_tables.html',
+        bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg'
+    )
 
 
-@app.route('/star/<int:variable>')
-@app.route('/stars/<int:variable>')
+@public_views.route('/star/<int:variable>')
+@public_views.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
     data = models.Star.query.get(variable)
@@ -33,15 +40,15 @@ def star(variable):
     return render_template('star_detail.html', data=data)
 
 
-@app.route('/exoplanet')
-@app.route('/exoplanets')
+@public_views.route('/exoplanet')
+@public_views.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
     return render_template('exoplanet_tables.html', bg_url='/static/images/exoplanet.jpg')
 
 
-@app.route('/exoplanet/<int:variable>')
-@app.route('/exoplanets/<int:variable>')
+@public_views.route('/exoplanet/<int:variable>')
+@public_views.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
     data = models.Exoplanet.query.get(variable)
@@ -50,43 +57,48 @@ def exoplanet(variable):
     return render_template('exoplanet_detail.html', data=data)
 
 
-@app.route('/constellation')
-@app.route('/constellations')
+@public_views.route('/constellation')
+@public_views.route('/constellations')
 def constellations():
     """ Returns constellations page """
+
     return render_template('constellation_tables.html', bg_url='/static/images/constellation.jpg')
 
 
-@app.route('/constellation/<int:variable>')
-@app.route('/constellations/<int:variable>')
+@public_views.route('/constellation/<int:variable>')
+@public_views.route('/constellations/<int:variable>')
 def constellation(variable):
     """ Returns page for single constellation """
+
     data = models.Constellation.query.get(variable)
     if not data:
         return render_template('404.html', thing='Constellation')
     return render_template('constellation_detail.html', data=data)
 
 
-@app.route('/publication')
-@app.route('/publications')
+@public_views.route('/publication')
+@public_views.route('/publications')
 def publications():
     """ Returns publications page """
+
     return render_template('publication_tables.html', bg_url='/static/images/publication.jpg')
 
 
-@app.route('/publication/<int:variable>')
-@app.route('/publications/<int:variable>')
+@public_views.route('/publication/<int:variable>')
+@public_views.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
+
     data = models.Publication.query.get(variable)
     if not data:
         return render_template('404.html', thing='Publication')
     return render_template('publication_detail.html', data=data)
 
 
-@app.route('/about')
+@public_views.route('/about')
 def about():
     """ Returns about page with commit and issues count"""
+
     commits = get_commits()
     issues = get_issues()
     return render_template('about.html',
@@ -106,7 +118,7 @@ def about():
                            total_issues=get_total_issues())
 
 
-@app.route('/checkdb')
+@public_views.route('/checkdb')
 def checkdb():
     """ Queries the db for some stars to see if it's okay"""
     try:
@@ -119,15 +131,28 @@ def checkdb():
         return 'Database is not ok. Check stdout for details'
 
 
-@app.errorhandler(404)
-def page_not_found(e):
+@public_views.route('/tests/run')
+def run_tests():
+    """ Runs all the unittests and returns the text result with verbosity 2 """
+
+    import interswellar.test_runner as test_runner
+
+    return test_runner.run_tests()
+
+
+@public_views.errorhandler(404)
+def page_not_found(_):
     """ 404 page"""
     return render_template('404.html', thing='Page'), 404
 
 
 def get_commits():
     """ gets number of commits for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors?client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
+          'stats/contributors?client_id=a857dda6c0869d2bc306&' \
+          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+
     response = requests.get(url).text
     parsed = json.loads(response)
     return {user['author']['login']: user['total'] for user in parsed}
@@ -135,7 +160,10 @@ def get_commits():
 
 def get_total_commits():
     """ gets number of commits for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/stats/contributors?client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
+          'stats/contributors?client_id=a857dda6c0869d2bc306&' \
+          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
     response = requests.get(url).text
     parsed = json.loads(response)
     total = 0
@@ -146,7 +174,10 @@ def get_total_commits():
 
 def get_issues():
     """ get number of issues for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?state=all&filter=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
+          'issues?state=all&filter=all&client_id=a857dda6c0869d2bc306&' \
+          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
     response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = defaultdict(int)
@@ -158,7 +189,10 @@ def get_issues():
 
 def get_total_issues():
     """ get number of issues for each team member """
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/issues?filter=all&state=all&client_id=a857dda6c0869d2bc306&client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+
+    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
+          'issues?filter=all&state=all&client_id=a857dda6c0869d2bc306&' \
+          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
     response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = 0
