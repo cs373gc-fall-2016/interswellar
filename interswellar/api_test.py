@@ -53,7 +53,7 @@ class APITest(unittest.TestCase):
         )
 
         planet3.star = star1
-        publ1.exoplanets = [planet1, planet2] + [planet3]
+        publ1.exoplanets = [planet1, planet2, planet3]
         publ1.stars = [star1, star2]
         star2.exoplanets = [planet1, planet2]
         constel1.stars = [star1, star2]
@@ -63,6 +63,7 @@ class APITest(unittest.TestCase):
         db.session.add(star2)
         db.session.add(planet1)
         db.session.add(planet2)
+        db.session.add(planet3)
         db.session.add(constel1)
         db.session.add(constel2)
         db.session.add(publ1)
