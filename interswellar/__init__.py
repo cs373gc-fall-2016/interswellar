@@ -10,10 +10,12 @@ from interswellar.views import public_views
 
 
 __CFG__ = {
-    'dev': config.DevelopmentConfig,
-    'ci': config.IntegrationConfig,
-    'test': config.TestingConfig,
-    'prod': config.ProductionConfig
+    'dev':       config.DevelopmentConfig,
+    'dev_test':  config.TestingConfig,
+    'ci':        config.IntegrationConfig,
+    'ci_test':   config.IntegrationConfig,
+    'prod':      config.ProductionConfig,
+    'prod_test': config.TestingConfig,
 }
 
 

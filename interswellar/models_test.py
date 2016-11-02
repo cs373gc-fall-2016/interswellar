@@ -11,7 +11,7 @@ class ModelsTest(TestCase):
     """ Tests the models """
 
     def create_app(self):
-        return create_app(os.environ.get('APP_ENV', 'test'))
+        return create_app(os.environ.get('APP_ENV', 'dev') + '_test')
 
     def setUp(self):
         db.create_all()
