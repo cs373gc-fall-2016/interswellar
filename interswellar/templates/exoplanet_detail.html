@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/details.css">
+
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    <div class="table-title">
+        {{data.name}}
+    </div>
+
+    <div id="data" class="container-fluid inner">
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    DATA
+                </div>
+                <div class = "data-left">
+                    MASS
+                </div>
+                <div class = "data-right">
+                    {% if data.mass %}
+                    {{data.mass}} M<sub>☉</sub>
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    RADIUS
+                </div>
+                <div class = "data-right">
+                    {% if data.radius %}
+                    {{data.radius}} R<sub>☉</sub>
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    ORBITAL PERIOD
+                </div>
+                <div class = "data-right">
+                    {% if data.orbital_period %}
+                    <span id="op"></span> days
+                    <script type="text/javascript">
+                    var days = {{data.orbital_period}};
+                    days = (days).toPrecision(4);
+                    $("#op").text(days);
+                    </script>
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <br>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    YEAR DISCOVERED
+                </div>
+                <div class = "data-right">
+                    {% if data.year_discovered %}
+                    {{data.year_discovered}}
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    STAR
+                </div>
+                <div>
+                    <div class = 'link'>
+                        <a href= "/stars/{{data.star.id}}" style= "color:white">{{data.star.name}} </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-sm-6 col-lg-4 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    DISCOVERED BY
+                </div>
+                {% if data.discovered_by.ref %}
+                <div class='link'>
+                    <a href="/publications/{{data.discovered_by.id}}" style="color:white">{{data.discovered_by.ref}}</a>
+                </div>
+                {% else %}
+                <div class='no-link'>
+                    No Publication
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if data.mass %}
+        <div class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-sm-8 col-lg-8 col-md-8 buffer'>
+            <div class='about'>
+                <div class='header'>
+                    MASS VISUALIZATION
+                </div>
+
+                <div class='dropstyle'>
+                    <select id="dropdown" class="drop" onchange="massChange(this.value)">
+                        <option value="0"></option>
+                        <option value="earth">Earth Masses</option>
+                        <option value="jupiter">Jupiter Masses</option>
+                    </select>
+                </div>
+
+                <script type="text/javascript">
+                function massChange(type){
+                    $("#mass").empty();
+
+                    if(type == '0') {
+                        return;
+                    }
+                    var mass = {{data.mass|float}};
+
+                    if(type == 'jupiter') {
+                        mass = mass / 317.828133;
+                    }
+
+                    for (var i = 0; mass > 1 && i < Math.floor(mass); i++) {
+                        $("#mass").append('<img class="emoji" src="../../static/images/' + type + '.png" />');
+                    }
+
+                    var dec = mass % 1;
+
+                    if (dec > 0 && mass > 1) {
+                        $("#mass").append('<span class="emoji-div" id="partial-mass" />');
+                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="../../static/images/' + type + '.png" alt="Earth" />');
+                        $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
+                    };
+
+                    if (dec > 0 && mass < 1) {
+                        $("#mass").append('<div class="emoji-div" id="partial-mass" />');
+                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="../../static/images/' + type + '.png" alt="Earth" />');
+                        $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
+                    };
+
+                }
+                </script>
+                <div id='mass'>
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <style>
+        html {
+            background: url(http://wallpapercave.com/wp/x4Uozud.jpg) no-repeat center center fixed;
+        }
+        </style>
+
+    </body>
+    </html>

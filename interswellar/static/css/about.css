@@ -92,14 +92,14 @@
 
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
-    .col-md-4{
+/*    .col-md-4{
         padding-right: 0px;
         padding-left: 0px;
-    }
-    .col-md-12 {
+    }*/
+/*    .col-md-12 {
         padding-right: 0px;
         padding-left: 0px;
-    }
+    }*/
 
     .team-info {
         padding-right: 0px;

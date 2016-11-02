@@ -10,11 +10,6 @@
     text-align: center;
 }
 
-.a {
-    text-decoration: underline; 
-    color: white;
-}
-
 /* black background for fades */
 body {
     background-color: black;
@@ -186,4 +181,14 @@ body {
 .carousel-fade .carousel-inner > .item.prev,
 .carousel-fade .carousel-inner > .item.active.left {
     transform: translate3d(0, 0, 0);
+}
+
+
+/* 404 text */
+.missing {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 6vw;
+    color: #FFF;
 }

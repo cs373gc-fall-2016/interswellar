@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>InterSWEllar</title>
+    
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
@@ -34,6 +36,12 @@
 
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
+
+	<style>
+	html {
+		background: url({{bg_url}}) no-repeat center center fixed;
+	}
+	</style>
 </head>
 
 <body>
@@ -54,7 +62,6 @@
 		</div>
 	</div>
 
-
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
@@ -63,33 +70,127 @@
 			"bLengthChange": false,
 			"scrollX": true,
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
-
+			// "column" :  
 		});
-		// new $.fn.dataTable.Responsive( table, {
-		// 	details: true
-		// } );
+
 	});
 	</script>
 
 	<!-- React -->
 	<script type="text/babel">
+
+    jQuery.extend({
+	    getValues: function(url) {
+	        var result = null;
+	        $.ajax({
+	            url: "/api/v1/constellations?page=1",
+	            type: 'get',
+	            dataType: 'json',
+	            async: false,
+	            success: function(data) {
+	                result = data;
+	            }
+	        });
+	       return result;
+	    }
+	});
+
+	var colNames = ['Name', 'Abbrev', 'Family', 'Meaning', 'Area'];
+
+	function ConcatObjs(result, value){
+		console.log(value);
+		if (Array.isArray(value)) return null;
+		for (var key in value){
+			if (key == "name" || key == "ref" || key == "abbrev"){
+				result = <a href={"/stars/" + value.id}> {value[key]} </a>;
+			}
+		}
+
+		return result;
+	}
+
+	var ListInCell = React.createClass({
+		render: function(){
+			var countArrays = this.props.countArrays;
+			var result = "";
+			var vals = this.props.listValues.map(function(val){ // this.props.listValues is an array of Objects
+				return result = ConcatObjs(result, val);
+			});
+			return <td>{vals}</td>;
+		}
+	});
+
+	var RowCells = React.createClass({
+		render: function(){
+			var data = this.props.rowValues;
+			var val = colNames.map(function(key){
+				key = key.toLowerCase();
+				var result = "";
+				if (data[key] == null){
+					return <td>Unknown</td>;
+				}
+				if (Array.isArray(data[key])){
+					if (data[key].length == 0){
+						return <td>None</td>;
+					}
+					return (
+						<ListInCell listValues={data[key]} />
+					);
+				} else if (data[key] === Object(data[key])){
+					result = ConcatObjs("", data[key]);
+					return <td>{result}</td>
+				} else {
+					if(key == "name"){
+						console.log(data);
+						return <td><a href={"/constellations/" + data.id}>{data[key]}</a></td>;
+					}
+					return <td>{data[key]}</td>;
+				}
+			});
+
+			return (
+				<tr>{val}</tr>
+			);
+		}
+	});
+
+	var RowList = React.createClass({
+		render: function() {
+			// console.log(this.props.rowList);
+			var rowEntries = this.props.rowList.objects.map(function(row) {
+				// console.log(row);
+				return (
+					<RowCells rowValues={row} />
+				);
+			});
+			return (
+				<tbody>
+					{rowEntries}
+				</tbody>
+			);
+		}
+	});
+
+
 	var Table = React.createClass({
 		render: function() {
+			var data = $.getValues();
+			// console.log(data);
+			var columns = colNames.map(function(col){
+				return (
+					<th>{col}</th>
+				);
+			});
+
 			return (
 				<div>
 					<table id="example" className="table">
 						<thead>
 							<tr>
-								<th>Name</th>
+								{columns}
 							</tr>
 						</thead>
-					<tbody>
-					{% for object in data %}
-						<tr>
-							<td>{{object.name}}</td>
-						</tr>
-					{% endfor %}
-					</tbody>
+					<RowList rowList={data}/>
 
 					</table>
 				</div>
@@ -102,12 +203,6 @@
 		document.getElementById('content')
 		);
 	</script>
-
-	<style>
-	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
-	}
-	</style>
 
 </div>
 </body>
