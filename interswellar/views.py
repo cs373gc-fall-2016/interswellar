@@ -1,5 +1,6 @@
 """ The views for the app """
-# pylint: disable=unused-import,bad-continuation,line-too-long,import-error,unused-argument,invalid-name
+# pylint:
+# disable=unused-import,bad-continuation,line-too-long,import-error,unused-argument,invalid-name
 from collections import defaultdict, OrderedDict
 import json
 import traceback
