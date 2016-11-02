@@ -76,7 +76,8 @@ def stars():
 @app.route('/stars/<int:variable>')
 def star(variable):
     """ Returns page for a single star """
-    order = ["name", "luminosity", "mass", "radius", "temperature", "constellation", "exoplanets"]
+    order = ["name", "luminosity", "mass", "radius",
+             "temperature", "constellation", "exoplanets"]
     return render_template('detail.html', data=star_helper(variable), key_order=order)
 
 
@@ -182,7 +183,8 @@ def exoplanets():
 @app.route('/exoplanets/<int:variable>')
 def exoplanet(variable):
     """ Returns page for single exoplanet """
-    order = ["name", "mass", "radius", "orbital_period", "year_discovered", "star", "discovered_by"]
+    order = ["name", "mass", "radius", "orbital_period",
+             "year_discovered", "star", "discovered_by"]
     return render_template('detail.html', data=exoplanet_helper(variable), key_order=order)
 
 
@@ -418,7 +420,8 @@ def publications():
 @app.route('/publications/<int:variable>')
 def publication(variable):
     """ Returns page for single publication """
-    order = ["title", "journal", "abstract", "stars", "exoplanets", "ref", "authors"]
+    order = ["title", "journal", "abstract",
+             "stars", "exoplanets", "ref", "authors"]
     return render_template('detail.html', data=publication_helper(variable), key_order=order)
 
 
