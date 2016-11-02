@@ -26,6 +26,33 @@ body {
     margin-bottom: 20px;
 }
 
+.emoji {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.clip {
+    position: absolute;
+}
+
+.emoji-div {
+    width: 40px;
+    height: 40px;
+}
+
+.drop {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    font-family: "lato", sans-serif;
+}
+
+.dropstyle {
+    padding-bottom: 10px;
+}
+
 .link {
     text-decoration: underline;
     text-align: center;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>InterSWEllar</title>
-    
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +72,7 @@
                     <div class="no-link">
                         {% for s in data.stars %}
                         <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
-                        {% endfor %}   
+                        {% endfor %}
                     </div>
 
                     {% else %}
