@@ -36,6 +36,13 @@
 
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
+
+	<style>
+	html {
+		background: url({{bg_url}}) no-repeat center center fixed;
+	}
+	</style>
+	
 </head>
 
 <body>
@@ -67,10 +74,17 @@
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
 
 		});
+
 		// new $.fn.dataTable.Responsive( table, {
 		// 	details: true
 		// } );
-
+		 $('#example tbody')
+        .on( 'mouseenter', 'td', function () {
+            var colIdx = table.cell(this).index().column;
+            
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+            $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+        } );
 	});
 	</script>
 
@@ -78,10 +92,10 @@
 	<script type="text/babel">
 
     jQuery.extend({
-	    getValues: function(url) {
+	    getValues: function() {
 	        var result = null;
 	        $.ajax({
-	            url: window.location.href.split('/')[0] + "/api/v1/exoplanets?page=1",
+	            url: "/api/v1/exoplanets?page=1",
 	            type: 'get',
 	            dataType: 'json',
 	            async: false,
@@ -93,7 +107,7 @@
 	    }
 	});
 
-	var colNames = ['ID', 'Name', 'Mass', 'Radius', 'Orbital Period', 'Year Discovered', 'Star', 'Discovered By'];
+	var colNames = ['Name', 'Mass', 'Radius', 'Orbital Period', 'Year Discovered', 'Star', 'Discovered By'];
 
 	function ConcatObjs(result, value){
 		if (Array.isArray(value)) return null;
@@ -120,8 +134,8 @@
 	var RowCells = React.createClass({
 		render: function(){
 			var data = this.props.rowValues;
+			// console.log(data);
 			var val = colNames.map(function(key){
-				console.log(data[key]);
 				key = key.toLowerCase();
 				if (key.includes(" ")){
 					key = key.replace(" ", "_");
@@ -130,7 +144,7 @@
 				if (data[key] == null){
 					return <td>Unknown</td>;
 				}
-				if (Array.isArray(data[key])){
+				if (Array.isArray(data[key])){ 
 					if (data[key].length == 0){
 						return <td>None</td>;
 					}
@@ -138,13 +152,15 @@
 						<ListInCell listValues={data[key]} />
 					);
 				} else if (data[key] === Object(data[key])){
-					result = ConcatObjs("", data[key]);
-					return <td>{result}</td>
+					if (key == "star"){
+						// console.log(data.star.id);
+						return <td><a href={"/stars/" + data.star.id}>{data.star.name}</a></td>
+					} else if (key == "discovered_by"){
+						return <td><a href={"/publications/" + data.discovered_by.id}>{data.discovered_by.ref}</a></td>
+					}
 				} else {
-					if(key == "id"){
-						// console.log(data[key]);
-						var url = window.location.href + "/" + data[key];
-						return <td><a href={url}>{data[key]}</a></td>;
+					if(key == "name"){
+						return <td><a href={"/exoplanets/" + data.id}>{data[key]}</a></td>;
 					}
 					return <td>{data[key]}</td>;
 				}
@@ -176,8 +192,7 @@
 
 	var Table = React.createClass({
 		render: function() {
-			var data = $.getValues("http://www.interswellar.me/api/v1/stars?page=1");
-			// console.log(data);
+			var data = $.getValues();
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
@@ -205,12 +220,6 @@
 		document.getElementById('content')
 		);
 	</script>
-
-	<style>
-	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
-	}
-	</style>
 
 </div>
 </body>
