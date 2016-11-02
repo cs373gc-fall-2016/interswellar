@@ -71,7 +71,7 @@
                     {% if data.stars|length > 10 %}
                     <div class="no-link">
                         {% for s in data.stars %}
-                        <a class= 'link-list' href="/stars/{{s.id}}" style = "color:white">{{s.name}}</a>
+                        <a class= 'link-list' href="/stars/{{s.id}}">{{s.name}}</a>
                         {% endfor %}
                     </div>
 
@@ -79,7 +79,7 @@
                     {% for s in data.stars %}
                     <li>
                         <div class= 'link'>
-                            <a href="/stars/{{s.id}}" style = "color:white"> {{s.name}}</a>
+                            <a href="/stars/{{s.id}}"> {{s.name}}</a>
                         </div>
                     </li>
                     {% endfor %}

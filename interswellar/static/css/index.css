@@ -25,6 +25,17 @@ body {
     border: 0px solid transparent;
 }
 
+a:link, a:visited, a:active{
+    text-decoration: underline;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.no-ul {
+    text-decoration: none;
+}
+
 /* Content bar */
 .jumbotron{
     background-color:rgba(0, 0, 0, .7);
