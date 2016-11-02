@@ -52,8 +52,9 @@ class APITest(unittest.TestCase):
             abstract='This publication lists discoveries of constellation, planets, and stars'
         )
 
+        publ1.exoplanets = [planet1, planet2] 
         planet3.star = star1
-        publ1.exoplanets = [planet1, planet2, planet3]
+        publ1.exoplanets += [planet3]
         publ1.stars = [star1, star2]
         star2.exoplanets = [planet1, planet2]
         constel1.stars = [star1, star2]
