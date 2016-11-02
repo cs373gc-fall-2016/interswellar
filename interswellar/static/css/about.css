@@ -90,6 +90,11 @@
     background-color: black;
 }
 
+.code {
+    background: #CCC;
+
+}
+
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
 /*    .col-md-4{

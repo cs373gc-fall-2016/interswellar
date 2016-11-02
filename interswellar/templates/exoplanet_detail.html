@@ -145,20 +145,20 @@
                     }
 
                     for (var i = 0; mass > 1 && i < Math.floor(mass); i++) {
-                        $("#mass").append('<img class="emoji" src="//static/images/' + type + '.png" />');
+                        $("#mass").append('<img class="emoji" src="/static/images/' + type + '.png" />');
                     }
 
                     var dec = mass % 1;
 
                     if (dec > 0 && mass > 1) {
                         $("#mass").append('<span class="emoji-div" id="partial-mass" />');
-                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="//static/images/' + type + '.png" alt="Earth" />');
+                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="/static/images/' + type + '.png" alt="Earth" />');
                         $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
                     };
 
                     if (dec > 0 && mass < 1) {
                         $("#mass").append('<div class="emoji-div" id="partial-mass" />');
-                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="//static/images/' + type + '.png" alt="Earth" />');
+                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="/static/images/' + type + '.png" alt="Earth" />');
                         $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
                     };
 
