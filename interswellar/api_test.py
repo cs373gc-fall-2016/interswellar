@@ -52,10 +52,10 @@ class APITest(unittest.TestCase):
             abstract='This publication lists discoveries of constellation, planets, and stars'
         )
 
-        publ1.exoplanets = [planet1, planet2, planet3]
+        planet3.star = star1
+        publ1.exoplanets = [planet1, planet2] + [planet3]
         publ1.stars = [star1, star2]
         star2.exoplanets = [planet1, planet2]
-        planet3.star = star1
         constel1.stars = [star1, star2]
 
         db.create_all()
@@ -200,6 +200,7 @@ class APITest(unittest.TestCase):
         self.assertEqual(data['id'], 1)
         stars = data['stars']
         planets = data['exoplanets']
+        print(planets)
         self.assertEqual(len(stars), 2)
         self.assertEqual(len(planets), 3)
         self.assertEqual(stars[0]['id'], 1)
