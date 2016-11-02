@@ -30,6 +30,8 @@ th {
     text-transform: uppercase; 
     text-align: center;
     text-indent: 20px;
+    white-space: nowrap;
+    outline: none;
 }
 
 .col-md-12 {
