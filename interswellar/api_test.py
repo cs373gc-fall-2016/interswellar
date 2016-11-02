@@ -202,8 +202,9 @@ class APITest(unittest.TestCase):
         planets = data['exoplanets']
         self.assertEqual(len(stars), 2)
         self.assertEqual(len(planets), 3)
-        for i in range(3):
-            if i < 2:
-                self.assertEqual(stars[i]['id'], int(i + 1))
-            self.assertEqual(planets[i]['id'], int(i + 1))
+        self.assertEqual(stars[0]['id'], 1)
+        self.assertEqual(stars[1]['id'], 2)
+        self.assertEqual(planets[0]['id'], 1)
+        self.assertEqual(planets[1]['id'], 2)
+        self.assertEqual(planets[2]['id'], 3)
         self.assertEqual(planets[0]['name'], 'earth')
