@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class Star(db.Model):
 
     """model for stars"""

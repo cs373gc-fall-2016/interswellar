@@ -5,6 +5,7 @@ from flask_testing import TestCase
 from interswellar import create_app
 import interswellar.views as views
 
+
 class ViewsTest(TestCase):
 
     """ Tests the views """

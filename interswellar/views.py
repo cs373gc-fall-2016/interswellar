@@ -9,8 +9,9 @@ from flask import Blueprint, render_template
 
 import interswellar.models as models
 
-#pylint:disable=invalid-name
+# pylint:disable=invalid-name
 public_views = Blueprint('public_views', __name__)
+
 
 @public_views.route('/')
 def index():
@@ -130,9 +131,17 @@ def checkdb():
         return 'Database is not ok. Check stdout for details'
 
 
-# pylint:disable=unused-argument,invalid-name
+@public_views.route('/tests/run')
+def run_tests():
+    """ Runs all the unittests and returns the text result with verbosity 2 """
+
+    import interswellar.test_runner as test_runner
+
+    return test_runner.run_tests()
+
+
 @public_views.errorhandler(404)
-def page_not_found(e):
+def page_not_found(_):
     """ 404 page"""
     return render_template('404.html', thing='Page'), 404
 

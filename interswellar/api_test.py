@@ -208,4 +208,3 @@ class APITest(TestCase):
             self.assertEqual(stars[i]['id'], i + 1)
             self.assertEqual(planets[i]['id'], i + 1)
         self.assertEqual(planets[0]['name'], 'earth')
-

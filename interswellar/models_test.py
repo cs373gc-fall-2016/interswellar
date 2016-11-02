@@ -22,9 +22,9 @@ class ModelsTest(TestCase):
 
     def test_stars1(self):
         star1 = Star(id=1, name='Sun', mass=1.0,
-                            luminosity=1.0, temperature=5000, radius=1.0)
+                     luminosity=1.0, temperature=5000, radius=1.0)
         star2 = Star(id=3, name='Lummes', mass=5.0,
-                            luminosity=3.0, temperature=6000, radius=2.7)
+                     luminosity=3.0, temperature=6000, radius=2.7)
         db.session.add(star1)
         db.session.add(star2)
         db.session.commit()
@@ -35,7 +35,7 @@ class ModelsTest(TestCase):
 
     def test_stars2(self):
         star = Star(id=2, name='Aries', mass=3.0,
-                           luminosity=4.0, temperature=7000, radius=3.0)
+                    luminosity=4.0, temperature=7000, radius=3.0)
         db.session.add(star)
         db.session.commit()
         stars = Star.query.all()
@@ -45,7 +45,7 @@ class ModelsTest(TestCase):
 
     def test_stars3(self):
         star = Star(id=2, name='Aries', mass=3.0,
-                           luminosity=4.0, temperature=7000, radius=3.0)
+                    luminosity=4.0, temperature=7000, radius=3.0)
         db.session.add(star)
         db.session.commit()
         stars = Star.query.all()
@@ -54,9 +54,9 @@ class ModelsTest(TestCase):
 
     def test_stars4(self):
         star1 = Star(id=2, name='Aries', mass=3.0,
-                            luminosity=4.0, temperature=7000, radius=3.0)
+                     luminosity=4.0, temperature=7000, radius=3.0)
         star2 = Star(id=3, name='Lummes', mass=5.0,
-                            luminosity=3.0, temperature=6000, radius=2.7)
+                     luminosity=3.0, temperature=6000, radius=2.7)
         constellation = Constellation(
             id=1, name='big dipper', abbrev='big dp',
             family='arris', meaning='laddle', area=56.54)
@@ -105,7 +105,7 @@ class ModelsTest(TestCase):
         exoplanet2 = Exoplanet(
             id=2, name='Jupiter', mass=0.4, radius=2.0, orbital_period=8000, year_discovered=12)
         star = Star(id=2, name='Aries', mass=3.0,
-                           luminosity=4.0, temperature=7000, radius=3.0)
+                    luminosity=4.0, temperature=7000, radius=3.0)
         star.exoplanets = [exoplanet1, exoplanet2]
         db.session.add(exoplanet1)
         db.session.add(exoplanet2)

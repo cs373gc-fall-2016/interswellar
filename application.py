@@ -2,7 +2,7 @@
 import os
 from interswellar import create_app
 
-#pylint:disable=invalid-name
+# pylint:disable=invalid-name
 application = create_app(os.environ.get('APP_ENV', 'dev'))
 
 if __name__ == "__main__":

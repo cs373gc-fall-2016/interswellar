@@ -16,6 +16,7 @@ __CFG__ = {
     'prod': config.ProductionConfig
 }
 
+
 def create_app(env):
     """ Application factory function """
     if env not in __CFG__:

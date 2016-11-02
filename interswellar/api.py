@@ -3,6 +3,7 @@
 from flask_restless import APIManager
 import interswellar.models as models
 
+
 def bind_api(app):
     """ Bind the api to the app """
     api = APIManager(app, flask_sqlalchemy_db=models.db)
