@@ -40,7 +40,7 @@ apimanager.create_api(
         'star',
         'star.id',
         'star.name',
-        'star.constellation',
+        'star.constellation'
         'star.constellation.id',
         'star.constellation.abbrev',
         'discovered_by',
