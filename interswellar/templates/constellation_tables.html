@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>InterSWEllar</title>
-    
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
@@ -39,7 +39,11 @@
 
 	<style>
 	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
+		background: url(/static/images/constellation.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
 	}
 	</style>
 </head>
@@ -79,20 +83,20 @@
 	<!-- React -->
 	<script type="text/babel">
 
-    jQuery.extend({
-	    getValues: function(url) {
-	        var result = null;
-	        $.ajax({
-	            url: "/api/v1/constellations?page=1",
-	            type: 'get',
-	            dataType: 'json',
-	            async: false,
-	            success: function(data) {
-	                result = data;
-	            }
-	        });
-	       return result;
-	    }
+	jQuery.extend({
+		getValues: function(url) {
+			var result = null;
+			$.ajax({
+				url: "/api/v1/constellations?page=1",
+				type: 'get',
+				dataType: 'json',
+				async: false,
+				success: function(data) {
+					result = data;
+				}
+			});
+			return result;
+		}
 	});
 
 	var colNames = ['Name', 'Abbrev', 'Family', 'Meaning', 'Area'];
@@ -135,7 +139,7 @@
 					}
 					return (
 						<ListInCell listValues={data[key]} />
-					);
+						);
 				} else if (data[key] === Object(data[key])){
 					result = ConcatObjs("", data[key]);
 					return <td>{result}</td>
@@ -150,7 +154,7 @@
 
 			return (
 				<tr>{val}</tr>
-			);
+				);
 		}
 	});
 
@@ -161,13 +165,13 @@
 				// console.log(row);
 				return (
 					<RowCells rowValues={row} />
-				);
+					);
 			});
 			return (
 				<tbody>
-					{rowEntries}
+				{rowEntries}
 				</tbody>
-			);
+				);
 		}
 	});
 
@@ -179,22 +183,22 @@
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
-				);
+					);
 			});
 
 			return (
 				<div>
-					<table id="example" className="table">
-						<thead>
-							<tr>
-								{columns}
-							</tr>
-						</thead>
-					<RowList rowList={data}/>
+				<table id="example" className="table">
+				<thead>
+				<tr>
+				{columns}
+				</tr>
+				</thead>
+				<RowList rowList={data}/>
 
-					</table>
+				</table>
 				</div>
-			);
+				);
 		}
 	});
 
