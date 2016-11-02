@@ -36,6 +36,13 @@
 
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
+
+	<style>
+	html {
+		background: url({{bg_url}}) no-repeat center center fixed;
+	}
+	</style>
+
 </head>
 
 <body>
@@ -81,7 +88,7 @@
 	    getValues: function(url) {
 	        var result = null;
 	        $.ajax({
-	            url: window.location.href.split('/')[0] + "/api/v1/publications?page=1",
+	            url: "/api/v1/publications?page=1",
 	            type: 'get',
 	            dataType: 'json',
 	            async: false,
@@ -93,7 +100,7 @@
 	    }
 	});
 
-	var colNames = ['ID', 'Ref', 'Table', 'Authors', 'Journal', 'Abstract', 'Stars', 'Exoplanets'];
+	var colNames = ['Ref', 'Title', 'Authors', 'Journal', 'Stars', 'Exoplanets'];
 
 	function ConcatObjs(result, value){
 		if (Array.isArray(value)) return null;
@@ -138,10 +145,9 @@
 					result = ConcatObjs("", data[key]);
 					return <td>{result}</td>
 				} else {
-					if(key == "id"){
-						// console.log(data[key]);
-						var url = window.location.href + "/" + data[key];
-						return <td><a href={url}>{data[key]}</a></td>;
+					if(key == "ref"){
+						
+						return <td><a href={"/publications/" + data.id}>{data[key]}</a></td>;
 					}
 					return <td>{data[key]}</td>;
 				}
@@ -173,8 +179,7 @@
 
 	var Table = React.createClass({
 		render: function() {
-			var data = $.getValues("http://www.interswellar.me/api/v1/stars?page=1");
-			// console.log(data);
+			var data = $.getValues();
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
@@ -202,13 +207,6 @@
 		document.getElementById('content')
 		);
 	</script>
-
-	<style>
-	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
-	}
-	</style>
-
 </div>
 </body>
 

@@ -1,5 +1,6 @@
 """ The views for the app """
-# pylint: disable=unused-import,bad-continuation,line-too-long,import-error,unused-argument,invalid-name
+# pylint:
+# disable=unused-import,bad-continuation,line-too-long,import-error,unused-argument,invalid-name
 from collections import defaultdict, OrderedDict
 import json
 import traceback
@@ -20,7 +21,7 @@ def index():
 @app.route('/stars')
 def stars():
     """ Returns stars page """
-    return render_template('star_tables.html')
+    return render_template('star_tables.html', bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg')
 
 
 @app.route('/star/<int:variable>')
@@ -37,7 +38,7 @@ def star(variable):
 @app.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    return render_template('exoplanet_tables.html')
+    return render_template('exoplanet_tables.html', bg_url='/static/images/exoplanet.jpg')
 
 
 @app.route('/exoplanet/<int:variable>')
@@ -54,7 +55,7 @@ def exoplanet(variable):
 @app.route('/constellations')
 def constellations():
     """ Returns constellations page """
-    return render_template('constellation_tables.html')
+    return render_template('constellation_tables.html', bg_url='/static/images/constellation.jpg')
 
 
 @app.route('/constellation/<int:variable>')
@@ -71,7 +72,7 @@ def constellation(variable):
 @app.route('/publications')
 def publications():
     """ Returns publications page """
-    return render_template('publication_tables.html')
+    return render_template('publication_tables.html', bg_url='/static/images/publication.jpg')
 
 
 @app.route('/publication/<int:variable>')

@@ -8,7 +8,7 @@ body {
     text-align: center;
     font-family: "lato", sans-serif;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 4em;
     color: #FFF;
     padding: 20px;
     background-color: black;
@@ -19,17 +19,45 @@ body {
     text-align: center;
     font-family: "lato", sans-serif;
     font-weight: 500;
-    font-size: 3.5vw;
+    font-size: 4em;
     color: #FFF;
     padding: 20px;
     background-color: black;
     margin-bottom: 20px;
 }
 
+.emoji {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.clip {
+    position: absolute;
+}
+
+.emoji-div {
+    width: 40px;
+    height: 40px;
+}
+
+.drop {
+    padding: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+    font-family: "lato", sans-serif;
+}
+
+.dropstyle {
+    padding-bottom: 10px;
+}
+
 .link {
     text-decoration: underline;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 20px;
     color: white;
 }
 
@@ -38,14 +66,14 @@ body {
     padding-left: 10px;
     text-decoration: underline;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 20px;
     color: white;
     white-space: nowrap;
 }
 
 .no-link {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 20px;
     color: white;
 }
 
@@ -53,8 +81,9 @@ body {
     padding-right: 10px;
     padding-left: 10px;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 20px;
     color: white;
+    display: inline-block;
 }
 
 .transparent {
@@ -66,14 +95,14 @@ body {
 }
 
 .data-left {
-    font-size: 1.3em;
+    font-size: 20px;
     font-weight: bold;
     float: left;
 }
 
 .data-right {
     float: right;
-    font-size: 1.3em;
+    font-size: 20px;
 }
 
 .centered {
@@ -143,5 +172,9 @@ ul,li {
 
     .header {
         width: 100%;
+    }
+
+    .pub-title {
+        font-size: 2em;
     }
 }

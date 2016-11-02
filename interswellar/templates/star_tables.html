@@ -36,6 +36,13 @@
 
 	<link rel="stylesheet" href="../static/css/index.css">
 	<link rel="stylesheet" href="../static/css/tables.css">
+
+	<style>
+	html {
+		background: url({{bg_url}}) no-repeat center center fixed;
+	}
+	</style>
+
 </head>
 
 <body>
@@ -67,10 +74,6 @@
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
 
 		});
-		// new $.fn.dataTable.Responsive( table, {
-		// 	details: true
-		// } );
-
 	});
 	</script>
 
@@ -93,13 +96,14 @@
 	    }
 	});
 
-	var colNames = ['ID', 'Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radius', 'Constellations', 'Exoplanets'];
+	var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radius', 'Constellations', 'Exoplanets'];
 
 	function ConcatObjs(result, value){
 		if (Array.isArray(value)) return null;
 		for (var key in value){
 			if (key == "name" || key == "ref" || key == "abbrev"){
-				result = value[key] + "\n";
+				// result = value[key] + "\n";
+				result = <a href={"/exoplanets/" + value.id}> {value[key]} </a>;
 			}
 		}
 
@@ -138,10 +142,8 @@
 					result = ConcatObjs("", data[key]);
 					return <td>{result}</td>
 				} else {
-					if(key == "id"){
-						// console.log(data[key]);
-						var url = window.location.href + "/" + data[key];
-						return <td><a href={url}>{data[key]}</a></td>;
+					if(key == "name"){
+						return <td><a href={"/stars/" + data.id}>{data[key]}</a></td>;
 					}
 					return <td>{data[key]}</td>;
 				}
@@ -202,13 +204,6 @@
 		document.getElementById('content')
 		);
 	</script>
-
-	<style>
-	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
-	}
-	</style>
-
 </div>
 </body>
 
