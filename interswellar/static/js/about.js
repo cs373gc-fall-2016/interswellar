@@ -1,5 +1,7 @@
 // Runs tests when button is pressed
 function runTests(){
+	$('#testButton').prop('disabled', true);
+
 	window.href=
 	$.get(
 		"/tests/run",
@@ -16,4 +18,5 @@ function clearTests(){
 	$("#test-div").hide();
 	window.dispatchEvent(new Event('resize'));	
 	$("#test-output").empty();
+	$('#testButton').prop('disabled', false);
 }
