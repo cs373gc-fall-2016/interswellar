@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>InterSWEllar</title>
-    
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,7 +61,7 @@
                     AREA
                 </div>
                 <div class = "data-right">
-                    {{data.area}}
+                    {{data.area}} sq. degrees
                 </div>
                 <div style="clear: both;"></div>
                 <div class = "data-left">
@@ -110,7 +110,7 @@
                     <div class="no-link">
                         {% for s in data.stars %}
                         <a class= 'link-list' href="/stars/{{s.id}}">{{s.name}}</a>
-                        {% endfor %}   
+                        {% endfor %}
                     </div>
 
                     {% else %}
@@ -136,7 +136,7 @@
 
     <style>
     html {
-        background: url(/static/images/constellation-detail.jpg) no-repeat center center fixed; 
+        background: url(/static/images/constellation-detail.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

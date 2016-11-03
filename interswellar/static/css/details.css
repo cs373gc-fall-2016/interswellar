@@ -115,7 +115,7 @@ body {
 }
 .about {
     padding: 20px;
-    background-color: #000;
+    background-color:rgba(0, 0, 0, .7);
 }
 
 .buffer {
