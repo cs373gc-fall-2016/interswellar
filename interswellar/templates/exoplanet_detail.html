@@ -83,41 +83,25 @@
                     {% endif %}
                 </div>
                 <div style="clear: both;"></div>
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
+                <div class = "data-left">
                     STAR
                 </div>
-                <div>
-                    <div class = 'link'>
+                <div class = "data-right">
                         <a href= "/stars/{{data.star.id}}">{{data.star.name}} </a>
-                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
                     DISCOVERED BY
                 </div>
-                {% if data.discovered_by.ref %}
-                <div class='link'>
+                <div class = "data-right">
                     <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
                 </div>
-                {% else %}
-                <div class='no-link'>
-                    No Publication
-                </div>
-                {% endif %}
+                <div style="clear: both;"></div>
             </div>
         </div>
 
         {% if data.mass %}
-        <div class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-sm-8 col-lg-8 col-md-8 buffer'>
+        <div class='col-sm-6 col-lg-8 buffer'>
             <div class='about'>
                 <div class='header'>
                     MASS VISUALIZATION
