@@ -28,7 +28,7 @@
     </div>
 
     <div id="data" class="container-fluid inner">
-        <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='col-sm-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     DATA
@@ -80,10 +80,24 @@
                     {% endif %}
                 </div>
                 <div style="clear: both;"></div>
+                <div class = "data-left">
+                    CONSTELLATION
+                </div>
+                <div class = "data-right">
+                    <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
+                </div>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
+                    DISCOVERED BY
+                </div>
+                <div class = "data-right">
+                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+                </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
 
-        <div class='col-sm-6 col-lg-4 buffer'>
+        <div class='col-sm-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     EXOPLANETS
@@ -107,40 +121,6 @@
         </div>
 
         <div class="clearfix visible-md visible-sm"></div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    CONSTELLATION
-                </div>
-                {% if data.constellation %}
-                <div class = 'link'>
-                    <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
-                </div>
-                {% else %}
-                <div class = 'no-link'>
-                    Unknown
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    DISCOVERED BY
-                </div>
-                {% if data.discovered_by.ref %}
-                <div class = 'link'>
-                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
-                </div>
-                {% else %}
-                <div class = 'no-link'>
-                    No Publication
-                </div>
-                {% endif %}
-            </div>
-        </div>
 
         <div class='col-sm-12 col-lg-12 buffer'>
             <div class='about'>

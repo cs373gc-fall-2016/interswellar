@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="/static/css/index.css">
 	<link rel="stylesheet" href="/static/css/about.css">
 
+
 	<script src='/static/js/about.js'></script>
 
 
@@ -77,7 +78,7 @@
 		<div class="container-fluid inner team-info">
 			<div class="col-md-12">
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							Charlotte Sheng
 							<img class="profile-pic" src="/static/images/about_csheng.jpg">
@@ -105,7 +106,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							Sami Glasco
 							<img class="profile-pic" src="/static/images/about_sami.png">
@@ -116,6 +117,7 @@
 						<p>
 							Sami worked on the front-end team. He created the base web page, the navigation semantics, and is responsible for the site aesthetics.
 						</p>
+						<br>
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
@@ -133,7 +135,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							Denise Ly
 							<img class="profile-pic" src="/static/images/about_denisely.jpg">
@@ -144,6 +146,7 @@
 						<p>
 							For this project, Denise was a part of the front-end team. She was tasked with helping to create the web pages, and writing the React logic to render components on the pages.
 						</p>
+						<br>
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
@@ -163,7 +166,7 @@
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							Chenyang Wang
 							<img class="profile-pic" src="/static/images/about_young.jpg">
@@ -174,6 +177,7 @@
 						<p>
 							Young is the primary Ops person for the team, working primarily with AWS infrastructure, continuous integration and deployment, and release engineering. He also works on the backend data management and APIs.
 						</p>
+						<br>
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
@@ -191,7 +195,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							David Shi
 							<img class="profile-pic" src="/static/images/about_dshi.jpg">
@@ -219,13 +223,13 @@
 					</div>
 				</div>
 				<div class="col-md-4 buffer">
-					<div class="about">
+					<div class="about" style="height:600px;">
 						<div class="header">
 							Nathan Poag
 							<img class="profile-pic" src="/static/images/about_npoag.jpg">
 						</div>
 						<p>
-							Nathan is a fourth year computer science major at UT Austin. Right now he currently has an interest in full stack development due to a desire to be well-rounded in all areas of web development. He prefers to use React for the front end due to its ability to keep track of the webpage's state. In the future, Nathan hopes to use the React skills he has gained in order to use React Native for the front end of any future mobile apps he builds.
+							Nathan is a fourth year computer science major at UT Austin. Right now he currently has an interest in full stack development due to a desire to be well-rounded in all areas of web development. In the future, Nathan hopes to use the React skills he has gained in order to use React Native for the front end of any future mobile apps he builds.
 						</p>
 						<p>
 							Nathan has mainly been working on the back-end during this phase, but was not afraid to touch the front-end at times.
@@ -260,79 +264,64 @@
 
 	<!-- Statistics -->
 	<div class="container-fluid inner">
-		<div class="col-md-4 buffer">
-			<div class="about">
+		<div class="col-md-6 buffer">
+			<div class="about" style="height:202px;">
 				<div class="data-header">
+					Links
+				</div>
+				<p>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar">Github</a><br>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar/issues">Issues</a><br>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki</a><br>
+					<a href= "http://docs.interswellarapi.apiary.io/#">Apiary API</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-md-6 buffer">
+			<div class="about" style="height:202px;">
+				<div class="data-header">
+					Numbers
+				</div>
+				<div class="data-left">
 					COMMITS
 				</div>
-				<p>
+				<div class="data-right">
 					{{total_commits}}
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
+				</div>
+				<br>
+				<div style="clear: both;"></div>
+				<div class="data-left">
 					ISSUES
 				</div>
-				<p>
+				<div class="data-right">
 					{{total_issues}}
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
+				</div>
+				<br>
+				<div style="clear: both;"></div>
+				<div class="data-left">
 					UNIT TESTS
 				</div>
-				<p>
+
+				<div class="data-right">
 					40
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					APIARY API
 				</div>
-				<p>
-					<a href= "http://docs.interswellarapi.apiary.io/#">Apiary Link</a>
-				</p>
+				<div style="clear: both;"></div>
 			</div>
 		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					GITHUB REPO
-				</div>
-				<p>
-					<a href="https://github.com/cs373gc-fall-2016/interswellar">Github Link</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					WIKI
-				</div>
-				<p>
-					<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki Link</a>
-				</p>
-			</div>
-		</div>
+
+		<!-- Testing -->
 		<div class="col-md-offset-4 col-md-4 buffer">
 			<div class="about">
 				<div class="data-header">
 					TESTS
 				</div>
 				<p>
-					<button class="btn test-btn" onclick="runTests()">RUN UNIT TESTS</button>
+					<button id="testButton" class="btn test-btn" onclick="runTests()">RUN UNIT TESTS</button>
 				</p>
 			</div>
 		</div>
-		<!-- <div style="clear: both;"></div> -->
 
-		<!-- <div class="row"> -->
 		<div class="col-md-offset-2 col-md-8 buffer" id="test-div" style="display:none">
 			<div class="about">
 				<div class="data-header">
@@ -344,9 +333,7 @@
 
 			</div>
 		</div>
-
 	</div>
-	<!-- </div> -->
 
 </div>
 
@@ -358,34 +345,29 @@
 <div class="parallax-window-stats centered" data-parallax="scroll" data-bleed = 5 data-speed = 0 data-image-src="http://apod.nasa.gov/apod/image/1609/Helix_SpitzerSchmidt_4655.jpg">
 
 	<!-- API data -->
-	<div class="container-fluid inner">
-		<div class="col-md-4 buffer">
-			<div class="about">
+	<div class="container-fluid inner-small">
+		<div class="col-md-6 buffer">
+			<div class="about" style="height:202px;">
 				<div class="data-header">
-					Wikipedia
+					Data Sources
 				</div>
 				<p>
-					<a href="https://en.wikipedia.org/wiki/Special:ApiSandbox">Wikipedia Link</a>
+					<a href="http://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a><br>
+					<a href="http://simbad.u-strasbg.fr/simbad/">SIMBAD Astronomical Database</a><br>
+					<a href="https://ui.adsabs.harvard.edu/">Harvard Astrophysics</a><br>
+					<a href="https://en.wikipedia.org/wiki/Special:ApiSandbox">Wikipedia</a>
 				</p>
 			</div>
 		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
+		<div class="col-md-6 buffer">
+			<div class="about" style="height:202px;">
 				<div class="data-header">
-					Harvard
+					Scraping Tools
 				</div>
 				<p>
-					<a href="http://adsabs.harvard.edu/abstract_service.html">Harvard Link</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					Exoplanet Archive
-				</div>
-				<p>
-					<a href="http://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html">Exoplanet Archive</a>
+					<a href="http://www.astropy.org/">Astropy</a><br>
+					<a href="http://docs.python-requests.org/en/master/">Requests</a><br>
+					<a href="https://docs.python.org/3.4/library/re.html">Re</a>
 				</p>
 			</div>
 		</div>
@@ -400,7 +382,7 @@
 <div class="parallax-window-tools centered" data-parallax="scroll" data-bleed = 5 data-speed = 0 data-image-src="http://apod.nasa.gov/apod/image/1609/M51Deep_Perez_2637.jpg">
 
 	<!-- Tools list -->
-	<div class="container-fluid inner">
+	<div class="container-fluid inner-small">
 		<div class="col-md-12 buffer">
 			<div class="about">
 				<div class="data-header">
