@@ -28,106 +28,114 @@
     </div>
 
     <div id="data" class="container-fluid inner">
-        <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    DATA
+        <div class='col-sm-6 col-lg-6'>
+            <div class='col-sm-12 col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        DATA
+                    </div>
+                    <div class = "data-left">
+                        MASS
+                    </div>
+                    <div class = "data-right">
+                        {% if data.mass %}
+                        {{data.mass}} M<sub>☉</sub>
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <br>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        LUMINOSITY
+                    </div>
+                    <div class = "data-right">
+                        {% if data.luminosity %}
+                        {{data.luminosity}}
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <br>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        RADIUS
+                    </div>
+                    <div class = "data-right">
+                        {% if data.radius %}
+                        {{data.radius}} R<sub>☉</sub>
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <br>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        TEMPERATURE
+                    </div>
+                    <div class = "data-right">
+                        {% if data.temperature %}
+                        {{data.temperature}} K
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        CONSTELLATION
+                    </div>
+                    <div class = "data-right">
+                        {% if data.constellation %}
+                        <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        DISCOVERED BY
+                    </div>
+                    <div class = "data-right">
+                        {% if data.discovered_by %}
+                        <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <div style="clear: both;"></div>
                 </div>
-                <div class = "data-left">
-                    MASS
-                </div>
-                <div class = "data-right">
-                    {% if data.mass %}
-                    {{data.mass}} M<sub>☉</sub>
+            </div>
+
+            <div class='col-sm-12 col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        EXOPLANETS
+                    </div>
+                    {% if data.exoplanets %}
+                    <ul>
+                        {% for ep in data.exoplanets %}
+                        <li>
+                            <div class = 'link'>
+                                <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
                     {% else %}
-                    Unknown
+                    <div class = 'no-link'>
+                        No Exoplanets
+                    </div>                
                     {% endif %}
                 </div>
-                <br>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    LUMINOSITY
-                </div>
-                <div class = "data-right">
-                    {% if data.luminosity %}
-                    {{data.luminosity}}
-                    {% else %}
-                    Unknown
-                    {% endif %}
-                </div>
-                <br>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    RADIUS
-                </div>
-                <div class = "data-right">
-                    {% if data.radius %}
-                    {{data.radius}} R<sub>☉</sub>
-                    {% else %}
-                    Unknown
-                    {% endif %}
-                </div>
-                <br>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    TEMPERATURE
-                </div>
-                <div class = "data-right">
-                    {% if data.temperature %}
-                    {{data.temperature}} K
-                    {% else %}
-                    Unknown
-                    {% endif %}
-                </div>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    CONSTELLATION
-                </div>
-                <div class = "data-right">
-                    <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
-                </div>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    DISCOVERED BY
-                </div>
-                <div class = "data-right">
-                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
-                </div>
-                <div style="clear: both;"></div>
             </div>
         </div>
 
         <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    EXOPLANETS
-                </div>
-                {% if data.exoplanets %}
-                <ul>
-                    {% for ep in data.exoplanets %}
-                    <li>
-                        <div class = 'link'>
-                            <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <div class = 'no-link'>
-                    No Exoplanets
-                </div>                
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="clearfix visible-md visible-sm"></div>
-
-        <div class='col-sm-12 col-lg-12 buffer'>
             <div class='about'>
                 <div class='header'>
                     STAR CHART
                 </div>
-                <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
+                <div id="aladin-lite-div" style="width:auto;height:600px;"></div>
                 <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
                 <script type="text/javascript">
                 var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1, target: "{{data.name}}"});

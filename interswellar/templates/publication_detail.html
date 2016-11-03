@@ -30,113 +30,146 @@
     </div>
 
     <div id="data" class="container-fluid inner">
-        <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    DATA
-                </div>
-                <div class = "data-left">
-                    REF
-                </div>
-                <div class = "data-right">
-                    {% if data.ref %}
-                    {{data.ref}}
-                    {% else %}
-                    Unknown
-                    {% endif %}
-                </div>
-                <br>
-                <div style="clear: both;"></div>
-                <div class = "data-left">
-                    JOURNAL
-                </div>
-                <div class = "data-right">
-                    {% if data.journal %}
-                    {{data.journal}}
-                    {% else %}
-                    Unknown
-                    {% endif %}
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    STARS
-                </div>
-                <ul>
-                    {% if data.stars %}
-                    {% if data.stars|length > 10 %}
-                    <div class="no-link">
-                        {% for s in data.stars %}
-                        <a class= 'link-list' href="/stars/{{s.id}}">{{s.name}}</a>
-                        {% endfor %}
+        <div class='col-lg-6 buffer'>
+            <div class='col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        DATA
                     </div>
-
-                    {% else %}
-                    {% for s in data.stars %}
-                    <li>
-                        <div class= 'link'>
-                            <a href="/stars/{{s.id}}"> {{s.name}}</a>
-                        </div>
-                    </li>
-                    {% endfor %}
-                    {% endif %}
-                    {% else %}
-                    <div class='no-link'>
-                        No Stars
+                    <div class = "data-left">
+                        REF
                     </div>
-                    {% endif %}
-                </ul>
+                    <div class = "data-right">
+                        {% if data.ref %}
+                        {{data.ref}}
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <br>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        JOURNAL
+                    </div>
+                    <div class = "data-right">
+                        {% if data.journal %}
+                        {{data.journal}}
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class = "data-left">
+                        YEAR PUBLISHED
+                    </div>
+                    <div class = "data-right">
+                        {% if data.year %}
+                        {{data.year}}
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
             </div>
-        </div>
+            <div class='col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        AUTHORS
+                    </div>
+                    {% if data.authors %}
 
-        <div class="clearfix visible-md visible-sm visible-lg"></div>
-
-        <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    AUTHORS
-                </div>
-                {% if data.authors %}
-
-                <div id='authors' class='center'></div>
-                <script>
-                var authors = "{{data.authors}}";
-                authors = authors.split(" ").join("&nbsp;")
-                authorsArray = authors.split(";&nbsp;");
-                if (authorsArray.length > 10) {
-                    console.log(authorsArray);
-                    for (var i in authorsArray) {
-                        $('#authors').append("<span class='auth-list'>" + authorsArray[i] + "</span>");
-                    };
-                } else {
-                    for (var i in authorsArray) {
-                        $('#authors').append("<div class='no-link'>" + authorsArray[i] + "</div>");
-                    };
-                }
-                </script>
-                {% else %}
-                <div class = 'no-link'>
-                    Unknown
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-6 buffer'>
-            <div class='about'>
-                <div class='header'>
-                    ABSTRACT
-                </div>
-                <div class='abstract'>
-                    {% if data.abstract %}
-                    {{data.abstract}}
+                    <div id='authors' class='center'></div>
+                    <script>
+                    var authors = "{{data.authors}}";
+                    authors = authors.split(" ").join("&nbsp;")
+                    authorsArray = authors.split(";&nbsp;");
+                    if (authorsArray.length > 10) {
+                        console.log(authorsArray);
+                        for (var i in authorsArray) {
+                            $('#authors').append("<span class='auth-list'>" + authorsArray[i] + "</span>");
+                        };
+                    } else {
+                        for (var i in authorsArray) {
+                            $('#authors').append("<div class='no-link'>" + authorsArray[i] + "</div>");
+                        };
+                    }
+                    </script>
                     {% else %}
                     <div class = 'no-link'>
                         Unknown
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class='col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        ABSTRACT
+                    </div>
+                    <div class='abstract'>
+                        {% if data.abstract %}
+                        {{data.abstract}}
+                        {% else %}
+                        <div class = 'no-link'>
+                            Unknown
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-6 buffer'>
+            <div class='col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        STARS
+                    </div>
+                    <ul>
+                        {% if data.stars %}
+                        {% if data.stars|length > 10 %}
+                        <div class="no-link">
+                            {% for s in data.stars %}
+                            <a class= 'link-list' href="/stars/{{s.id}}">{{s.name}}</a>
+                            {% endfor %}
+                        </div>
+
+                        {% else %}
+                        {% for s in data.stars %}
+                        <li>
+                            <div class= 'link'>
+                                <a href="/stars/{{s.id}}"> {{s.name}}</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                        {% else %}
+                        <div class='no-link'>
+                            No Stars
+                        </div>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class='col-lg-12 buffer'>
+                <div class='about'>
+                    <div class='header'>
+                        EXOPLANETS
+                    </div>
+                    {% if data.exoplanets %}
+                    <ul>
+                        {% for ep in data.exoplanets %}
+                        <li>
+                            <div class = 'link'>
+                                <a href="/exoplanets/{{ep.id}}"> {{ep.name}}</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <div class = 'no-link'>
+                        No Exoplanets
                     </div>
                     {% endif %}
                 </div>
@@ -146,7 +179,7 @@
 
     <style>
     html {
-        background: url(/static/images/publication-detail.jpg) no-repeat center center fixed; 
+        background: url(/static/images/publication-detail.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

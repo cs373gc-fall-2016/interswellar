@@ -11,6 +11,8 @@ class DefaultConfig(object):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    GITHUB_CLIENT_ID = os.environ.get('GH_CID')
+    GITHUB_CLIENT_SECRET = os.environ.get('GH_CSEC')
 
 # pylint:disable=too-few-public-methods
 
