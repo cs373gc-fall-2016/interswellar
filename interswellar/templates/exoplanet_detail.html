@@ -113,7 +113,7 @@
                 <script type="text/javascript">
                 function massChange(type){
                     $("#mass").empty();
-                    if(type == '0') {
+                    if(type == 'none') {
                         return;
                     }
                     var mass = {{data.mass|float}};
@@ -152,7 +152,7 @@
 
         <style>
         html {
-            background: url(/static/images/exoplanet-detail.jpg) no-repeat center center fixed; 
+            background: url(/static/images/exoplanet-detail.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
