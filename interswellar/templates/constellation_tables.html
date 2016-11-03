@@ -95,6 +95,7 @@
 				});
 				
 				$(this).addClass("sorting_desc").removeClass("sorting")
+				$('.next').removeClass("disabled");
 				
 				var content = $(this).text().toLowerCase();
 				
@@ -105,7 +106,6 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
 				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
 
 				globalVar.callback($.getValues(1, sortStatus))
@@ -117,7 +117,9 @@
 				});
 				
 				$(this).addClass("sorting_asc").removeClass("sorting_desc")
+				$('.next').removeClass("disabled");
 				$(this).removeClass("sorting")
+
 				var content = $(this).text().toLowerCase();
 				
 				if (content.includes(" ")){
@@ -127,7 +129,6 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content = content+ "__ref";
-				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
 				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
 
 				globalVar.callback($.getValues(1, sortStatus))
@@ -139,7 +140,9 @@
 				});
 
 				$(this).addClass("sorting_desc").removeClass("sorting_asc")
+				$('.next').removeClass("disabled");
 				$(this).removeClass("sorting")
+				
 				var content = $(this).text().toLowerCase();
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
@@ -148,7 +151,6 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
 				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
 
 				globalVar.callback($.getValues(1, sortStatus))
@@ -296,6 +298,7 @@ var ListInCell = React.createClass({
 					if(key == "name"){
 						return <td><a href={"/constellations/" + data.id}>{data[key]}</a></td>;
 					}
+					if (key == "area") return <td>{data[key]} sq. degrees</td>;
 					return <td>{data[key]}</td>;
 				}
 			});
