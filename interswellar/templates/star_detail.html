@@ -85,14 +85,22 @@
                         CONSTELLATION
                     </div>
                     <div class = "data-right">
+                        {% if data.constellation %}
                         <a href="/constellations/{{data.constellation.id}}">{{data.constellation.name}}</a>
+                        {% else %}
+                        Unknown
+                        {% endif %}
                     </div>
                     <div style="clear: both;"></div>
                     <div class = "data-left">
                         DISCOVERED BY
                     </div>
                     <div class = "data-right">
+                        {% if data.discovered_by %}
                         <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
+                        {% else %}
+                        Unknown
+                        {% endif %}
                     </div>
                     <div style="clear: both;"></div>
                 </div>
