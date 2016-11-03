@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="/static/css/index.css">
 	<link rel="stylesheet" href="/static/css/about.css">
 
+
 	<script src='/static/js/about.js'></script>
 
 
@@ -263,95 +264,51 @@
 
 	<!-- Statistics -->
 	<div class="container-fluid inner">
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					COMMITS
-				</div>
-				<p>
-					{{total_commits}}
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					ISSUES
-				</div>
-				<p>
-					{{total_issues}}
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					UNIT TESTS
-				</div>
-				<p>
-					40
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					APIARY API
-				</div>
-				<p>
-					<a href= "http://docs.interswellarapi.apiary.io/#">Apiary Link</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					GITHUB REPO
-				</div>
-				<p>
-					<a href="https://github.com/cs373gc-fall-2016/interswellar">Github Link</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-4 buffer">
-			<div class="about">
-				<div class="data-header">
-					WIKI
-				</div>
-				<p>
-					<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki Link</a>
-				</p>
-			</div>
-		</div>
-
-	<!-- API data -->
-	<div class="container-fluid inner-small">
-		<div class="col-md-6 buffer">
-			<div class="about" style="height:202px;">
-				<div class="data-header">
-					Repository 
-				</div>
-				<p>
-					<a href="http://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a><br>
-					<a href="http://simbad.u-strasbg.fr/simbad/">SIMBAD Astronomical Database</a><br>
-					<a href="https://ui.adsabs.harvard.edu/">Harvard Astrophysics</a><br>
-					<a href="https://en.wikipedia.org/wiki/Special:ApiSandbox">Wikipedia</a>
-				</p>
-			</div>
-		</div>
 		<div class="col-md-6 buffer">
 			<div class="about" style="height:202px;">
 				<div class="data-header">
 					Links
 				</div>
 				<p>
-					<a href="http://www.astropy.org/">Astropy</a><br>
-					<a href="http://docs.python-requests.org/en/master/">Requests</a><br>
-					<a href="https://docs.python.org/3.4/library/re.html">Re</a>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar">Github</a><br>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar/issues">Issues</a><br>
+					<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki</a><br>
+					<a href= "http://docs.interswellarapi.apiary.io/#">Apiary API</a>
 				</p>
 			</div>
 		</div>
-	</div>
+
+		<div class="col-md-6 buffer">
+			<div class="about" style="height:202px;">
+				<div class="data-header">
+					Numbers
+				</div>
+				<div class="data-left">
+					COMMITS
+				</div>
+				<div class="data-right">
+					{{total_commits}}
+				</div>
+				<br>
+				<div style="clear: both;"></div>
+				<div class="data-left">
+					ISSUES
+				</div>
+				<div class="data-right">
+					{{total_issues}}
+				</div>
+				<br>
+				<div style="clear: both;"></div>
+				<div class="data-left">
+					UNIT TESTS
+				</div>
+
+				<div class="data-right">
+					40
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
 
 		<!-- Testing -->
 		<div class="col-md-offset-4 col-md-4 buffer">

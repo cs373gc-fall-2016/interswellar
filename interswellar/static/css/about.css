@@ -50,10 +50,20 @@
 	max-height:75%;
 }
 
+.data-left {
+    font-weight: bold;
+    float: left;
+}
+
+.data-right {
+    float: right;
+    font-size: 20px;
+}
+
 /* title of each box of info */
 .header {
     width: 75%;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 14px 24px;
     border: 0 none;
     font-size: 125%;
@@ -70,7 +80,7 @@
 }
 
 .data-header {
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 14px 24px;
     border: 0 none;
     font-size: 125%;
