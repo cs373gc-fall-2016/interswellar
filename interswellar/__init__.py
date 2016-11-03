@@ -42,4 +42,3 @@ def create_app(env):
             ))
 
     return app
-    
