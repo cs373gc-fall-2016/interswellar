@@ -151,7 +151,7 @@ def get_commits():
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
           'stats/contributors?client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_ID'],
               current_app.config['GITHUB_CLIENT_SECRET'],
           )
 
@@ -165,7 +165,7 @@ def get_total_commits():
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
           'stats/contributors?client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_ID'],
               current_app.config['GITHUB_CLIENT_SECRET'],
           )
     response = requests.get(url).text
@@ -181,7 +181,7 @@ def get_issues():
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
           'issues?state=all&filter=all&client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_ID'],
               current_app.config['GITHUB_CLIENT_SECRET'],
           )
     response = requests.get(url).text
@@ -198,7 +198,7 @@ def get_total_issues():
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
           'issues?filter=all&state=all&client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_ID'],
               current_app.config['GITHUB_CLIENT_SECRET'],
           )
     response = requests.get(url).text
