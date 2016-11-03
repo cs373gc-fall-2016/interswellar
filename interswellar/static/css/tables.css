@@ -10,10 +10,6 @@ body {
     color: #fff;
 }
 
-/*body:not(.nohover) tbody tr:hover {
-  background-color: whitesmoke !important;
-}*/
-
 .custom-table {
     position: relative;
     justify-content: center;
@@ -102,9 +98,10 @@ table {
   overflow: hidden;
 }
 
-/*td, th {
+td, th {
   position: relative;
-}*/
+  outline: 0;
+}
 
 
 tbody tr:hover {
@@ -134,29 +131,6 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
     content: '-';
     background-color: #000;
 }
-
-thead td:hover {
-
-}
-
-td.highlight {
-    background-color: rgba(255, 255, 255, .25) !important;
-}
-
-/*td:hover::after,
-thead th:not(:empty):hover::after,
-td:focus::after,
-thead th:not(:empty):focus::after { 
-  content: '';  
-  height: 10000px;
-  left: 0;
-  position: absolute;  
-  top: -5000px;
-  width: 100%;
-  z-index: -1;
-}*/
-
-
 
 @media (min-width: 900px){
 .tabletron {
