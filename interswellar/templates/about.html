@@ -384,7 +384,8 @@
 						nasa_stars.py
 					</div>
 					<p>
-						This script reads data from the mission_stars table from the NASA Exoplanet Archive. It reads the basic properties of the stars, including names, masses, temperatures, luminosities, and radii.
+						This script reads data from the mission_stars table from the NASA Exoplanet Archive. It reads the basic properties of the stars, including names, masses, temperatures, luminosities, and radii.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/nasa_stars.py">View Source</a>
 					</p>
 				</div>
 			</div>
@@ -394,7 +395,8 @@
 						nasa_planets.py
 					</div>
 					<p>
-						This script reads data from the multiexopars table from the NASA Exoplanet Archive. It reads the basic properties of the exoplanets, and creates stars for them if they do not previously exist in the db. It also creates some blank publications to reference.
+						This script reads data from the multiexopars table from the NASA Exoplanet Archive. It reads the basic properties of the exoplanets, and creates stars for them if they do not previously exist in the db. It also creates some blank publications to reference.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/nasa_planets.py">View Source</a>
 					</p>
 				</div>
 			</div>
@@ -404,7 +406,8 @@
 						pub_for_star.py
 					</div>
 					<p>
-						This script queries SIMBAD to get a list of publications referencing each star, creates a publication for the earliest publication for each star, and connects the star to the publication.
+						This script queries SIMBAD to get a list of publications referencing each star, creates a publication for the earliest publication for each star, and connects the star to the publication.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/pub_for_star.py">View Source</a>
 					</p>
 				</div>
 			</div>
@@ -416,7 +419,8 @@
 						fill_pub.py
 					</div>
 					<p>
-						This script queries ADS using the python ads library. It pulls the standard data fields for publications from the data source and puts them in the database
+						This script queries ADS using the python ads library. It pulls the standard data fields for publications from the data source and puts them in the database.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/fill_pub.py">View Source</a>
 					</p>
 				</div>
 			</div>
@@ -426,7 +430,8 @@
 						constel_data.py
 					</div>
 					<p>
-						This script queries wikipedia for the 88 modern constellations and their associated data fields.
+						This script queries wikipedia for the 88 modern constellations and their associated data fields.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/constel_data.py">View Source</a>
 					</p>
 				</div>
 			</div>
@@ -436,7 +441,8 @@
 						star_constel.py
 					</div>
 					<p>
-						This script queries SIMBAD for the ICRS Coordinates of each star, then uses astropy to compute the constellation name given those coordinates, and stores that constellation reference in the db
+						This script queries SIMBAD for the ICRS Coordinates of each star, then uses astropy to compute the constellation name given those coordinates, and stores that constellation reference in the db.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/star_constel.py">View Source</a>
 					</p>
 				</div>
 			</div>
