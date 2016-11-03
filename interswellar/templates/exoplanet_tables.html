@@ -310,6 +310,9 @@ var RowCells = React.createClass({
 					if(key == "name"){
 						return <td><a href={"/exoplanets/" + data.id}>{data[key]}</a></td>;
 					}
+					if (key == "mass") return <td>{data[key]} M<sub>☉</sub></td>;
+					if (key == "radius") return <td>{data[key]} R<sub>☉</sub></td>;
+					if (key == "orbital_period") return <td>{data[key]} days</td>;
 					return <td>{data[key]}</td>;
 				}
 			});

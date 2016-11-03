@@ -144,7 +144,7 @@
 				$(this).addClass("sorting_desc").removeClass("sorting_asc")
 				$('.next').removeClass("disabled");
 				$(this).removeClass("sorting")
-				
+
 				var content = $(this).text().toLowerCase();
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
@@ -296,14 +296,14 @@ var ListInCell = React.createClass({
 				if (data[key] == null){
 					return <td>Unknown</td>;
 				}
-				if (Array.isArray(data[key])){
+				if (Array.isArray(data[key])){ //If field is array
 					if (data[key].length == 0){
 						return <td>None</td>;
 					}
 					return (
 						<ListInCell listValues={data[key]} />
 						);
-				} else if (data[key] === Object(data[key])){
+				} else if (data[key] === Object(data[key])){ // If field is object
 					// console.log(key);
 					if (key == "constellation"){
 						result = ConcatObjs("", data[key], "constellations");
@@ -311,10 +311,14 @@ var ListInCell = React.createClass({
 						result = ConcatObjs("", data[key], "publications");
 					}
 					return <td>{result}</td>
-				} else {
+				} else { // Otherwise, field is just a string
 					if(key == "name"){
 						return <td><a href={"/stars/" + data.id}>{data[key]}</a></td>;
 					}
+					if (key == "luminosity") return <td>e<sup>{data[key]}</sup></td>;
+					if (key == "mass") return <td>{data[key]}<sub>☉</sub></td>;
+					if (key == "temperature") return <td>{data[key]} K</td>;
+					if (key == "radius") return <td>{data[key]} R<sub>☉</sub></td>;
 					return <td>{data[key]}</td>;
 				}
 			});

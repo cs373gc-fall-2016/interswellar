@@ -298,6 +298,7 @@ var ListInCell = React.createClass({
 					if(key == "name"){
 						return <td><a href={"/constellations/" + data.id}>{data[key]}</a></td>;
 					}
+					if (key == "area") return <td>{data[key]} sq. degrees</td>;
 					return <td>{data[key]}</td>;
 				}
 			});
