@@ -150,7 +150,7 @@
 			currPage = 1;
 			$('.previous').addClass('disabled');
 			$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
-  			$( '.paginate_button active.a' ).text(currPage); 
+  			$( '.paginate_button.active a' ).text(currPage); 
 		});
 		
 		//TODO: clean this up
