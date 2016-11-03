@@ -146,13 +146,14 @@
 					content += "__ref";
 				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
 				globalVar.callback($.getValues(1, sortStatus))
+				// $( '.paginate_button active a' ).text(currPage); 
 			}
-			console.log(currPage);
 
 			currPage = 1;
 			$('.previous').addClass('disabled');
 			$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
-  			$( '.active a' ).text(currPage); 
+			// console.log(currPage);
+  			$( '.paginate_button.active a' ).text(currPage); 
 		});
 		
 		//TODO: clean this up
@@ -160,7 +161,6 @@
   		$( '.paginate_button').off('click.DT');
   		$( '.next').removeClass("disabled");
   		$( '.paginate_button').bind("click", function(){
-  			console.log("clicked");
   			if ($(this).hasClass("previous") || $(this).hasClass("next")){
  				if ($(this).hasClass("previous") && currPage > 1){
  					$(this) == decrementPage($(this));
@@ -170,7 +170,10 @@
   					$(this) == incrementPage($(this));
   					globalVar.callback($.getValues(currPage, sortStatus))
   				}
-	  			$( '.active a' ).text(currPage); 
+	  			console.log(currPage);
+	  			$( '.paginate_button.active a' ).text(currPage); 
+	  			
+
   			}
   		});
 		    
@@ -183,19 +186,24 @@
 		
 	});
 
+
 	function decrementPage(button){
 		currPage--;
 		if (currPage == 1) $('.previous').addClass('disabled');
-		$("next").removeClass("disabled");
+		$(".next").removeClass("disabled");
 		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
 		return button;
 	}
 
 	function incrementPage(button){
 		currPage++;
-		if (currPage == totalPages) $('.next').addClass('disabled');
+		var upper = 0;
+		if (currPage == totalPages) {
+			$('.next').addClass('disabled');
+			upper = numResults;
+		} else upper = currPage*10;
 		$(".previous").removeClass("disabled");
-		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + upper + " of " + numResults + " entries");
 		// if (currPage == 1) button.addClass("disabled");
 		return button;
 	}
@@ -231,11 +239,9 @@
 	                result = data;
 	            }
 	        });
-	        // console.log(result.objects[0]);
 	        if (totalPages == 0) totalPages = result.total_pages;
 	        if (numResults == 0) numResults = result.num_results;
-	        console.log(totalPages);
-	       return result;
+	        return result;
 	    }
 	});
 
@@ -270,7 +276,6 @@ var ListInCell = React.createClass({
 var RowCells = React.createClass({
 	render: function(){
 		var data = this.props.rowValues;
-			// console.log(data);
 			var val = colNames.map(function(key){
 				key = key.toLowerCase();
 				if (key.includes(" ")){
@@ -289,7 +294,6 @@ var RowCells = React.createClass({
 						);
 				} else if (data[key] === Object(data[key])){
 					if (key == "star"){
-						// console.log(data.star.id);
 						return <td><a href={"/stars/" + data.star.id}>{data.star.name}</a></td>
 					} else if (key == "discovered_by"){
 						return <td><a href={"/publications/" + data.discovered_by.id}>{data.discovered_by.ref}</a></td>
@@ -310,9 +314,7 @@ var RowCells = React.createClass({
 
 var RowList = React.createClass({
 	render: function() {
-			// console.log(this.props.rowList);
 			var rowEntries = this.props.rowList.objects.map(function(row) {
-				// console.log(row);
 				return (
 					<RowCells rowValues={row} />
 					);

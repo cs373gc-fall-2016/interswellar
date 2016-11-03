@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
@@ -46,7 +47,7 @@
 		background-size: cover;
 	}
 	</style>
-
+	
 </head>
 
 <body>
@@ -55,9 +56,6 @@
 	<div class="table-title">
 		STARS
 	</div>
-<!-- 	<div class="col-md-12">
-		<div id="content" ></div>
-	</div> -->
 
 	<div class='container-fluid tabletron'>
 		<div class="col-md-12 title-box">
@@ -71,43 +69,183 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
-			"ordering": false,
+			"ordering": true,
 			"bFilter": false,
 			"bLengthChange": false,
 			"scrollX": true,
 			"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
+			"aaSorting": []
 
 		});
-	});
-	</script>
 
-	<!-- React -->
-	<script type="text/babel">
+		$('.dataTables_scrollHead thead th').off('click.DT');
+		var handler = function() {
+			$(this).addClass(".sorting_desc")
+			alert( "The fox jumps over the lazy dog." );
+		};
 
-	jQuery.extend({
-		getValues: function() {
-			var result = null;
-			$.ajax({
-				url: "/api/v1/stars?page=1",
-				type: 'get',
-				dataType: 'json',
-				async: false,
-				success: function(data) {
-					result = data;
+		// TODO: Clean this up
+		$( '.dataTables_scrollHead thead th' ).bind( "click", function() {
+			if($(this).hasClass("sorting")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting")
+					$(th).removeClass("sorting_asc")
+					$(th).removeClass("sorting_desc")
+				});
+				
+				$(this).addClass("sorting_desc").removeClass("sorting")
+				
+				var content = $(this).text().toLowerCase();
+				
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
 				}
-			});
-			return result;
-		}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content += "__ref";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				globalVar.callback($.getValues(1, sortStatus))
+			}
+			else if($(this).hasClass("sorting_desc")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting").removeClass("sorting_desc") 
+				});
+				
+				$(this).addClass("sorting_asc").removeClass("sorting_desc")
+				$(this).removeClass("sorting")
+				var content = $(this).text().toLowerCase();
+				
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
+				}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content = content+ "__ref";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				globalVar.callback($.getValues(1, sortStatus))
+			}
+			else if($(this).hasClass("sorting_asc")) {
+				
+				$('table.dataTable th').each(function(index, th) {
+					$(th).addClass("sorting").removeClass("sorting_asc") 
+				});
+
+				$(this).addClass("sorting_desc").removeClass("sorting_asc")
+				$(this).removeClass("sorting")
+				var content = $(this).text().toLowerCase();
+				if (content.includes(" ")){
+					content = content.replace(" ", "_");
+				}
+				else if (content == "star")
+					content += "__name";
+				if (content == "discovered_by")
+					content += "__ref";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				globalVar.callback($.getValues(1, sortStatus))
+			}
+			currPage = 1;
+			$('.previous').addClass('disabled');
+			$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+  			$( '.paginate_button.active a' ).text(currPage); 
+		});
+		
+		//TODO: clean this up
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+  		$( '.paginate_button').off('click.DT');
+  		$( '.next').removeClass("disabled");
+  		$( '.paginate_button').bind("click", function(){
+  			if ($(this).hasClass("previous") || $(this).hasClass("next")){
+ 				if ($(this).hasClass("previous") && currPage > 1){
+ 					$(this) == decrementPage($(this));
+ 					globalVar.callback($.getValues(currPage, sortStatus))
+ 				}
+  				else if ($(this).hasClass("next") && currPage < totalPages) {
+  					$(this) == incrementPage($(this));
+  					globalVar.callback($.getValues(currPage, sortStatus))
+  				}
+	  			$( '.paginate_button.active a' ).text(currPage); 
+  			}
+  		});
+		    
+		$('#example tbody').on( 'mouseenter', 'td', function () {
+            var colIdx = table.cell(this).index().column;
+            
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+            $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+        } );
+		
 	});
 
-	var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radius', 'Constellations', 'Exoplanets'];
+	function decrementPage(button){
+		currPage--;
+		if (currPage == 1) $('.previous').addClass('disabled');
+		$(".next").removeClass("disabled");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+		return button;
+	}
+
+	function incrementPage(button){
+		currPage++;
+		if (currPage == totalPages) $('.next').addClass('disabled');
+		$(".previous").removeClass("disabled");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+		// if (currPage == 1) button.addClass("disabled");
+		return button;
+	}
+	
+	var sortStatus = "";
+	var currPage = 1;
+	var totalPages = 0;
+	var numResults = 0;
+
+
+	$('#example tbody')
+	.on( 'mouseenter', 'td', function () {
+		var colIdx = table.cell(this).index().column;
+
+		$( table.cells().nodes() ).removeClass( 'highlight' );
+		$( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+	} );
+
+</script>
+
+<!-- React -->
+<script type="text/babel">
+    jQuery.extend({
+	    getValues: function(page, order_by) {
+	        var result = null;
+	        $.ajax({
+	        	url: "/api/v1/stars?page=" + page + order_by,
+	            // url: urlName,
+	            type: 'get',
+	            dataType: 'json',
+	            async: false,
+	            success: function(data) {
+	                result = data;
+	            }
+	        });
+	        if (totalPages == 0) totalPages = result.total_pages;
+	        if (numResults == 0) numResults = result.num_results;
+	       return result;
+	    }
+	});
+
+var globalVar = {
+	'callback': null
+};
+
+var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radius', 'Constellations', 'Exoplanets'];
 
 	function ConcatObjs(result, value){
 		if (Array.isArray(value)) return null;
 		for (var key in value){
 			if (key == "name" || key == "ref" || key == "abbrev"){
 				// result = value[key] + "\n";
-				result = <a href={"/exoplanets/" + value.id}> {value[key]} </a>;
+				result = <a href={"/exoplanets/" + value.id}> {value[key]} <br/> </a>;
 			}
 		}
 
@@ -161,9 +299,7 @@
 
 	var RowList = React.createClass({
 		render: function() {
-			// console.log(this.props.rowList);
 			var rowEntries = this.props.rowList.objects.map(function(row) {
-				// console.log(row);
 				return (
 					<RowCells rowValues={row} />
 					);
@@ -178,36 +314,46 @@
 
 
 	var Table = React.createClass({
+		getInitialState: function() {
+	        return {
+	            dataForTable: $.getValues(1, "")
+	        };
+    	},
+		componentWillMount() {
+			globalVar.callback = (data) => {
+				this.setState({dataForTable: data})
+			};
+		},
 		render: function() {
-			var data = $.getValues();
-			// console.log(data);
+			var data = this.state.dataForTable;
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
-					);
-			});
-
-			return (
-				<div>
-				<table id="example" className="table">
-				<thead>
-				<tr>
-				{columns}
-				</tr>
-				</thead>
-				<RowList rowList={data}/>
-
-				</table>
-				</div>
 				);
-		}
-	});
+		});
 
-	ReactDOM.render(
-		<Table/>,
-		document.getElementById('content')
-		);
-	</script>
+		return (
+			<div>
+			<table id="example" className="table">
+			<thead>
+			<tr>
+			{columns}
+			</tr>
+			</thead>
+			<RowList rowList={data}/>
+
+			</table>
+			</div>
+			);
+	}
+});
+
+ReactDOM.render(
+	<Table />,
+	document.getElementById('content')
+	);
+</script>
+
 </div>
 </body>
 
