@@ -7,12 +7,13 @@ function runTests(){
 			$("#test-div").show();
 			data = data.replace(/(ok )/g, 'ok\n')
 			$("#test-output").append("<p>" + data + "</p>");
-			$(window).trigger('resize.px.parallax');
+			window.dispatchEvent(new Event('resize'));
 			$("#test-output").append("<button class='btn' onclick='clearTests()'>DONE</button>");
 		});
 }
 
 function clearTests(){
 	$("#test-div").hide();
+	window.dispatchEvent(new Event('resize'));	
 	$("#test-output").empty();
 }
