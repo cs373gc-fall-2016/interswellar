@@ -27,3 +27,6 @@ pydoc:
 	python -m pydoc -w interswellar.views_test
 	python -m pydoc -w interswellar.config
 
+env:
+	source ~/venv/interswellar/bin/activate
+
