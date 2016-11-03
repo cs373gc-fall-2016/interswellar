@@ -11,7 +11,8 @@
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="/static/css/index.css">
 	<link rel="stylesheet" href="/static/css/about.css">
-	<link rel="stylesheet" href="/static/js/about.js">
+
+	<script src='/static/js/about.js'></script>
 
 
 	<script  src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -325,19 +326,27 @@
 					TESTS
 				</div>
 				<p>
-					<button class="btn">CLICK ME</button>
+					<button class="btn test-btn" onclick="runTests()">RUN UNIT TESTS</button>
 				</p>
 			</div>
 		</div>
-		<div class="col-md-offset-2 col-md-8 buffer">
+		<!-- <div style="clear: both;"></div> -->
+
+		<!-- <div class="row"> -->
+		<div class="col-md-offset-2 col-md-8 buffer" id="test-div" style="display:none">
 			<div class="about">
 				<div class="data-header">
 					TEST OUTPUT
 				</div>
-				<pre class="code">hello world</pre>
+				<div>
+					<p class="code" id="test-output"></p>
+				</div>
+
 			</div>
 		</div>
+
 	</div>
+	<!-- </div> -->
 
 </div>
 
