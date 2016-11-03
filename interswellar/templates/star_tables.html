@@ -40,7 +40,7 @@
 
 	<style>
 	html {
-		background: url(/static/images/star.jpg) no-repeat center center fixed;
+		background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -97,11 +97,12 @@
 				$(this).addClass("sorting_desc").removeClass("sorting")
 				
 				var content = $(this).text().toLowerCase();
+				console.log(content);
 				
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
 				}
-				else if (content == "star")
+				else if (content == "star" || content == "exoplanets")
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
@@ -121,7 +122,7 @@
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
 				}
-				else if (content == "star")
+				else if (content == "star" || content == "exoplanets")
 					content += "__name";
 				if (content == "discovered_by")
 					content = content+ "__ref";
@@ -140,16 +141,19 @@
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
 				}
-				else if (content == "star")
+				else if (content == "star" || content == "exoplanets")
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
 				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
 				globalVar.callback($.getValues(1, sortStatus))
+				// $( '.paginate_button active a' ).text(currPage); 
 			}
+
 			currPage = 1;
 			$('.previous').addClass('disabled');
 			$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+			// console.log(currPage);
   			$( '.paginate_button.active a' ).text(currPage); 
 		});
 		
@@ -167,7 +171,10 @@
   					$(this) == incrementPage($(this));
   					globalVar.callback($.getValues(currPage, sortStatus))
   				}
+	  			console.log(currPage);
 	  			$( '.paginate_button.active a' ).text(currPage); 
+	  			
+
   			}
   		});
 		    
@@ -180,6 +187,7 @@
 		
 	});
 
+
 	function decrementPage(button){
 		currPage--;
 		if (currPage == 1) $('.previous').addClass('disabled');
@@ -190,9 +198,13 @@
 
 	function incrementPage(button){
 		currPage++;
-		if (currPage == totalPages) $('.next').addClass('disabled');
+		var upper = 0;
+		if (currPage == totalPages) {
+			$('.next').addClass('disabled');
+			upper = numResults;
+		} else upper = currPage*10;
 		$(".previous").removeClass("disabled");
-		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + upper + " of " + numResults + " entries");
 		// if (currPage == 1) button.addClass("disabled");
 		return button;
 	}
@@ -230,7 +242,7 @@
 	        });
 	        if (totalPages == 0) totalPages = result.total_pages;
 	        if (numResults == 0) numResults = result.num_results;
-	       return result;
+	        return result;
 	    }
 	});
 
@@ -238,26 +250,25 @@ var globalVar = {
 	'callback': null
 };
 
-var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radius', 'Constellations', 'Exoplanets'];
+var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered By', 'Temperature', 'Radius', 'Constellation', 'Exoplanets'];
 
-	function ConcatObjs(result, value){
-		if (Array.isArray(value)) return null;
-		for (var key in value){
-			if (key == "name" || key == "ref" || key == "abbrev"){
-				// result = value[key] + "\n";
-				result = <a href={"/exoplanets/" + value.id}> {value[key]} <br/> </a>;
-			}
+function ConcatObjs(result, value, model){
+	if (Array.isArray(value)) return null;
+	for (var key in value){
+		if (key == "name" || key == "ref" || key == "abbrev"){
+			result = <a href={"/" + model + "/" + value.id}> {value[key]} <br/> </a>;
 		}
-
-		return result;
 	}
 
-	var ListInCell = React.createClass({
-		render: function(){
-			var countArrays = this.props.countArrays;
-			var result = "";
+	return result;
+}
+
+var ListInCell = React.createClass({
+	render: function(){
+		var countArrays = this.props.countArrays;
+		var result = "";
 			var vals = this.props.listValues.map(function(val){ // this.props.listValues is an array of Objects
-				return result = ConcatObjs(result, val);
+				return result = ConcatObjs(result, val, "exoplanets");
 			});
 			return <td>{vals}</td>;
 		}
@@ -267,8 +278,10 @@ var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radi
 		render: function(){
 			var data = this.props.rowValues;
 			var val = colNames.map(function(key){
-				console.log(data[key]);
 				key = key.toLowerCase();
+				if (key.includes(" ")){
+					key = key.replace(" ", "_");
+				}
 				var result = "";
 				if (data[key] == null){
 					return <td>Unknown</td>;
@@ -281,7 +294,12 @@ var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radi
 						<ListInCell listValues={data[key]} />
 						);
 				} else if (data[key] === Object(data[key])){
-					result = ConcatObjs("", data[key]);
+					// console.log(key);
+					if (key == "constellation"){
+						result = ConcatObjs("", data[key], "constellations");
+					} else if (key == "discovered_by"){
+						result = ConcatObjs("", data[key], "publications");
+					}
 					return <td>{result}</td>
 				} else {
 					if(key == "name"){
@@ -297,8 +315,8 @@ var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radi
 		}
 	});
 
-	var RowList = React.createClass({
-		render: function() {
+var RowList = React.createClass({
+	render: function() {
 			var rowEntries = this.props.rowList.objects.map(function(row) {
 				return (
 					<RowCells rowValues={row} />
@@ -326,6 +344,7 @@ var colNames = ['Name', 'Luminosity', 'Mass', 'Discovered', 'Temperature', 'Radi
 		},
 		render: function() {
 			var data = this.state.dataForTable;
+			console.log(data);
 			var columns = colNames.map(function(col){
 				return (
 					<th>{col}</th>
