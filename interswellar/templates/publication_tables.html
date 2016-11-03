@@ -240,11 +240,11 @@ var globalVar = {
 
 var colNames = ['Ref', 'Title', 'Authors', 'Journal', 'Stars', 'Exoplanets'];
 
-function ConcatObjs(result, value){
+function ConcatObjs(result, value, model){
 	if (Array.isArray(value)) return null;
 	for (var key in value){
 		if (key == "name" || key == "ref" || key == "abbrev"){
-			result = <a href={"/exoplanets/" + value.id}> {value[key]} <br/> </a>;
+			result = <a href={"/" + model + "/" + value.id}> {value[key]} <br/> </a>;
 		}
 	}
 
@@ -253,10 +253,10 @@ function ConcatObjs(result, value){
 
 var ListInCell = React.createClass({
 	render: function(){
-		var countArrays = this.props.countArrays;
+		var model = this.props.model;
 		var result = "";
 			var vals = this.props.listValues.map(function(val){ // this.props.listValues is an array of Objects
-				return result = ConcatObjs(result, val);
+				return result = ConcatObjs(result, val, model);
 			});
 			return <td>{vals}</td>;
 		}
@@ -272,13 +272,16 @@ var RowCells = React.createClass({
 				return <td>Unknown</td>;
 			}
 			if (Array.isArray(data[key])){
+				console.log(key);
+				console.log(data[key]);
 				if (data[key].length == 0){
 					return <td>None</td>;
 				}
 				return (
-					<ListInCell listValues={data[key]} />
+					<ListInCell listValues={data[key]} model={key} />
 					);
-			} else if (data[key] === Object(data[key])){
+			} else if (data[key] === Object(data[key])){ // Never hits this????
+				// console.log("IS AN OBJECT");
 				result = ConcatObjs("", data[key]);
 				return <td>{result}</td>
 			} else {
