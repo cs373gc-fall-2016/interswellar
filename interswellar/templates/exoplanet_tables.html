@@ -65,6 +65,7 @@
 		</div>
 	</div>
 
+<!-- Sorting on a column with OBJECT then doing next page isn't getting correct number -->
 
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -97,6 +98,7 @@
 				$(this).addClass("sorting_desc").removeClass("sorting")
 				
 				var content = $(this).text().toLowerCase();
+				console.log(content);
 				
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
