@@ -83,97 +83,76 @@
                     {% endif %}
                 </div>
                 <div style="clear: both;"></div>
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
+                <div class = "data-left">
                     STAR
                 </div>
-                <div>
-                    <div class = 'link'>
-                        <a href= "/stars/{{data.star.id}}" style= "color:white">{{data.star.name}} </a>
-                    </div>
+                <div class = "data-right">
+                    <a href= "/stars/{{data.star.id}}">{{data.star.name}} </a>
                 </div>
-            </div>
-        </div>
-
-        <div class='col-sm-6 col-lg-4 buffer'>
-            <div class='about'>
-                <div class='header'>
+                <div style="clear: both;"></div>
+                <div class = "data-left">
                     DISCOVERED BY
                 </div>
-                {% if data.discovered_by.ref %}
-                <div class='link'>
-                    <a href="/publications/{{data.discovered_by.id}}" style="color:white">{{data.discovered_by.ref}}</a>
+                <div class = "data-right">
+                    <a href="/publications/{{data.discovered_by.id}}">{{data.discovered_by.ref}}</a>
                 </div>
-                {% else %}
-                <div class='no-link'>
-                    No Publication
-                </div>
-                {% endif %}
+                <div style="clear: both;"></div>
             </div>
         </div>
 
-        {% if data.mass %}
-        <div class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-sm-8 col-lg-8 col-md-8 buffer'>
+        <div class='col-sm-6 col-lg-8 buffer'>
             <div class='about'>
                 <div class='header'>
-                    MASS VISUALIZATION
-                </div>
+                    <img class="emoji" onclick="massChange('earth')" src="/static/images/earth.png"/>
+                    <span onclick="massChange('none')">MASS VISUALIZATION</span>
+                    <img class="emoji" onclick="massChange('jupiter')" src="/static/images/jupiter.png"/>
 
-                <div class='dropstyle'>
-                    <select id="dropdown" class="drop" onchange="massChange(this.value)">
-                        <option value="0"></option>
-                        <option value="earth">Earth Masses</option>
-                        <option value="jupiter">Jupiter Masses</option>
-                    </select>
                 </div>
+                {% if data.mass %}
 
                 <script type="text/javascript">
                 function massChange(type){
                     $("#mass").empty();
-
-                    if(type == '0') {
+                    if(type == 'none') {
                         return;
                     }
                     var mass = {{data.mass|float}};
-
                     if(type == 'jupiter') {
                         mass = mass / 317.828133;
                     }
-
                     for (var i = 0; mass > 1 && i < Math.floor(mass); i++) {
-                        $("#mass").append('<img class="emoji" src="../../static/images/' + type + '.png" />');
+                        $("#mass").append('<img class="emoji" src="/static/images/' + type + '.png" />');
                     }
-
                     var dec = mass % 1;
-
                     if (dec > 0 && mass > 1) {
                         $("#mass").append('<span class="emoji-div" id="partial-mass" />');
-                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="../../static/images/' + type + '.png" alt="Earth" />');
+                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="/static/images/' + type + '.png"/>');
                         $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
-                    };
-
+                    }
+                    //only partial image
                     if (dec > 0 && mass < 1) {
-                        $("#mass").append('<div class="emoji-div" id="partial-mass" />');
-                        $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="../../static/images/' + type + '.png" alt="Earth" />');
-                        $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
+                        if (dec*40 > 5) {
+                            $("#mass").append('<div class="emoji-div" id="partial-mass" />');
+                            $("#partial-mass").append('<img class="emoji clip" id="emojipart" src="/static/images/' + type + '.png"/>');
+                            $("#emojipart").css('clip', 'rect(0,' + dec*40 + 'px, 40px, 0)');
+                        } else {
+                            $("#mass").append('<div class="no-link" id="partial-mass"> MASS TOO SMALL TO DISPLAY </div>');
+                        }
                     };
-
                 }
                 </script>
                 <div id='mass'>
-
+                    <div class="no-link">SELECT A PLANET!</div>
                 </div>
+                {% else %}
+                <div class="no-link">UNKNOWN MASS</div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
 
         <style>
         html {
-        background: url(/static/images/exoplanet-detail.jpg) no-repeat center center fixed; 
+            background: url(/static/images/exoplanet-detail.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;

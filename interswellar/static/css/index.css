@@ -25,6 +25,18 @@ body {
     border: 0px solid transparent;
 }
 
+a:link, a:visited, a:active{
+    text-decoration: underline;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.no-ul, a.home-btn:link {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
 /* Content bar */
 .jumbotron{
     background-color:rgba(0, 0, 0, .7);
@@ -44,14 +56,14 @@ body {
     font-weight: 500;
     font-size: 6vw;
     letter-spacing: 10px;
-    color: #FFF;
+    color: #fff;
 }
 
 .menu-title {
     font-family: "lato", sans-serif;
     font-weight: 500;
     font-size: 30px;
-    color: #FFF;
+    color: #fff !important;
 }
 
 /* Title text container */
@@ -65,11 +77,11 @@ body {
 .navbar-inverse .navbar-nav > li > a.nav-link:hover, 
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
     background-color: #fff;
-    color: #000;
+    color: #000 !important;
 }
 
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
-    color: #fff;
+    color: #fff !important;
 }
 
 .navbar-inverse {
@@ -98,7 +110,7 @@ body {
         border-width: 0 0 1px;
     }
     .navbar-collapse.collapse {
-        display: none!important;
+        display: none !important;
     }
     .navbar-nav {
         float: none!important;
@@ -133,7 +145,7 @@ body {
     text-transform: uppercase;
     background: #fff;
     border: 2px solid #fff;
-    color: #000;
+    color: #000 !important;
     margin-bottom: 5px;
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
@@ -143,7 +155,7 @@ body {
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .dropdown-toggle.btn {
     background: #000;
     border-color: #fff;
-    color: #fff;
+    color: #fff !important;
 }
 
 .btn:active, .btn.active {
@@ -154,7 +166,7 @@ body {
 
 .btn-primary.outline:active, .btn-primary.outline.active {
     border-color: #007299;
-    color: #007299;
+    color: #007299 !important;
     box-shadow: none;
 }
 
@@ -190,5 +202,5 @@ body {
     font-family: "lato", sans-serif;
     font-weight: 500;
     font-size: 6vw;
-    color: #FFF;
+    color: #FFF !important;
 }

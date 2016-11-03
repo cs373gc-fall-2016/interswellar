@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>InterSWEllar</title>
-    
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
@@ -35,12 +35,16 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 
-	<link rel="stylesheet" href="../static/css/index.css">
-	<link rel="stylesheet" href="../static/css/tables.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="/static/css/tables.css">
 
 	<style>
 	html {
-		background: url({{bg_url}}) no-repeat center center fixed;
+		background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
 	}
 	</style>
 	
@@ -50,11 +54,8 @@
 	{% include 'nav.html' %}
 
 	<div class="table-title">
-		{{title}}
+		EXOPLANETS
 	</div>
-<!-- 	<div class="col-md-12">
-		<div id="content" ></div>
-	</div> -->
 
 	<div class='container-fluid tabletron'>
 		<div class="col-md-12 title-box">
@@ -64,6 +65,7 @@
 		</div>
 	</div>
 
+<!-- Sorting on a column with OBJECT then doing next page isn't getting correct number -->
 
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -76,12 +78,14 @@
 			"aaSorting": []
 
 		});
-		// $(th).unbind('click.DT');
+
 		$('.dataTables_scrollHead thead th').off('click.DT');
 		var handler = function() {
 			$(this).addClass(".sorting_desc")
-  			alert( "The fox jumps over the lazy dog." );
+			alert( "The fox jumps over the lazy dog." );
 		};
+
+		// TODO: Clean this up
 		$( '.dataTables_scrollHead thead th' ).bind( "click", function() {
 			if($(this).hasClass("sorting")) {
 				
@@ -94,6 +98,7 @@
 				$(this).addClass("sorting_desc").removeClass("sorting")
 				
 				var content = $(this).text().toLowerCase();
+				console.log(content);
 				
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
@@ -102,7 +107,9 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}"))
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_desc")) {
 				
@@ -121,15 +128,16 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content = content+ "__ref";
-				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}"))
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_asc")) {
 				
 				$('table.dataTable th').each(function(index, th) {
 					$(th).addClass("sorting").removeClass("sorting_asc") 
 				});
-			
-			
+
 				$(this).addClass("sorting_desc").removeClass("sorting_asc")
 				$(this).removeClass("sorting")
 				var content = $(this).text().toLowerCase();
@@ -140,31 +148,95 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				globalVar.callback($.getValues("api/v1/exoplanets?page=1&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}"))
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+
+				globalVar.callback($.getValues(1, sortStatus))
+				// $( '.paginate_button active a' ).text(currPage); 
 			}
-			
-  			// alert( "The quick brown fox jumps over the lazy dog." );		
+
+			currPage = 1;
+			$('.previous').addClass('disabled');
+			$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+			// console.log(currPage);
+  			$( '.paginate_button.active a' ).text(currPage); 
 		});
+		
+		//TODO: clean this up
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+  		$( '.paginate_button').off('click.DT');
+  		$( '.next').removeClass("disabled");
+  		$( '.paginate_button').bind("click", function(){
+  			if ($(this).hasClass("previous") || $(this).hasClass("next")){
+ 				if ($(this).hasClass("previous") && currPage > 1){
+ 					$(this) == decrementPage($(this));
+ 					globalVar.callback($.getValues(currPage, sortStatus))
+ 				}
+  				else if ($(this).hasClass("next") && currPage < totalPages) {
+  					$(this) == incrementPage($(this));
+  					globalVar.callback($.getValues(currPage, sortStatus))
+  				}
+	  			console.log(currPage);
+	  			$( '.paginate_button.active a' ).text(currPage); 
+	  			
+
+  			}
+  		});
 		    
-		 $('#example tbody')
-        .on( 'mouseenter', 'td', function () {
+		$('#example tbody').on( 'mouseenter', 'td', function () {
             var colIdx = table.cell(this).index().column;
             
             $( table.cells().nodes() ).removeClass( 'highlight' );
             $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
         } );
+		
 	});
-	</script>
 
-	<!-- React -->
-	<script type="text/babel">
+	function decrementPage(button){
+		currPage--;
+		if (currPage == 1) $('.previous').addClass('disabled');
+		$(".next").removeClass("disabled");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + currPage*10 + " of " + numResults + " entries");
+		return button;
+	}
 
+	function incrementPage(button){
+		currPage++;
+		var upper = 0;
+		if (currPage == totalPages) {
+			$('.next').addClass('disabled');
+			upper = numResults;
+		} else upper = currPage*10;
+		$(".previous").removeClass("disabled");
+		$( '#example_info').text("Showing " + (1+(currPage-1)*10) + " to " + upper + " of " + numResults + " entries");
+		// if (currPage == 1) button.addClass("disabled");
+		return button;
+	}
+	
+	var sortStatus = "";
+	var currPage = 1;
+	var totalPages = 0;
+	var numResults = 0;
+
+
+	$('#example tbody')
+	.on( 'mouseenter', 'td', function () {
+		var colIdx = table.cell(this).index().column;
+
+		$( table.cells().nodes() ).removeClass( 'highlight' );
+		$( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+	} );
+
+</script>
+
+<!-- React -->
+<script type="text/babel">
     jQuery.extend({
-	    getValues: function(urlName) {
+	    getValues: function(page, order_by) {
 	        var result = null;
 	        $.ajax({
-	        	// "/api/v1/exoplanets?page=1"
-	            url: urlName,
+	        	url: "/api/v1/exoplanets?page=" + page + order_by,
+	            // url: urlName,
 	            type: 'get',
 	            dataType: 'json',
 	            async: false,
@@ -172,32 +244,33 @@
 	                result = data;
 	            }
 	        });
-	        console.log(result.objects[0]);
-	       return result;
+	        totalPages = result.total_pages;
+	        numResults = result.num_results;
+	        return result;
 	    }
 	});
 
-    var globalVar = {
-    	'callback': null
-    };
+var globalVar = {
+	'callback': null
+};
 
-	var colNames = ['Name', 'Mass', 'Radius', 'Orbital Period', 'Year Discovered', 'Star', 'Discovered By'];
+var colNames = ['Name', 'Mass', 'Radius', 'Orbital Period', 'Year Discovered', 'Star', 'Discovered By'];
 
-	function ConcatObjs(result, value){
-		if (Array.isArray(value)) return null;
-		for (var key in value){
-			if (key == "name" || key == "ref" || key == "abbrev"){
-				result = value[key] + "\n";
-			}
+function ConcatObjs(result, value){
+	if (Array.isArray(value)) return null;
+	for (var key in value){
+		if (key == "name" || key == "ref" || key == "abbrev"){
+			result = value[key] + "\n";
 		}
-
-		return result;
 	}
 
-	var ListInCell = React.createClass({
-		render: function(){
-			var countArrays = this.props.countArrays;
-			var result = "";
+	return result;
+}
+
+var ListInCell = React.createClass({
+	render: function(){
+		var countArrays = this.props.countArrays;
+		var result = "";
 			var vals = this.props.listValues.map(function(val){ // this.props.listValues is an array of Objects
 				return result = ConcatObjs(result, val);
 			});
@@ -205,10 +278,9 @@
 		}
 	});
 
-	var RowCells = React.createClass({
-		render: function(){
-			var data = this.props.rowValues;
-			// console.log(data);
+var RowCells = React.createClass({
+	render: function(){
+		var data = this.props.rowValues;
 			var val = colNames.map(function(key){
 				key = key.toLowerCase();
 				if (key.includes(" ")){
@@ -224,10 +296,9 @@
 					}
 					return (
 						<ListInCell listValues={data[key]} />
-					);
+						);
 				} else if (data[key] === Object(data[key])){
 					if (key == "star"){
-						// console.log(data.star.id);
 						return <td><a href={"/stars/" + data.star.id}>{data.star.name}</a></td>
 					} else if (key == "discovered_by"){
 						return <td><a href={"/publications/" + data.discovered_by.id}>{data.discovered_by.ref}</a></td>
@@ -242,24 +313,22 @@
 
 			return (
 				<tr>{val}</tr>
-			);
+				);
 		}
 	});
 
-	var RowList = React.createClass({
-		render: function() {
-			// console.log(this.props.rowList);
+var RowList = React.createClass({
+	render: function() {
 			var rowEntries = this.props.rowList.objects.map(function(row) {
-				console.log(row);
 				return (
 					<RowCells rowValues={row} />
-				);
+					);
 			});
 			return (
 				<tbody>
-					{rowEntries}
+				{rowEntries}
 				</tbody>
-			);
+				);
 		}
 	});
 
@@ -267,7 +336,7 @@
 	var Table = React.createClass({
 		getInitialState: function() {
 	        return {
-	            dataForTable: $.getValues("/api/v1/exoplanets?page=1")
+	            dataForTable: $.getValues(1, "")
 	        };
     	},
 		componentWillMount() {
@@ -281,29 +350,29 @@
 				return (
 					<th>{col}</th>
 				);
-			});
+		});
 
-			return (
-				<div>
-					<table id="example" className="table">
-						<thead>
-							<tr>
-								{columns}
-							</tr>
-						</thead>
-					<RowList rowList={data}/>
+		return (
+			<div>
+			<table id="example" className="table">
+			<thead>
+			<tr>
+			{columns}
+			</tr>
+			</thead>
+			<RowList rowList={data}/>
 
-					</table>
-				</div>
+			</table>
+			</div>
 			);
-		}
-	});
+	}
+});
 
-	ReactDOM.render(
-		<Table />,
-		document.getElementById('content')
-		);
-	</script>
+ReactDOM.render(
+	<Table />,
+	document.getElementById('content')
+	);
+</script>
 
 </div>
 </body>

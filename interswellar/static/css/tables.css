@@ -10,10 +10,6 @@ body {
     color: #fff;
 }
 
-/*body:not(.nohover) tbody tr:hover {
-  background-color: whitesmoke !important;
-}*/
-
 .custom-table {
     position: relative;
     justify-content: center;
@@ -30,6 +26,8 @@ th {
     text-transform: uppercase; 
     text-align: center;
     text-indent: 20px;
+    white-space: nowrap;
+    outline: none;
 }
 
 .col-md-12 {
@@ -100,13 +98,14 @@ table {
   overflow: hidden;
 }
 
-/*td, th {
+td, th {
   position: relative;
-}*/
+  outline: 0;
+}
 
 
 tbody tr:hover {
-    background-color: rgba(0, 0, 0, .25) !important;
+    background-color: rgba(255, 255, 255, .25) !important;
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
@@ -122,7 +121,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     box-shadow: 0 0 0px #444;
     box-sizing: content-box;
     text-align: center;
-    font-family: "helvetica", sans-serif;
+    font-family: "lato", sans-serif;
     line-height: 14px;
     content: '+';
     background-color: #000;
@@ -132,29 +131,6 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
     content: '-';
     background-color: #000;
 }
-
-thead td:hover {
-
-}
-
-td.highlight {
-    background-color: rgba(0, 0, 0, .25) !important;
-}
-
-/*td:hover::after,
-thead th:not(:empty):hover::after,
-td:focus::after,
-thead th:not(:empty):focus::after { 
-  content: '';  
-  height: 10000px;
-  left: 0;
-  position: absolute;  
-  top: -5000px;
-  width: 100%;
-  z-index: -1;
-}*/
-
-
 
 @media (min-width: 900px){
 .tabletron {

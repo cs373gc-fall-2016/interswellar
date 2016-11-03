@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>InterSWEllar</title>
 
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
@@ -12,9 +12,13 @@
 	<link rel="stylesheet" href="/static/css/index.css">
 	<link rel="stylesheet" href="/static/css/about.css">
 
+
+	<script src='/static/js/about.js'></script>
+
+
 	<script  src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
-	<script defer src='../static/js/parallax.min.js'></script>
+	<script defer src='/static/js/parallax.min.js'></script>
 </head>
 
 <body>
@@ -29,34 +33,36 @@
 
 		<!-- description of the site, its purpose, its intended users  -->
 		<div class="container-fluid inner">
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="header">
-						DESCRIPTION
+			<div class="row">
+				<div class="col-md-4 buffer">
+					<div class="about">
+						<div class="header">
+							DESCRIPTION
+						</div>
+						<p>
+							The Interswellar database is designed to beautifully present details about the wonders of space while simplifying your search for related objects. Start with a constellation and learn about the group of stars that form its recognizable pattern. Travel faster than any star ship and explore the exoplanets that orbit those stars. After you're done visiting those planets, come back to Earth and learn about the scientists who discovered them. At Interswellar, you can have your very own space adventure and make it back in time before dinner!
+						</p>
 					</div>
-					<p>
-						The Interswellar database is designed to beautifully present details about the wonders of space while simplifying your search for related objects. Start with a constellation and learn about the group of stars that form its recognizable pattern. Travel faster than any star ship and explore the exoplanets that orbit those stars. After you're done visiting those planets, come back to Earth and learn about the scientists who discovered them. At Interswellar, you can have your very own space adventure and make it back in time before dinner!
-					</p>
 				</div>
-			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="header">
-						PURPOSE
+				<div class="col-md-4 buffer">
+					<div class="about">
+						<div class="header">
+							PURPOSE
+						</div>
+						<p>
+							Planets and stars are big, but the space that they float in is even bigger. We wanted to create a database that would put together documented information about all that stuff in space and then make it interconnected for even easier navigation. We hope that this product would be as useful to the public as it was to us. It was a pleasure and an experience and we would like to share it with you!
+						</p>
 					</div>
-					<p>
-                        Planets and stars are big, but the space that they float in is even bigger. We wanted to create a database that would put together documented information about all that stuff in space and then make it interconnected for even easier navigation. We hope that this product would be as useful to the public as it was to us. It was a pleasure and an experience and we would like to share it with you!
-					</p>
 				</div>
-			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="header">
-						INTENDED USERS
+				<div class="col-md-4 buffer">
+					<div class="about">
+						<div class="header">
+							INTENDED USERS
+						</div>
+						<p>
+							Interswellar may seem like a database meant for astronomers and scientists, but we know that there's a little curious astronaut in everyone who wants to more know about the things outside our known world. No matter who we are or what we study, we share the sky and our knowledge of it. This database is an open library for all users who seek to learn about the bright jewels of our sky.
+						</p>
 					</div>
-					<p>
-                        Interswellar may seem like a database meant for astronomers and scientists, but we know that there's a little curious astronaut in everyone who wants to more know about the things outside our known world. No matter who we are or what we study, we share the sky and our knowledge of it. This database is an open library for all users who seek to learn about the bright jewels of our sky.
-					</p>
 				</div>
 			</div>
 		</div>
@@ -72,12 +78,12 @@
 
 		<!-- team info -->
 		<div class="container-fluid inner team-info">
-			<div class="col-md-12">
+			<div class="row">
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							Charlotte Sheng
-							<img class="profile-pic" src="../../static/images/about_csheng.jpg">
+							Charlotte Sheng<br>
+							<img class="profile-pic" src="/static/images/about_csheng.jpg">
 						</div>
 						<p>
 							Charlotte Sheng is a senior studying computer science at the University of Texas at Austin. She enjoys the outdoors and likes to spend her hours outside being active if the weather is nice. Charlotte has interests in data, security, and is currently exploring other fields to better gauge where she wants to end up in the future.
@@ -104,8 +110,8 @@
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							Sami Glasco
-							<img class="profile-pic" src="../../static/images/about_sami.png">
+							Sami Glasco<br>
+							<img class="profile-pic" src="/static/images/about_sami.png">
 						</div>
 						<p>
 							Sami Glasco is a senior studying computer science at the University of Texas at Austin. He acts as a treasurer in both the Harry Potter Alliance and Texas Table Top. In his free time, Sami enjoys playing quidditch and pretending he's a wizard, too. Sami enjoys front-end development and participating in hackathons in his free time.
@@ -113,6 +119,7 @@
 						<p>
 							Sami worked on the front-end team. He created the base web page, the navigation semantics, and is responsible for the site aesthetics.
 						</p>
+						<br>
 						<div class="row">
 							<div class="col-md-4">
 								<b>Commits:</b></br>
@@ -132,8 +139,8 @@
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							Denise Ly
-							<img class="profile-pic" src="../../static/images/about_denisely.jpg">
+							Denise Ly<br>
+							<img class="profile-pic" src="/static/images/about_denisely.jpg">
 						</div>
 						<p>
 							Denise is currently a senior studying Computer Science at The University of Texas at Austin \m/ In her spare time, she likes to play games, watch shows, and play piano. She is interested in front end development and wants to learn about game development.
@@ -158,11 +165,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							Chenyang Wang
+							Chenyang Wang<br>
 							<img class="profile-pic" src="/static/images/about_young.jpg">
 						</div>
 						<p>
@@ -190,7 +197,7 @@
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							David Shi
+							David Shi<br>
 							<img class="profile-pic" src="/static/images/about_dshi.jpg">
 						</div>
 						<p>
@@ -218,11 +225,11 @@
 				<div class="col-md-4 buffer">
 					<div class="about">
 						<div class="header">
-							Nathan Poag
+							Nathan Poag<br>
 							<img class="profile-pic" src="/static/images/about_npoag.jpg">
 						</div>
 						<p>
-							Nathan is a fourth year computer science major at UT Austin. Right now he currently has an interest in full stack development due to a desire to be well-rounded in all areas of web development. He prefers to use React for the front end due to its ability to keep track of the webpage's state. In the future, Nathan hopes to use the React skills he has gained in order to use React Native for the front end of any future mobile apps he builds.
+							Nathan is a fourth year computer science major at UT Austin. Right now he currently has an interest in full stack development due to a desire to be well-rounded in all areas of web development. In the future, Nathan hopes to use the React skills he has gained in order to use React Native for the front end of any future mobile apps he builds.
 						</p>
 						<p>
 							Nathan has mainly been working on the back-end during this phase, but was not afraid to touch the front-end at times.
@@ -257,67 +264,80 @@
 
 	<!-- Statistics -->
 	<div class="container-fluid inner">
-			<div class="col-md-4 buffer">
-				<div class="about">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-2 buffer">
+				<div class="about" style="height:202px;">
 					<div class="data-header">
+						Links
+					</div>
+					<p>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar">Github</a><br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/issues">Issues</a><br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki</a><br>
+						<a href= "http://docs.interswellarapi.apiary.io/#">Apiary API</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-4 buffer">
+				<div class="about" style="height:202px;">
+					<div class="data-header">
+						Numbers
+					</div>
+					<div class="data-left">
 						COMMITS
 					</div>
-					<p>
+					<div class="data-right">
 						{{total_commits}}
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="data-header">
+					</div>
+					<br>
+					<div style="clear: both;"></div>
+					<div class="data-left">
 						ISSUES
 					</div>
-					<p>
+					<div class="data-right">
 						{{total_issues}}
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="data-header">
+					</div>
+					<br>
+					<div style="clear: both;"></div>
+					<div class="data-left">
 						UNIT TESTS
 					</div>
-					<p>
+
+					<div class="data-right">
 						40
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="data-header">
-						APIARY API
 					</div>
-					<p>
-						<a href= "http://docs.interswellarapi.apiary.io/#">Apiary Link</a>
-					</p>
+					<div style="clear: both;"></div>
 				</div>
 			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="data-header">
-						GITHUB REPO
-					</div>
-					<p>
-						<a href="https://github.com/cs373gc-fall-2016/interswellar">Github Link</a>
-					</p>
+
+		</div>
+
+		<!-- Testing -->
+		<div class="col-md-offset-4 col-md-4 buffer">
+			<div class="about">
+				<div class="data-header">
+					TESTS
 				</div>
+				<p>
+					<button id="testButton" class="btn test-btn" onclick="runTests()">RUN UNIT TESTS</button>
+				</p>
 			</div>
-			<div class="col-md-4 buffer">
-				<div class="about">
-					<div class="data-header">
-						WIKI
-					</div>
-					<p>
-						<a href="https://github.com/cs373gc-fall-2016/interswellar/wiki">Wiki Link</a>
-					</p>
+		</div>
+
+		<div class="col-md-offset-2 col-md-8 buffer" id="test-div" style="display:none">
+			<div class="about">
+				<div class="data-header">
+					TEST OUTPUT
 				</div>
+				<div>
+					<p class="code" id="test-output"></p>
+				</div>
+
 			</div>
+		</div>
 	</div>
+
 </div>
 
 <div class="section-title">
@@ -329,36 +349,105 @@
 
 	<!-- API data -->
 	<div class="container-fluid inner">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-2 buffer">
+				<div class="about" style="height:202px;">
+					<div class="data-header">
+						Data Sources
+					</div>
+					<p>
+						<a href="http://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a><br>
+						<a href="http://simbad.u-strasbg.fr/simbad/">SIMBAD Astronomical Database</a><br>
+						<a href="https://ui.adsabs.harvard.edu/">Harvard Astrophysics</a><br>
+						<a href="https://en.wikipedia.org/wiki/Special:ApiSandbox">Wikipedia</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about" style="height:202px;">
+					<div class="data-header">
+						Scraping Tools
+					</div>
+					<p>
+						<a href="http://www.astropy.org/">Astropy</a><br>
+						<a href="http://docs.python-requests.org/en/master/">Requests</a><br>
+						<a href="https://docs.python.org/3.4/library/re.html">Re</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-4 buffer">
 				<div class="about">
 					<div class="data-header">
-						Wikipedia
+						nasa_stars.py
 					</div>
 					<p>
-						<a href="https://en.wikipedia.org/wiki/Special:ApiSandbox">Wikipedia Link</a>
+						This script reads data from the mission_stars table from the NASA Exoplanet Archive. It reads the basic properties of the stars, including names, masses, temperatures, luminosities, and radii.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/nasa_stars.py">View Source</a>
 					</p>
 				</div>
 			</div>
 			<div class="col-md-4 buffer">
 				<div class="about">
 					<div class="data-header">
-						Harvard
+						nasa_planets.py
 					</div>
 					<p>
-						<a href="http://adsabs.harvard.edu/abstract_service.html">Harvard Link</a>
+						This script reads data from the multiexopars table from the NASA Exoplanet Archive. It reads the basic properties of the exoplanets, and creates stars for them if they do not previously exist in the db. It also creates some blank publications to reference.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/nasa_planets.py">View Source</a>
 					</p>
 				</div>
 			</div>
 			<div class="col-md-4 buffer">
 				<div class="about">
 					<div class="data-header">
-						Exoplanet Archive
+						pub_for_star.py
 					</div>
 					<p>
-						<a href="http://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html">Exoplanet Archive</a>
+						This script queries SIMBAD to get a list of publications referencing each star, creates a publication for the earliest publication for each star, and connects the star to the publication.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/pub_for_star.py">View Source</a>
 					</p>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="data-header">
+						fill_pub.py
+					</div>
+					<p>
+						This script queries ADS using the python ads library. It pulls the standard data fields for publications from the data source and puts them in the database.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/fill_pub.py">View Source</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="data-header">
+						constel_data.py
+					</div>
+					<p>
+						This script queries wikipedia for the 88 modern constellations and their associated data fields.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/constel_data.py">View Source</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 buffer">
+				<div class="about">
+					<div class="data-header">
+						star_constel.py
+					</div>
+					<p>
+						This script queries SIMBAD for the ICRS Coordinates of each star, then uses astropy to compute the constellation name given those coordinates, and stores that constellation reference in the db.<br>
+						<a href="https://github.com/cs373gc-fall-2016/interswellar/blob/scrape/interswellar/scrape/star_constel.py">View Source</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
 	</div>
 </div>
 
@@ -370,29 +459,29 @@
 <div class="parallax-window-tools centered" data-parallax="scroll" data-bleed = 5 data-speed = 0 data-image-src="http://apod.nasa.gov/apod/image/1609/M51Deep_Perez_2637.jpg">
 
 	<!-- Tools list -->
-	<div class="container-fluid inner">
-			<div class="col-md-12 buffer">
-				<div class="about">
-					<div class="data-header">
-						BUILT WITH
-					</div>
-					<p>
-						<b>jQuery:</b> Parallax and navbar and Javascript stuff
-						<br>
-						<b>Bootstrap:</b> CSS styles, tables
-						<br>
-						<b>React:</b> Generating table
-						<br>
-						<b>Carousel:</b> Frontpage
-						<br>
-						<b>SQLAlchemy:</b> Database ORM
-						<br>
-						<b>Flask:</b> Backend web framework
-						<br>
-						<b>Elastic Beanstalk:</b> Hosting and deployment
-					</p>
+	<div class="container-fluid inner-small">
+		<div class="col-md-12 buffer">
+			<div class="about">
+				<div class="data-header">
+					BUILT WITH
 				</div>
+				<p>
+					<b>jQuery:</b> Parallax and navbar and Javascript stuff
+					<br>
+					<b>Bootstrap:</b> CSS styles, tables
+					<br>
+					<b>React:</b> Generating table
+					<br>
+					<b>Carousel:</b> Frontpage
+					<br>
+					<b>SQLAlchemy:</b> Database ORM
+					<br>
+					<b>Flask:</b> Backend web framework
+					<br>
+					<b>Elastic Beanstalk:</b> Hosting and deployment
+				</p>
 			</div>
+		</div>
 	</div>
 
 </body>
