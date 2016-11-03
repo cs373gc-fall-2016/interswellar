@@ -5,7 +5,7 @@ import traceback
 import html
 
 import requests
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, current_app
 
 import interswellar.models as models
 
@@ -150,8 +150,10 @@ def get_commits():
     """ gets number of commits for each team member """
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'stats/contributors?client_id=a857dda6c0869d2bc306&' \
-          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+          'stats/contributors?client_id=%s&client_secret=%s' % (
+              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_SECRET'],
+          )
 
     response = requests.get(url).text
     parsed = json.loads(response)
@@ -162,8 +164,10 @@ def get_total_commits():
     """ gets number of commits for each team member """
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'stats/contributors?client_id=a857dda6c0869d2bc306&' \
-          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+          'stats/contributors?client_id=%s&client_secret=%s' % (
+              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_SECRET'],
+          )
     response = requests.get(url).text
     parsed = json.loads(response)
     total = 0
@@ -176,8 +180,10 @@ def get_issues():
     """ get number of issues for each team member """
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'issues?state=all&filter=all&client_id=a857dda6c0869d2bc306&' \
-          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+          'issues?state=all&filter=all&client_id=%s&client_secret=%s' % (
+              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_SECRET'],
+          )
     response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = defaultdict(int)
@@ -191,8 +197,10 @@ def get_total_issues():
     """ get number of issues for each team member """
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'issues?filter=all&state=all&client_id=a857dda6c0869d2bc306&' \
-          'client_secret=e6f54c0cca99ebb7d6bfd5542052ed49638362ea'
+          'issues?filter=all&state=all&client_id=%s&client_secret=%s' % (
+              current_app.config['GITHUB_CLIENT_ID'], 
+              current_app.config['GITHUB_CLIENT_SECRET'],
+          )
     response = requests.get(url).text
     parsed = json.loads(response)
     num_issues = 0
