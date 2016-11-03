@@ -27,9 +27,8 @@
         {{data.name}}
     </div>
 
-    <div id="data" class="container-fluid inner">
-
-        <div class='col-md-offset-3 col-lg-offset-0 col-md-6 col-lg-6 buffer'>
+    <div class="container-fluid inner">
+        <div  id="data" class='col-md-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     DATA
@@ -68,14 +67,15 @@
                 <div class = "data-left">
                     IMAGE
                 </div>
-                <div class="centered">
-                    <img class="img-fluid" style="max-width:70%;" src='https://www.iau.org/static/archives/images/screen/{{data.abbrev.lower()}}.jpg' />
-                </div>
                 <div style="clear: both;"></div>
+                <div style="text-align: center;">
+
+                    <img class="img-fluid" style="max-width:70%;" src='http://www.iau.org/static/public/constellations/gif/{{data.abbrev.upper()}}.gif' />
+                </div>
             </div>
         </div>
 
-        <div class='col-sm-6 col-lg-6 buffer'>
+        <div class='col-md-6 col-lg-6 buffer'>
             <div class='about'>
                 <div class='header'>
                     STAR CHART
@@ -83,7 +83,14 @@
                 <div id="aladin-lite-div" style="width:auto;height:450px;"></div>
                 <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
                 <script type="text/javascript">
+                var height = $("#data").height() - 108;
+                $("#aladin-lite-div").css("height", height);
                 var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:10, target: "{{data.name}}"});
+                window.onresize = function() {
+                    var height = $("#data").height() - 108;
+                    $("#aladin-lite-div").css("height", height);
+                }
+
                 </script>
             </div>
         </div>
