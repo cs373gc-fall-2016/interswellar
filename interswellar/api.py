@@ -85,6 +85,7 @@ def bind_api(app):
             'authors',
             'journal',
             'abstract',
+	    'year',
             'stars',
             'stars.id',
             'stars.name',

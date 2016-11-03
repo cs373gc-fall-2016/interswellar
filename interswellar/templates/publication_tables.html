@@ -105,7 +105,10 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// console.log(content);
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+
 				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_desc")) {
@@ -125,7 +128,11 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content = content+ "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				// console.log(content);
+
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+
 				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_asc")) {
@@ -144,7 +151,11 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// console.log(content);
+
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+
 				globalVar.callback($.getValues(1, sortStatus))
 			}
 			currPage = 1;
@@ -228,8 +239,10 @@
 	                result = data;
 	            }
 	        });
-	        if (totalPages == 0) totalPages = result.total_pages;
-	        if (numResults == 0) numResults = result.num_results;
+	        totalPages = result.total_pages;
+	        // console.log(totalPages);
+	        numResults = result.num_results;
+	        // console.log(numResults);
 	       return result;
 	    }
 	});
@@ -238,7 +251,7 @@ var globalVar = {
 	'callback': null
 };
 
-var colNames = ['Ref', 'Title', 'Authors', 'Journal', 'Stars', 'Exoplanets'];
+var colNames = ['Ref', 'Title', 'Authors', 'Journal', 'Year'];
 
 function ConcatObjs(result, value, model){
 	if (Array.isArray(value)) return null;
@@ -272,7 +285,7 @@ var RowCells = React.createClass({
 				return <td>Unknown</td>;
 			}
 			if (Array.isArray(data[key])){
-				console.log(key);
+				// console.log(key);
 				console.log(data[key]);
 				if (data[key].length == 0){
 					return <td>None</td>;
