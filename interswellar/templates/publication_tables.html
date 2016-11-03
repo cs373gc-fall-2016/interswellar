@@ -294,10 +294,20 @@ var RowCells = React.createClass({
 					<ListInCell listValues={data[key]} model={key} />
 					);
 			} else if (data[key] === Object(data[key])){ // Never hits this????
-				// console.log("IS AN OBJECT");
 				result = ConcatObjs("", data[key]);
 				return <td>{result}</td>
 			} else {
+				if (key == "authors"){
+					var authors = data[key].split("; ");
+					if (authors.length > 3) {
+						authors = authors.splice(0,3);
+						authors.push(". . .");
+					}
+					return <td>{authors.map(function(author){
+						return <div>{author}<br/></div>;
+					})}</td>
+				}
+
 				if(key == "ref"){
 					
 					return <td><a href={"/publications/" + data.id}>{data[key]}</a></td>;
