@@ -117,41 +117,29 @@
 
 /* Small screen CSS tweaks  */
 @media screen and (max-width: 767px) {
-/*    .col-md-4{
+    .team-info {
         padding-right: 0px;
         padding-left: 0px;
-        }*/
-/*    .col-md-12 {
-        padding-right: 0px;
-        padding-left: 0px;
-        }*/
-
-        .team-info {
-            padding-right: 0px;
-            padding-left: 0px;
-        }
-        .centered {
-            display: block;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-        .inner-small {
-            width: 100%;
-        }
     }
-
-    .table-title {
-        text-align: center;
-        font-family: "lato", sans-serif;
-        font-weight: 500;
-        font-size: 6vw;
-        color: #FFF;
-        padding: 20px;
-        background-color: black;
+    .centered {
+        display: block;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
-
-    @media all and (min-width: 767px) {
-        .table-title{
-            font-size: 3vw;
-        }
+    .inner-small {
+        width: 100%;
     }
+    .table-title{
+        font-size: 3vw;
+    }
+}
+
+.table-title {
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 6vw;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+}
