@@ -85,10 +85,14 @@
                 <script type="text/javascript">
                 var height = $("#data").height() - 108;
                 $("#aladin-lite-div").css("height", height);
-                var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:10, target: "{{data.name}}"});
                 window.onresize = function() {
                     var height = $("#data").height() - 108;
                     $("#aladin-lite-div").css("height", height);
+                }
+                window.onload = function() {
+                    var height = $("#data").height() - 108;
+                    $("#aladin-lite-div").css("height", height);
+                    var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:10, target: "{{data.name}}"});
                 }
 
                 </script>
