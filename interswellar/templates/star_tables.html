@@ -95,6 +95,7 @@
 				});
 				
 				$(this).addClass("sorting_desc").removeClass("sorting")
+				$('.next').removeClass("disabled");
 				
 				var content = $(this).text().toLowerCase();
 				// console.log(content);
@@ -117,7 +118,9 @@
 				});
 				
 				$(this).addClass("sorting_asc").removeClass("sorting_desc")
+				$('.next').removeClass("disabled");
 				$(this).removeClass("sorting")
+
 				var content = $(this).text().toLowerCase();
 				
 				if (content.includes(" ")){
@@ -139,7 +142,9 @@
 				});
 
 				$(this).addClass("sorting_desc").removeClass("sorting_asc")
+				$('.next').removeClass("disabled");
 				$(this).removeClass("sorting")
+				
 				var content = $(this).text().toLowerCase();
 				if (content.includes(" ")){
 					content = content.replace(" ", "_");
