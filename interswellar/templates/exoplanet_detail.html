@@ -103,23 +103,27 @@
         <div class='col-sm-6 col-lg-8 buffer'>
             <div class='about'>
                 <div class='header'>
-                    MASS VISUALIZATION
+                    <img class="emoji" id="emojipart" onclick="massChange('earth')" src="/static/images/earth.png"/>
+                    <span onclick="massChange('none')">MASS VISUALIZATION</span>
+                    <img class="emoji" id="emojipart" onclick="massChange('jupiter')" src="/static/images/jupiter.png"/>
+
                 </div>
                 {% if data.mass %}
 
-                <div class='dropstyle'>
+<!--                 <div class='dropstyle'>
                     <select id="dropdown" class="drop" onchange="massChange(this.value)">
-                        <option value="0"></option>
+                        <option value="none"></option>
                         <option value="earth">Earth Masses</option>
                         <option value="jupiter">Jupiter Masses</option>
                     </select>
-                </div>
+                </div> -->
 
                 <script type="text/javascript">
+                //adds data.mass of type.png to the page
                 function massChange(type){
                     $("#mass").empty();
 
-                    if(type == '0') {
+                    if(type == 'none') {
                         return;
                     }
                     var mass = {{data.mass|float}};
@@ -152,7 +156,9 @@
                     };
                 }
                 </script>
-                <div id='mass'></div>
+                <div id='mass'>
+                    <div class="no-link">Select a planet!</div>
+                </div>
                 {% else %}
                 <div class="no-link">UNKNOWN MASS</div>
                 {% endif %}

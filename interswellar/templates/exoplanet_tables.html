@@ -107,7 +107,8 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
 				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_desc")) {
@@ -127,7 +128,8 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content = content+ "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"asc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
 				globalVar.callback($.getValues(1, sortStatus))
 			}
 			else if($(this).hasClass("sorting_asc")) {
@@ -146,7 +148,9 @@
 					content += "__name";
 				if (content == "discovered_by")
 					content += "__ref";
-				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				// sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}]}";
+				sortStatus = "&q={\"order_by\":[{\"field\":\""+content+"\",\"direction\":\"desc\"}], \"filters\":[{\"name\":\""+ content +"\",\"op\":\"is_not_null\"}]}";
+
 				globalVar.callback($.getValues(1, sortStatus))
 				// $( '.paginate_button active a' ).text(currPage); 
 			}
@@ -187,7 +191,6 @@
         } );
 		
 	});
-
 
 	function decrementPage(button){
 		currPage--;
@@ -241,8 +244,8 @@
 	                result = data;
 	            }
 	        });
-	        if (totalPages == 0) totalPages = result.total_pages;
-	        if (numResults == 0) numResults = result.num_results;
+	        totalPages = result.total_pages;
+	        numResults = result.num_results;
 	        return result;
 	    }
 	});
