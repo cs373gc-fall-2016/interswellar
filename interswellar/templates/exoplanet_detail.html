@@ -36,7 +36,7 @@
                 </div>
                 <div class = "data-right">
                     {% if data.mass %}
-                    {{data.mass}} M<sub>☉</sub>
+                    {{data.mass}} M<sub>⊕</sub>
                     {% else %}
                     Unknown
                     {% endif %}
@@ -48,7 +48,7 @@
                 </div>
                 <div class = "data-right">
                     {% if data.radius %}
-                    {{data.radius}} R<sub>☉</sub>
+                    {{data.radius}} R<sub>⊕</sub>
                     {% else %}
                     Unknown
                     {% endif %}
@@ -103,14 +103,20 @@
         <div class='col-sm-6 col-lg-8 buffer'>
             <div class='about'>
                 <div class='header'>
-                    <img class="emoji" onclick="massChange('earth')" src="/static/images/earth.png"/>
+                    <img class="emoji" onclick="load('earth')" src="/static/images/earth.png"/>
                     <span onclick="massChange('none')">MASS VISUALIZATION</span>
-                    <img class="emoji" onclick="massChange('jupiter')" src="/static/images/jupiter.png"/>
+                    <img class="emoji" onclick="load('jupiter')" src="/static/images/jupiter.png"/>
 
                 </div>
                 {% if data.mass %}
 
                 <script type="text/javascript">
+                function load(type){
+                    $("#mass").empty();
+                    $("#mass").append("<div class='no-link' > LOADING... </div>");
+                    setTimeout(function(){massChange(type);}, 1);
+                }
+
                 function massChange(type){
                     $("#mass").empty();
                     if(type == 'none') {
@@ -139,6 +145,7 @@
                             $("#mass").append('<div class="no-link" id="partial-mass"> MASS TOO SMALL TO DISPLAY </div>');
                         }
                     };
+
                 }
                 </script>
                 <div id='mass'>
