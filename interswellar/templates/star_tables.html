@@ -316,7 +316,7 @@ var ListInCell = React.createClass({
 						return <td><a href={"/stars/" + data.id}>{data[key]}</a></td>;
 					}
 					if (key == "luminosity") return <td>e<sup>{data[key]}</sup></td>;
-					if (key == "mass") return <td>{data[key]}<sub>☉</sub></td>;
+					if (key == "mass") return <td>{data[key]} M<sub>☉</sub></td>;
 					if (key == "temperature") return <td>{data[key]} K</td>;
 					if (key == "radius") return <td>{data[key]} R<sub>☉</sub></td>;
 					return <td>{data[key]}</td>;
