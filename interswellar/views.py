@@ -1,4 +1,5 @@
 """ The public views for the app """
+# pylint:disable=import-error
 from collections import defaultdict
 import json
 import traceback
@@ -9,7 +10,7 @@ from flask import Blueprint, render_template, current_app
 
 import interswellar.models as models
 
-# pylint:disable=invalid-name
+# pylint:disable=invalid-name,import-error
 public_views = Blueprint('public_views', __name__)
 
 
@@ -25,8 +26,7 @@ def stars():
     """ Returns stars page """
 
     return render_template(
-        'star_tables.html',
-        bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg'
+        'star_tables.html'
     )
 
 
@@ -44,7 +44,7 @@ def star(variable):
 @public_views.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    return render_template('exoplanet_tables.html', bg_url='/static/images/exoplanet.jpg')
+    return render_template('exoplanet_tables.html')
 
 
 @public_views.route('/exoplanet/<int:variable>')
@@ -62,7 +62,7 @@ def exoplanet(variable):
 def constellations():
     """ Returns constellations page """
 
-    return render_template('constellation_tables.html', bg_url='/static/images/constellation.jpg')
+    return render_template('constellation_tables.html')
 
 
 @public_views.route('/constellation/<int:variable>')
@@ -81,7 +81,7 @@ def constellation(variable):
 def publications():
     """ Returns publications page """
 
-    return render_template('publication_tables.html', bg_url='/static/images/publication.jpg')
+    return render_template('publication_tables.html')
 
 
 @public_views.route('/publication/<int:variable>')
@@ -136,7 +136,6 @@ def run_tests():
     """ Runs all the unittests and returns the text result with verbosity 2 """
 
     import interswellar.test_runner as test_runner
-
     return test_runner.run_tests()
 
 
