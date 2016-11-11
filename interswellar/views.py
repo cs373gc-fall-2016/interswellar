@@ -145,10 +145,20 @@ def run_tests():
 def search_results():
     """ takes user search input and renders the and and or search results """
     terms = request.args.get('q').split()
-    and_results = search.and_search(*terms)
-    or_results = search.or_search(*terms)
 
-    return render_template('search.html', and_results=and_results, or_results=or_results, query=request.args.get('q'))
+    result= {
+            "page" : 1,
+            "total_pages" : 1,
+            "num_results": 1000,
+            "results" : [
+                {"model" : "stars", "id": 1},
+                {"model" : "stars", "id": 2},
+                {"model" : "constellations", "id": 5}
+            ]
+        }
+
+    return render_template('search.html', query=request.args.get('q'), result=result)
+
 
 
 @public_views.errorhandler(404)
