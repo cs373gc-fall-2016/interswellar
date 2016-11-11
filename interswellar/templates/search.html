@@ -1,0 +1,37 @@
+<!DOCTeYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/details.css">
+
+    <link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
+
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    <div class="table-title">
+        {{query}}
+    </div>
+
+    {{and_results}}
+
+    <br>
+
+    {{or_results}}
+
+</body>
+</html>
