@@ -143,21 +143,6 @@ def search_results():
 
     return render_template('search.html')
 
-@public_views.route('/api/v1/search/')
-def fake_api():
-  return jsonify({
-        "page" : 1,
-        "total_pages" : 1,
-        "num_results": 5,
-        "results" : [
-            {"model" : "stars", "id": 9},
-            {"model" : "stars", "id": 10},
-            {"model" : "constellations", "id": 189},
-            {"model" : "publications", "id": 100},
-            {"model" : "exoplanets", "id": 50}
-        ]
-        })
-
 
 
 @public_views.errorhandler(404)

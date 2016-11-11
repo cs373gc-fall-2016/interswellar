@@ -2,7 +2,26 @@
 
 from flask_restless import APIManager
 import interswellar.models as models
+from flask import Blueprint, jsonify    
 
+#pylint:disable=invalid-name
+public_api = Blueprint('public_api', __name__)
+
+@public_api.route('/api/v1/search/')
+def search():
+    
+    return jsonify({
+        "page" : 1,
+        "total_pages" : 1,
+        "num_results": 5,
+        "results" : [
+            {"model" : "stars", "id": 9},
+            {"model" : "stars", "id": 10},
+            {"model" : "constellations", "id": 189},
+            {"model" : "publications", "id": 100},
+            {"model" : "exoplanets", "id": 50}
+        ]
+        })
 
 def bind_api(app):
     """ Bind the api to the app """
@@ -94,3 +113,5 @@ def bind_api(app):
             'exoplanets.name',
         ]
     )
+
+    app.register_blueprint(public_api)
