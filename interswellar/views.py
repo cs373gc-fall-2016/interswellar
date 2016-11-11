@@ -148,7 +148,7 @@ def search_results():
     and_results = search.and_search(*terms)
     or_results = search.or_search(*terms)
 
-    return render_template('search.html', and_results=and_results, or_results=or_results)
+    return render_template('search.html', and_results=and_results, or_results=or_results, query=request.args.get('q'))
 
 
 @public_views.errorhandler(404)
