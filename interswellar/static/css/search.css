@@ -66,11 +66,24 @@ body {
 	color: inherit;
 }
 
+.term {
+	font-size: 150%; 
+}
+
+.term_type {
+	font-size: 50%;
+}
+
+.column {
+	font-weight: bold;
+}
+
 .result-box {
 	background-color:rgba(0, 0, 0, .7);
 	margin-top: 15px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	word-spacing: 5px;
 }
 
 .result-box:hover {
