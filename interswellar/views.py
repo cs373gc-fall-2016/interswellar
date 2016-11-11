@@ -7,7 +7,7 @@ import traceback
 import html
 
 import requests
-from flask import Blueprint, render_template, current_app, request
+from flask import Blueprint, render_template, current_app, request, jsonify
 
 import interswellar.models as models
 import interswellar.search as search
@@ -139,20 +139,24 @@ def run_tests():
 @public_views.route('/search')
 def search_results():
     """ takes user search input and renders the and and or search results """
-    terms = request.args.get('q').split()
+    # terms = request.args.get('q').split()
 
-    result= {
+    return render_template('search.html')
+
+@public_views.route('/api/v1/search/')
+def fake_api():
+  return jsonify({
         "page" : 1,
         "total_pages" : 1,
-        "num_results": 1000,
+        "num_results": 5,
         "results" : [
             {"model" : "stars", "id": 9},
             {"model" : "stars", "id": 10},
-            {"model" : "constellations", "id": 189}
+            {"model" : "constellations", "id": 189},
+            {"model" : "publications", "id": 100},
+            {"model" : "exoplanets", "id": 50}
         ]
-        }
-
-    return render_template('search.html', query=request.args.get('q'), result=result)
+        })
 
 
 
