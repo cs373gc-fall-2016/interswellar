@@ -7,9 +7,10 @@ import traceback
 import html
 
 import requests
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, render_template, current_app, request
 
 import interswellar.models as models
+import interswellar.search as search
 
 public_views = Blueprint('public_views', __name__)
 
@@ -133,6 +134,16 @@ def run_tests():
     """ Runs all the unittests and returns the text result with verbosity 2 """
     import interswellar.test_runner as test_runner
     return test_runner.run_tests()
+
+
+@public_views.route('/search')
+def search_results():
+    """ takes user search input and renders the and and or search results """
+    terms = request.args.get('q').split()
+    and_results = search.and_search(*terms)
+    or_results = search.or_search(*terms)
+
+    return render_template('search.html', and_results=and_results, or_results=or_results, query=request.args.get('q'))
 
 
 @public_views.errorhandler(404)
