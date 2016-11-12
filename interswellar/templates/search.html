@@ -1,4 +1,4 @@
-<!DOCTeYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,16 +8,34 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="/static/css/search.css">
+
+
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/details.css">
-
-    <link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
 
     <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+        <!-- React -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+    <style>
+    html {
+        background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
 </head>
 
 <body>
@@ -27,10 +45,214 @@
         {{query}}
     </div>
 
+    <div id="search" class='container-fluid all-results'></div>
+
     <div style="background-color: black !important;">
-        {{result}}
+    
     </div>
 
+<script type="text/babel">
+
+    var currPage = 1;
+    var totalPages = 0;
+    var numResults = 0;
+
+    var globalVar = {
+        'callback': null
+    };
+
+    jQuery.extend({
+        getSearchResults: function() {
+            var result = null;
+            $.ajax({
+                url: '/api/v1/search/',
+                // url: urlName,
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    result = data;
+                }
+            });
+            totalPages = result.total_pages;
+            numResults = result.num_results;
+            return result;
+        },
+        getById: function(model, id){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
+            var result = null;
+            $.ajax({
+                url: "/api/v1/" + model +"?q={\"filters\":[{\"name\":\"id\",\"op\":\"eq\",\"val\":" + id + "}]}",
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    result = data;
+                }
+            });
+            // console.log(result);
+            return result;
+        }
+    });
+
+    // var ObjectField = React.createClass({
+
+    // });
+
+    // var Field = React.CreateClass({
+
+    // });
+
+    // var ArrayField = React.CreateClass({
+
+    // });
+
+    var StarsItem = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+
+            return (
+              <div className="col-md-12 result-box" id="star">
+              <div className="col-md-12">
+                 <div id="content">
+                   <div className="term">WASP-7 { " " }
+                     <span className="term_type">STAR</span>
+                   </div>
+                   { data.mass != null && <span id="mass"> 
+                     <span className="column">
+                       Mass: { " " }
+                     </span>
+                     {data.mass}, { " " }
+                   </span>}
+                   { data.luminosity != null && <span id="lumo"> 
+                     <span className="column">
+                       Luminosity: { " " }
+                     </span>
+                     {data.luminosity}, { " " } 
+                   </span>}
+                   {data.radius != null && <span id="rad"> 
+                     <span className="column">
+                       Radius: { " " }
+                     </span>
+                     {data.radius}, { " " } 
+                   </span>}
+                   {data.temperature != null && <span id="temp"> 
+                     <span className="column">
+                       Temperature: { " " }
+                     </span>
+                     {data.temperature}, { " " }
+                   </span>}
+                   {data.constellation != null && <span id="cons"> 
+                     <span className="column">
+                       Constellation: { " " }
+                     </span>
+                     {data.constellation.name}, { " " } 
+                   </span>}
+                   {data.discovered_by != null && <span id="disc"> 
+                     <span className="column">
+                       Discovered By: { " " }
+                     </span>
+                     {data.discovered_by.ref} { " " }
+                   </span>}
+                   {data.exoplanets.length > 0 && <span id="exo"> 
+                     <span className="column">
+                       Exoplanets: { " " }
+                     </span>
+                     {data.exoplanets.map(function(exoplanet){
+                        return <span>{exoplanet.name}, </span>
+                     })} 
+                   </span>}
+                 </div>
+               </div>
+             </div>
+            )
+        }
+    })
+
+    // var ExoplanetsItem = React.createClass({
+
+    //     render: function(){
+
+    //     }
+    // })
+
+    // var ConstellationItems = React.createClass({
+    //     render: function(){
+
+    //     }
+    // })
+
+    // var ExoplanetsItem = React.createClass({
+    //     render: function(){
+
+    //     }
+    // })
+
+    var Item = React.createClass({
+        render: function(){
+            var item = this.props.item;
+            var itemDetails = $.getById(item.model,item.id);
+            // console.log(itemDetails);
+            if (item.model == "stars"){
+                return (
+                    <StarsItem itemDetails={itemDetails} />
+                )
+            } 
+            // if (item.model == "exoplanets"){
+            //     return (
+            //         <ExoplanetsItem itemDetails={itemDetails} />
+            //     )
+            // } 
+            // if (item.model == "constellations"){
+            //     return (
+            //         <ConstellationsItem itemDetails={itemDetails} />
+            //     )
+            // } 
+            // if (item.model == "publications"){
+            //     return (
+            //         <ExoplanetsItem itemDetails={itemDetails} />
+            //     )
+            // } 
+            return (
+                <p>hi</p>
+            )
+
+        }
+    });
+
+    var List = React.createClass({
+        getInitialState: function() {
+            return {
+                resultOfSearch: $.getSearchResults()
+            };
+        },
+        componentWillMount() {
+            globalVar.callback = (data) => {
+                this.setState({resultOfSearch: data})
+            };
+        },
+        render: function(){
+            var data = this.state.resultOfSearch.results;
+            console.log(data);
+            var items = this.state.resultOfSearch.results.map(function(item){
+                return (
+                    <Item item={item}/>
+                )
+            });
+
+            return(
+                <div>
+                    {items}
+                </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+    <List />,
+    document.getElementById('search')
+    );
+
+</script>
 
 </body>
 </html>
