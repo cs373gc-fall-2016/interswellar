@@ -111,59 +111,82 @@
             var data = this.props.itemDetails.objects[0];
 
             return (
-              <div className="col-md-12 result-box" id="star">
-              <div className="col-md-12">
-                 <div id="content">
-                   <div className="term">WASP-7 { " " }
-                     <span className="term_type">STAR</span>
-                   </div>
-                   { data.mass != null && <span id="mass"> 
-                     <span className="column">
-                       Mass: { " " }
-                     </span>
-                     {data.mass}, { " " }
-                   </span>}
-                   { data.luminosity != null && <span id="lumo"> 
-                     <span className="column">
-                       Luminosity: { " " }
-                     </span>
-                     {data.luminosity}, { " " } 
-                   </span>}
-                   {data.radius != null && <span id="rad"> 
-                     <span className="column">
-                       Radius: { " " }
-                     </span>
-                     {data.radius}, { " " } 
-                   </span>}
-                   {data.temperature != null && <span id="temp"> 
-                     <span className="column">
-                       Temperature: { " " }
-                     </span>
-                     {data.temperature}, { " " }
-                   </span>}
-                   {data.constellation != null && <span id="cons"> 
-                     <span className="column">
-                       Constellation: { " " }
-                     </span>
-                     {data.constellation.name}, { " " } 
-                   </span>}
-                   {data.discovered_by != null && <span id="disc"> 
-                     <span className="column">
-                       Discovered By: { " " }
-                     </span>
-                     {data.discovered_by.ref} { " " }
-                   </span>}
-                   {data.exoplanets.length > 0 && <span id="exo"> 
-                     <span className="column">
-                       Exoplanets: { " " }
-                     </span>
-                     {data.exoplanets.map(function(exoplanet){
-                        return <span>{exoplanet.name}, </span>
-                     })} 
-                   </span>}
-                 </div>
-               </div>
-             </div>
+            <div className="col-md-12 result-box" id="star">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">WASP-7 { " " }
+                            <span className="term_type">STAR</span>
+                        </div>
+                        {
+                            data.mass != null && 
+                            <span id="mass"> 
+                                <span className="column">
+                                    Mass: { " " }
+                                </span>
+                                {data.mass}, { " " }
+                            </span> 
+                        }
+                        {
+                            data.luminosity != null && 
+                            <span id="lumo"> 
+                                <span className="column">
+                                    Luminosity: { " " }
+                                </span>
+                                {data.luminosity}, { " " } 
+                            </span>
+                        }
+                        {
+                            data.radius != null && 
+                            <span id="rad"> 
+                                <span className="column">
+                                    Radius: { " " }
+                                </span>
+                                {data.radius}, { " " } 
+                            </span>
+                        }
+                        {
+                            data.temperature != null && 
+                            <span id="temp"> 
+                                <span className="column">
+                                    Temperature: { " " }
+                                </span>
+                                {data.temperature}, { " " }
+                            </span>
+                        }
+                        {
+                            data.constellation != null && 
+                            <span id="cons"> 
+                                <span className="column">
+                                    Constellation: { " " }
+                                </span>
+                                {data.constellation.name}, { " " } 
+                            </span>
+                        }
+                        {
+                            data.discovered_by != null && 
+                            <span id="disc"> 
+                                <span className="column">
+                                    Discovered By: { " " }
+                                </span>
+                                {data.discovered_by.ref} { " " }
+                            </span>
+                        }
+                        {
+                            data.exoplanets.length > 0 && 
+                            <span id="exo"> 
+                                <span className="column">
+                                    Exoplanets: { " " }
+                                </span>
+                                {
+                                    data.exoplanets.map(function(exoplanet){
+                                        return <span>{exoplanet.name}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
             )
         }
     })
