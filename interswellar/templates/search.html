@@ -123,7 +123,7 @@
                                 <span className="column">
                                     Mass: { " " }
                                 </span>
-                                {data.mass} M<sub>☉</sub>, { " " }
+                                {data.mass} M<sub>☉</sub> { " " }
                             </span> 
                         }
                         {
@@ -132,7 +132,7 @@
                                 <span className="column">
                                     Luminosity: { " " }
                                 </span>
-                                e<sup>{data.luminosity}</sup>, { " " } 
+                                e<sup>{data.luminosity}</sup> { " " } 
                             </span>
                         }
                         {
@@ -141,7 +141,7 @@
                                 <span className="column">
                                     Radius: { " " }
                                 </span>
-                                {data.radius} R<sub>☉</sub>, { " " } 
+                                {data.radius} R<sub>☉</sub> { " " } 
                             </span>
                         }
                         {
@@ -150,7 +150,7 @@
                                 <span className="column">
                                     Temperature: { " " }
                                 </span>
-                                {data.temperature} K, { " " }
+                                {data.temperature} K { " " }
                             </span>
                         }
                         {
@@ -159,7 +159,7 @@
                                 <span className="column">
                                     Constellation: { " " }
                                 </span>
-                                {data.constellation.name}, { " " } 
+                                {data.constellation.name} { " " } 
                             </span>
                         }
                         {
@@ -208,7 +208,7 @@
                                 <span className="column">
                                     Mass: { " " }
                                 </span>
-                                {data.mass} M<sub>⊕</sub>, { " " }
+                                {data.mass} M<sub>⊕</sub> { " " }
                             </span> 
                         }
                         {
@@ -217,7 +217,7 @@
                                 <span className="column">
                                     Radius: { " " }
                                 </span>
-                                {data.radius} R<sub>⊕</sub>, { " " } 
+                                {data.radius} R<sub>⊕</sub> { " " } 
                             </span>
                         }
                         {
@@ -226,7 +226,7 @@
                                 <span className="column">
                                     Orbital Period: { " " }
                                 </span>
-                                {data.orbital_period} days, { " " } 
+                                {data.orbital_period} days { " " } 
                             </span>
                         }
                         {
@@ -235,7 +235,7 @@
                                 <span className="column">
                                     Year Discovered: { " " }
                                 </span>
-                                {data.year_discovered}, { " " }
+                                {data.year_discovered} { " " }
                             </span>
                         }
                         {
@@ -244,7 +244,7 @@
                                 <span className="column">
                                     Star: { " " }
                                 </span>
-                                {data.star.name}, { " " }
+                                {data.star.name} { " " }
                             </span>
                         }
                         {
@@ -253,7 +253,7 @@
                                 <span className="column">
                                     Discovered By: { " " }
                                 </span>
-                                {data.discovered_by.ref}, { " " }
+                                {data.discovered_by.ref} { " " }
                             </span>
                         }
                     </div>
@@ -280,7 +280,7 @@
                                 <span className="column">
                                     Abbrev: { " " }
                                 </span>
-                                {data.abbrev}, { " " }
+                                {data.abbrev} { " " }
                             </span> 
                         }
                         {
@@ -289,7 +289,7 @@
                                 <span className="column">
                                     Family: { " " }
                                 </span>
-                                {data.family}, { " " } 
+                                {data.family} { " " } 
                             </span>
                         }
                         {
@@ -298,7 +298,7 @@
                                 <span className="column">
                                     Meaning: { " " }
                                 </span>
-                                {data.meaning}, { " " } 
+                                {data.meaning} { " " } 
                             </span>
                         }
                         {
@@ -307,7 +307,7 @@
                                 <span className="column">
                                     Area: { " " }
                                 </span>
-                                {data.area} sq. degrees, { " " }
+                                {data.area} sq. degrees { " " }
                             </span>
                         }
                         {
@@ -420,11 +420,23 @@
         }
     })
 
+    // highlight search terms in each item class
+    function highlight(props, search) {
+        console.log(props);
+
+        props.map(function(object){
+            //console.log(object);
+        }) 
+        
+        return props;
+    }
+
     var Item = React.createClass({
         render: function(){
             var item = this.props.item;
             var itemDetails = $.getById(item.model,item.id);
-            // console.log(itemDetails);
+            //console.log(itemDetails);
+            itemDetails = highlight(itemDetails, "kepler")
             if (item.model == "stars"){
                 return (
                     <StarItems itemDetails={itemDetails} />
@@ -452,6 +464,7 @@
         }
     });
 
+
     var List = React.createClass({
         getInitialState: function() {
             return {
@@ -465,7 +478,7 @@
         },
         render: function(){
             var data = this.state.resultOfSearch.results;
-            // console.log(data);
+            //console.log(data, "kepler");
             var items = this.state.resultOfSearch.results.map(function(item){
                 return (
                     <Item item={item}/>
