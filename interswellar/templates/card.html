@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>InterSWEllar</title>
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+	<!-- Data tables -->
+	<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+
+	<link href="https://cdn.datatables.net/colreorder/1.3.2/css/colReorder.dataTables.min.css" />
+	<link href="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js" />
+
+	<!-- React -->
+	<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+	<script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+	<script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+	<!-- Data tables -->
+	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="/static/css/search.css">
+
+
+	<style>
+	html {
+		background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	</style>
+	
+</head>
+
+<body>
+	{% include 'nav.html' %}
+
+	<div class="table-title">
+		EXOPLANETS
+	</div>
+
+	<div class='container-fluid all-results'>
+		<!-- Star -->
+		<div class="col-md-12 result-box" id="star">
+			<div class="col-md-12">
+				<div id="content" >
+					<div class="term">
+						WASP-7
+						<span class="term_type">STAR</span>
+					</div>
+					<span id="mass"> 
+						<span class="column">
+							Mass:
+						</span>
+						1.34,
+					</span>
+					<span id="lumo"> 
+						<span class="column">
+							Luminosity:
+						</span>
+						unknown,
+					</span>
+					<span id="rad"> 
+						<span class="column">
+							Radius:
+						</span>
+						unknown,
+					</span>
+					<span id="temp"> 
+						<span class="column">
+							Temperature:
+						</span>
+						unknown,
+					</span>
+					<span id="cons"> 
+						<span class="column">
+							Constellation:
+						</span>
+						Microscopium,
+					</span>
+					<span id="disc"> 
+						<span class="column">
+							Discovered By:
+						</span>
+						2009MNRAS.398.1827S,
+					</span>
+					<span id="exo"> 
+						<span class="column">
+							Exoplanets:
+						</span>
+						WASP-7
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Exoplanet -->
+		<div class="col-md-12 result-box">
+			<div class="col-md-12">
+				<div id="content" >
+					<div class="term">
+						Kepler-138 b
+						<span class="term_type">EXOPLANET</span>
+
+					</div>
+					<span id="mass"> Mass: Unknown</span>, 
+					<span id="orbit"> Orbital Period: 10.313</span>, 
+					<span id="rad"> Radius: 0.64</span>, 
+					<span id="star"> Star: Kepler-138</span>, 
+					<span id="disc"> Discovered By: 2016ApJ...822...86M</span>,
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+</body>
+
+
