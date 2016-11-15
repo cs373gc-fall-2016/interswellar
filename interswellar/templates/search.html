@@ -435,29 +435,64 @@
     // highlight search terms in each item class
     function highlight(props, search) {
         var item = props['objects'][0];
+        // console.log(item);
+        search = search.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+        var regex = new RegExp("("+search+")", 'i');
         for (var key in item){
             var val = item[key];
+
             if(val != null){
+                // console.log(val);
+            // console.log(key + " ~~~ " + val);
+
                 if (typeof val === 'string'){
-                    search = search.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
-                    var regex = new RegExp("("+search+")", 'i');
-
                     val = val.replace(regex, "<mark>$1</mark>");
-                    val = val.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
-                    console.log(val);
-
                     props['objects'][0][key] = (<span dangerouslySetInnerHTML=
                         {% raw %} 
-                            {{__html:val}} 
+                        {{__html:val}} 
                         {% endraw %}></span>);
-                    console.log(props['objects'][0]);
+                } 
+                else if (typeof val === "number"){
+                    if (search == Math.abs(val)){
+                    console.log(props['objects'][0][key]);
+                    props['objects'][0][key] = (<span dangerouslySetInnerHTML=
+                        {% raw %} 
+                        {{__html:'<mark>' + val + '</mark>'}} 
+                        {% endraw %}></span>); 
+                    console.log(props['objects'][0][key]);
 
+                    }
 
-                }
+                } 
+                else if (typeof val === "object"){
+
+                    if ('ref' in val) {
+                        var val = val['ref'].replace(regex, "<mark>$1</mark>");
+                        // console.log(val);
+                        props['objects'][0][key]['ref'] = (<span dangerouslySetInnerHTML=
+                            {% raw %} 
+                            {{__html:val}} 
+                            {% endraw %}></span>); 
+                    } 
+                    else if ('name' in val) {
+                        var val = val['name'].replace(regex, "<mark>$1</mark>");
+                        props['objects'][0][key]['name'] = (<span dangerouslySetInnerHTML=
+                            {% raw %} 
+                            {{__html:val}} 
+                            {% endraw %}></span>); 
+                    } 
+                    else if (Array.isArray(val)){
+                        for (var i = 0; i < val.length; i++) {
+                            var name = val[i]['name'].replace(regex, "<mark>$1</mark>");
+                            props['objects'][0][key][i]['name'] = (<span dangerouslySetInnerHTML=
+                                {% raw %} 
+                                {{__html:name}} 
+                                {% endraw %}></span>);                         
+                        }
+                    }
+                } 
             }
         }
-
-            // console.log(props);
             return props;
         }
 
@@ -466,7 +501,7 @@
             var item = this.props.item;
             var itemDetails = $.getById(item.model,item.id);
             //console.log(itemDetails);
-            itemDetails = highlight(itemDetails, "2016")
+            itemDetails = highlight(itemDetails, "12.41199824")
             if (item.model == "stars"){
                 return (
                     <StarItems itemDetails={itemDetails} />
