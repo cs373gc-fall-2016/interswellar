@@ -105,7 +105,7 @@
     // var ArrayField = React.CreateClass({
 
     // });
-
+    
     var StarItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
@@ -114,8 +114,8 @@
             <div className="col-md-12 result-box" id="star">
                 <div className="col-md-12">
                     <div id="content">
-                        <div className="term">{data.name} { " " }
-                            <span className="term_type">STAR</span>
+                        <div className="term">{data.name}{ " " }
+                            <span className="term_type" >STAR</span>
                         </div>
                         {
                             data.mass != null && 
@@ -178,7 +178,10 @@
                                     Exoplanets: { " " }
                                 </span>
                                 {
-                                    data.exoplanets.map(function(exoplanet){
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{exoplanet.name}</span>
+                                        };
                                         return <span>{exoplanet.name}, </span>
                                     })
                                 } 
@@ -317,7 +320,10 @@
                                     Stars: { " " }
                                 </span>
                                 {
-                                    data.stars.map(function(star){
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{star.name}</span>
+                                        };
                                         return <span>{star.name}, </span>
                                     })
                                 } 
@@ -385,7 +391,10 @@
                                     Stars: { " " }
                                 </span>
                                 {
-                                    data.stars.map(function(star){
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{star.name}</span>
+                                        };
                                         return <span>{star.name}, </span>
                                     })
                                 } 
@@ -398,7 +407,10 @@
                                     Exoplanets: { " " }
                                 </span>
                                 {
-                                    data.exoplanets.map(function(exoplanet){
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{exoplanet.name}</span>
+                                        };
                                         return <span>{exoplanet.name}, </span>
                                     })
                                 } 
@@ -410,7 +422,7 @@
                                 <span className="column">
                                     Abstract: { " " }
                                 </span>
-                                {data.abstract}, { " " }
+                                {data.abstract} { " " }
                             </span> 
                         }
                     </div>
@@ -422,21 +434,39 @@
 
     // highlight search terms in each item class
     function highlight(props, search) {
-        console.log(props);
+        var item = props['objects'][0];
+        for (var key in item){
+            var val = item[key];
+            if(val != null){
+                if (typeof val === 'string'){
+                    search = search.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+                    var regex = new RegExp("("+search+")", 'i');
 
-        props.map(function(object){
-            //console.log(object);
-        }) 
-        
-        return props;
-    }
+                    val = val.replace(regex, "<mark>$1</mark>");
+                    val = val.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
+                    console.log(val);
+
+                    props['objects'][0][key] = (<span dangerouslySetInnerHTML=
+                        {% raw %} 
+                            {{__html:val}} 
+                        {% endraw %}></span>);
+                    console.log(props['objects'][0]);
+
+
+                }
+            }
+        }
+
+            // console.log(props);
+            return props;
+        }
 
     var Item = React.createClass({
         render: function(){
             var item = this.props.item;
             var itemDetails = $.getById(item.model,item.id);
             //console.log(itemDetails);
-            itemDetails = highlight(itemDetails, "kepler")
+            itemDetails = highlight(itemDetails, "2016")
             if (item.model == "stars"){
                 return (
                     <StarItems itemDetails={itemDetails} />
