@@ -8,7 +8,7 @@ from sqlalchemy import or_, and_
 
 import interswellar.models as models
 
-#pylint:disable=invalid-name
+# pylint:disable=invalid-name
 public_api = Blueprint('public_api', __name__)
 
 
@@ -30,9 +30,9 @@ def search():
     constellations = [constellation_filter(t) for t in terms]
     publications = [publication_filter(t) for t in terms]
     results = models.Star.query.filter(op(*stars)).all() + \
-              models.Exoplanet.query.filter(op(*exoplanets)).all() + \
-              models.Constellation.query.filter(op(*constellations)).all() + \
-              models.Publication.query.filter(op(*publications)).all()
+        models.Exoplanet.query.filter(op(*exoplanets)).all() + \
+        models.Constellation.query.filter(op(*constellations)).all() + \
+        models.Publication.query.filter(op(*publications)).all()
 
     total_pages = int(math.ceil(len(results) / 10))
     if page > total_pages:
@@ -44,50 +44,61 @@ def search():
 
     # Return a json
     return jsonify({
-        "page" : page,
-        "total_pages" : total_pages,
+        "page": page,
+        "total_pages": total_pages,
         "num_results": len(results),
-        "results" : [r.search_result() for r in results[10*(page-1):10*(page)]]
-        })
+        "results": [r.search_result() for r in results[10 * (page - 1):10 * (page)]]
+    })
+
 
 def star_filter(term):
-    return ((models.Star.id  == safecast(term, int, -1)) |
-            (models.Star.name.ilike('%'+term+'%')) |
-            (models.Star.mass == safecast(term, float, -1.0)) | 
+    """Apply filter to star models"""
+    return ((models.Star.id == safecast(term, int, -1)) |
+            (models.Star.name.ilike('%' + term + '%')) |
+            (models.Star.mass == safecast(term, float, -1.0)) |
             (models.Star.luminosity == safecast(term, float, -1.0)) |
             (models.Star.temperature == safecast(term, float, -1.0)) |
             (models.Star.radius == safecast(term, float, -1.0)))
 
+
 def exoplanet_filter(term):
+    """Apply filter to exoplanet models"""
     return ((models.Exoplanet.id == safecast(term, int, -1)) |
-            (models.Exoplanet.name.ilike('%'+term+'%')) |
+            (models.Exoplanet.name.ilike('%' + term + '%')) |
             (models.Exoplanet.mass == safecast(term, float, -1.0)) |
             (models.Exoplanet.radius == safecast(term, float, -1.0)) |
             (models.Exoplanet.orbital_period == safecast(term, int, -1)) |
             (models.Exoplanet.year_discovered == safecast(term, int, -1)))
 
+
 def constellation_filter(term):
+    """Apply filter to constellation models"""
     return ((models.Constellation.id == safecast(term, int, -1)) |
-            (models.Constellation.name.ilike('%'+term+'%')) |
-            (models.Constellation.abbrev.ilike('%'+term+'%')) |
-            (models.Constellation.family.ilike('%'+term+'%')) |
-            (models.Constellation.meaning.ilike('%'+term+'%')) |
+            (models.Constellation.name.ilike('%' + term + '%')) |
+            (models.Constellation.abbrev.ilike('%' + term + '%')) |
+            (models.Constellation.family.ilike('%' + term + '%')) |
+            (models.Constellation.meaning.ilike('%' + term + '%')) |
             (models.Constellation.area == safecast(term, float, -1.0)))
 
-def publication_filter(term):
-    return ((models.Publication.id == safecast(term, int, -1)) |
-            (models.Publication.ref.ilike('%'+term+'%')) |
-            (models.Publication.title.ilike('%'+term+'%')) |
-            (models.Publication.year == safecast(term, int, -1)) |
-            (models.Publication.authors.ilike('%'+term+'%')) |
-            (models.Publication.journal.ilike('%'+term+'%')) |
-            (models.Publication.abstract.ilike('%'+term+'%')))
 
-def safecast(str, typ, default):
+def publication_filter(term):
+    """Apply filter to publication models"""
+    return ((models.Publication.id == safecast(term, int, -1)) |
+            (models.Publication.ref.ilike('%' + term + '%')) |
+            (models.Publication.title.ilike('%' + term + '%')) |
+            (models.Publication.year == safecast(term, int, -1)) |
+            (models.Publication.authors.ilike('%' + term + '%')) |
+            (models.Publication.journal.ilike('%' + term + '%')) |
+            (models.Publication.abstract.ilike('%' + term + '%')))
+
+
+def safecast(term, typ, default):
+    """Method to safely cast objects to others"""
     try:
-        return typ(str)
+        return typ(term)
     except (ValueError, TypeError):
         return default
+
 
 def bind_api(app):
     """ Bind the api to the app """
