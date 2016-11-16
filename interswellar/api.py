@@ -4,6 +4,7 @@ import math
 
 from flask import Blueprint, jsonify, request
 from flask_restless import APIManager
+from sqlalchemy import or_, and_
 
 import interswellar.models as models
 
@@ -15,21 +16,30 @@ public_api = Blueprint('public_api', __name__)
 def search():
     """ Run the search request and return jsonified results """
     page = int(request.args.get('page', '1'))
-    # and_mode = request.args.get('mode') == 'and'
-    # terms = request.args.get('q').split()
+    and_mode = request.args.get('mode') == 'and'
+    terms = request.args.get('q').split()
+    if not terms:
+        return "ur bad"
+
+    op = and_ if and_mode else or_
 
     # Do a search
-    results = [
-        models.Star.query.get(9),
-        models.Star.query.get(10),
-        models.Constellation.query.get(189),
-        models.Publication.query.get(100),
-        models.Exoplanet.query.get(50),
-    ]
+    stars = [star_filter(t) for t in terms]
+    exoplanets = [exoplanet_filter(t) for t in terms]
+    constellations = [constellation_filter(t) for t in terms]
+    publications = [publication_filter(t) for t in terms]
+    results = models.Star.query.filter(op(*stars)).all() + \
+              models.Exoplanet.query.filter(op(*exoplanets)).all() + \
+              models.Constellation.query.filter(op(*constellations)).all() + \
+              models.Publication.query.filter(op(*publications)).all()
 
     total_pages = int(math.ceil(len(results) / 10))
     if page > total_pages:
-        return "ur bad"
+        return jsonify({
+            "message": "ur bad",
+            "total_pages": total_pages,
+            "num_results": len(results)
+        })
 
     # Return a json
     return jsonify({
@@ -38,6 +48,51 @@ def search():
         "num_results": len(results),
         "results" : [r.search_result() for r in results[10*(page-1):10*(page)]]
         })
+
+def star_filter(term):
+    return ((models.Star.id  == cast_int(term)) |
+            (models.Star.name.ilike('%'+term+'%')) |
+            (models.Star.mass == cast_float(term)) | 
+            (models.Star.luminosity == cast_float(term)) |
+            (models.Star.temperature == cast_float(term)) |
+            (models.Star.radius == cast_float(term)))
+
+def exoplanet_filter(term):
+    return ((models.Exoplanet.id == cast_int(term)) |
+            (models.Exoplanet.name.ilike('%'+term+'%')) |
+            (models.Exoplanet.mass == cast_float(term)) |
+            (models.Exoplanet.radius == cast_float(term)) |
+            (models.Exoplanet.orbital_period == cast_int(term)) |
+            (models.Exoplanet.year_discovered == cast_int(term)))
+
+def constellation_filter(term):
+    return ((models.Constellation.id == cast_int(term)) |
+            (models.Constellation.name.ilike('%'+term+'%')) |
+            (models.Constellation.abbrev.ilike('%'+term+'%')) |
+            (models.Constellation.family.ilike('%'+term+'%')) |
+            (models.Constellation.meaning.ilike('%'+term+'%')) |
+            (models.Constellation.area == cast_float(term)))
+
+def publication_filter(term):
+    return ((models.Publication.id == cast_int(term)) |
+            (models.Publication.ref.ilike('%'+term+'%')) |
+            (models.Publication.title.ilike('%'+term+'%')) |
+            (models.Publication.year == cast_int(term)) |
+            (models.Publication.authors.ilike('%'+term+'%')) |
+            (models.Publication.journal.ilike('%'+term+'%')) |
+            (models.Publication.abstract.ilike('%'+term+'%')))
+
+def cast_float(str):
+    try:
+        return float(str)
+    except (ValueError, TypeError):
+        return -1.0
+
+def cast_int(str):
+    try:
+        return int(str)
+    except (ValueError, TypeError):
+        return -1
 
 def bind_api(app):
     """ Bind the api to the app """
