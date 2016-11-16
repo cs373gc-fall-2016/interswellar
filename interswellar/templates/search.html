@@ -86,25 +86,13 @@
                 dataType: 'json',
                 async: false,
                 success: function(data) {
+                    console.log("WORK DAMMIT " +id);
                     result = data;
                 }
             });
-            // console.log(result);
             return result;
         }
     });
-
-    // var ObjectField = React.createClass({
-
-    // });
-
-    // var Field = React.CreateClass({
-
-    // });
-
-    // var ArrayField = React.CreateClass({
-
-    // });
     
     var StarItems = React.createClass({
         render: function(){
@@ -114,7 +102,7 @@
             <div className="col-md-12 result-box" id="star">
                 <div className="col-md-12">
                     <div id="content">
-                        <div className="term">{data.name}{ " " }
+                        <div className="term">{hl(data.name)}{ " " }
                             <span className="term_type" >STAR</span>
                         </div>
                         {
@@ -123,7 +111,7 @@
                                 <span className="column">
                                     Mass: { " " }
                                 </span>
-                                {data.mass} M<sub>☉</sub> { " " }
+                                {hl(data.mass)} M<sub>☉</sub> { " " }
                             </span> 
                         }
                         {
@@ -132,7 +120,7 @@
                                 <span className="column">
                                     Luminosity: { " " }
                                 </span>
-                                e<sup>{data.luminosity}</sup> { " " } 
+                                e<sup>{hl(data.luminosity)}</sup> { " " } 
                             </span>
                         }
                         {
@@ -141,7 +129,7 @@
                                 <span className="column">
                                     Radius: { " " }
                                 </span>
-                                {data.radius} R<sub>☉</sub> { " " } 
+                                {hl(data.radius)} R<sub>☉</sub> { " " } 
                             </span>
                         }
                         {
@@ -150,7 +138,7 @@
                                 <span className="column">
                                     Temperature: { " " }
                                 </span>
-                                {data.temperature} K { " " }
+                                {hl(data.temperature)} K { " " }
                             </span>
                         }
                         {
@@ -159,7 +147,7 @@
                                 <span className="column">
                                     Constellation: { " " }
                                 </span>
-                                {data.constellation.name} { " " } 
+                                {hl(data.constellation.name)} { " " } 
                             </span>
                         }
                         {
@@ -168,7 +156,7 @@
                                 <span className="column">
                                     Discovered By: { " " }
                                 </span>
-                                {data.discovered_by.ref} { " " }
+                                {hl(data.discovered_by.ref)} { " " }
                             </span>
                         }
                         {
@@ -180,9 +168,9 @@
                                 {
                                     data.exoplanets.map(function(exoplanet, i){
                                         if (i == data.exoplanets.length-1) {
-                                            return <span>{exoplanet.name}</span>
+                                            return <span>{hl(exoplanet.name)}</span>
                                         };
-                                        return <span>{exoplanet.name}, </span>
+                                        return <span>{hl(exoplanet.name)}, </span>
                                     })
                                 } 
                             </span>
@@ -197,12 +185,11 @@
     var ExoplanetItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
-            // console.log(data);
             return (
             <div className="col-md-12 result-box" id="exoplanet">
                 <div className="col-md-12">
                     <div id="content">
-                        <div className="term">{data.name} { " " }
+                        <div className="term">{hl(data.name)} { " " }
                             <span className="term_type">EXOPLANET</span>
                         </div>
                         {
@@ -211,7 +198,7 @@
                                 <span className="column">
                                     Mass: { " " }
                                 </span>
-                                {data.mass} M<sub>⊕</sub> { " " }
+                                {hl(data.mass)} M<sub>⊕</sub> { " " }
                             </span> 
                         }
                         {
@@ -220,7 +207,7 @@
                                 <span className="column">
                                     Radius: { " " }
                                 </span>
-                                {data.radius} R<sub>⊕</sub> { " " } 
+                                {hl(data.radius)} R<sub>⊕</sub> { " " } 
                             </span>
                         }
                         {
@@ -229,7 +216,7 @@
                                 <span className="column">
                                     Orbital Period: { " " }
                                 </span>
-                                {data.orbital_period} days { " " } 
+                                {hl(data.orbital_period)} days { " " } 
                             </span>
                         }
                         {
@@ -238,7 +225,7 @@
                                 <span className="column">
                                     Year Discovered: { " " }
                                 </span>
-                                {data.year_discovered} { " " }
+                                {hl(data.year_discovered)} { " " }
                             </span>
                         }
                         {
@@ -247,7 +234,7 @@
                                 <span className="column">
                                     Star: { " " }
                                 </span>
-                                {data.star.name} { " " }
+                                {hl(data.star.name)} { " " }
                             </span>
                         }
                         {
@@ -256,7 +243,7 @@
                                 <span className="column">
                                     Discovered By: { " " }
                                 </span>
-                                {data.discovered_by.ref} { " " }
+                                {hl(data.discovered_by.ref)} { " " }
                             </span>
                         }
                     </div>
@@ -274,7 +261,7 @@
             <div className="col-md-12 result-box" id="constellation">
                 <div className="col-md-12">
                     <div id="content">
-                        <div className="term">{data.name} { " " }
+                        <div className="term">{hl(data.name)} { " " }
                             <span className="term_type">CONSTELLATION</span>
                         </div>
                         {
@@ -283,7 +270,7 @@
                                 <span className="column">
                                     Abbrev: { " " }
                                 </span>
-                                {data.abbrev} { " " }
+                                {hl(data.abbrev)} { " " }
                             </span> 
                         }
                         {
@@ -292,7 +279,7 @@
                                 <span className="column">
                                     Family: { " " }
                                 </span>
-                                {data.family} { " " } 
+                                {hl(data.family)} { " " } 
                             </span>
                         }
                         {
@@ -301,7 +288,7 @@
                                 <span className="column">
                                     Meaning: { " " }
                                 </span>
-                                {data.meaning} { " " } 
+                                {hl(data.meaning)} { " " } 
                             </span>
                         }
                         {
@@ -310,7 +297,7 @@
                                 <span className="column">
                                     Area: { " " }
                                 </span>
-                                {data.area} sq. degrees { " " }
+                                {hl(data.area)} sq. degrees { " " }
                             </span>
                         }
                         {
@@ -322,9 +309,9 @@
                                 {
                                     data.stars.map(function(star, i){
                                         if (i == data.stars.length-1) {
-                                            return <span>{star.name}</span>
+                                            return <span>{hl(star.name)}</span>
                                         };
-                                        return <span>{star.name}, </span>
+                                        return <span>{hl(star.name)}, </span>
                                     })
                                 } 
                             </span>
@@ -345,7 +332,7 @@
             <div className="col-md-12 result-box" id="publication">
                 <div className="col-md-12">
                     <div id="content">
-                        <div className="term">{data.title} { " " }
+                        <div className="term">{hl(data.title)} { " " }
                             <span className="term_type">PUBLICATION</span>
                         </div>
                         {
@@ -354,7 +341,7 @@
                                 <span className="column">
                                     Ref: { " " }
                                 </span>
-                                {data.ref}, { " " }
+                                {hl(data.ref)}, { " " }
                             </span> 
                         }
                         {
@@ -363,7 +350,7 @@
                                 <span className="column">
                                     Authors: { " " }
                                 </span>
-                                {data.authors}, { " " } 
+                                {hl(data.authors)}, { " " } 
                             </span>
                         }
                         {
@@ -372,7 +359,7 @@
                                 <span className="column">
                                     Journal: { " " }
                                 </span>
-                                {data.journal} { " " }
+                                {hl(data.journal)} { " " }
                             </span>
                         }
                         {
@@ -381,7 +368,7 @@
                                 <span className="column">
                                     Year: { " " }
                                 </span>
-                                {data.year} { " " }
+                                {hl(data.year)} { " " }
                             </span>
                         }
                         {
@@ -393,9 +380,9 @@
                                 {
                                     data.stars.map(function(star, i){
                                         if (i == data.stars.length-1) {
-                                            return <span>{star.name}</span>
+                                            return <span>{hl(star.name)}</span>
                                         };
-                                        return <span>{star.name}, </span>
+                                        return <span>{hl(star.name)}, </span>
                                     })
                                 } 
                             </span>
@@ -409,9 +396,9 @@
                                 {
                                     data.exoplanets.map(function(exoplanet, i){
                                         if (i == data.exoplanets.length-1) {
-                                            return <span>{exoplanet.name}</span>
+                                            return <span>{hl(exoplanet.name)}</span>
                                         };
-                                        return <span>{exoplanet.name}, </span>
+                                        return <span>{hl(exoplanet.name)}, </span>
                                     })
                                 } 
                             </span>
@@ -422,7 +409,7 @@
                                 <span className="column">
                                     Abstract: { " " }
                                 </span>
-                                {data.abstract} { " " }
+                                {hl(data.abstract)} { " " }
                             </span> 
                         }
                     </div>
@@ -432,76 +419,65 @@
         }
     })
 
+    function hl(data){
+        return (<span dangerouslySetInnerHTML=
+                    {% raw %} 
+                    {{__html:data}} 
+                    {% endraw %}></span>)
+    }
+
+
     // highlight search terms in each item class
     function highlight(props, search) {
-        var item = props['objects'][0];
-        // console.log(item);
-        search = search.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
-        var regex = new RegExp("("+search+")", 'i');
-        for (var key in item){
-            var val = item[key];
-
-            if(val != null){
-                // console.log(val);
-            // console.log(key + " ~~~ " + val);
-
-                if (typeof val === 'string'){
-                    val = val.replace(regex, "<mark>$1</mark>");
-                    props['objects'][0][key] = (<span dangerouslySetInnerHTML=
-                        {% raw %} 
-                        {{__html:val}} 
-                        {% endraw %}></span>);
-                } 
-                else if (typeof val === "number"){
-                    if (search == Math.abs(val)){
-                    console.log(props['objects'][0][key]);
-                    props['objects'][0][key] = (<span dangerouslySetInnerHTML=
-                        {% raw %} 
-                        {{__html:'<mark>' + val + '</mark>'}} 
-                        {% endraw %}></span>); 
-                    console.log(props['objects'][0][key]);
-
-                    }
-
-                } 
-                else if (typeof val === "object"){
-
-                    if ('ref' in val) {
-                        var val = val['ref'].replace(regex, "<mark>$1</mark>");
-                        // console.log(val);
-                        props['objects'][0][key]['ref'] = (<span dangerouslySetInnerHTML=
-                            {% raw %} 
-                            {{__html:val}} 
-                            {% endraw %}></span>); 
+            var item = props['objects'][0];
+            search = search.toString().replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+            var regex = new RegExp("("+search+")", 'i');
+            for (var key in item){
+                var val = item[key];
+                if(val != null){
+                    if (typeof val === 'string'){
+                        val = val.replace(regex, "<mark>$1</mark>");
+                        props['objects'][0][key] = val;
                     } 
-                    else if ('name' in val) {
-                        var val = val['name'].replace(regex, "<mark>$1</mark>");
-                        props['objects'][0][key]['name'] = (<span dangerouslySetInnerHTML=
-                            {% raw %} 
-                            {{__html:val}} 
-                            {% endraw %}></span>); 
-                    } 
-                    else if (Array.isArray(val)){
-                        for (var i = 0; i < val.length; i++) {
-                            var name = val[i]['name'].replace(regex, "<mark>$1</mark>");
-                            props['objects'][0][key][i]['name'] = (<span dangerouslySetInnerHTML=
-                                {% raw %} 
-                                {{__html:name}} 
-                                {% endraw %}></span>);                         
+                    else if (typeof val === "number"){
+                        if (search == val) {
+                            props['objects'][0][key] = '<mark>' + val + '</mark>';
                         }
-                    }
-                } 
+
+                    } 
+                    else if (typeof val === "object"){
+                        if ('ref' in val) {
+                            var val = val['ref'].replace(regex, "<mark>$1</mark>");
+                                props['objects'][0][key]['ref'] = val;
+                        } 
+                        else if ('name' in val) {
+                            var val = val['name'].replace(regex, "<mark>$1</mark>");
+                            props['objects'][0][key]['name'] = val;
+                        } 
+                        else if (Array.isArray(val)){
+                            for (var i = 0; i < val.length; i++) {
+                                var name = val[i]['name'].replace(regex, "<mark>$1</mark>");  
+                                props['objects'][0][key][i]['name'] = name;
+                                console.log(props['objects'][0][key][i]);                
+                            }
+                        }
+                    } 
+                }
             }
-        }
-            return props;
-        }
+        return props;
+    }
 
     var Item = React.createClass({
         render: function(){
             var item = this.props.item;
             var itemDetails = $.getById(item.model,item.id);
-            //console.log(itemDetails);
-            itemDetails = highlight(itemDetails, "12.41199824")
+
+            var searchTerm = "PSR B1257 12.41199824 Vir 200 Vel GJ -2.359 0.21 Arch mat Deming 201";
+            var terms = searchTerm.split(" ");
+            for (var term in terms){
+                itemDetails = highlight(itemDetails, terms[term]);
+            }
+            
             if (item.model == "stars"){
                 return (
                     <StarItems itemDetails={itemDetails} />
