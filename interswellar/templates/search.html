@@ -97,8 +97,10 @@
     var StarItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
+            var link = "/star/" + data.id;
 
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="star">
                 <div className="col-md-12">
                     <div id="content">
@@ -178,6 +180,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -185,7 +188,10 @@
     var ExoplanetItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
+            var link = "/exoplanet/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="exoplanet">
                 <div className="col-md-12">
                     <div id="content">
@@ -249,6 +255,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -256,8 +263,10 @@
     var ConstellationItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
-            // console.log(data);
+            var link = "/constellation/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="constellation">
                 <div className="col-md-12">
                     <div id="content">
@@ -320,6 +329,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -327,8 +337,10 @@
     var PublicationItems = React.createClass({
          render: function(){
             var data = this.props.itemDetails.objects[0];
-            // console.log(data);
+            var link = "/publication/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="publication">
                 <div className="col-md-12">
                     <div id="content">
@@ -415,6 +427,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
