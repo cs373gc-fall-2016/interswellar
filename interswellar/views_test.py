@@ -19,33 +19,33 @@ class ViewsTest(TestCase):
         self.assertNotEqual(view.data, '')
 
     def test_get_commits_contents(self):
-        commits = views.get_commits()
+        commits = views.get_commits()[0]
         for person in commits.items():
             self.assertEqual(len(person), 2)
 
     def test_get_commits_numbers(self):
-        commits = views.get_commits()
+        commits = views.get_commits()[0]
         for person, num in commits.items():
             self.assertTrue(num > -1)
 
     def test_get_issues_size(self):
-        issues = views.get_issues()
+        issues = views.get_issues()[0]
         self.assertTrue(len(issues) > -1)
 
     def test_get_issues_contents(self):
-        issues = views.get_issues()
+        issues = views.get_issues()[0]
         for person in issues.items():
             self.assertEqual(len(person), 2)
 
     def test_get_issues_numbers(self):
-        commits = views.get_issues()
+        commits = views.get_issues()[0]
         for person, num in commits.items():
             self.assertTrue(num > -1)
 
     def test_get_total_commits_size(self):
-        commits = views.get_total_commits()
+        commits = views.get_commits()[1]
         self.assertTrue(commits > -1)
 
     def test_get_total_issues_size(self):
-        issues = views.get_total_issues()
+        issues = views.get_issues()[1]
         self.assertTrue(issues > -1)
