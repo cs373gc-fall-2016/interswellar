@@ -53,8 +53,7 @@ def search():
 
 def star_filter(term):
     """Apply filter to star models"""
-    return ((models.Star.id == safecast(term, int, -1)) |
-            (models.Star.name.ilike('%' + term + '%')) |
+    return ((models.Star.name.ilike('%' + term + '%')) |
             (models.Star.mass == safecast(term, float, -1.0)) |
             (models.Star.luminosity == safecast(term, float, -1.0)) |
             (models.Star.temperature == safecast(term, float, -1.0)) |
@@ -63,8 +62,7 @@ def star_filter(term):
 
 def exoplanet_filter(term):
     """Apply filter to exoplanet models"""
-    return ((models.Exoplanet.id == safecast(term, int, -1)) |
-            (models.Exoplanet.name.ilike('%' + term + '%')) |
+    return ((models.Exoplanet.name.ilike('%' + term + '%')) |
             (models.Exoplanet.mass == safecast(term, float, -1.0)) |
             (models.Exoplanet.radius == safecast(term, float, -1.0)) |
             (models.Exoplanet.orbital_period == safecast(term, int, -1)) |
@@ -73,8 +71,7 @@ def exoplanet_filter(term):
 
 def constellation_filter(term):
     """Apply filter to constellation models"""
-    return ((models.Constellation.id == safecast(term, int, -1)) |
-            (models.Constellation.name.ilike('%' + term + '%')) |
+    return ((models.Constellation.name.ilike('%' + term + '%')) |
             (models.Constellation.abbrev.ilike('%' + term + '%')) |
             (models.Constellation.family.ilike('%' + term + '%')) |
             (models.Constellation.meaning.ilike('%' + term + '%')) |
@@ -83,8 +80,7 @@ def constellation_filter(term):
 
 def publication_filter(term):
     """Apply filter to publication models"""
-    return ((models.Publication.id == safecast(term, int, -1)) |
-            (models.Publication.ref.ilike('%' + term + '%')) |
+    return ((models.Publication.ref.ilike('%' + term + '%')) |
             (models.Publication.title.ilike('%' + term + '%')) |
             (models.Publication.year == safecast(term, int, -1)) |
             (models.Publication.authors.ilike('%' + term + '%')) |
