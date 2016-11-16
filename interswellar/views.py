@@ -7,7 +7,7 @@ import traceback
 import html
 
 import requests
-from flask import Blueprint, render_template, current_app, request, jsonify
+from flask import Blueprint, render_template, current_app, request
 
 import interswellar.models as models
 
