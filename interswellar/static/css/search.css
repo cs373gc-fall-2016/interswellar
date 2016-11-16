@@ -91,6 +91,13 @@ body {
 	cursor: pointer;
 }
 
+a:link, a:visited, a:active{
+    /*text-decoration: underline;*/
+    text-align: left !important;
+    color: #fff;
+    font-weight: normal  !important;
+}
+
 @media (min-width: 900px){
 	.all-results {
 		width: 90%;

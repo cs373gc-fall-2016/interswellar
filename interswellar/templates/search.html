@@ -46,8 +46,6 @@
     </div>
 
     <div id="search" class='container-fluid all-results'></div>
-
-    <div style="background-color: black !important;">
     
     </div>
 
@@ -62,15 +60,18 @@
     };
 
     jQuery.extend({
-        getSearchResults: function() {
+        getSearchResults: function(page) {
             var result = null;
             $.ajax({
-                url: '/api/v1/search/',
+                url: '/api/v1/search/' + page,
                 // url: urlName,
                 type: 'get',
                 dataType: 'json',
                 async: false,
                 success: function(data) {
+                    // console.log(data);
+                    totalPages = data.total_pages;
+                    numResults = data.num_results;
                     result = data;
                 }
             });
@@ -86,19 +87,26 @@
                 dataType: 'json',
                 async: false,
                 success: function(data) {
-                    console.log("WORK DAMMIT " +id);
+                    console.log(data);
                     result = data;
+
                 }
             });
             return result;
         }
     });
-    
+
+    var currPage = 1;
+    var totalPages = 0;
+    var numResults = 0;
+
     var StarItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
+            var link = "/star/" + data.id;
 
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="star">
                 <div className="col-md-12">
                     <div id="content">
@@ -178,6 +186,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -185,7 +194,10 @@
     var ExoplanetItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
+            var link = "/exoplanet/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="exoplanet">
                 <div className="col-md-12">
                     <div id="content">
@@ -249,6 +261,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -256,8 +269,10 @@
     var ConstellationItems = React.createClass({
         render: function(){
             var data = this.props.itemDetails.objects[0];
-            // console.log(data);
+            var link = "/constellation/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="constellation">
                 <div className="col-md-12">
                     <div id="content">
@@ -320,6 +335,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -327,8 +343,10 @@
     var PublicationItems = React.createClass({
          render: function(){
             var data = this.props.itemDetails.objects[0];
-            // console.log(data);
+            var link = "/publication/" + data.id;
+
             return (
+            <a href={link}>
             <div className="col-md-12 result-box" id="publication">
                 <div className="col-md-12">
                     <div id="content">
@@ -415,6 +433,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             )
         }
     })
@@ -458,7 +477,7 @@
                             for (var i = 0; i < val.length; i++) {
                                 var name = val[i]['name'].replace(regex, "<mark>$1</mark>");  
                                 props['objects'][0][key][i]['name'] = name;
-                                console.log(props['objects'][0][key][i]);                
+                                // console.log(props['objects'][0][key][i]);                
                             }
                         }
                     } 
@@ -472,7 +491,7 @@
             var item = this.props.item;
             var itemDetails = $.getById(item.model,item.id);
 
-            var searchTerm = "PSR B1257 12.41199824 Vir 200 Vel GJ -2.359 0.21 Arch mat Deming 201";
+            var searchTerm = ".";
             var terms = searchTerm.split(" ");
             for (var term in terms){
                 itemDetails = highlight(itemDetails, terms[term]);
@@ -509,17 +528,22 @@
     var List = React.createClass({
         getInitialState: function() {
             return {
-                resultOfSearch: $.getSearchResults()
+                resultOfSearch: $.getSearchResults(1)
             };
         },
-        componentWillMount() {
-            globalVar.callback = (data) => {
-                this.setState({resultOfSearch: data})
-            };
+
+        incrementPage: function(){
+            var resultOfSearch = $.getSearchResults(2);
+            this.setState({resultOfSearch: resultOfSearch});
+            
         },
+
+        decrementPage: function(){
+            console.log("this works");
+        },
+
         render: function(){
             var data = this.state.resultOfSearch.results;
-            //console.log(data, "kepler");
             var items = this.state.resultOfSearch.results.map(function(item){
                 return (
                     <Item item={item}/>
@@ -528,7 +552,12 @@
 
             return(
                 <div>
+                <div>
                     {items}
+                </div>
+                <button className="btn disabled" id="prev" onClick={this.decrementPage.bind(this)}>Prev</button>
+                <span id="currPage">{currPage}</span>
+                <button className="btn enabled" id="next" onClick={this.incrementPage.bind(this)}>Next</button>
                 </div>
             );
         }
