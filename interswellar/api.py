@@ -10,11 +10,13 @@ import interswellar.models as models
 #pylint:disable=invalid-name
 public_api = Blueprint('public_api', __name__)
 
+
 @public_api.route('/api/v1/search/')
 def search():
+    """ Run the search request and return jsonified results """
     page = int(request.args.get('page', '1'))
-    and_mode = request.args.get('mode') == 'and'
-    terms = request.args.get('q').split()
+    # and_mode = request.args.get('mode') == 'and'
+    # terms = request.args.get('q').split()
 
     # Do a search
     results = [

@@ -10,7 +10,6 @@ import requests
 from flask import Blueprint, render_template, current_app, request, jsonify
 
 import interswellar.models as models
-import interswellar.search as search
 
 public_views = Blueprint('public_views', __name__)
 
