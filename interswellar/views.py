@@ -81,6 +81,11 @@ def publications():
 
     return render_template('publication_tables.html')
 
+@public_views.route('/card')
+def card():
+    """ Returns publications page """
+
+    return render_template('card.html')
 
 @public_views.route('/publication/<int:variable>')
 @public_views.route('/publications/<int:variable>')
@@ -143,6 +148,45 @@ def search_results():
 
     return render_template('search.html')
 
+@public_views.route('/api/v1/search/1')
+def fake_api1():
+  return jsonify({
+        "page" : 1,
+        "total_pages" : 2,
+        "num_results": 20,
+        "results" : [
+            {"model" : "stars", "id": 9},
+            {"model" : "stars", "id": 18},
+            {"model" : "stars", "id": 19},
+            {"model" : "stars", "id": 20},
+            {"model" : "stars", "id": 31},
+            {"model" : "constellations", "id": 189},
+            {"model" : "publications", "id": 100},
+            {"model" : "exoplanets", "id": 50},
+            {"model" : "exoplanets", "id": 51},
+            {"model" : "exoplanets", "id": 52}
+            ]
+        })
+
+@public_views.route('/api/v1/search/2')
+def fake_api2():
+  return jsonify({
+        "page" : 2,
+        "total_pages" : 2,
+        "num_results": 10,
+        "results" : [
+            {"model" : "exoplanets", "id": 53},
+            {"model" : "exoplanets", "id": 54},
+            {"model" : "exoplanets", "id": 55},
+            {"model" : "exoplanets", "id": 56},
+            {"model" : "exoplanets", "id": 57},
+            {"model" : "exoplanets", "id": 58},
+            {"model" : "exoplanets", "id": 59},
+            {"model" : "exoplanets", "id": 60},
+            {"model" : "exoplanets", "id": 61},
+            {"model" : "exoplanets", "id": 62}
+        ]
+        })
 
 
 @public_views.errorhandler(404)

@@ -1,4 +1,4 @@
-<!DOCTeYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,16 +8,34 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="/static/css/search.css">
+
+
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/details.css">
-
-    <link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
 
     <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+        <!-- React -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+    <style>
+    html {
+        background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
 </head>
 
 <body>
@@ -27,10 +45,530 @@
         {{query}}
     </div>
 
-    <div style="background-color: black !important;">
-        {{result}}
+    <div id="search" class='container-fluid all-results'></div>
+    
     </div>
 
+<script type="text/babel">
+
+    var currPage = 1;
+    var totalPages = 0;
+    var numResults = 0;
+
+    var globalVar = {
+        'callback': null
+    };
+
+    jQuery.extend({
+        getSearchResults: function(page) {
+            var result = null;
+            $.ajax({
+                url: '/api/v1/search/' + page,
+                // url: urlName,
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    // console.log(data);
+                    totalPages = data.total_pages;
+                    numResults = data.num_results;
+                    result = data;
+                }
+            });
+            totalPages = result.total_pages;
+            numResults = result.num_results;
+            return result;
+        },
+        getById: function(model, id){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
+            var result = null;
+            $.ajax({
+                url: "/api/v1/" + model +"?q={\"filters\":[{\"name\":\"id\",\"op\":\"eq\",\"val\":" + id + "}]}",
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    console.log(data);
+                    result = data;
+
+                }
+            });
+            return result;
+        }
+    });
+
+    var currPage = 1;
+    var totalPages = 0;
+    var numResults = 0;
+
+    var StarItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/star/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="star">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)}{ " " }
+                            <span className="term_type" >STAR</span>
+                        </div>
+                        {
+                            data.mass != null && 
+                            <span id="mass"> 
+                                <span className="column">
+                                    Mass: { " " }
+                                </span>
+                                {hl(data.mass)} M<sub>☉</sub> { " " }
+                            </span> 
+                        }
+                        {
+                            data.luminosity != null && 
+                            <span id="lumo"> 
+                                <span className="column">
+                                    Luminosity: { " " }
+                                </span>
+                                e<sup>{hl(data.luminosity)}</sup> { " " } 
+                            </span>
+                        }
+                        {
+                            data.radius != null && 
+                            <span id="rad"> 
+                                <span className="column">
+                                    Radius: { " " }
+                                </span>
+                                {hl(data.radius)} R<sub>☉</sub> { " " } 
+                            </span>
+                        }
+                        {
+                            data.temperature != null && 
+                            <span id="temp"> 
+                                <span className="column">
+                                    Temperature: { " " }
+                                </span>
+                                {hl(data.temperature)} K { " " }
+                            </span>
+                        }
+                        {
+                            data.constellation != null && 
+                            <span id="cons"> 
+                                <span className="column">
+                                    Constellation: { " " }
+                                </span>
+                                {hl(data.constellation.name)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.discovered_by != null && 
+                            <span id="disc"> 
+                                <span className="column">
+                                    Discovered By: { " " }
+                                </span>
+                                {hl(data.discovered_by.ref)} { " " }
+                            </span>
+                        }
+                        {
+                            data.exoplanets.length > 0 && 
+                            <span id="exo"> 
+                                <span className="column">
+                                    Exoplanets: { " " }
+                                </span>
+                                {
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{hl(exoplanet.name)}</span>
+                                        };
+                                        return <span>{hl(exoplanet.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var ExoplanetItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/exoplanet/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="exoplanet">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)} { " " }
+                            <span className="term_type">EXOPLANET</span>
+                        </div>
+                        {
+                            data.mass != null && 
+                            <span id="mass"> 
+                                <span className="column">
+                                    Mass: { " " }
+                                </span>
+                                {hl(data.mass)} M<sub>⊕</sub> { " " }
+                            </span> 
+                        }
+                        {
+                            data.radius != null && 
+                            <span id="rad"> 
+                                <span className="column">
+                                    Radius: { " " }
+                                </span>
+                                {hl(data.radius)} R<sub>⊕</sub> { " " } 
+                            </span>
+                        }
+                        {
+                            data.orbital_period != null && 
+                            <span id="orb"> 
+                                <span className="column">
+                                    Orbital Period: { " " }
+                                </span>
+                                {hl(data.orbital_period)} days { " " } 
+                            </span>
+                        }
+                        {
+                            data.year_discovered != null && 
+                            <span id="year"> 
+                                <span className="column">
+                                    Year Discovered: { " " }
+                                </span>
+                                {hl(data.year_discovered)} { " " }
+                            </span>
+                        }
+                        {
+                            data.star != null && 
+                            <span id="star"> 
+                                <span className="column">
+                                    Star: { " " }
+                                </span>
+                                {hl(data.star.name)} { " " }
+                            </span>
+                        }
+                        {
+                            data.discovered_by != null && 
+                            <span id="disc"> 
+                                <span className="column">
+                                    Discovered By: { " " }
+                                </span>
+                                {hl(data.discovered_by.ref)} { " " }
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var ConstellationItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/constellation/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="constellation">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)} { " " }
+                            <span className="term_type">CONSTELLATION</span>
+                        </div>
+                        {
+                            data.abbrev != null && 
+                            <span id="abbrev">
+                                <span className="column">
+                                    Abbrev: { " " }
+                                </span>
+                                {hl(data.abbrev)} { " " }
+                            </span> 
+                        }
+                        {
+                            data.family != null && 
+                            <span id="fam"> 
+                                <span className="column">
+                                    Family: { " " }
+                                </span>
+                                {hl(data.family)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.meaning != null && 
+                            <span id="mean"> 
+                                <span className="column">
+                                    Meaning: { " " }
+                                </span>
+                                {hl(data.meaning)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.area != null && 
+                            <span id="area"> 
+                                <span className="column">
+                                    Area: { " " }
+                                </span>
+                                {hl(data.area)} sq. degrees { " " }
+                            </span>
+                        }
+                        {
+                            data.stars.length > 0 && 
+                            <span id="stars"> 
+                                <span className="column">
+                                    Stars: { " " }
+                                </span>
+                                {
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{hl(star.name)}</span>
+                                        };
+                                        return <span>{hl(star.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var PublicationItems = React.createClass({
+         render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/publication/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="publication">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.title)} { " " }
+                            <span className="term_type">PUBLICATION</span>
+                        </div>
+                        {
+                            data.ref != null && 
+                            <span id="ref">
+                                <span className="column">
+                                    Ref: { " " }
+                                </span>
+                                {hl(data.ref)}, { " " }
+                            </span> 
+                        }
+                        {
+                            data.authors != null && 
+                            <span id="auth"> 
+                                <span className="column">
+                                    Authors: { " " }
+                                </span>
+                                {hl(data.authors)}, { " " } 
+                            </span>
+                        }
+                        {
+                            data.journal != null && 
+                            <span id="area"> 
+                                <span className="column">
+                                    Journal: { " " }
+                                </span>
+                                {hl(data.journal)} { " " }
+                            </span>
+                        }
+                        {
+                            data.year != null && 
+                            <span id="year"> 
+                                <span className="column">
+                                    Year: { " " }
+                                </span>
+                                {hl(data.year)} { " " }
+                            </span>
+                        }
+                        {
+                            data.stars.length > 0 && 
+                            <span id="stars"> 
+                                <span className="column">
+                                    Stars: { " " }
+                                </span>
+                                {
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{hl(star.name)}</span>
+                                        };
+                                        return <span>{hl(star.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                        {
+                            data.exoplanets.length > 0 && 
+                            <span id="exo"> 
+                                <span className="column">
+                                    Exoplanets: { " " }
+                                </span>
+                                {
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{hl(exoplanet.name)}</span>
+                                        };
+                                        return <span>{hl(exoplanet.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                        {
+                            data.abstract != null && 
+                            <span id="abstract">
+                                <span className="column">
+                                    Abstract: { " " }
+                                </span>
+                                {hl(data.abstract)} { " " }
+                            </span> 
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    function hl(data){
+        return (<span dangerouslySetInnerHTML=
+                    {% raw %} 
+                    {{__html:data}} 
+                    {% endraw %}></span>)
+    }
+
+
+    // highlight search terms in each item class
+    function highlight(props, search) {
+            var item = props['objects'][0];
+            search = search.toString().replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+            var regex = new RegExp("("+search+")", 'i');
+            for (var key in item){
+                var val = item[key];
+                if(val != null){
+                    if (typeof val === 'string'){
+                        val = val.replace(regex, "<mark>$1</mark>");
+                        props['objects'][0][key] = val;
+                    } 
+                    else if (typeof val === "number"){
+                        if (search == val) {
+                            props['objects'][0][key] = '<mark>' + val + '</mark>';
+                        }
+
+                    } 
+                    else if (typeof val === "object"){
+                        if ('ref' in val) {
+                            var val = val['ref'].replace(regex, "<mark>$1</mark>");
+                                props['objects'][0][key]['ref'] = val;
+                        } 
+                        else if ('name' in val) {
+                            var val = val['name'].replace(regex, "<mark>$1</mark>");
+                            props['objects'][0][key]['name'] = val;
+                        } 
+                        else if (Array.isArray(val)){
+                            for (var i = 0; i < val.length; i++) {
+                                var name = val[i]['name'].replace(regex, "<mark>$1</mark>");  
+                                props['objects'][0][key][i]['name'] = name;
+                                // console.log(props['objects'][0][key][i]);                
+                            }
+                        }
+                    } 
+                }
+            }
+        return props;
+    }
+
+    var Item = React.createClass({
+        render: function(){
+            var item = this.props.item;
+            var itemDetails = $.getById(item.model,item.id);
+
+            var searchTerm = ".";
+            var terms = searchTerm.split(" ");
+            for (var term in terms){
+                itemDetails = highlight(itemDetails, terms[term]);
+            }
+            
+            if (item.model == "stars"){
+                return (
+                    <StarItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "exoplanets"){
+                return (
+                    <ExoplanetItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "constellations"){
+                return (
+                    <ConstellationItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "publications"){
+                return (
+                    <PublicationItems itemDetails={itemDetails} />
+                )
+            } 
+            return (
+                null
+            )
+
+        }
+    });
+
+
+    var List = React.createClass({
+        getInitialState: function() {
+            return {
+                resultOfSearch: $.getSearchResults(1)
+            };
+        },
+
+        incrementPage: function(){
+            var resultOfSearch = $.getSearchResults(2);
+            this.setState({resultOfSearch: resultOfSearch});
+            
+        },
+
+        decrementPage: function(){
+            console.log("this works");
+        },
+
+        render: function(){
+            var data = this.state.resultOfSearch.results;
+            var items = this.state.resultOfSearch.results.map(function(item){
+                return (
+                    <Item item={item}/>
+                )
+            });
+
+            return(
+                <div>
+                <div>
+                    {items}
+                </div>
+                <button className="btn disabled" id="prev" onClick={this.decrementPage.bind(this)}>Prev</button>
+                <span id="currPage">{currPage}</span>
+                <button className="btn enabled" id="next" onClick={this.incrementPage.bind(this)}>Next</button>
+                </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+    <List />,
+    document.getElementById('search')
+    );
+
+</script>
 
 </body>
 </html>
