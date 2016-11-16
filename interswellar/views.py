@@ -1,5 +1,5 @@
 """ The public views for the app """
-# pylint:disable=invalid-name,import-error
+# pylint:disable=invalid-name,import-error,undefined-variable
 
 from collections import defaultdict
 import json
