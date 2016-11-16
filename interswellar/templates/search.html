@@ -41,17 +41,30 @@
 <body>
     {% include 'nav.html' %}
 
-    <div class="table-title">
+    <div id="title" class="table-title">
         {{terms}}
     </div>
     <div>
-        <button class="btn">AND RESULTS</button>
-        <button class="btn">OR RESULTS</button>
+        <button class="btn" id="and-btn" onclick="showAnd()">AND RESULTS</button>
+        <button class="btn" id="or-btn" onclick="showOr()">OR RESULTS</button>
 
     </div>
     <div id="search" class='container-fluid all-results'></div>
     
     </div>
+
+<script>
+    //button stuff
+    function showAnd(){
+        $("#andSearch").show();
+        $("#orSearch").hide();
+    }
+
+    function showOr(){
+        $("#orSearch").show();
+        $("#andSearch").hide();
+    }
+</script>
 
 <script type="text/babel">
 
@@ -77,14 +90,18 @@
             });
             // totalPages = result.total_pages;
             // numResults = result.num_results;
-            if (mode == 'and'){
-                totalAndPages = result.total_pages;
-                numAndResults = result.num_results;
-            } else if (mode == 'or'){
-                totalOrPages = result.total_pages;
-                numOrResults = result.num_results;
+            try {
+                if (mode == 'and'){
+                    totalAndPages = result.total_pages;
+                    numAndResults = result.num_results;
+                } else if (mode == 'or'){
+                    totalOrPages = result.total_pages;
+                    numOrResults = result.num_results;
+                }
+                return result;
+            } catch (e) {
+                $("#title").text("NO RESULTS");
             }
-            return result;
         },
         
         getById: function(model, id){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
@@ -370,17 +387,8 @@
                                 <span className="column">
                                     Ref: { " " }
                                 </span>
-                                {hl(data.ref)}, { " " }
+                                {hl(data.ref)}, { "\n " }
                             </span> 
-                        }
-                        {
-                            data.authors != null && 
-                            <span id="auth"> 
-                                <span className="column">
-                                    Authors: { " " }
-                                </span>
-                                {hl(data.authors)}, { " " } 
-                            </span>
                         }
                         {
                             data.journal != null && 
@@ -418,6 +426,7 @@
                         }
                         {
                             data.exoplanets.length > 0 && 
+                            <div>
                             <span id="exo"> 
                                 <span className="column">
                                     Exoplanets: { " " }
@@ -431,15 +440,32 @@
                                     })
                                 } 
                             </span>
+                            <br/>
+                            </div>
+                        }
+                        {
+                            data.authors != null && 
+                            <div>
+                            <span id="auth"> 
+                                <span className="column">
+                                    Authors: { " " }
+                                </span>
+                                {hl(data.authors)}, { " " } 
+                            </span>
+                            <br/>
+                            </div>
                         }
                         {
                             data.abstract != null && 
+                            <div>
                             <span id="abstract">
                                 <span className="column">
                                     Abstract: { " " }
                                 </span>
                                 {hl(data.abstract)} { " " }
                             </span> 
+                            <br/>
+                            </div>
                         }
                     </div>
                 </div>
@@ -543,6 +569,9 @@
                 terms: searchTerms,
                 resultOfAndSearch: $.getSearchResults(searchTerms, 1, "and")
             };
+        },        
+        componentDidUpdate() {
+            window.scrollTo(0, 0)        
         },
         incrementAndPage: function(){
 
@@ -609,6 +638,9 @@
                 resultOfOrSearch: $.getSearchResults(searchTerms, 1, "or")
             };
         },
+        componentDidUpdate() {
+            window.scrollTo(0, 0)        
+        },
         incrementOrPage: function(){
 
             if (currOrPage != totalOrPages){
@@ -669,11 +701,15 @@
         render: function(){
             return(
                 <div>
+                <div id="andSearch">
                 <div className="search-type-header">And Results</div>
                     <And/>
-                <div className="search-type-header">Or Results</div>
+                </div>
 
+                <div id="orSearch">
+                <div className="search-type-header">Or Results</div>
                     <Or/>
+                </div>
                 </div>
             );
         }
