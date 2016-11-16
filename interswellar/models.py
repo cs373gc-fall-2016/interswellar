@@ -98,7 +98,6 @@ class Publication(db.Model):
         return "<Publication(title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
             self.title, self.year, self.authors, self.journal, self.abstract)
 
-
     def search_result(self):
         """ Returns result format for the publication """
         return {"model": "publications", "id": self.id}
