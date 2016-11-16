@@ -143,9 +143,9 @@ def run_tests():
 @public_views.route('/search')
 def search_results():
     """ takes user search input and renders the and and or search results """
-    # terms = request.args.get('q').split()
+    terms = request.args.get('q')
 
-    return render_template('search.html')
+    return render_template('search.html', terms=terms)
 
 @public_views.route('/api/v1/search/1')
 def fake_api1():

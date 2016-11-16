@@ -42,41 +42,48 @@
     {% include 'nav.html' %}
 
     <div class="table-title">
-        {{query}}
+        {{terms}}
     </div>
+    <div>
+        <button class="btn">AND RESULTS</button>
+        <button class="btn">OR RESULTS</button>
 
+    </div>
     <div id="search" class='container-fluid all-results'></div>
     
     </div>
 
 <script type="text/babel">
 
-    var currPage = 1;
-    var totalPages = 0;
-    var numResults = 0;
-
     var globalVar = {
         'callback': null
     };
 
     jQuery.extend({
-        getSearchResults: function(page) {
+        getSearchResults: function(terms, page, mode) { // /api/v1/search?q=terms&page=1&mode=and
             var result = null;
             $.ajax({
-                url: '/api/v1/search/' + page,
+                url: '/api/v1/search?q=' + terms + '&page=' + page + '&mode=' + mode,
                 // url: urlName,
                 type: 'get',
                 dataType: 'json',
                 async: false,
                 success: function(data) {
                     // console.log(data);
-                    totalPages = data.total_pages;
-                    numResults = data.num_results;
+                    // totalPages = data.total_pages;
+                    // numResults = data.num_results;
                     result = data;
                 }
             });
-            totalPages = result.total_pages;
-            numResults = result.num_results;
+            // totalPages = result.total_pages;
+            // numResults = result.num_results;
+            if (mode == 'and'){
+                totalAndPages = result.total_pages;
+                numAndResults = result.num_results;
+            } else if (mode == 'or'){
+                totalOrPages = result.total_pages;
+                numOrResults = result.num_results;
+            }
             return result;
         },
         
@@ -88,18 +95,21 @@
                 dataType: 'json',
                 async: false,
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     result = data;
-
                 }
             });
             return result;
         }
     });
 
-    var currPage = 1;
-    var totalPages = 0;
-    var numResults = 0;
+    var currAndPage = 1;
+    var totalAndPages = 0;
+    var numAndResults = 0;
+
+    var currOrPage = 1;
+    var totalOrPages = 0;
+    var numOrResults = 0;
 
     var StarItems = React.createClass({
         render: function(){
@@ -490,9 +500,10 @@
     var Item = React.createClass({
         render: function(){
             var item = this.props.item;
+            console.log(item);
             var itemDetails = $.getById(item.model,item.id);
 
-            var searchTerm = ".";
+            var searchTerm = "{{terms}}";
             var terms = searchTerm.split(" ");
             for (var term in terms){
                 itemDetails = highlight(itemDetails, terms[term]);
@@ -521,44 +532,148 @@
             return (
                 null
             )
-
         }
     });
 
-
-    var List = React.createClass({
-        getInitialState: function() {
+    var And = React.createClass({
+        getInitialState: function(){
+            var searchTerms = "{{terms}}";
+            console.log(searchTerms);
             return {
-                resultOfSearch: $.getSearchResults(1)
+                terms: searchTerms,
+                resultOfAndSearch: $.getSearchResults(searchTerms, 1, "and")
             };
         },
+        incrementAndPage: function(){
 
-        incrementPage: function(){
-            var resultOfSearch = $.getSearchResults(2);
-            this.setState({resultOfSearch: resultOfSearch});
+            if (currAndPage != totalAndPages){
+                currAndPage++;
+                console.log(currAndPage);
+                var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
+                
+                $('#andPrev').removeClass("disabled");
+
+                if (currAndPage == totalAndPages){
+                    $('#andNext').addClass("disabled");
+                }
+                this.setState({resultOfAndSearch: resultOfAndSearch});
+            }
+        },
+        decrementAndPage: function(){
+
+            if (currAndPage != 1){
+                currAndPage--;
+                console.log(currAndPage);
+                var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
+
+                $('#andNext').removeClass("disabled");
+
+                if (currAndPage == 1){
+                    $('#andPrev').addClass("disabled");
+                }
+                this.setState({resultOfAndSearch: resultOfAndSearch});      
+            }  
             
         },
-
-        decrementPage: function(){
-            console.log("this works");
-        },
-
         render: function(){
-            var data = this.state.resultOfSearch.results;
-            var items = this.state.resultOfSearch.results.map(function(item){
+            console.log(this.state.resultOfAndSearch);
+            var andItems = this.state.resultOfAndSearch.results.map(function(item){
                 return (
                     <Item item={item}/>
                 )
             });
 
+            var limit = currAndPage*10;
+            if (numAndResults < limit){
+                limit = numAndResults;
+            }
+
+            return (
+                <div>
+                {andItems}
+                <div>Showing {(1+(currAndPage-1)*10)} to {limit} of {numAndResults} entries</div>
+                <button className="btn disabled" id="andPrev" onClick={this.decrementAndPage}>Prev</button>
+                <span id="currAndPage">{currAndPage}</span>
+                <button className="btn enabled" id="andNext" onClick={this.incrementAndPage}>Next</button>
+                </div>
+            )
+        }
+    });
+
+    var Or = React.createClass({
+        getInitialState: function() {
+            var searchTerms = "{{terms}}";
+            console.log(searchTerms);
+            return {
+                terms: searchTerms,
+                resultOfOrSearch: $.getSearchResults(searchTerms, 1, "or")
+            };
+        },
+        incrementOrPage: function(){
+
+            if (currOrPage != totalOrPages){
+                currOrPage++;
+                console.log(currOrPage);
+                var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
+                
+                $('#orPrev').removeClass("disabled");
+
+                if (currOrPage == totalOrPages){
+                    $('#orNext').addClass("disabled");
+                }
+                this.setState({resultOfOrSearch: resultOfOrSearch});
+            }
+        },
+        decrementOrPage: function(){
+
+            if (currOrPage != 1){
+                currOrPage--;
+                console.log(currOrPage);
+                var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
+
+                $('#orNext').removeClass("disabled");
+
+                if (currOrPage == 1){
+                    $('#orPrev').addClass("disabled");
+                }
+                this.setState({resultOfOrSearch: resultOfOrSearch});      
+            }  
+            
+        },
+        render: function(){
+            console.log(this.state.resultOfOrSearch);
+            var orItems = this.state.resultOfOrSearch.results.map(function(item){
+                return (
+                    <Item item={item}/>
+                )
+            });
+
+            var limit = currOrPage*10;
+            if (numOrResults < limit){
+                limit = numOrResults;
+            }
+
+            return (
+                <div>
+                {orItems}
+                <div>Showing {(1+(currOrPage-1)*10)} to {limit} of {numOrResults} entries</div>
+                <button className="btn disabled" id="orPrev" onClick={this.decrementOrPage}>Prev</button>
+                <span id="currOrPage">{currOrPage}</span>
+                <button className="btn enabled" id="orNext" onClick={this.incrementOrPage}>Next</button>
+                </div>
+            )
+        }
+    })
+
+    var List = React.createClass({
+        render: function(){
             return(
                 <div>
-                <div>
-                    {items}
-                </div>
-                <button className="btn disabled" id="prev" onClick={this.decrementPage.bind(this)}>Prev</button>
-                <span id="currPage">{currPage}</span>
-                <button className="btn enabled" id="next" onClick={this.incrementPage.bind(this)}>Next</button>
+                <div className="search-type-header">And Results</div>
+                    <And/>
+                <div className="search-type-header">Or Results</div>
+
+                    <Or/>
                 </div>
             );
         }
