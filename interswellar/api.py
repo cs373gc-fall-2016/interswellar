@@ -12,6 +12,7 @@ import interswellar.models as models
 public_api = Blueprint('public_api', __name__)
 
 
+@public_api.route('/api/v1/search')
 @public_api.route('/api/v1/search/')
 def search():
     """ Run the search request and return jsonified results """
@@ -50,49 +51,43 @@ def search():
         })
 
 def star_filter(term):
-    return ((models.Star.id  == cast_int(term)) |
+    return ((models.Star.id  == safecast(term, int, -1)) |
             (models.Star.name.ilike('%'+term+'%')) |
-            (models.Star.mass == cast_float(term)) | 
-            (models.Star.luminosity == cast_float(term)) |
-            (models.Star.temperature == cast_float(term)) |
-            (models.Star.radius == cast_float(term)))
+            (models.Star.mass == safecast(term, float, -1.0)) | 
+            (models.Star.luminosity == safecast(term, float, -1.0)) |
+            (models.Star.temperature == safecast(term, float, -1.0)) |
+            (models.Star.radius == safecast(term, float, -1.0)))
 
 def exoplanet_filter(term):
-    return ((models.Exoplanet.id == cast_int(term)) |
+    return ((models.Exoplanet.id == safecast(term, int, -1)) |
             (models.Exoplanet.name.ilike('%'+term+'%')) |
-            (models.Exoplanet.mass == cast_float(term)) |
-            (models.Exoplanet.radius == cast_float(term)) |
-            (models.Exoplanet.orbital_period == cast_int(term)) |
-            (models.Exoplanet.year_discovered == cast_int(term)))
+            (models.Exoplanet.mass == safecast(term, float, -1.0)) |
+            (models.Exoplanet.radius == safecast(term, float, -1.0)) |
+            (models.Exoplanet.orbital_period == safecast(term, int, -1)) |
+            (models.Exoplanet.year_discovered == safecast(term, int, -1)))
 
 def constellation_filter(term):
-    return ((models.Constellation.id == cast_int(term)) |
+    return ((models.Constellation.id == safecast(term, int, -1)) |
             (models.Constellation.name.ilike('%'+term+'%')) |
             (models.Constellation.abbrev.ilike('%'+term+'%')) |
             (models.Constellation.family.ilike('%'+term+'%')) |
             (models.Constellation.meaning.ilike('%'+term+'%')) |
-            (models.Constellation.area == cast_float(term)))
+            (models.Constellation.area == safecast(term, float, -1.0)))
 
 def publication_filter(term):
-    return ((models.Publication.id == cast_int(term)) |
+    return ((models.Publication.id == safecast(term, int, -1)) |
             (models.Publication.ref.ilike('%'+term+'%')) |
             (models.Publication.title.ilike('%'+term+'%')) |
-            (models.Publication.year == cast_int(term)) |
+            (models.Publication.year == safecast(term, int, -1)) |
             (models.Publication.authors.ilike('%'+term+'%')) |
             (models.Publication.journal.ilike('%'+term+'%')) |
             (models.Publication.abstract.ilike('%'+term+'%')))
 
-def cast_float(str):
+def safecast(str, typ, default):
     try:
-        return float(str)
+        return typ(str)
     except (ValueError, TypeError):
-        return -1.0
-
-def cast_int(str):
-    try:
-        return int(str)
-    except (ValueError, TypeError):
-        return -1
+        return default
 
 def bind_api(app):
     """ Bind the api to the app """
