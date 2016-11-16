@@ -1,26 +1,40 @@
 '''API routes for interswellar'''
 
+import math
+
+from flask import Blueprint, jsonify, request
 from flask_restless import APIManager
+
 import interswellar.models as models
-from flask import Blueprint, jsonify    
 
 #pylint:disable=invalid-name
 public_api = Blueprint('public_api', __name__)
 
 @public_api.route('/api/v1/search/')
 def search():
-    
+    page = int(request.args.get('page', '1'))
+    and_mode = request.args.get('mode') == 'and'
+    terms = request.args.get('q').split()
+
+    # Do a search
+    results = [
+        models.Star.query.get(9),
+        models.Star.query.get(10),
+        models.Constellation.query.get(189),
+        models.Publication.query.get(100),
+        models.Exoplanet.query.get(50),
+    ]
+
+    total_pages = int(math.ceil(len(results) / 10))
+    if page > total_pages:
+        return "ur bad"
+
+    # Return a json
     return jsonify({
-        "page" : 1,
-        "total_pages" : 1,
-        "num_results": 5,
-        "results" : [
-            {"model" : "stars", "id": 9},
-            {"model" : "stars", "id": 10},
-            {"model" : "constellations", "id": 189},
-            {"model" : "publications", "id": 100},
-            {"model" : "exoplanets", "id": 50}
-        ]
+        "page" : page,
+        "total_pages" : total_pages,
+        "num_results": len(results),
+        "results" : [r.search_result() for r in results[10*(page-1):10*(page)]]
         })
 
 def bind_api(app):
