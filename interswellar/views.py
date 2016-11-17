@@ -1,15 +1,16 @@
 """ The public views for the app """
+# pylint:disable=invalid-name,import-error,undefined-variable
+
 from collections import defaultdict
 import json
 import traceback
 import html
 
 import requests
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, render_template, current_app, request
 
 import interswellar.models as models
 
-# pylint:disable=invalid-name
 public_views = Blueprint('public_views', __name__)
 
 
@@ -23,11 +24,7 @@ def index():
 @public_views.route('/stars')
 def stars():
     """ Returns stars page """
-
-    return render_template(
-        'star_tables.html',
-        bg_url='http://apod.nasa.gov/apod/image/1610/TulipNebula_SHO_pugh.jpg'
-    )
+    return render_template('star_tables.html')
 
 
 @public_views.route('/star/<int:variable>')
@@ -44,7 +41,7 @@ def star(variable):
 @public_views.route('/exoplanets')
 def exoplanets():
     """ Returns exoplanets page """
-    return render_template('exoplanet_tables.html', bg_url='/static/images/exoplanet.jpg')
+    return render_template('exoplanet_tables.html')
 
 
 @public_views.route('/exoplanet/<int:variable>')
@@ -62,7 +59,7 @@ def exoplanet(variable):
 def constellations():
     """ Returns constellations page """
 
-    return render_template('constellation_tables.html', bg_url='/static/images/constellation.jpg')
+    return render_template('constellation_tables.html')
 
 
 @public_views.route('/constellation/<int:variable>')
@@ -81,7 +78,14 @@ def constellation(variable):
 def publications():
     """ Returns publications page """
 
-    return render_template('publication_tables.html', bg_url='/static/images/publication.jpg')
+    return render_template('publication_tables.html')
+
+
+@public_views.route('/card')
+def card():
+    """ Returns publications page """
+
+    return render_template('card.html')
 
 
 @public_views.route('/publication/<int:variable>')
@@ -102,20 +106,21 @@ def about():
     commits = get_commits()
     issues = get_issues()
     return render_template('about.html',
-                           charlotte_commits=commits.get('charharharhar', 0),
-                           sami_commits=commits.get('TheFireFerret', 0),
-                           denise_commits=commits.get('denisely', 0),
-                           young_commits=commits.get('jedyobidan', 0),
-                           david_commits=commits.get('dshimo', 0),
-                           nathan_commits=commits.get('nazopo', 0),
-                           charlotte_issues=issues.get('charharharhar', 0),
-                           sami_issues=issues.get('TheFireFerret', 0),
-                           denise_issues=issues.get('denisely', 0),
-                           young_issues=issues.get('jedyobidan', 0),
-                           david_issues=issues.get('dshimo', 0),
-                           nathan_issues=issues.get('nazopo', 0),
-                           total_commits=get_total_commits(),
-                           total_issues=get_total_issues())
+                           charlotte_commits=commits[
+                               0].get('charharharhar', 0),
+                           sami_commits=commits[0].get('TheFireFerret', 0),
+                           denise_commits=commits[0].get('denisely', 0),
+                           young_commits=commits[0].get('jedyobidan', 0),
+                           david_commits=commits[0].get('dshimo', 0),
+                           nathan_commits=commits[0].get('nazopo', 0),
+                           charlotte_issues=issues[0].get('charharharhar', 0),
+                           sami_issues=issues[0].get('TheFireFerret', 0),
+                           denise_issues=issues[0].get('denisely', 0),
+                           young_issues=issues[0].get('jedyobidan', 0),
+                           david_issues=issues[0].get('dshimo', 0),
+                           nathan_issues=issues[0].get('nazopo', 0),
+                           total_commits=commits[1],
+                           total_issues=issues[1])
 
 
 @public_views.route('/checkdb')
@@ -134,10 +139,16 @@ def checkdb():
 @public_views.route('/tests/run')
 def run_tests():
     """ Runs all the unittests and returns the text result with verbosity 2 """
-
     import interswellar.test_runner as test_runner
-
     return test_runner.run_tests()
+
+
+@public_views.route('/search')
+def search_results():
+    """ takes user search input and renders the and and or search results """
+    terms = request.args.get('q')
+
+    return render_template('search.html', terms=terms)
 
 
 @public_views.errorhandler(404)
@@ -148,20 +159,7 @@ def page_not_found(_):
 
 def get_commits():
     """ gets number of commits for each team member """
-
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'stats/contributors?client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'],
-              current_app.config['GITHUB_CLIENT_SECRET'],
-          )
-
-    response = requests.get(url).text
-    parsed = json.loads(response)
-    return {user['author']['login']: user['total'] for user in parsed}
-
-
-def get_total_commits():
-    """ gets number of commits for each team member """
+    user_result = {}
 
     url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
           'stats/contributors?client_id=%s&client_secret=%s' % (
@@ -171,40 +169,31 @@ def get_total_commits():
     response = requests.get(url).text
     parsed = json.loads(response)
     total = 0
+
     for user in parsed:
+        user_result[user['author']['login']] = user['total']
         total += user['total']
-    return total
+
+    return [user_result, total]
 
 
 def get_issues():
     """ get number of issues for each team member """
-
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'issues?state=all&filter=all&client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'],
-              current_app.config['GITHUB_CLIENT_SECRET'],
-          )
-    response = requests.get(url).text
-    parsed = json.loads(response)
     num_issues = defaultdict(int)
-    for issue in parsed:
-        if 'pull_request' not in issue:
-            num_issues[issue['user']['login']] += 1
-    return num_issues
+    total = 0
 
+    for num in range(1, 4):
+        url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
+              'issues?filter=all&state=all&client_id=%s&client_secret=%s&page=%s' % (
+                  current_app.config['GITHUB_CLIENT_ID'],
+                  current_app.config['GITHUB_CLIENT_SECRET'],
+                  num
+              )
 
-def get_total_issues():
-    """ get number of issues for each team member """
-
-    url = 'https://api.github.com/repos/cs373gc-fall-2016/interswellar/' \
-          'issues?filter=all&state=all&client_id=%s&client_secret=%s' % (
-              current_app.config['GITHUB_CLIENT_ID'],
-              current_app.config['GITHUB_CLIENT_SECRET'],
-          )
-    response = requests.get(url).text
-    parsed = json.loads(response)
-    num_issues = 0
-    for issue in parsed:
-        if 'pull_request' not in issue:
-            num_issues += 1
-    return num_issues
+        response = requests.get(url).text
+        parsed = json.loads(response)
+        for issue in parsed:
+            if 'pull_request' not in issue:
+                total += 1
+                num_issues[issue['user']['login']] += 1
+    return [num_issues, total]

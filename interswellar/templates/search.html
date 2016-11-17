@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/css/search.css">
+
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/details.css">
+
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+        <!-- React -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+    <style>
+    html {
+        background: url(/static/images/exoplanet.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    <div id="title" class="table-title">
+        {{terms}}
+    </div>
+    <div>
+        <button class="btn" id="and-btn" onclick="showAnd()">AND RESULTS</button>
+        <button class="btn" id="or-btn" onclick="showOr()">OR RESULTS</button>
+
+    </div>
+    <div id="search" class='container-fluid all-results'></div>
+    
+    </div>
+
+<script>
+    //button stuff
+    function showAnd(){
+        $("#andSearch").show();
+        $("#orSearch").hide();
+    }
+
+    function showOr(){
+        $("#orSearch").show();
+        $("#andSearch").hide();
+    }
+</script>
+
+<script type="text/babel">
+
+    var globalVar = {
+        'callback': null
+    };
+
+    jQuery.extend({
+        getSearchResults: function(terms, page, mode) { // /api/v1/search?q=terms&page=1&mode=and
+            var result = null;
+            $.ajax({
+                url: '/api/v1/search?q=' + terms + '&page=' + page + '&mode=' + mode,
+                // url: urlName,
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    // console.log(data);
+                    // totalPages = data.total_pages;
+                    // numResults = data.num_results;
+                    result = data;
+                }
+            });
+            // totalPages = result.total_pages;
+            // numResults = result.num_results;
+            try {
+                if (mode == 'and'){
+                    totalAndPages = result.total_pages;
+                    numAndResults = result.num_results;
+                } else if (mode == 'or'){
+                    totalOrPages = result.total_pages;
+                    numOrResults = result.num_results;
+                }
+                return result;
+            } catch (e) {
+                $("#title").text("NO RESULTS");
+            }
+        },
+        
+        getById: function(model, id){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
+            var result = null;
+            $.ajax({
+                url: "/api/v1/" + model +"?q={\"filters\":[{\"name\":\"id\",\"op\":\"eq\",\"val\":" + id + "}]}",
+                type: 'get',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    // console.log(data);
+                    result = data;
+                }
+            });
+            return result;
+        }
+    });
+
+    var currAndPage = 1;
+    var totalAndPages = 0;
+    var numAndResults = 0;
+
+    var currOrPage = 1;
+    var totalOrPages = 0;
+    var numOrResults = 0;
+
+    var StarItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/star/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="star">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)}{ " " }
+                            <span className="term_type" >STAR</span>
+                        </div>
+                        {
+                            data.mass != null && 
+                            <span id="mass"> 
+                                <span className="column">
+                                    Mass: { " " }
+                                </span>
+                                {hl(data.mass)} M<sub>☉</sub> { " " }
+                            </span> 
+                        }
+                        {
+                            data.luminosity != null && 
+                            <span id="lumo"> 
+                                <span className="column">
+                                    Luminosity: { " " }
+                                </span>
+                                e<sup>{hl(data.luminosity)}</sup> { " " } 
+                            </span>
+                        }
+                        {
+                            data.radius != null && 
+                            <span id="rad"> 
+                                <span className="column">
+                                    Radius: { " " }
+                                </span>
+                                {hl(data.radius)} R<sub>☉</sub> { " " } 
+                            </span>
+                        }
+                        {
+                            data.temperature != null && 
+                            <span id="temp"> 
+                                <span className="column">
+                                    Temperature: { " " }
+                                </span>
+                                {hl(data.temperature)} K { " " }
+                            </span>
+                        }
+                        {
+                            data.constellation != null && 
+                            <span id="cons"> 
+                                <span className="column">
+                                    Constellation: { " " }
+                                </span>
+                                {hl(data.constellation.name)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.discovered_by != null && 
+                            <span id="disc"> 
+                                <span className="column">
+                                    Discovered By: { " " }
+                                </span>
+                                {hl(data.discovered_by.ref)} { " " }
+                            </span>
+                        }
+                        {
+                            data.exoplanets.length > 0 && 
+                            <span id="exo"> 
+                                <span className="column">
+                                    Exoplanets: { " " }
+                                </span>
+                                {
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{hl(exoplanet.name)}</span>
+                                        };
+                                        return <span>{hl(exoplanet.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var ExoplanetItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/exoplanet/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="exoplanet">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)} { " " }
+                            <span className="term_type">EXOPLANET</span>
+                        </div>
+                        {
+                            data.mass != null && 
+                            <span id="mass"> 
+                                <span className="column">
+                                    Mass: { " " }
+                                </span>
+                                {hl(data.mass)} M<sub>⊕</sub> { " " }
+                            </span> 
+                        }
+                        {
+                            data.radius != null && 
+                            <span id="rad"> 
+                                <span className="column">
+                                    Radius: { " " }
+                                </span>
+                                {hl(data.radius)} R<sub>⊕</sub> { " " } 
+                            </span>
+                        }
+                        {
+                            data.orbital_period != null && 
+                            <span id="orb"> 
+                                <span className="column">
+                                    Orbital Period: { " " }
+                                </span>
+                                {hl(data.orbital_period)} days { " " } 
+                            </span>
+                        }
+                        {
+                            data.year_discovered != null && 
+                            <span id="year"> 
+                                <span className="column">
+                                    Year Discovered: { " " }
+                                </span>
+                                {hl(data.year_discovered)} { " " }
+                            </span>
+                        }
+                        {
+                            data.star != null && 
+                            <span id="star"> 
+                                <span className="column">
+                                    Star: { " " }
+                                </span>
+                                {hl(data.star.name)} { " " }
+                            </span>
+                        }
+                        {
+                            data.discovered_by != null && 
+                            <span id="disc"> 
+                                <span className="column">
+                                    Discovered By: { " " }
+                                </span>
+                                {hl(data.discovered_by.ref)} { " " }
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var ConstellationItems = React.createClass({
+        render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/constellation/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="constellation">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.name)} { " " }
+                            <span className="term_type">CONSTELLATION</span>
+                        </div>
+                        {
+                            data.abbrev != null && 
+                            <span id="abbrev">
+                                <span className="column">
+                                    Abbrev: { " " }
+                                </span>
+                                {hl(data.abbrev)} { " " }
+                            </span> 
+                        }
+                        {
+                            data.family != null && 
+                            <span id="fam"> 
+                                <span className="column">
+                                    Family: { " " }
+                                </span>
+                                {hl(data.family)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.meaning != null && 
+                            <span id="mean"> 
+                                <span className="column">
+                                    Meaning: { " " }
+                                </span>
+                                {hl(data.meaning)} { " " } 
+                            </span>
+                        }
+                        {
+                            data.area != null && 
+                            <span id="area"> 
+                                <span className="column">
+                                    Area: { " " }
+                                </span>
+                                {hl(data.area)} sq. degrees { " " }
+                            </span>
+                        }
+                        {
+                            data.stars.length > 0 && 
+                            <span id="stars"> 
+                                <span className="column">
+                                    Stars: { " " }
+                                </span>
+                                {
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{hl(star.name)}</span>
+                                        };
+                                        return <span>{hl(star.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    var PublicationItems = React.createClass({
+         render: function(){
+            var data = this.props.itemDetails.objects[0];
+            var link = "/publication/" + data.id;
+
+            return (
+            <a href={link}>
+            <div className="col-md-12 result-box" id="publication">
+                <div className="col-md-12">
+                    <div id="content">
+                        <div className="term">{hl(data.title)} { " " }
+                            <span className="term_type">PUBLICATION</span>
+                        </div>
+                        {
+                            data.ref != null && 
+                            <span id="ref">
+                                <span className="column">
+                                    Ref: { " " }
+                                </span>
+                                {hl(data.ref)}, { "\n " }
+                            </span> 
+                        }
+                        {
+                            data.journal != null && 
+                            <span id="area"> 
+                                <span className="column">
+                                    Journal: { " " }
+                                </span>
+                                {hl(data.journal)} { " " }
+                            </span>
+                        }
+                        {
+                            data.year != null && 
+                            <span id="year"> 
+                                <span className="column">
+                                    Year: { " " }
+                                </span>
+                                {hl(data.year)} { " " }
+                            </span>
+                        }
+                        {
+                            data.stars.length > 0 && 
+                            <span id="stars"> 
+                                <span className="column">
+                                    Stars: { " " }
+                                </span>
+                                {
+                                    data.stars.map(function(star, i){
+                                        if (i == data.stars.length-1) {
+                                            return <span>{hl(star.name)}</span>
+                                        };
+                                        return <span>{hl(star.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                        }
+                        {
+                            data.exoplanets.length > 0 && 
+                            <div>
+                            <span id="exo"> 
+                                <span className="column">
+                                    Exoplanets: { " " }
+                                </span>
+                                {
+                                    data.exoplanets.map(function(exoplanet, i){
+                                        if (i == data.exoplanets.length-1) {
+                                            return <span>{hl(exoplanet.name)}</span>
+                                        };
+                                        return <span>{hl(exoplanet.name)}, </span>
+                                    })
+                                } 
+                            </span>
+                            <br/>
+                            </div>
+                        }
+                        {
+                            data.authors != null && 
+                            <div>
+                            <span id="auth"> 
+                                <span className="column">
+                                    Authors: { " " }
+                                </span>
+                                {hl(data.authors)}, { " " } 
+                            </span>
+                            <br/>
+                            </div>
+                        }
+                        {
+                            data.abstract != null && 
+                            <div>
+                            <span id="abstract">
+                                <span className="column">
+                                    Abstract: { " " }
+                                </span>
+                                {hl(data.abstract)} { " " }
+                            </span> 
+                            <br/>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            </a>
+            )
+        }
+    })
+
+    function hl(data){
+        return (<span dangerouslySetInnerHTML=
+                    {% raw %} 
+                    {{__html:data}} 
+                    {% endraw %}></span>)
+    }
+
+
+    // highlight search terms in each item class
+    function highlight(props, search) {
+            var item = props['objects'][0];
+            search = search.toString().replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+            var regex = new RegExp("("+search+")", 'i');
+            for (var key in item){
+                var val = item[key];
+                if(val != null){
+                    if (typeof val === 'string'){
+                        val = val.replace(regex, "<mark>$1</mark>");
+                        props['objects'][0][key] = val;
+                    } 
+                    else if (typeof val === "number"){
+                        if (search == val) {
+                            props['objects'][0][key] = '<mark>' + val + '</mark>';
+                        }
+
+                    } 
+                    else if (typeof val === "object"){
+                        if ('ref' in val) {
+                            var val = val['ref'].replace(regex, "<mark>$1</mark>");
+                                props['objects'][0][key]['ref'] = val;
+                        } 
+                        else if ('name' in val) {
+                            var val = val['name'].replace(regex, "<mark>$1</mark>");
+                            props['objects'][0][key]['name'] = val;
+                        } 
+                        else if (Array.isArray(val)){
+                            for (var i = 0; i < val.length; i++) {
+                                var name = val[i]['name'].replace(regex, "<mark>$1</mark>");  
+                                props['objects'][0][key][i]['name'] = name;
+                                // console.log(props['objects'][0][key][i]);                
+                            }
+                        }
+                    } 
+                }
+            }
+        return props;
+    }
+
+    var Item = React.createClass({
+        render: function(){
+            var item = this.props.item;
+            console.log(item);
+            var itemDetails = $.getById(item.model,item.id);
+
+            var searchTerm = "{{terms}}";
+            var terms = searchTerm.split(" ");
+            for (var term in terms){
+                itemDetails = highlight(itemDetails, terms[term]);
+            }
+            
+            if (item.model == "stars"){
+                return (
+                    <StarItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "exoplanets"){
+                return (
+                    <ExoplanetItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "constellations"){
+                return (
+                    <ConstellationItems itemDetails={itemDetails} />
+                )
+            } 
+            if (item.model == "publications"){
+                return (
+                    <PublicationItems itemDetails={itemDetails} />
+                )
+            } 
+            return (
+                null
+            )
+        }
+    });
+
+    var And = React.createClass({
+        getInitialState: function(){
+            var searchTerms = "{{terms}}";
+            console.log(searchTerms);
+            return {
+                terms: searchTerms,
+                resultOfAndSearch: $.getSearchResults(searchTerms, 1, "and")
+            };
+        },        
+        componentDidUpdate() {
+            window.scrollTo(0, 0)        
+        },
+        incrementAndPage: function(){
+
+            if (currAndPage != totalAndPages){
+                currAndPage++;
+                console.log(currAndPage);
+                var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
+                
+                $('#andPrev').removeClass("disabled");
+
+                if (currAndPage == totalAndPages){
+                    $('#andNext').addClass("disabled");
+                }
+                this.setState({resultOfAndSearch: resultOfAndSearch});
+            }
+        },
+        decrementAndPage: function(){
+
+            if (currAndPage != 1){
+                currAndPage--;
+                console.log(currAndPage);
+                var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
+
+                $('#andNext').removeClass("disabled");
+
+                if (currAndPage == 1){
+                    $('#andPrev').addClass("disabled");
+                }
+                this.setState({resultOfAndSearch: resultOfAndSearch});      
+            }  
+            
+        },
+        render: function(){
+            console.log(this.state.resultOfAndSearch);
+            var andItems = this.state.resultOfAndSearch.results.map(function(item){
+                return (
+                    <Item item={item}/>
+                )
+            });
+
+            var limit = currAndPage*10;
+            if (numAndResults < limit){
+                limit = numAndResults;
+            }
+
+            return (
+                <div>
+                {andItems}
+                <div>Showing {(1+(currAndPage-1)*10)} to {limit} of {numAndResults} entries</div>
+                <button className="btn disabled" id="andPrev" onClick={this.decrementAndPage}>Prev</button>
+                <span id="currAndPage">{currAndPage}</span>
+                <button className="btn enabled" id="andNext" onClick={this.incrementAndPage}>Next</button>
+                </div>
+            )
+        }
+    });
+
+    var Or = React.createClass({
+        getInitialState: function() {
+            var searchTerms = "{{terms}}";
+            console.log(searchTerms);
+            return {
+                terms: searchTerms,
+                resultOfOrSearch: $.getSearchResults(searchTerms, 1, "or")
+            };
+        },
+        componentDidUpdate() {
+            window.scrollTo(0, 0)        
+        },
+        incrementOrPage: function(){
+
+            if (currOrPage != totalOrPages){
+                currOrPage++;
+                console.log(currOrPage);
+                var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
+                
+                $('#orPrev').removeClass("disabled");
+
+                if (currOrPage == totalOrPages){
+                    $('#orNext').addClass("disabled");
+                }
+                this.setState({resultOfOrSearch: resultOfOrSearch});
+            }
+        },
+        decrementOrPage: function(){
+
+            if (currOrPage != 1){
+                currOrPage--;
+                console.log(currOrPage);
+                var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
+
+                $('#orNext').removeClass("disabled");
+
+                if (currOrPage == 1){
+                    $('#orPrev').addClass("disabled");
+                }
+                this.setState({resultOfOrSearch: resultOfOrSearch});      
+            }  
+            
+        },
+        render: function(){
+            console.log(this.state.resultOfOrSearch);
+            var orItems = this.state.resultOfOrSearch.results.map(function(item){
+                return (
+                    <Item item={item}/>
+                )
+            });
+
+            var limit = currOrPage*10;
+            if (numOrResults < limit){
+                limit = numOrResults;
+            }
+
+            return (
+                <div>
+                {orItems}
+                <div>Showing {(1+(currOrPage-1)*10)} to {limit} of {numOrResults} entries</div>
+                <button className="btn disabled" id="orPrev" onClick={this.decrementOrPage}>Prev</button>
+                <span id="currOrPage">{currOrPage}</span>
+                <button className="btn enabled" id="orNext" onClick={this.incrementOrPage}>Next</button>
+                </div>
+            )
+        }
+    })
+
+    var List = React.createClass({
+        render: function(){
+            return(
+                <div>
+                <div id="andSearch">
+                <div className="search-type-header">And Results</div>
+                    <And/>
+                </div>
+
+                <div id="orSearch">
+                <div className="search-type-header">Or Results</div>
+                    <Or/>
+                </div>
+                </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+    <List />,
+    document.getElementById('search')
+    );
+
+</script>
+
+</body>
+</html>

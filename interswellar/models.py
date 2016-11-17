@@ -26,6 +26,10 @@ class Star(db.Model):
         return "<Star(name='%s', mass=%s, luminosity=%s, temperature=%s, radius=%s)>" % (
             self.name, self.mass, self.luminosity, self.temperature, self.radius)
 
+    def search_result(self):
+        """ Returns result format for the star """
+        return {"model": "stars", "id": self.id}
+
 
 class Exoplanet(db.Model):
 
@@ -45,6 +49,10 @@ class Exoplanet(db.Model):
         return "<Exoplanet(name='%s', mass=%s, radius=%s, orbital_period=%d, "  \
             "year_discovered=%d)>" % (self.name, self.mass, self.radius,
                                       self.orbital_period, self.year_discovered)
+
+    def search_result(self):
+        """ Returns result format for the exoplanet """
+        return {"model": "exoplanets", "id": self.id}
 
 
 class Constellation(db.Model):
@@ -66,6 +74,10 @@ class Constellation(db.Model):
             "meaning='%s', area='%s')>" % (self.name, self.abbrev,
                                            self.family, self.meaning, self.area)
 
+    def search_result(self):
+        """ Returns result format for the constellation """
+        return {"model": "constellations", "id": self.id}
+
 
 class Publication(db.Model):
 
@@ -85,3 +97,7 @@ class Publication(db.Model):
     def __repr__(self):
         return "<Publication(title='%s', year=%s, authors='%s', journal='%s', abstract='%s')>" % (
             self.title, self.year, self.authors, self.journal, self.abstract)
+
+    def search_result(self):
+        """ Returns result format for the publication """
+        return {"model": "publications", "id": self.id}

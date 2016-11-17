@@ -208,3 +208,35 @@ class APITest(TestCase):
             self.assertEqual(stars[i]['id'], i + 1)
             self.assertEqual(planets[i]['id'], i + 1)
         self.assertEqual(planets[0]['name'], 'earth')
+
+    def test_single_search(self):
+        resp = self.client.get('/api/v1/search/?page=1&mode=and&q=earth')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
+        self.assertEqual(len(data["results"]), 1)
+        self.assertEqual(data["num_results"], 1)
+        self.assertEqual(data["results"][0]["id"], 1)
+        self.assertEqual(data["results"][0]["model"], "exoplanets")
+
+    def test_single_integer_search(self):
+        resp = self.client.get('/api/v1/search/?page=1&mode=and&q=1')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
+        self.assertEqual(len(data["results"]), 4)
+        self.assertEqual(data["num_results"], 4)
+
+    def test_multi_search_and(self):
+        resp = self.client.get(
+            '/api/v1/search/?page=1&mode=and&q=earth%20jonathan')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
+        self.assertEqual(data["num_results"], 0)
+
+    def test_multi_search_or(self):
+        resp = self.client.get(
+            '/api/v1/search/?page=1&mode=or&q=earth%20jonathan')
+        self.assertEqual(resp.mimetype, 'application/json')
+        data = resp.json
+        self.assertEqual(data["num_results"], 2)
+        self.assertIn({"id": 3, "model": "exoplanets"}, data["results"])
+        self.assertIn({"id": 1, "model": "exoplanets"}, data["results"])

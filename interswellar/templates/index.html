@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>InterSWEllar</title>
-    
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
@@ -11,7 +11,7 @@
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/static/css/index.css">
 
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />  
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />
 
     <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
@@ -19,28 +19,27 @@
 </head>
 
 <body>
+    {% include 'nav_home.html' %}
+
     <div class='container jumbotron'>
         <div class="col-md-12 title-box">
             <span class='title'>
                 INTERSWELLAR
             </span>
         </div>
-        <div class="col-md-3">
-            <a href="/stars" class="btn btn-block no-ul home-btn">stars</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/exoplanets" class="btn btn-block no-ul home-btn">exoplanets</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/constellations" class="btn btn-block no-ul home-btn">constellations</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/publications" class="btn btn-block no-ul home-btn">publications</a>
-        </div>
-        <div class="col-md-12"> </br> </div>
-        <div class="col-md-offset-5 col-md-2">
-            <a href="/about" class="btn btn-block no-ul home-btn">About</a>
-        </div>
+
+        <div class="col-md-offset-1 col-md-10">
+            <form role="search" action="/search" method="GET">
+                    <div class="input-group input-group-lg" >
+                        <input type="text" class="form-control" name="q">
+                        <span class="input-group-btn">
+                            <button class="btn btn-search" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
     </div>
 
     <div id="mycarousel" class="carousel slide carousel-fade" data-ride="carousel">
