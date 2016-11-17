@@ -11,15 +11,21 @@
 			<a class="navbar-brand no-ul" href="/">INTERSWELLAR</a>
 
         </div>
-            <!-- Search bar -->
-            <div class="col-sm-6 col-md-8">
-                <form class="navbar-form" role="search" action="/search" method="GET">
+        <!-- Search bar -->
+        <div class="col-sm-6 col-md-8">
+            <form role="search" action="/search" method="GET">
                     <div class="input-group" >
                         <input type="text" class="form-control" placeholder="Search" name="q">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                             <button class="btn" type="search"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
                     </div>
+             <!--        <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!<span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div> -->
                 </form>
             </div>
 
@@ -36,10 +42,44 @@
 	</div><!-- /.container-fluid -->
 
     <style>
-        .input-group {
-            width: 90%;
-            position: relative;
-            border-collapse: separate;}
+    .input-group {
+        width: 90%;
+        position: relative;
+        border-collapse: separate;
+    }
+
+    .glyphicon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        font-size: 15px;
+        color: white;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .btn {
+        padding: 7.5px 17px;
+        font-size: 125%;
+        border: 0 none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: #000;
+        border: 2px solid #000;
+        color: #fff !important;
+        margin-bottom: 5px;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .btn:hover {
+        filter: invert(100%);
+    }
     </style>
 </nav>
 
