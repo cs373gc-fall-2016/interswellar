@@ -106,7 +106,7 @@
         
         getById: function(model, id, callback){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
             $.ajax({
-                url: "/api/v1/" + model +"?q={\"filters\":[{\"name\":\"id\",\"op\":\"eq\",\"val\":" + id + "}]}",
+                url: "/api/v1/" + model +"/" + id,
                 type: 'get',
                 dataType: 'json',
                 async: true,
@@ -125,7 +125,7 @@
 
     var StarItems = React.createClass({
         render: function(){
-            var data = this.props.itemDetails.objects[0];
+            var data = this.props.itemDetails;
             var link = "/star/" + data.id;
 
             return (
@@ -216,7 +216,7 @@
 
     var ExoplanetItems = React.createClass({
         render: function(){
-            var data = this.props.itemDetails.objects[0];
+            var data = this.props.itemDetails;
             var link = "/exoplanet/" + data.id;
 
             return (
@@ -291,7 +291,7 @@
 
     var ConstellationItems = React.createClass({
         render: function(){
-            var data = this.props.itemDetails.objects[0];
+            var data = this.props.itemDetails;
             var link = "/constellation/" + data.id;
 
             return (
@@ -365,7 +365,7 @@
 
     var PublicationItems = React.createClass({
          render: function(){
-            var data = this.props.itemDetails.objects[0];
+            var data = this.props.itemDetails;
             var link = "/publication/" + data.id;
 
             return (
@@ -480,7 +480,7 @@
 
     // highlight search terms in each item class
     function highlight(props, search) {
-            var item = props['objects'][0];
+            var item = props;
             search = search.toString().replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
             var regex = new RegExp("("+search+")", 'i');
             for (var key in item){
@@ -488,27 +488,27 @@
                 if(val != null){
                     if (typeof val === 'string'){
                         val = val.replace(regex, "<mark>$1</mark>");
-                        props['objects'][0][key] = val;
+                        props[key] = val;
                     } 
                     else if (typeof val === "number"){
                         if (search == val) {
-                            props['objects'][0][key] = '<mark>' + val + '</mark>';
+                            props[key] = '<mark>' + val + '</mark>';
                         }
 
                     } 
                     else if (typeof val === "object"){
                         if ('ref' in val) {
                             var val = val['ref'].replace(regex, "<mark>$1</mark>");
-                                props['objects'][0][key]['ref'] = val;
+                                props[key]['ref'] = val;
                         } 
                         else if ('name' in val) {
                             var val = val['name'].replace(regex, "<mark>$1</mark>");
-                            props['objects'][0][key]['name'] = val;
+                            props[key]['name'] = val;
                         } 
                         else if (Array.isArray(val)){
                             for (var i = 0; i < val.length; i++) {
                                 var name = val[i]['name'].replace(regex, "<mark>$1</mark>");  
-                                props['objects'][0][key][i]['name'] = name;
+                                props[key][i]['name'] = name;
                                 // console.log(props['objects'][0][key][i]);                
                             }
                         }
@@ -520,8 +520,6 @@
 
     var Item = React.createClass({
         getInitialState: function(){
-            var item = this.props.item;
-            $.getById(item.model, item.id, this.api_callback);
             return {
                 data: null,
             };
@@ -531,12 +529,22 @@
             this.setState({data: data});
         },
 
+        get_data: function(){
+            var item = this.props.item;
+            $.getById(item.model, item.id, this.api_callback);
+        },
+
+        componentWillReceiveProps(next){
+            console.log("here");
+                this.setState({data: null});
+        },
 
         render: function(){
             var item = this.props.item;
             console.log(item);
             var itemDetails = this.state.data;
             if(itemDetails == null){
+                this.get_data()
                 return <div></div>
             }
 
