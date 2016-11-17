@@ -19,36 +19,27 @@
 </head>
 
 <body>
+    {% include 'nav_home.html' %}
+
     <div class='container jumbotron'>
         <div class="col-md-12 title-box">
             <span class='title'>
                 INTERSWELLAR
             </span>
         </div>
-        <div class="col-md-3">
-            <a href="/stars" class="btn btn-block no-ul home-btn">stars</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/exoplanets" class="btn btn-block no-ul home-btn">exoplanets</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/constellations" class="btn btn-block no-ul home-btn">constellations</a>
-        </div>
-        <div class="col-md-3">
-            <a href="/publications" class="btn btn-block no-ul home-btn">publications</a>
-        </div>
-        <div class="col-md-12"> </br> </div>
-        <div class="col-md-offset-5 col-md-2">
-            <a href="/about" class="btn btn-block no-ul home-btn">About</a>
-        </div>
 
-        <div class="col-md-12">
+        <div class="col-md-offset-1 col-md-10">
             <form role="search" action="/search" method="GET">
-                    <div class="input-group" >
-                        <input type="text" class="form-control" placeholder="Search" name="q">
-                        <div class="input-group-btn">
-                             <button class="btn-search" type="search"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>
+                    <div class="input-group input-group-lg" >
+                        <input type="text" class="form-control" name="q">
+                        <span class="input-group-btn">
+                        <button class="btn btn-search" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+      </span>
+                        <!-- <div class="input-group-btn"> -->
+                             <!-- <button class="btn-search" type="search"><span class="glyphicon glyphicon-search"></span></button> -->
+                        <!-- </div> -->
                     </div>
                 </form>
             </div>
@@ -85,46 +76,5 @@
         </div>
     </div>
 
-    <style>
-    .input-group {
-        width: 100%;
-        position: relative;
-        border-collapse: separate;
-        padding: 20px 10px .5px 10px;
-    }
-
-    .glyphicon {
-        position: relative;
-        top: 3.75px; /* up and down of icon */
-        display: inline-block;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.5;
-        font-size: 15px;
-        color: white;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    .btn-search {
-        padding: .75px 15px;
-        font-size: 125%;
-        border: 0 none;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        background: #000;
-        border: 2px solid #000;
-        color: #fff !important;
-        margin-bottom: 5px;
-        -webkit-border-radius: 0 !important;
-        -moz-border-radius: 0 !important;
-        border-radius: 0 !important;
-    }
-
-    .btn-search:hover {
-        filter: invert(100%);
-    }
-    </style>
 </body>
 </html>
