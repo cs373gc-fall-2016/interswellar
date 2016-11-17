@@ -9,76 +9,62 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand no-ul" href="/">INTERSWELLAR</a>
-
         </div>
-        <!-- Search bar -->
-        <div class="col-sm-6 col-md-6 col-md-lg-12">
-            <form role="search" action="/search" method="GET">
-                    <div class="input-group" >
-                        <input type="text" class="form-control" placeholder="Search" name="q">
-                        <div class="input-group-btn">
-                             <button class="btn" type="search"><span class="glyphicon glyphicon-search"></span></button>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="nav-search">
+                <form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q">
+                            <!-- <span class="input-group-btn"> -->
+                                <button class="btn btn-search-nav" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            <!-- </span> -->
                         </div>
                     </div>
                 </form>
             </div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul id="nav" class="nav navbar-nav navbar-right">
-				<li id="stars_li"><a class="no-ul" id="stars" href="/stars">STARS</a></li>
-				<li id="exoplanets_li"><a class="no-ul" id="exoplanets" href="/exoplanets">EXOPLANETS</a></li>
-				<li id="constellations_li"><a class="no-ul" id="constellations" href="/constellations">CONSTELLATIONS</a></li>
-				<li id="publications_li"><a class="no-ul" id="publications" href="/publications">PUBLICATIONS</a></li>
-				<li id="about_li"><a class="no-ul" id="about" href="/about">ABOUT</a></li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-	</div><!-- /.container-fluid -->
+            <ul id="nav" class="nav navbar-nav navbar-right">
+                <li id="stars_li"><a class="no-ul" id="stars" href="/stars">STARS</a></li>
+                <li id="exoplanets_li"><a class="no-ul" id="exoplanets" href="/exoplanets">EXOPLANETS</a></li>
+                <li id="constellations_li"><a class="no-ul" id="constellations" href="/constellations">CONSTELLATIONS</a></li>
+                <li id="publications_li"><a class="no-ul" id="publications" href="/publications">PUBLICATIONS</a></li>
+                <li id="about_li"><a class="no-ul" id="about" href="/about">ABOUT</a></li>
+            </ul>
+
+
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 
     <style>
-    .input-group {
-        width: 80%;
+/*    .input-group {
+        width: 50%;
         position: relative;
         border-collapse: separate;
-    }
+        }*/
 
-    .glyphicon {
-        position: relative;
-        top: 1px;
-        display: inline-block;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1;
-        font-size: 15px;
-        color: white;
-        -webkit-font-smoothing: antialiased;
-    }
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            font-size: 15px;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .btn {
-        padding: 7.5px 17px;
-        font-size: 125%;
-        border: 0 none;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        background: #000;
-        border: 2px solid #000;
-        color: #fff !important;
-        margin-bottom: 5px;
-        -webkit-border-radius: 0 !important;
-        -moz-border-radius: 0 !important;
-        border-radius: 0 !important;
-    }
+        </style>
+    </nav>
 
-    .btn:hover {
-        filter: invert(100%);
-    }
-
-    </style>
-</nav>
-
-<script type="text/javascript">
+    <script type="text/javascript">
 // change nav bar active
 $(function() {
 	$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');
