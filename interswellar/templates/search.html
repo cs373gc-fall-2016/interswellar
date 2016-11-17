@@ -636,13 +636,18 @@
                 limit = numAndResults;
             }
 
+            var nextClass = "btn";
+            if (numAndResults < 10) {
+                nextClass = "btn disabled";
+            };
+
             return (
                 <div>
                 {andItems}
                 <div className="search-footer">
                 <button className="btn disabled" id="andPrev" onClick={this.decrementAndPage}>Prev</button>
                 <span id="currAndPage" className="page-label">{currAndPage}</span>
-                <button className="btn enabled" id="andNext" onClick={this.incrementAndPage}>Next</button>
+                <button className={nextClass} id="andNext" onClick={this.incrementAndPage}>Next</button>
                 <div>Showing {(1+(currAndPage-1)*10)} to {limit} of {numAndResults} entries</div>
                 </div>
                 </div>
@@ -706,13 +711,18 @@
                 limit = numOrResults;
             }
 
+            var nextClass = "btn";
+            if (numOrResults < 10) {
+                nextClass = "btn disabled";
+            };
+
             return (
                 <div>
                 {orItems}
                 <div className="search-footer">
                 <button className="btn disabled" id="orPrev" onClick={this.decrementOrPage}>Prev</button>
                 <span id="currOrPage" className="page-label">{currOrPage}</span>
-                <button className="btn enabled" id="orNext" onClick={this.incrementOrPage}>Next</button>
+                <button className={nextClass} id="orNext" onClick={this.incrementOrPage}>Next</button>
                 <div>Showing {(1+(currOrPage-1)*10)} to {limit} of {numOrResults} entries</div>
                 </div>
                 </div>
