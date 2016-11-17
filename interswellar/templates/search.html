@@ -104,19 +104,14 @@
             }
         },
         
-        getById: function(model, id){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
-            var result = null;
+        getById: function(model, id, callback){ //http://localhost:5000/api/v1/stars?q={filters:[{name:id,op:eq,val:9}]}
             $.ajax({
                 url: "/api/v1/" + model +"?q={\"filters\":[{\"name\":\"id\",\"op\":\"eq\",\"val\":" + id + "}]}",
                 type: 'get',
                 dataType: 'json',
-                async: false,
-                success: function(data) {
-                    // console.log(data);
-                    result = data;
-                }
+                async: true,
+                success: callback
             });
-            return result;
         }
     });
 
@@ -524,10 +519,26 @@
     }
 
     var Item = React.createClass({
+        getInitialState: function(){
+            var item = this.props.item;
+            $.getById(item.model, item.id, this.api_callback);
+            return {
+                data: null,
+            };
+        },
+
+        api_callback: function(data){
+            this.setState({data: data});
+        },
+
+
         render: function(){
             var item = this.props.item;
             console.log(item);
-            var itemDetails = $.getById(item.model,item.id);
+            var itemDetails = this.state.data;
+            if(itemDetails == null){
+                return <div></div>
+            }
 
             var searchTerm = "{{terms}}";
             var terms = searchTerm.split(" ");
