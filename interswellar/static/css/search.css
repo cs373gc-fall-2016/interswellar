@@ -42,13 +42,14 @@ body {
 }
 
 .table-title {
-	text-align: center;
-	font-family: "lato", sans-serif;
-	font-weight: 500;
-	font-size: 6vw;
-	color: #FFF;
-	padding: 20px;
-	background-color: black;
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 500;
+    font-size: 3.5em;
+    color: #FFF;
+    padding: 20px;
+    background-color: black;
+    margin-bottom: 20px;
 }
 
 @media all and (min-width: 767px) {
@@ -80,10 +81,9 @@ body {
 
 .result-box {
 	background-color:rgba(0, 0, 0, .7);
-	margin-top: 15px;
+	margin-bottom: 15px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	/*word-spacing: 5px;*/
 }
 
 .result-box:hover {
@@ -91,11 +91,10 @@ body {
 	cursor: pointer;
 }
 
-a:link, a:visited, a:active{
-    /*text-decoration: underline;*/
-    text-align: left !important;
-    color: #fff;
-    font-weight: normal  !important;
+.detail-link:link, .detail-link:visited, .detail-link:active{
+	text-align: left !important;
+	color: #fff;
+	font-weight: normal !important;
 }
 
 @media (min-width: 900px){
@@ -104,3 +103,26 @@ a:link, a:visited, a:active{
 	}
 }
 
+.search-type-header{
+	display: inline-block;
+	font-weight: 500;
+	font-size: 300%;
+	color: #FFF;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, .7);
+	width: 70%;
+}
+
+.search-tabs, .search-footer{
+	text-align: center;
+}
+
+.header-div {
+	text-align: center;
+	padding-bottom: 15px;
+}
+
+.page-label {
+	font-size: x-large;
+	padding: 0px 20px 0px 20px;
+}

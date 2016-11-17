@@ -38,13 +38,13 @@
     </style>
 </head>
 
-<body>
+<body onload="showAnd();">
     {% include 'nav.html' %}
 
     <div id="title" class="table-title">
         {{terms}}
     </div>
-    <div>
+    <div class="search-tabs">
         <button class="btn" id="and-btn" onclick="showAnd()">AND RESULTS</button>
         <button class="btn" id="or-btn" onclick="showOr()">OR RESULTS</button>
 
@@ -129,7 +129,7 @@
             var link = "/star/" + data.id;
 
             return (
-            <a href={link}>
+            <a className="detail-link" href={link}>
             <div className="col-md-12 result-box" id="star">
                 <div className="col-md-12">
                     <div id="content">
@@ -220,7 +220,7 @@
             var link = "/exoplanet/" + data.id;
 
             return (
-            <a href={link}>
+            <a className="detail-link" href={link}>
             <div className="col-md-12 result-box" id="exoplanet">
                 <div className="col-md-12">
                     <div id="content">
@@ -295,7 +295,7 @@
             var link = "/constellation/" + data.id;
 
             return (
-            <a href={link}>
+            <a className="detail-link" href={link}>
             <div className="col-md-12 result-box" id="constellation">
                 <div className="col-md-12">
                     <div id="content">
@@ -369,7 +369,7 @@
             var link = "/publication/" + data.id;
 
             return (
-            <a href={link}>
+            <a className="detail-link" href={link}>
             <div className="col-md-12 result-box" id="publication">
                 <div className="col-md-12">
                     <div id="content">
@@ -639,10 +639,12 @@
             return (
                 <div>
                 {andItems}
-                <div>Showing {(1+(currAndPage-1)*10)} to {limit} of {numAndResults} entries</div>
+                <div className="search-footer">
                 <button className="btn disabled" id="andPrev" onClick={this.decrementAndPage}>Prev</button>
-                <span id="currAndPage">{currAndPage}</span>
+                <span id="currAndPage" className="page-label">{currAndPage}</span>
                 <button className="btn enabled" id="andNext" onClick={this.incrementAndPage}>Next</button>
+                <div>Showing {(1+(currAndPage-1)*10)} to {limit} of {numAndResults} entries</div>
+                </div>
                 </div>
             )
         }
@@ -707,10 +709,12 @@
             return (
                 <div>
                 {orItems}
-                <div>Showing {(1+(currOrPage-1)*10)} to {limit} of {numOrResults} entries</div>
+                <div className="search-footer">
                 <button className="btn disabled" id="orPrev" onClick={this.decrementOrPage}>Prev</button>
-                <span id="currOrPage">{currOrPage}</span>
+                <span id="currOrPage" className="page-label">{currOrPage}</span>
                 <button className="btn enabled" id="orNext" onClick={this.incrementOrPage}>Next</button>
+                <div>Showing {(1+(currOrPage-1)*10)} to {limit} of {numOrResults} entries</div>
+                </div>
                 </div>
             )
         }
@@ -721,12 +725,15 @@
             return(
                 <div>
                 <div id="andSearch">
-                <div className="search-type-header">And Results</div>
+                <div className="header-div">
+                <div className="search-type-header">And Results</div></div>
                     <And/>
                 </div>
 
                 <div id="orSearch">
-                <div className="search-type-header">Or Results</div>
+                <div className="header-div">
+
+                <div className="search-type-header">Or Results</div></div>
                     <Or/>
                 </div>
                 </div>
