@@ -59,7 +59,7 @@ class ViewsTest(TestCase):
         )
         publ2 = Publication(
             id=2, ref='2009A&A...434..421A', title='Bountiful Discoveries made',
-            authors='Monkey Monkey, Bill Nye', journal='Astronomy & Astrophycis',
+            authors='Monkey Monkey, Bill Nye', journal='Astronomy & Astrophysics',
             abstract='This publication lists discoveries of constellation, planets, and stars'
         )
 
@@ -134,6 +134,59 @@ class ViewsTest(TestCase):
         self.assertIn('exoplanet', view.data.decode('utf-8'))
         self.assertIn('1.0', view.data.decode('utf-8'))
         self.assertIn('1000000', view.data.decode('utf-8'))
+
+    def test_publication_table1(self):
+        view = self.client.get('/publication')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('PUBLICATIONS', view.data.decode('utf-8'))
+
+    def test_publication_table2(self):
+        view = self.client.get('/publications')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('PUBLICATIONS', view.data.decode('utf-8'))
+
+    def test_publication_detail1(self):
+        view = self.client.get('/publication/1')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('publication', view.data.decode('utf-8'))
+        self.assertIn('Local Star Discovered', view.data.decode('utf-8'))
+        self.assertIn('Neil deGrasse Tyson', view.data.decode('utf-8'))
+
+    def test_publication_detail2(self):
+        view = self.client.get('/publication/2')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('publication', view.data.decode('utf-8'))
+        self.assertIn('Monkey Monkey, Bill Nye', view.data.decode('utf-8'))
+        self.assertIn('Astronomy', view.data.decode('utf-8'))
+
+    def test_constellation_table1(self):
+        view = self.client.get('/constellation')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('CONSTELLATIONS', view.data.decode('utf-8'))
+
+    def test_constellation_table2(self):
+        view = self.client.get('/constellations')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('CONSTELLATIONS', view.data.decode('utf-8'))
+
+    def test_constellation_detail1(self):
+        view = self.client.get('/constellation/1')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('constellation', view.data.decode('utf-8'))
+        self.assertIn('little_dipper', view.data.decode('utf-8'))
+        self.assertIn('ld', view.data.decode('utf-8'))
+
+    def test_constellation_detail2(self):
+        view = self.client.get('/constellation/2')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('constellation', view.data.decode('utf-8'))
+        self.assertIn('big_dipper', view.data.decode('utf-8'))
+        self.assertIn('bd', view.data.decode('utf-8'))
+
+    def test_not_found(self):
+        view = self.client.get('/constellation/5')
+        self.assertEqual(view.status, '200 OK')
+        self.assertIn('not found', view.data.decode('utf-8'))
 
     def test_get_commits_contents(self):
         commits = views.get_commits()[0]
