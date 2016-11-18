@@ -368,10 +368,48 @@
         }
     })
 
+    var searchTerm = "{{terms}}";
+    var terms = searchTerm.split(" ");
+
     var PublicationItems = React.createClass({
          render: function(){
             var data = this.props.itemDetails.objects[0];
             var link = "/publication/" + data.id;
+
+            var abstract = data.abstract;
+            console.log(abstract );
+
+            var indices = [];
+            var last = "";
+
+            for (var word in terms){
+                var regex = new RegExp(terms[word], "i");
+                var temp = abstract.match(regex);
+                console.log(temp);
+
+                if (temp != null){
+                    indices.push(temp.index);
+                }
+            }
+
+            indices.sort(function(a, b){ return a - b });
+
+            var margin = 100;
+            var shortened = "";
+            var position = 0;
+            for(var i = 0 ; i < indices.length; i++){
+                var start = indices[i];
+                var end = indices[i] + terms[i].length;
+                if(position < start - (margin + 10)){
+                    shortened += '...' + abstract.substring(start- margin, end+margin);
+                } else {
+                    shortened += abstract.substring(position, end + margin);
+                }
+                position = end + margin;
+            }
+            shortened += "..."
+
+            data.abstract = shortened;
 
             return (
             <a href={link}>
@@ -526,7 +564,7 @@
     var Item = React.createClass({
         render: function(){
             var item = this.props.item;
-            console.log(item);
+            // console.log(item);
             var itemDetails = $.getById(item.model,item.id);
 
             var searchTerm = "{{terms}}";
@@ -564,7 +602,7 @@
     var And = React.createClass({
         getInitialState: function(){
             var searchTerms = "{{terms}}";
-            console.log(searchTerms);
+            // console.log(searchTerms);
             return {
                 terms: searchTerms,
                 resultOfAndSearch: $.getSearchResults(searchTerms, 1, "and")
@@ -577,7 +615,7 @@
 
             if (currAndPage != totalAndPages){
                 currAndPage++;
-                console.log(currAndPage);
+                // console.log(currAndPage);
                 var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
                 
                 $('#andPrev').removeClass("disabled");
@@ -592,7 +630,7 @@
 
             if (currAndPage != 1){
                 currAndPage--;
-                console.log(currAndPage);
+                // console.log(currAndPage);
                 var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
 
                 $('#andNext').removeClass("disabled");
@@ -632,7 +670,7 @@
     var Or = React.createClass({
         getInitialState: function() {
             var searchTerms = "{{terms}}";
-            console.log(searchTerms);
+            // console.log(searchTerms);
             return {
                 terms: searchTerms,
                 resultOfOrSearch: $.getSearchResults(searchTerms, 1, "or")
@@ -645,7 +683,7 @@
 
             if (currOrPage != totalOrPages){
                 currOrPage++;
-                console.log(currOrPage);
+                // console.log(currOrPage);
                 var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
                 
                 $('#orPrev').removeClass("disabled");
@@ -660,7 +698,7 @@
 
             if (currOrPage != 1){
                 currOrPage--;
-                console.log(currOrPage);
+                // console.log(currOrPage);
                 var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
 
                 $('#orNext').removeClass("disabled");
