@@ -1,0 +1,2910 @@
+commit 8ef1f5d30399ba894cccbec51dc5e73ee3434780
+Merge: 2cc7bc9 88aeadb
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 20:06:20 2016 -0600
+
+    Merge remote-tracking branch 'origin/search'
+
+commit 2cc7bc932c7f7e1dd7bf76187ab201e08dc4c9e4
+Merge: 713e07a 9e4d5ed
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 20:06:07 2016 -0600
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit 88aeadbfe643a14890c76a3ddf99470bf863cd99
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 17 20:05:54 2016 -0600
+
+    Fixed 404 page
+
+commit 713e07ac524b9627effdd6762a5fee970259493c
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 20:05:39 2016 -0600
+
+    fixed search buttons
+
+commit 9e4d5ed3e2e68528a2348dbc184d1d9c5bd3f5bb
+Merge: d30172d 0479568
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 19:57:01 2016 -0600
+
+    Merge branch 'master' of github.com:cs373gc-fall-2016/interswellar
+
+commit d30172d7a9e07e2fdd0e617f0d24d1b3f9a24e75
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 19:56:22 2016 -0600
+
+    Added documentation
+
+commit 464d8c92d3aadc4331e151f296017d718d6c5e7b
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 19:54:54 2016 -0600
+
+    Added test output and UML
+
+commit 0479568157ad75a4c2bcef41482e48fd3d4ada34
+Merge: 5b32edd 6d0d87f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 17 19:46:37 2016 -0600
+
+    Merge branch 'search' of https://github.com/cs373gc-fall-2016/interswellar into search
+
+commit 5b32edde4557064a47c1edd0d526af0f86289aa5
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 17 19:46:31 2016 -0600
+
+    Adding unit tests
+
+commit 6d0d87f2d493f35dbbe75448fb6cc05c62a9a78d
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 19:44:45 2016 -0600
+
+    char tests ##
+
+commit cb3014bfffceaf6789cbd389e3c372410d62623d
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 19:43:49 2016 -0600
+
+    bad results feedback and test # update
+
+commit 2046ca844ca6c9218579df3185295e10ca3657af
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 19:27:09 2016 -0600
+
+    more tests
+
+commit 7fe258bfe1ba40d1e065f11c37fcd250b1044a3d
+Merge: 897fd9f 5c47695
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 18:25:10 2016 -0600
+
+    Merge branch 'search' of github.com:TheFireFerret/interswellar into search
+
+commit 897fd9f296330fd0717deaffebaf1b90b27aacc5
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 18:22:35 2016 -0600
+
+    closes #70 by shortening abstract
+
+commit 5c4769565bcdca488f0bfb7def06b6c1df61447a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 17 17:30:41 2016 -0600
+
+    next disables on small page size
+
+commit 2ca298d9627cfaaf90b90da8cd1cc3a07a0d6e2d
+Merge: 12e08e3 c4a0dc7
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 17:19:43 2016 -0600
+
+    Merge branch 'search' of github.com:cs373gc-fall-2016/interswellar into search
+
+commit 12e08e383cb2ec0ee09c7ec36bfe5bd0ec753537
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 17:19:38 2016 -0600
+
+    Fast search
+
+commit c4a0dc79cdf9a55d662ea8f66050f947882625cc
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 17 17:09:07 2016 -0600
+
+    search + other CSS fixes
+
+commit 9106414f12e325d9dc0d55c94f65fe48e296434c
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 16:36:15 2016 -0600
+
+    Speed
+
+commit 658894c9d2f4e45f869a7a13badd5ab4664c49c8
+Merge: 22d0283 9a81488
+Author: Young Wang <chenyang.wang123@gmail.com>
+Date:   Thu Nov 17 15:32:37 2016 -0600
+
+    Merge branch 'search'
+
+commit 9a8148868953310b794fc1cbb5a56b696c479b7c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 17 15:26:26 2016 -0600
+
+    search searches now on nav
+
+commit 431692be35a8b48492300b60fcd093acf5227274
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 17 15:21:23 2016 -0600
+
+    SEARCH BARS
+
+commit 02b222a8d70e8e9a150121c8b09ad9067ab08dac
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 17 14:29:56 2016 -0600
+
+    fix home page search
+
+commit fe8aae14ac17320f0fad18e5c5bb646ce1a39de9
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Nov 16 22:55:44 2016 -0600
+
+    Fixed lining of glyphicon
+
+commit 75129bae1f4aef22d56866516e0a20f4996029f4
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Nov 16 22:08:50 2016 -0600
+
+    Adding search bar to home page
+
+commit 8b6bf2348349d75719264f17e3e9470b9c3cce82
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Nov 16 21:17:14 2016 -0600
+
+    Adding presentation link to about page
+
+commit bcefc36645ecd176186dbc3c295f03e2989d318f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Nov 16 20:14:13 2016 -0600
+
+    Cleaning up nav.html page
+
+commit 844ed1ec5782d9892c1394043fe252f839039d0d
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Nov 16 20:13:34 2016 -0600
+
+    Fixed search button and inverting colors
+
+commit e3bb7174eeea6da3475cc13cff2cb382d7d77763
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 16 17:26:02 2016 -0600
+
+    pylint
+
+commit f872d59e1c1cb685031c39c89f7fe3c6a1353d9a
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 16 17:19:48 2016 -0600
+
+    fix views, jump to top
+
+commit 32a28e0f866978f9c2a4e5a50dfa12100ed06806
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 16 16:45:40 2016 -0600
+
+    made pylint shut up
+
+commit 44b4cc9b6b8184bd319622184daf84cab0f6b503
+Merge: 299802b 387a7d0
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 16 16:43:55 2016 -0600
+
+    Merge branch 'search' of github.com:TheFireFerret/interswellar into search
+
+commit 299802be66fcaf43841db6a4785de4a399b2a84f
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 16 16:43:49 2016 -0600
+
+    paging for search
+
+commit 387a7d0f72e7d6710b396396dfbd650f6a247821
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 16:19:38 2016 -0600
+
+    stop searching for ids
+
+commit d9833125ec6c62b985a3a7d3924555d07dc2ebc5
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 16:18:22 2016 -0600
+
+    stop searching for ids
+
+commit 78980f063ab74e97e907f1c34ad10f79ffe7ab0c
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 14:31:04 2016 -0600
+
+    cleaned up lint
+
+commit 491e8fbbdef67b0362ef7eb8c1fa75d68731efd3
+Merge: 73f52d1 a07c350
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 14:22:33 2016 -0600
+
+    Merge branch 'dev' into search
+
+commit 73f52d1b6911230ce38a7a81f32deac95879fb04
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 14:20:59 2016 -0600
+
+    added search api unit tests
+
+commit 638fbe8efb43599125fd3b60193adbf31927c541
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 16 13:58:19 2016 -0600
+
+    implemented search api
+
+commit 07920c6d3b4800527d562ae291e3fbc0a51e288b
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 16 13:06:48 2016 -0600
+
+    Pylint
+
+commit 5a7833c40461282e0e6c3ad14f749b0c669a0d0f
+Merge: c15f382 491f7fe
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 16 13:06:20 2016 -0600
+
+    Merge branch 'search' of github.com:TheFireFerret/interswellar into search
+
+commit c15f382796e33a99fb0a6afebdf4f50f4bab6fe6
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 16 12:53:56 2016 -0600
+
+    Forgot to commit this stuff
+
+commit 491f7fe0a2fed165debe707df0068ae6b3a171ec
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 15 21:42:18 2016 -0600
+
+    Fixing search bar layout
+
+commit 2643dffc5fa31dbd2c9131ec0497c2a6b1d0acfe
+Merge: 09d4d16 9e02d56
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 15 21:41:46 2016 -0600
+
+    Merge branch 'search' of https://github.com/cs373gc-fall-2016/interswellar into search
+
+commit 9e02d567e99e8a49a85ed7494711b9ae77db6eaa
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 21:41:28 2016 -0600
+
+    work from home
+
+commit 09d4d16d0d2c2b0f123ae0a47daac0796feb6868
+Merge: 8abb0ec 4980a7f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 15 21:26:51 2016 -0600
+
+    Merge branch 'search' of https://github.com/cs373gc-fall-2016/interswellar into search
+
+commit 9981de38ed8290bed822c2f4a9b1a16d617be782
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 20:39:06 2016 -0600
+
+    links css
+
+commit 71dbe5d23343f7a03a7b6bf2fdb904038e3fb1f0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 20:38:50 2016 -0600
+
+    links
+
+commit 4980a7f2b7a4a44426e43bc284cda46557679fce
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 20:07:12 2016 -0600
+
+    highlighting works? i think
+
+commit e5a7b7ba0ebf89fb7bebb67c7955a4103e99be23
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 17:11:36 2016 -0600
+
+    highlighting
+
+commit 8abb0eca2901b4a8080cb4e175eac00944205182
+Merge: a6953b9 642fea7
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 15 16:44:24 2016 -0600
+
+    Merge branch 'search' of https://github.com/cs373gc-fall-2016/interswellar into search
+
+commit 642fea706d3e3e873822d5e66f7a0fe4b6a75bcc
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 15 15:10:18 2016 -0600
+
+    commas
+
+commit e77a33c639b65d8648e51d0dccfaf08969108917
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Nov 14 21:11:15 2016 -0600
+
+    commas + started highlight func
+
+commit 87a47b38062e521e25cdc74cdb6bd2269ee83146
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 20:11:04 2016 -0600
+
+    constellation and publication listings, units
+
+commit 38a8f83a402708ccfcfd1ce214738fc99aa51087
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 19:30:12 2016 -0600
+
+    exoplanet listing
+
+commit 9dadbe8f5b3f419ee86b809276bb4ff720e3e07d
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 19:23:30 2016 -0600
+
+    typo
+
+commit 8985a3ab56aa88cdfb74b0aa2cbbcf9b83e419f9
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 19:20:06 2016 -0600
+
+    formatting
+
+commit d9187dd647538acae87c7bdd7bd694f156cca6b9
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 19:03:20 2016 -0600
+
+    star search listing
+
+commit ff6d0c8e007dadc1c658cea1bcab6d67550ba754
+Merge: d6d6913 d965640
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 17:52:20 2016 -0600
+
+    Merge branch 'search' of github.com:cs373gc-fall-2016/interswellar into search
+
+commit d6d691341959a3f0ca7c76b33eda7c95e8069b06
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 17:51:52 2016 -0600
+
+    working card
+
+commit e589f22743668791956190de3efe9187dbaecd80
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 17:11:23 2016 -0600
+
+    started on search cards
+
+commit 11f006c06228567d05ab7defb36447f411b58779
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Nov 11 16:48:44 2016 -0600
+
+    Moved fake api to real api
+
+commit d965640e82a5d6004b019156694513c3d052632f
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 16:44:26 2016 -0600
+
+    fake api
+
+commit f5189616dfc12a0038f6e510abc01948d87c0bb6
+Merge: cef7c9e 3a94cf9
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 16:16:21 2016 -0600
+
+    Merge branch 'search' of github.com:TheFireFerret/interswellar into search
+
+commit 3a94cf9dc3307a88e699bfbf52e423919ac2d543
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 16:15:54 2016 -0600
+
+    fake data id's
+
+commit caec18f476285b0c8ca7925eea433717ea016950
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 16:12:24 2016 -0600
+
+    update views search route and fake search api in search.html
+
+commit 22d028335ced9800803840c883684bab60b2ed28
+Author: TheFireFerret <samiglasco@gmail.com>
+Date:   Fri Nov 11 16:04:03 2016 -0600
+
+    Transferring API Description file from Apiary.io
+
+commit a07c3507c601e0556be28ab82c9555f03ff0b18f
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 15:34:02 2016 -0600
+
+    fixed tests
+
+commit cef7c9e0acf63b0bfe31328f96ac3d9d21a339f3
+Merge: b83526a 83934ac
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Nov 11 15:28:49 2016 -0600
+
+    Merge branch 'search' of github.com:TheFireFerret/interswellar into search
+
+commit a6953b965caf8123b14763fa7b285815bb27fe0a
+Merge: b83526a 83934ac
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Nov 11 15:26:48 2016 -0600
+
+    Merge branch 'search' of https://github.com/cs373gc-fall-2016/interswellar into search
+
+commit 83934ac7425d59670919e2a2b7de23ed855a9fa9
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 15:22:05 2016 -0600
+
+    search.py actualy added
+
+commit 8abd784ea43d09358ad7022b969c4dbed1964ee7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Nov 11 14:57:25 2016 -0600
+
+    added search route and created search.py
+
+commit 5958453adf13b6c2db3825d20ae3ebbff6afbe7a
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Nov 11 14:38:47 2016 -0600
+
+    Removed project turnin files
+
+commit b83526ac25492413affdd5d5894a529d5d82bd88
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 10 15:01:26 2016 -0600
+
+    issues count
+
+commit 143b9dc09fb4e129f3d76061ad23da6eaa6d4b92
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Nov 7 15:01:33 2016 -0600
+
+    cleanup
+
+commit 867161e2370e8dc62a1975d9ad0bdc0190130b72
+Author: TheFireFerret <samiglasco@gmail.com>
+Date:   Thu Nov 3 19:35:48 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit a0fbcd44efc6f6e391fc01befbe8e4ee2ff6089d
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 19:29:47 2016 -0500
+
+    log lol
+
+commit 4cd529a092775865f1354b58eacfd7f3ef7a41cf
+Merge: e188627 435f641
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 19:20:08 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit e18862772d5e7b95e930132ad1d889c4b2340377
+Merge: e9568f4 56ddbf3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 19:19:50 2016 -0500
+
+    Merge branch 'dev'
+
+commit 56ddbf38aa6b3a65f24d7fcb8f4e1a6adb8f7775
+Merge: 545659d 0a59312
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 19:19:37 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 545659dcad4503542be49b6881f1c8d0dcef7eed
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 19:19:29 2016 -0500
+
+    Fixed unit tests counts
+
+commit 435f64113ecd79b1adb84796ee7a65dd5dc08c4e
+Merge: e9568f4 0a59312
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 19:10:31 2016 -0500
+
+    Merge branch 'dev'
+
+commit 0a5931265eaade6ae769d7fbe5ab4763c51108cf
+Merge: f093a76 443c059
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 19:10:08 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit f093a76fe3eaf074a0a8820988445358d640520c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 19:10:05 2016 -0500
+
+    mass vis loading
+
+commit 443c059db997379940eb077838cdc68331ee51b7
+Merge: e4e99d2 b9c9fe2
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 19:03:46 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit e4e99d2e52c4e37a2a08409861cf313c60c476aa
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 19:03:37 2016 -0500
+
+    fix units on tables
+
+commit b9c9fe212166e7548360ff967530175c4e77a5bc
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 19:01:12 2016 -0500
+
+    correct earth mass/radius symbol
+
+commit e9568f41c0558f5af20656a96e23f50ad5d02898
+Merge: ec59878 f847d50
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 18:55:29 2016 -0500
+
+    Merge branch 'dev'
+
+commit ec59878c11e9a8d4f95db19786ccf85a9ce7615c
+Merge: 7c5461e ae82cba
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 18:47:12 2016 -0500
+
+    Merge branch 'dev'
+
+commit f847d508f0893193ab79bf20fd8e0c310f6bf7dc
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 18:45:16 2016 -0500
+
+    added units to tables
+
+commit 14fd192b57c454bc34e9d89a87bb7684d8d57d5d
+Merge: 63c7687 96fcb52
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 18:24:12 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 63c7687e9552aa1331b93d90e8f685da6c0abd75
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 18:24:09 2016 -0500
+
+    fix next button
+
+commit 96fcb5275236f93ab23d696c2be83b1b0ea32af1
+Merge: 5078b03 b48ed39
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 18:17:54 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 5078b03036c67728ba97f76440411e845b2c4c7e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 18:17:47 2016 -0500
+
+    added unit to luminosity
+
+commit b48ed3985edd100cb792abf8365919001ebb1c0d
+Merge: fe2be88 ae82cba
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 18:16:31 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit fe2be885088e40a4e174ed860ba1893ee06b39ec
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 18:16:24 2016 -0500
+
+    fix constellation sorting on stars table
+
+commit ae82cbac84b2f34909ba4ae0113508e8f7524d9d
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 18:09:52 2016 -0500
+
+    lint
+
+commit 7c5461e45f93bacf2836a3e6d871c39f319e3cb1
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 18:05:35 2016 -0500
+
+    lint
+
+commit 80e8e72d630a76159a7e69e9a1836cbc0ceb100d
+Merge: 4626891 27577ff
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 18:04:27 2016 -0500
+
+    Merge branch 'dev'
+
+commit 27577ffaf6dbaf132f8ff3630e81faa2cf9a105d
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 3 18:03:33 2016 -0500
+
+    Fixing mass visualization widget
+
+commit c13edb3e9fcf20b0eafa649ccc4953a3a4259467
+Merge: 9a6b10b 7c234b2
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 17:58:57 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 9a6b10b5b80a6543aaf955538725651b259bc4cc
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 17:58:45 2016 -0500
+
+    fix publication authors
+
+commit 7c234b2805a33f8388f710a7f11afbcbe6d6d4c5
+Merge: bf8f4d3 556a02d
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 17:56:06 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit bf8f4d3d7997aaf3116269f31297273f994e7882
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 17:55:55 2016 -0500
+
+    missing star data check
+
+commit 556a02d3dde870986a3ee25389f0e555ecb49058
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:55:54 2016 -0500
+
+    Removed secret keys from source
+
+commit 803ab3959758fe6e9173a47b66820052c440e483
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:44:29 2016 -0500
+
+    fixed lint
+
+commit f08afd6f6de67891514a2aec726f93c84535db81
+Merge: ade02b3 03d3e4c
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:43:11 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit ade02b36c0bc5a92b2c45097708702e00e0ad9f9
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:43:02 2016 -0500
+
+    Moved boxes around in stars
+
+commit 03d3e4c4153791270f0daf6c33ed523beab51518
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 17:42:37 2016 -0500
+
+    fix pub table bg
+
+commit 45d1347592d52dfab1828f33d70cffc2dd46aac1
+Merge: 538994f 67edea6
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 17:40:14 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 538994fa9cbce33e9e46879aa9b7604e056dc1cd
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 17:40:10 2016 -0500
+
+    fixed VISUALIZATION
+
+commit 67edea60c4bf41ebb4108ba675d742f8829babd9
+Merge: af92d07 56b8abb
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 3 17:32:07 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit af92d07db48889a2716fb4d7d10c0e14eefcbc74
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 3 17:31:59 2016 -0500
+
+    Adding year published and exoplanets on Publications
+
+commit 56b8abbcc6a7639a88a2a999463d09ebfac5fb44
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:23:59 2016 -0500
+
+    Add test output
+
+commit 60c8eea1629739e03064327a857d2a75cc3c8fdb
+Merge: 1894106 b474b2d
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:15:36 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 189410665f6a1cdb3cd00089dd7ecd8765f125f3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:14:48 2016 -0500
+
+    Whoops forgot year
+
+commit b474b2d1035a6529096b4e477b06425b3c240494
+Merge: d851734 6578179
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 17:09:21 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit d8517343acf287d877b0b2f2bef86dbcdf2f6937
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 17:09:07 2016 -0500
+
+    added year to publications api, table work
+
+commit 65781794731d1747aab345064f7850cb1de9a490
+Merge: 0e503c6 2bb9ca3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:04:39 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 0e503c67fe6ec3d47510c831717efe1409c6d0ec
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 17:04:33 2016 -0500
+
+    Fun links
+
+commit 2bb9ca384884ad3697f6d9d14b886b487748608d
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 16:41:50 2016 -0500
+
+    add transparency to detail/about pages
+
+commit 9de96bbf8915e137675dfb271a666de447e87dfe
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 16:36:37 2016 -0500
+
+    Added links to scrape scripts in about
+
+commit 9fe3149d1781c066c3789e61b715a66fa3c4ec8d
+Merge: 3d69528 32706f8
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 16:31:13 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 3d69528db872afffb1d9abc2584877ea5affd30a
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 16:31:06 2016 -0500
+
+    Fixed about page
+
+commit 32706f82911ce4d9bdec9a0855982065f0f2b576
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Nov 3 16:16:50 2016 -0500
+
+    Removed column highlighting from table while keeping row highlighting
+
+commit ac7cbded368d66bec2b97d39aed2066fc6cd5fda
+Merge: 2e3176c b82f6f6
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Nov 3 16:16:15 2016 -0500
+
+    Merge branch 'dev' of https://github.com/TheFireFerret/interswellar into dev
+
+commit b82f6f61647e2bb7fe0420ad151aa89170ddb7c9
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 3 16:04:56 2016 -0500
+
+    Updating about page format
+
+commit a2abe7518f91b07708ae7c1e9620d833d151febe
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Nov 3 15:33:04 2016 -0500
+
+    Updating constellations with units
+
+commit 462689141f9561c767409de462a5eb9cff10913a
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 14:56:27 2016 -0500
+
+    Files required for phase 2
+
+commit 4706e445b08a5452be34dcd3b15feda50e9be4bb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 13:33:41 2016 -0500
+
+    lol
+
+commit 4b0d610753dc9bb59524d05645ef8efd35cb070e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 12:45:12 2016 -0500
+
+    constellation chart
+
+commit 441da0162e006d66be87bb66feff9ac3c5e48283
+Merge: 8702343 833a19c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 12:37:58 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 870234360891680eb3b9f69fc5ed2f861237fb38
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 12:37:48 2016 -0500
+
+    starmap constellation height
+
+commit 833a19c580519aaa7770dec4cc9072ed4f3a6068
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Nov 3 12:09:17 2016 -0500
+
+    Added about page details for scraping
+
+commit ef45088320c175f5ac86aaa6cb25a69bc321b7d4
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 11:55:40 2016 -0500
+
+    about
+
+commit a269b26a7b3739b7a19fccde22e765a817464857
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 11:40:00 2016 -0500
+
+    fix about page test parallax reset
+
+commit db8afcaed6ca6be68fc67dd58cde04080cac164c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 11:34:44 2016 -0500
+
+    star detail & mass vis error message
+
+commit da6d35351f9754a3001da77e784f478f3406e50e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Nov 3 11:27:18 2016 -0500
+
+    exoplanet detail fix
+
+commit c5cf08de7a9fc042c29b868c40aaba5e8fa05369
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 02:06:55 2016 -0500
+
+    fix star links on publication table
+
+commit 2e3176ce80a6327506d70974fd4120be35be929b
+Merge: 3d35486 7c47198
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Nov 3 01:44:55 2016 -0500
+
+    Merge branch 'dev' of https://github.com/TheFireFerret/interswellar into dev
+
+commit 3d354868e7343a0c5daf602a7bde64134ecacd38
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Nov 3 01:44:46 2016 -0500
+
+    Fixed merge conflict
+
+commit 7c471988ecb47976125a1f8b36f2be100fe25ddc
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 01:43:04 2016 -0500
+
+    fix star table discovered by column
+
+commit 5ac5b05dad0854bdd47952fcbe0a2158f6343f86
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 3 01:11:17 2016 -0500
+
+    fixing
+
+commit b102b31740af13369ec0e39b55676eada063e964
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 2 23:38:58 2016 -0500
+
+    fixed typo
+
+commit 88f47b8c0b6b7c82a91b661e3cf053902b2070f0
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 2 23:27:17 2016 -0500
+
+    fixed pagination, added to all tables
+
+commit 56aa67856b80c21a31acc3623bc2e49c39909520
+Merge: 4fc3764 e12d362
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 2 21:27:06 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 4fc3764133f806806bc0194d3b1cd7d4bc35e647
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Nov 2 21:26:41 2016 -0500
+
+    pagination for exoplanets table
+
+commit e12d362bef6d63d29fcc7616f55c65c3b0a78d72
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 19:37:01 2016 -0500
+
+    unit test button
+
+commit ea4531652bae449f1425a4134b7b5dbe086129d2
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 19:00:24 2016 -0500
+
+    added newline to init for pylint
+
+commit 1c721c3e4079e066ccc32d855ef3adedf97647ad
+Merge: 1068f5c c68079a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 18:55:11 2016 -0500
+
+    merged from master
+
+commit 1068f5cfae9562ae59f984b93a2d0d6a37ef1261
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 18:46:44 2016 -0500
+
+    add test button, need output
+
+commit 80e22c984f478c8e3094f8d7c118f0dc645b4415
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 18:18:34 2016 -0500
+
+    table bg
+
+commit c68079a8d36c3a57b3f5ed2d52bc5e3db9ee5329
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 18:17:27 2016 -0500
+
+    Whoops lets not drop our tables in production'
+
+commit b92b07b62cfde89dd28563fe08ad67563fa7fb34
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 18:06:29 2016 -0500
+
+    fixed ../ paths
+
+commit 59aeb9d2c4cfdb1477e4afa0e7f52b46a49f0681
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 18:01:11 2016 -0500
+
+    Formatting and test running
+
+commit 51031ec50434583b71e9a2fb1b00d14a2c6adc2f
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 17:59:39 2016 -0500
+
+    added table titles
+
+commit 21d33ca6cdc42bdac987de2bad197e98eb8ab69e
+Merge: e2369b6 b60802a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 17:53:19 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit e2369b6081d4f388a4d5b6c1a55615b6d34d0b10
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 17:53:15 2016 -0500
+
+    fixed button color
+
+commit b60802ae797da7047995dc44c7b6d6761277d29c
+Merge: 1b5a035 a73f0fa
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Nov 2 17:40:47 2016 -0500
+
+    Merge remote-tracking branch 'origin/dev' into dev
+
+commit 1b5a0355c5b4ebbda0d3b79aae66d4881c946478
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Nov 2 17:37:51 2016 -0500
+
+    Added CSS to prevent table header from being highlighted
+
+commit 4ef8b9c65ba1ee05b07743e0e85176f64f5ddee3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 17:29:51 2016 -0500
+
+    Refactor to application factories
+
+commit 5ea627716acf782c7a26c97d628a9e1299c0122f
+Merge: b37b662 bd7f036
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 17:29:01 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit a73f0fad958ac82665607dd0631bbac047b98a47
+Merge: c7131d7 a0dd45b
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 17:27:02 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit c7131d7712d7ffd37782be0e9d91f41c02e6a9d0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 17:26:57 2016 -0500
+
+    link colors
+
+commit bd7f0366bdc95e5e8de6075a0595bb54f35ac2a0
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Nov 2 17:20:59 2016 -0500
+
+    Added sorting to exoplanet tables (#63)
+    
+    * updated about.html unittest count
+    
+    * missed one. fixed unittest count
+    
+    * fixed static css/js links
+    
+    * pylint
+    
+    * new images
+    
+    * title font size
+    
+    * Added sorting to table
+
+commit a0dd45bc5f24a06a9ba496a1f873cd54031fe292
+Merge: 7ab8ae5 88ce595
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Nov 2 17:13:02 2016 -0500
+
+    Merge remote-tracking branch 'origin/dev' into dev
+
+commit 7ab8ae52b714f6d969d3eeccbe3cd01b98ba2d6c
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Nov 2 17:11:38 2016 -0500
+
+    Added sorting to table
+
+commit 88ce595fb8d2bbf83a2e506fd8a7f5c7760c53a0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 16:07:23 2016 -0500
+
+    title font size
+
+commit 3a26a5b9a16c87894552ae5a25209e794f5b6210
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 15:59:37 2016 -0500
+
+    new images
+
+commit 39c3b538bc516144c48106ae6587e67405e9fcb0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 15:28:24 2016 -0500
+
+    pylint
+
+commit 7973bbff19941bea3fe20995b1517a1435a10c49
+Merge: ca25cd1 ef12ab7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 15:21:33 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit ca25cd12372332b1fa89179f0276c16ccdf1f856
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Nov 2 15:21:26 2016 -0500
+
+    fixed static css/js links
+
+commit b37b662093180d249f680cb7824deaa512bbe763
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 15:04:24 2016 -0500
+
+    Cleanup old stuff
+
+commit ef12ab7f4c1e113db144a093db816c6e580b353f
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 2 15:02:57 2016 -0500
+
+    missed one. fixed unittest count
+
+commit e56a3cf949460222e111ef1199b2a8374f407292
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Nov 2 14:59:52 2016 -0500
+
+    updated about.html unittest count
+
+commit f4c4fad2a9fcee406c6554fd1f4988e4078b9f0a
+Merge: 2d1df3b cfc324e
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 14:17:26 2016 -0500
+
+    Merge remote-tracking branch 'origin/dev' into merge
+
+commit 2d1df3bdb75f657ccb107c9c17fbcbabb40aa75c
+Merge: f8cfc14 b8d9a32
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Nov 2 14:04:54 2016 -0500
+
+    Merge remote-tracking branch 'origin/bdev' into merge
+
+commit b8d9a32246542127e61b5901edf97211e85c7187
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 23:36:56 2016 -0500
+
+    Rewritten tests and formed a different relationship pub2 -> planet3
+
+commit 4b7d1266df2c2ffd1d5381ee70484b45d21c6c9d
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 23:25:36 2016 -0500
+
+    trying to ensure planet3 is added last
+
+commit dab8f05187fe56e6c4f5142ee746f86646b39c57
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 23:19:40 2016 -0500
+
+    db.session.add(planet3); Travis?
+
+commit cfc324e537698d09ff2976c5f5ccb45f9d2f7ede
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 23:12:11 2016 -0500
+
+    Formatting publication page, closes #61
+
+commit 3745f01a85def50f8d88c67a0ce185985a4f0df6
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 23:04:51 2016 -0500
+
+    Added an intention print to see what Travis is doing
+
+commit bb54c285323de1c5c04fab625a5ed791fac0818a
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 22:54:28 2016 -0500
+
+    api_test.py: list order should be well defined
+
+commit 0ae6b75bd988d1f203ef2ed9cca0ccd8a20bdf33
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 22:48:25 2016 -0500
+
+    last chance to pass tests on travis before hard coding a for-loop
+
+commit dbb9b68c959948b928c539978d0b784841ee4298
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 22:41:30 2016 -0500
+
+    Changing font sizes
+
+commit a8c2ca77e815d0977b4c00fa6a4f60ee7b4e219a
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 22:40:34 2016 -0500
+
+    api_test.py: shaved off redundant relationships
+
+commit 9e8b303804c4a377b59992d143bdba85a3c06709
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 22:26:37 2016 -0500
+
+    DEFAULT_GOAL := ctest, api_tests.py done
+
+commit 2bf31880649f606fe76cc8528d8614efd98d207f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 22:24:05 2016 -0500
+
+    Updating mass widget, closes #58
+
+commit 50157b970bf3df65cc5e65f92ff094af9aa3e03c
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 22:15:22 2016 -0500
+
+    Adding emoji images, adding mass widget for exoplanets
+
+commit 0c069802b98ab948aa818e3002109722dbb0ab9d
+Merge: c81affd 7249269
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 22:14:51 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit 3e3fcba17b0eec244022a3168fc5413b8f15d282
+Author: David Shi <dshi@utexas.edu>
+Date:   Tue Nov 1 20:36:07 2016 -0500
+
+    relationship unittest. setup before unittest overhaul. new 'ctest' makefile target to clear then test
+
+commit 7249269f9346ab1a2ace232b16bc5203f2c32848
+Merge: 49a6d96 52a256a
+Author: Denise Ly <dply95@gmail.com>
+Date:   Tue Nov 1 18:12:23 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 49a6d964ac06eefb1afc8f1df70a9a17c4e65f6e
+Author: Denise Ly <dply95@gmail.com>
+Date:   Tue Nov 1 18:12:15 2016 -0500
+
+    links on tables and background
+
+commit 52a256a7230196af5c033ee5142b91ea4fad3ab4
+Merge: 981694b 546220e
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Tue Nov 1 17:59:22 2016 -0500
+
+    Merge branch 'dev' of https://github.com/TheFireFerret/interswellar into dev
+
+commit 981694b1ebe3c119b5dc9260963087a854520979
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Tue Nov 1 17:45:18 2016 -0500
+
+    Added highlighting to table rows and columns
+
+commit c81affd07d38e276d3d0486142725a580362f60d
+Merge: 5591d40 546220e
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 16:42:56 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit 546220e1d668ee715831158fc0d8918eb5b3764c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 16:41:48 2016 -0500
+
+    more mobile for headers
+
+commit 5591d4072a5997a2350df94a35146802720d0ee0
+Merge: 8a0ea3c ea1f64d
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 16:39:07 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit ea1f64d0a55756cd5857a8d5ac304131d44a5892
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 16:38:53 2016 -0500
+
+    mobile formatting
+
+commit 8a0ea3c199c159b25b9e221bbc9756cdc8ca3eab
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Tue Nov 1 16:32:15 2016 -0500
+
+    Adding earth emoji picture for widget
+
+commit 9bc3804cee1145668298c1995288ca9ec4179253
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 16:25:23 2016 -0500
+
+    images for constellations
+
+commit 9a2b6652a8ec78fdb7e3d3b3016ee1e72861d696
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 16:16:00 2016 -0500
+
+    publications format
+
+commit 1029c8385aa09ecc30d9a20fc0c3b372214aeba3
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 16:03:46 2016 -0500
+
+    constellationz and font size
+
+commit 9c01829962de97a2a0bbc39b802c1e7c6b0f0d7c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 15:46:25 2016 -0500
+
+    constellation detail formatting + others
+
+commit 5f042fe96017da457c3f7508bd1cd102a89e887e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Nov 1 14:59:41 2016 -0500
+
+    add favicon
+
+commit 0261adf107a4bfbeb9c90fbda4da385f31a56e4e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 31 19:18:33 2016 -0500
+
+    detailz
+
+commit 0fa1d3c299d6983b79403779a6b7bb0383bcc917
+Author: David Shi <dshi@utexas.edu>
+Date:   Mon Oct 31 17:49:13 2016 -0500
+
+    Started relationship unit test, issues
+
+commit 78dda583b2134c7d25afe4265df586e9f5340f54
+Author: David Shi <dshi@utexas.edu>
+Date:   Mon Oct 31 17:25:42 2016 -0500
+
+    added test_*_single for all models
+
+commit f48fdf3496a789385d516778c4bcce54cccd6dd6
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 31 13:42:06 2016 -0500
+
+    detail formatting
+
+commit 5d5e2c83149524fe79a9b0f92d91a06d31768f9b
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 31 13:37:45 2016 -0500
+
+    fix star detail formatting
+
+commit 067bd172a6acf4b4b9e69c3ef1b98f84b7fda9e5
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 31 11:03:23 2016 -0500
+
+    fix star table url api call
+
+commit f2816f2a9f9dbbec2c367d4c4b747f116a23ddbf
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 18:22:00 2016 -0500
+
+    fix some about formatting
+
+commit ade77c8fb887f613634f4a50ea7a92aebd79a9b6
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 18:12:24 2016 -0500
+
+    fix orbital periods precision and radius error
+
+commit ac33204c3d7bad3a7cdace52e1dacf97873c4f68
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 18:09:21 2016 -0500
+
+    exoplanets error text
+
+commit cfe52b02141b70b8007c56ec7b79bbc8587bab88
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 18:06:46 2016 -0500
+
+    list of authors on pubs works
+
+commit 1aea452a93b08c3c9c2f1e2c962ff7822c5704b2
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 18:04:19 2016 -0500
+
+    fix detail pages
+
+commit 9ae743a8837bdddd3c38b19fb324612db17ae5d5
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 17:22:17 2016 -0500
+
+    fix pylint
+
+commit b402c47e740862b4bcf272b5db7e9a4a3c7682fa
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 30 17:20:48 2016 -0500
+
+    added star picture and cleaned up star detail
+
+commit aaf56d915907e180573c3782583c96f6ddff37de
+Merge: 2505c79 32f9acf
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Oct 28 20:00:04 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 2505c79f2f7193df00c539e92ee23ab6a5370a1b
+Author: Denise Ly <dply95@gmail.com>
+Date:   Fri Oct 28 19:59:51 2016 -0500
+
+    made separate templates for tables, reordered columns
+
+commit 32f9acf6f72dc586502c886d322dea9f93009908
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 18:13:10 2016 -0500
+
+    Adding author box to publication
+
+commit c2952d013068c3fed1da59142f25f3e345b32a68
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 17:55:16 2016 -0500
+
+    Changing look of links/other data
+
+commit 1851b138caac2db122c0d994d35c9b51e195edd5
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 16:48:58 2016 -0500
+
+    Updating units, updating null
+
+commit 553b55b5341fccfa883ff287d9d0518fd3fd6211
+Merge: aa3818e 4d6097c
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 16:43:16 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit 4d6097c30796a492fc7c282968ad54633022b5c0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 16:43:07 2016 -0500
+
+    added plural/singular routes
+
+commit aa3818e5013a294de2f8aaaacbc0c1eff98ada2a
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 16:43:02 2016 -0500
+
+    Updating containers, updating messages for having no object
+
+commit 028deeb763622b002614893c3c61bc4373eda96c
+Merge: d87dd20 534f8fd
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 16:26:46 2016 -0500
+
+    Updating star details
+
+commit 534f8fd9d0824acff3cfdde0aa6bc7a428cd5c60
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 16:23:58 2016 -0500
+
+    404 commit not found
+
+commit d87dd20b38c7dac016cf0f2dc60bb5853308b0b4
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 16:23:31 2016 -0500
+
+    Updating null rows to say Unknown and linking publications to other pages
+
+commit 07dd1ccf6ffbdf9d01277f5d68481ba59dc2e1a4
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 16:17:35 2016 -0500
+
+    added 404 to all views
+
+commit 47c169c1eb74854f3aa682ff3d10e2d2e05b7fff
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 16:16:55 2016 -0500
+
+    404 page
+
+commit 4d1d18d02c01d33131e73adfbba24fa284292e49
+Merge: 7116d2d bc1d575
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 15:41:54 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit 7116d2d556ddad91ad3d4e12b28532d21e1ca45d
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 15:41:38 2016 -0500
+
+    Star details
+
+commit 8dd787a551203e3e610710fae315e0924132bf09
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 15:41:18 2016 -0500
+
+    Publication details
+
+commit 99ab22eeab6ca74b0b0421211cf61b8cc7af510e
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 15:41:00 2016 -0500
+
+    Exoplanet details
+
+commit a5a99c20e92cf6873ec381679f8131aa003518a6
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 15:40:39 2016 -0500
+
+    Constellation details
+
+commit bc1d575e5bb7930729a9052f0453b90b537fb6df
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 15:09:29 2016 -0500
+
+    format views.py
+
+commit b812ba4bce0fbc0ba7763dcccb73f23c7329c22a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 11:53:44 2016 -0500
+
+    views calls API only for detail pages
+
+commit 519bb75779a1de7da9f77f2f72f8f9839c1cc359
+Merge: 8b5581a f8cfc14
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 28 11:47:16 2016 -0500
+
+    Merge pull request #57 from cs373gc-fall-2016/master
+    
+    apis!
+
+commit f8cfc147d0ae34354ad3cc841c5be54c231236e7
+Merge: e7cfaec 99163e9
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 28 00:28:50 2016 -0500
+
+    Merge branch 'bdev'
+
+commit 8b5581a8bb2dd2f2fa0bc3151ef30d909dd0447e
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Fri Oct 28 00:12:37 2016 -0500
+
+    Need to extract planet values from list
+
+commit b70ce71c07653f3030b813d70438e1b064e9ae1c
+Merge: d48b50a 4904070
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 27 23:54:02 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit d48b50a3993df89b67b16f36b68375ed81a05f74
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 27 23:53:32 2016 -0500
+
+    Adding details.css, updating star_detail.html
+
+commit 4904070af4f733e720ca6976a2fcedeb04544f01
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 27 23:26:09 2016 -0500
+
+    views.py uses API calls for data
+
+commit dc57a623d183a1f20bb0f9ef1a4ed050d3b6649c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 27 23:25:49 2016 -0500
+
+    removed test printing
+
+commit 0b56a301fa6fbaf13f1640873978a9e9eb80e466
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Oct 26 18:23:10 2016 -0500
+
+    Removing print statement from test
+
+commit 08c7d22f89fe177d13c1445e367c819c62146deb
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Oct 26 18:22:10 2016 -0500
+
+    removed more pylint warnings..
+
+commit bb18d3c9faf4205ec8ec6e2517715d38cc7ff030
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Oct 26 18:14:35 2016 -0500
+
+    fixed pylint warnings
+
+commit f0696873b3fbc8b141181b2d2c6c5795090128f3
+Merge: b5e1a0b a503da2
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Oct 26 18:05:52 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit a503da23fe823e57069828c43930adb3106eb39d
+Author: Denise Ly <dply95@gmail.com>
+Date:   Wed Oct 26 18:05:38 2016 -0500
+
+    fixed tables' column order
+
+commit b5e1a0be327cf20a7e5d7cba03ab6c8813889c32
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Wed Oct 26 17:51:16 2016 -0500
+
+    Separating into individual detail pages per model
+
+commit e7cfaecb51d8e76a37969d9f561ab59b4469af9b
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Mon Oct 24 15:55:19 2016 -0500
+
+    Configure travis to deploy to stage
+
+commit 99163e988ffa23f4960f8351558e6308c1c68dc3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Mon Oct 24 15:50:51 2016 -0500
+
+    Added all apis
+
+commit b52acb8fa9cda2429befe9d4159fd849f51e20e7
+Merge: c8c41a8 635a0d2
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Mon Oct 24 15:46:04 2016 -0500
+
+    Merge branch 'master' into bdev
+
+commit c8c41a84130c9369b7aaeadb097260303924c77a
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Mon Oct 24 15:38:39 2016 -0500
+
+    Made changes to db models
+
+commit 635a0d2182d2ff1174ab70d559edfedcc40f6080
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:42:38 2016 -0500
+
+    Pushing dangerously
+
+commit 4a73b03a56916223c8be9db30194e16686527ddd
+Merge: e55dd32 58bd571
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:34:39 2016 -0500
+
+    Merge pull request #48 from cs373gc-fall-2016/dev
+    
+    fixed about css
+
+commit 58bd571cf73b10d599a545feaf5b187460a824d8
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:34:13 2016 -0500
+
+    fixed about css
+
+commit e55dd325c4cfd42909d757e5ac0d8af777cf828e
+Merge: 4d47ff3 98180ca
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 21:30:20 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit 4d47ff3a61e3a46f56d3b0ae8af04be8e229b083
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 21:30:11 2016 -0500
+
+    Added pydoc target
+
+commit 98180caa509f769d88848c35410f9c8e8dee4dfc
+Merge: a8c1b4b 3a3120b
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:28:56 2016 -0500
+
+    merged dev
+
+commit 3a3120ba61c9e29c62e6584fd2e2337b5402a6b1
+Merge: 620ca16 27eeac9
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:27:20 2016 -0500
+
+    Merge branch 'master' into dev
+
+commit 620ca161c0b66440a7518e651e1521143256d7d9
+Merge: f63d978 5405330
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:25:26 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit f63d978ac4ca69de941722b266f91514990a7048
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 21:25:21 2016 -0500
+
+    ordered details
+
+commit 5405330f2127caa4290ed405abfeb611096ea595
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:25:01 2016 -0500
+
+    Using variables for commits and issues
+
+commit 1420eb42dbb4a62c70bb14309b8da4b2bc063863
+Merge: c8902a6 5ee1b35
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:22:14 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit c8902a6fd3ebc65bf1cc0dd9ae070a32a7dfc081
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:22:03 2016 -0500
+
+    Added Nathan picture and bio
+
+commit 5ee1b355346759e1997e9704805acdc72ecdf611
+Merge: e20f6e7 69743c1
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 21:20:17 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit e20f6e71352294bf88ed3ad69d69a6d7b7de8e02
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 21:20:09 2016 -0500
+
+    removed broken and unnecessary test
+
+commit 794044baa65012d889c7358c961627380ff23943
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:20:05 2016 -0500
+
+    Adding links and tools
+
+commit 69743c1c95130a04618d9e563efcff2e85b1a3a9
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:11:05 2016 -0500
+
+    Updating commit and unit test values
+
+commit 0236b64880ea418f3b95943946a928dfeb74eee0
+Merge: 6a63c4b ef356a1
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:08:25 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit 6a63c4b9866811e71b06206ec2ab6a9dfe969bca
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 21:08:15 2016 -0500
+
+    Links for things
+
+commit ef356a1a43dd28118a2d7754ed196d6586638f0e
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 21:04:34 2016 -0500
+
+    missed one unittest! fixed
+
+commit 542828cfb5414360fa26acd7fd3f0ea516e2e4f4
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 21:02:44 2016 -0500
+
+    added unittest to about page
+
+commit c9be7b09ea070890bdd174cbf9e3efbf375262e5
+Merge: 77ec2a9 835b50c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 20:58:42 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 77ec2a97fab28e2498d3287af4f67c270173cddf
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 20:58:39 2016 -0500
+
+    backgrounds
+
+commit 835b50cd3d1898dca7ff446e97796ced0bad58a1
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Oct 20 20:54:32 2016 -0500
+
+    Added Nathan Poag Headshot
+
+commit d894e84537a5ebe76e0cede7b97b1669ef9836dd
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:53:42 2016 -0500
+
+    fixed links on tables
+
+commit 9c1a58dc70aae85f4e2a5ca9d0327fe8d404e90c
+Merge: b093dbe 4adba95
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 20:44:57 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit c3d8a88f3c4e8b7d302b122274813a5d25d3cb87
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Oct 20 20:44:18 2016 -0500
+
+    finish models_test
+
+commit 4adba956655bbf2f8243f9f99c752ec3663e25c2
+Merge: d8d7737 495e4cd
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:44:09 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit d8d773714c8c57bcf978fb146098ffc47c52e30c
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:43:57 2016 -0500
+
+    add href link
+
+commit b093dbed88f3a38bb1b6d5ca031d4d891c44fbb5
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 20:43:18 2016 -0500
+
+    removed unneeded files
+
+commit f9bfd9e85f14db8328fbd2e14c8362ed20bc179c
+Merge: 8746e2a 495e4cd
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 20:42:48 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 495e4cd0e273ea50ff5203437e1b9c9202fe3a54
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:38:18 2016 -0500
+
+    Adding UML for models, closes #4
+
+commit 156992a2175afcea7dbb9eeb26705a6ae216bda7
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:34:58 2016 -0500
+
+    updated about info
+
+commit 35f0c6a6a7195dc126883cf0272b587e4d1d3086
+Merge: 41a6179 fbb7565
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:30:17 2016 -0500
+
+    about images
+
+commit 41a6179471d004bfa0d9fa964869ad717cde0c57
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:29:14 2016 -0500
+
+    added prof pics and some comments
+
+commit fbb7565249f1797ea2494c5b3dfefec629adfbff
+Merge: a1b6de8 1f30f42
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:22:21 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit a1b6de8244bcb561a3754b25f080267cb4cdc4ce
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:21:58 2016 -0500
+
+    write about me
+
+commit 1f30f429a8bc3671563345c28e5f3effb142a067
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 20:13:01 2016 -0500
+
+    Adding young's bio stuff
+
+commit 1cf24916b43c1bf0b57f1a1a2eeaf2e1e5a73b8a
+Merge: ef12f7f 580a290
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:12:37 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/interswellar into dev
+
+commit ef12f7f5e71cc4445bb9dc1afebff95085ba74c3
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 20:12:27 2016 -0500
+
+    sample data
+
+commit 580a290ae5562cb0fd0bfca7575a0d139b64cd75
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 20:02:37 2016 -0500
+
+    added denise's about pic
+
+commit e2b9db4d99372c03536c4fd76f743086d3556c5f
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 19:55:14 2016 -0500
+
+    Updated table logic for new JSON formatted data
+
+commit d518a6f7dec1c183ab3360bb803dae75ef791fc1
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 19:54:16 2016 -0500
+
+    Added David Shi info
+
+commit 68399c6478b87611cc665fcdd0300a1e1f928198
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 19:34:44 2016 -0500
+
+    Added description, purpose, and intended users
+
+commit ba9e2e454ba3976dbc48d67a1ce441d480716545
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Thu Oct 20 19:31:57 2016 -0500
+
+    Added the rest of the tests for stars
+
+commit c180afe410986a0fffae2b773eb0317c7a15295f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 19:09:58 2016 -0500
+
+    Adding more data
+
+commit 8746e2a1d17f8bda6c1333efa9d9d0dce7e7643f
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 18:38:39 2016 -0500
+
+    get total num of issues/commits
+
+commit 3328d720fe5ed5d356ab9b812c65fd849fcf84bb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 18:09:22 2016 -0500
+
+    cleanup view test
+
+commit a8c985385aaff1df1f3d6bf3826c7c02f00f0c46
+Merge: 328f088 cca1032
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 18:03:15 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 328f088cf65fafbe7bccf00c5d1034f0660b50a8
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 18:03:11 2016 -0500
+
+    views tests
+
+commit cca1032b62dd4a16767481eae312fdd82e440f7e
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:49:23 2016 -0500
+
+    Updating variable names to reflect API changes
+
+commit 8ee4020279682ecca19a8f1f581ecf3036715ed9
+Merge: 85d7c03 fbdeb8a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 17:34:06 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit fbdeb8a17bfa51b03e845feb3df5a51fd71b70fd
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:31:39 2016 -0500
+
+    Added publications data, no longer using json_loads
+
+commit 0eaaa736edf6fb1858c74276cd1537e8cb7b592f
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:28:23 2016 -0500
+
+    Changing html templates to table and details
+
+commit 9e59f1e7066c0f720b113a1f3532b2dc6fd310bf
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:24:53 2016 -0500
+
+    Added constellations data
+
+commit c6a9bcc4c77ca7dc66cddaed80d55c299cb68681
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:20:46 2016 -0500
+
+    Added exoplanet JSON data
+
+commit 85d7c03abc269816dd72b6dd39e6e3f02f42a957
+Merge: f662469 4c7a00c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 17:18:20 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit f662469515710594fc714fcdc9ab5b4d328aba3c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 17:18:08 2016 -0500
+
+    html cleanup
+
+commit d985bcabd2cb73c29c1ac49c14ff0e1eb16793ce
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 17:15:31 2016 -0500
+
+    clean up about
+
+commit a9fcf880408150cb638e9de184fa5740773571fb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 17:07:34 2016 -0500
+
+    fix nav bar on detail
+
+commit 4c7a00c625ddf9778f242f739dbfffca8fe1bf24
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 17:07:22 2016 -0500
+
+    Using JSON format for data
+
+commit a4dd946151d2df23f50220c6debea55dff0aaa60
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 16:55:33 2016 -0500
+
+    clean detail
+
+commit 20f8bd89c349b9439acbd24c41d83b3ecca0c1cb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 16:50:51 2016 -0500
+
+    fix nav bar on detail page
+
+commit 102bed25398ea3940cfd34ed691719a2d91f79cf
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 16:45:24 2016 -0500
+
+    detail template
+
+commit a8c1b4b6586fcdc90faa8f4d36cad43e59405c72
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 15:55:18 2016 -0500
+
+    Requirements
+
+commit 12f2eff57f1de4e9a61185578e723fe54e4b31e9
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 15:43:50 2016 -0500
+
+    Fixed tests
+
+commit 02fb32aa4a6bdad47bb1d119ae56a89f4978d29c
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 15:42:49 2016 -0500
+
+    Changed models and api
+
+commit 59500bda5d9bd2cb3981254dd22ed4e494f3d6cf
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 14:39:20 2016 -0500
+
+    formatting
+
+commit 9163158e6207de38d9e20541f005dd938a0e5617
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 14:38:05 2016 -0500
+
+    Added more tests
+
+commit 6746d170760ac0eebf6d8c6712e67158d46397e0
+Merge: b8f2fb0 aff4997
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 14:15:00 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit b8f2fb0efea0ddf0f0ade20830dbad4a15e1085c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 14:14:52 2016 -0500
+
+    planets are line by line
+
+commit a14c1503e8bc9c9fc4053fd6d7237083946977fe
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 14:10:47 2016 -0500
+
+    Fixed api calls
+
+commit d16ab7171683eed81c764b3c8d264f7e734369f1
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 14:07:42 2016 -0500
+
+    Added test for star api
+
+commit b3f48b296f99385bfa28a8f860da97690b1392eb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 14:02:03 2016 -0500
+
+    stars detail works for any data
+
+commit aff4997465438568b9667c5b800ddd6fdd233710
+Author: David Shi <dshi@utexas.edu>
+Date:   Thu Oct 20 13:33:39 2016 -0500
+
+    added dshi profile pic to about
+
+commit 7b20cdee41ed46e7b79b94d6ce0920a170025951
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 12:25:00 2016 -0500
+
+    API for stars done
+
+commit ee6cc49724885198e2c102b43fc7cbb9861a356f
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 11:57:35 2016 -0500
+
+    Formatting
+
+commit 68c324c041f46ad8b8a5328b2779012147fc556b
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 11:56:29 2016 -0500
+
+    Fixed requirements
+
+commit c3639836d9ec587ed26ff78edc9736b698648677
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Thu Oct 20 11:49:09 2016 -0500
+
+    Added Flask-Restless to requirements
+
+commit 3e164fe26d1ee1936e8cbadd6184b70d7a27ca29
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 07:55:12 2016 -0500
+
+    created and formatted publication page
+
+commit db3886e2db4452a73e8599213c8659ae9027f278
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 07:17:15 2016 -0500
+
+    formatted constellation page, changed backgrounds
+
+commit 69effa9fd3a24958e2f39280af1ef79e9fd0fc20
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 06:49:19 2016 -0500
+
+    formatting for exoplanet page
+
+commit ac3d7f28bb02811b89d49c08906f76f1bfdc98e0
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 06:45:35 2016 -0500
+
+    formatting star page
+
+commit 3bef1975dae63d3a878e8141af59a90e0097931d
+Author: charharharhar <charlotte.x.sheng@gmail.com>
+Date:   Thu Oct 20 03:37:36 2016 -0500
+
+    Adding constellation and exoplanet templates.
+
+commit 96583e57482a390c1fca1327c58db1bc0e34d7ad
+Merge: 25f97a3 9ee91c0
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 03:35:33 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 25f97a391d3cf1028e0983b8989813ebc8ee778b
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 03:35:20 2016 -0500
+
+    formatting star page
+
+commit 9ee91c0416cae40852e8953e35d3ea8cd3c6c90c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 03:19:13 2016 -0500
+
+    fix nav/title spacing
+
+commit dc275e0a35b821bd025bad7d497d65af2d330b27
+Merge: 27eeac9 26aae40
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 03:01:09 2016 -0500
+
+    Merge pull request #31 from cs373gc-fall-2016/dev
+    
+    table styyyyyyyyle
+
+commit 26aae4082770c352ba3aff5ae598d7d21d874bcf
+Merge: b4300c7 8af80c2
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Oct 20 02:59:30 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit b4300c727969b36e8e703499773e7d3c87fdd385
+Author: Denise Ly <denisely@cs.utexas.edu>
+Date:   Thu Oct 20 02:54:11 2016 -0500
+
+    added to stars.html page
+
+commit 8af80c2432a5a9eb426d66bd5eadfb6d9d4ee236
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 02:54:02 2016 -0500
+
+    pylint
+
+commit 9c03d791ef010a82aa692a5837ce938e62d87f2e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 02:50:52 2016 -0500
+
+    more table styyyyyyyyyyyyyle
+
+commit f738e726990956bc55a2b1d9beb7ed43de0e555f
+Merge: 99ed373 39ef973
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 02:35:17 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 99ed373c37b47304b480b0524049022ef01a99ab
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 02:35:01 2016 -0500
+
+    table styyyyyyle
+
+commit 39ef9735020647fcf43d123ab85cd2bc46a6113a
+Author: Denise Ly <denisely@cs.utexas.edu>
+Date:   Thu Oct 20 01:25:05 2016 -0500
+
+    Starting star page
+
+commit 4879f210686eb3c4a61aad4c94f44ac2004d9b94
+Merge: 0dd219d 168b24e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 01:19:24 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/interswellar into dev
+
+commit 27eeac9d4a3060e0b3415fe3012acd0fa8d4a550
+Merge: f88b91c 168b24e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 01:11:57 2016 -0500
+
+    Merge pull request #29 from cs373gc-fall-2016/dev
+    
+    no zoom on mobile
+
+commit 168b24e844505f84ceacaecd843cd3e31843b78c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 01:08:29 2016 -0500
+
+    no zoom on mobile
+
+commit f88b91cd3e74753e8f4b5018bcb39223440a79d3
+Merge: c2e934b 917f4ca
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 01:00:30 2016 -0500
+
+    Merge pull request #28 from cs373gc-fall-2016/dev
+    
+    fix tables not showing up in some browsers
+
+commit 917f4ca5a2a20201e7c3f8ab06a2fd8a6bd1ec34
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 00:56:55 2016 -0500
+
+    fix tables not showing up in some browsers
+
+commit c2e934b8e128925708018d0aa02812e4d2819258
+Merge: 98ea08b 0dd219d
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 00:34:54 2016 -0500
+
+    Merge branch 'dev'
+
+commit 0dd219d4e561a57dff3a329fb0f41aa0799b09e6
+Merge: a8e1b1d 98ea08b
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 00:34:38 2016 -0500
+
+    added tables
+
+commit a8e1b1d9635b49a2a6655636d7557c625f3387bf
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Thu Oct 20 00:23:46 2016 -0500
+
+    table formatting
+
+commit d09fbefb475742f4a4bf3e58938f97a47284f3fc
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 23:44:57 2016 -0500
+
+    fix nav menu and responsive tables???
+
+commit 98ea08bcf16b2b16f98ef4dce6b702465a118846
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 23:14:46 2016 -0500
+
+    Security
+
+commit 49cd6321d480c6e0c7df5aa3f36f8a16781d00b6
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 22:22:46 2016 -0500
+
+    pylint
+
+commit 4d7193cc37601994094be6d7430ba413015524ac
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 22:15:31 2016 -0500
+
+    Travis db possibly working
+
+commit 59ac0c63f4d6acc04a1161d976d07d4db74949be
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 22:12:26 2016 -0500
+
+    connected nav to pages
+
+commit 209e8ad7d31284a6a94d8abe686eb7c6e7d8cba9
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 21:39:18 2016 -0500
+
+    Configured databases for local development and Travis
+
+commit bf77fd35bc96112857083571a4397a3e6d29b272
+Author: Denise Ly <denisely@cs.utexas.edu>
+Date:   Wed Oct 19 21:24:42 2016 -0500
+
+    Removed pylint warnings
+
+commit 6c032ff092508bf7ec9e2bf93a6c30578a53975b
+Merge: a44534b fbf38f7
+Author: Denise Ly <denisely@cs.utexas.edu>
+Date:   Wed Oct 19 21:23:14 2016 -0500
+
+    Created tables template
+
+commit a44534b5fa9f69bc6c89c5f2a75ff5a6c249d2d3
+Author: Denise Ly <denisely@cs.utexas.edu>
+Date:   Wed Oct 19 21:20:18 2016 -0500
+
+    Created template for tables
+
+commit 714ddd5cd57f2bfc7761b82e86a8808066322682
+Merge: d7dad38 bdfb530
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 20:30:50 2016 -0500
+
+    Merge branch 'master' into infra
+
+commit bdfb5306e118a242f359a94723cc1ed4bb38c948
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 20:23:59 2016 -0500
+
+    Downgrading to postgresql94
+
+commit d7dad38291805525b91c5e7a59f54e1e5e38e6cc
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 20:11:34 2016 -0500
+
+    Refactored config
+
+commit 4694ead55d704100b4eea819a2c76ddba9d4ef1b
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 19 19:44:26 2016 -0500
+
+    Add config for postgresql
+
+commit fbf38f78e90ca49c559802a13c6c81dd90e17bdc
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 18:53:28 2016 -0500
+
+    oops views.py
+
+commit 3c0ce17281c11af7512751d48930d8d91700cfd7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 18:52:46 2016 -0500
+
+    fix about style on colophon
+
+commit fcbc526a92c77ec92ada65f1e28bb037a7e04038
+Merge: 28f459a 5caabf1
+Author: Chenyang Wang <chenyang.wang123@gmail.com>
+Date:   Wed Oct 19 18:42:12 2016 -0500
+
+    Merge pull request #23 from cs373gc-fall-2016/bdev
+    
+    Bdev
+
+commit 2602bce38a3f50afe4e08782017b47cb768ece26
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 18:42:10 2016 -0500
+
+    fix about for mobile
+
+commit 08eaeafefa7df1317075fd3fdf1374b3bae68e1a
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 18:21:05 2016 -0500
+
+    pylint
+
+commit 4439ddfdfd99e9718142456aeb79bc33617b19e7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 18:19:15 2016 -0500
+
+    actually fixed github auth
+
+commit 28f459a1d6c8619c0e82db6ecf1c4c99be5f1b37
+Author: TheFireFerret <samiglasco@gmail.com>
+Date:   Wed Oct 19 17:43:28 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit c1ee5dd481ba0943b8a69f56be58cadd19266b83
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 17:43:01 2016 -0500
+
+    added github auth and fix css
+
+commit d403baca1980d33816404bb96e5d2d4245126c6e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 16:59:04 2016 -0500
+
+    cleanup css
+
+commit 1ff1fc1faf90546543d786b0d84253a8abd4f8f7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 16:41:31 2016 -0500
+
+    added requests requirement
+
+commit e83abc890deafd67cc3c6c971a3f60d133537a88
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 16:33:57 2016 -0500
+
+    pylint fixes for views.py
+
+commit 5caabf1ceaa953cf12e0ce50cf0d1b3b7865694b
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 19 16:24:14 2016 -0500
+
+    Added publication test
+
+commit d2dcd100026940a8e687d6327b8dbd59e2e57b59
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 19 16:19:03 2016 -0500
+
+    Added constellation test
+
+commit d2b58812d579f073a2c2acdf6a03fc6eda5faf14
+Merge: 38a5f74 f41f318
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 16:18:49 2016 -0500
+
+    Merge branch 'dev' of https://github.com/TheFireFerret/interswellar into dev
+
+commit 38a5f74ef53d419760a0cd4a5f8f72f8b98557ea
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 16:16:53 2016 -0500
+
+    about page commits and issue count live from github
+
+commit a5a685c0502898b841a28b05e36d87d62dab7e2d
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 19 16:14:52 2016 -0500
+
+    Added exoplanet test
+
+commit 37bec6307d19154c7fb4b119adf0702cedddec9d
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 19 16:08:04 2016 -0500
+
+    Added star test
+
+commit 7270a7e2eb28a06f29d48d2a48f0ceed0900f072
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 14:41:32 2016 -0500
+
+    fixed models test issues. make travis happy
+
+commit ba1bc2c286fe3712ed2d24a40ccf3bdcdbf340c7
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 14:33:14 2016 -0500
+
+    switched to flask_sql, fixed #6
+
+commit f41f3188fcc351a63be10d5f338fadeea3768e56
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 13:16:15 2016 -0500
+
+    pull out nav bar
+
+commit be9f61354e8ec1aff195d88957c51f31ce47046c
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 13:09:39 2016 -0500
+
+    added main structure for all models
+
+commit e34f89048c3d490e02296e32512b243195db7622
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 12:58:00 2016 -0500
+
+    travis needs sqlalchemy. should fix
+
+commit 2673629b3cb98f6c43791827fc9342bc0b57676a
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 12:54:31 2016 -0500
+
+    fixed pylint complaints for travis
+
+commit 636dea8c6b98efe5d29ebaf7f7c55ab33b93f2a8
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 19 12:39:34 2016 -0500
+
+    added models.py with stars and planets
+
+commit 6b569f0a3d0db703b357953b73af8a8f9796a8eb
+Merge: ae1f419 26914ca
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 01:47:14 2016 -0500
+
+    Merge pull request #19 from cs373gc-fall-2016/dev
+    
+    Added about page
+
+commit 26914cabb4521d9c7dca5b262ed083e96c856d57
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 01:44:26 2016 -0500
+
+    fixed menu collapse
+
+commit 350c60f3b45e77a9e7fe8111da735c24757a47b6
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 01:41:30 2016 -0500
+
+    about page has all sections
+
+commit e3aae158b397ea89bf0703fcba497c3af0cf7fbb
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 01:34:46 2016 -0500
+
+    stats info
+
+commit 572ccc9c1cac9e3208f903953ae1679a254598ab
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 01:21:24 2016 -0500
+
+    done with team info templates
+
+commit a8514c35affb1d4a6ecab93d39ced72e7f585912
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 19 00:59:36 2016 -0500
+
+    profile page has about and some team members
+
+commit aeca54d7a38c369e5327fee7f9aa4444fb7198ba
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 23:44:52 2016 -0500
+
+    removed carousel buttons
+
+commit ce08e5c6531afd110b035e959ac740629f8033d7
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 22:56:39 2016 -0500
+
+    add about page with nav bar
+
+commit 29e90378f45d5d4ba96508236b74a97576e9d6fe
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 22:55:52 2016 -0500
+
+    added about button and fixed centering
+
+commit ae1f419fc7ada3f5b2db41e283ca3510e2605cc9
+Merge: 56745a1 93096c0
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 21:53:07 2016 -0500
+
+    Merge pull request #15 from cs373gc-fall-2016/dev
+    
+    changed carousel slide to a fade to fix white screen bug
+
+commit 93096c0afd8943405918378aa23ebc2995ebebbd
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 21:42:40 2016 -0500
+
+    changed carousel slide to a fade to fix white screen bug
+
+commit 56745a1e3c350aee845917a76f33b980f7f525e1
+Merge: a4e76d6 b4d4c96
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 21:12:16 2016 -0500
+
+    Merge pull request #14 from cs373gc-fall-2016/dev
+    
+    cleanup css
+
+commit b4d4c96c638cbeb7dad1c1e749414463b47696d4
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Tue Oct 18 21:03:20 2016 -0500
+
+    cleanup css
+
+commit a4e76d6b572fb5fb773deea765a0b62328eb75d0
+Author: Chenyang Wang <chenyang.wang123@gmail.com>
+Date:   Mon Oct 17 16:31:53 2016 -0500
+
+    Update README to new repo location
+
+commit 299caaa5304d9aafddedc1b1b103b22bf42d0060
+Merge: 4bb7ae4 482077c
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 15:05:30 2016 -0500
+
+    Merge pull request #12 from cs373gc-fall-2016/dev
+    
+    AWS pls
+
+commit 482077c5674eba488520b194e03b84ff1cf15b17
+Merge: 7eabd64 dde2db3
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 15:03:26 2016 -0500
+
+    Merge branch 'dev' of github.com:TheFireFerret/interswellar into dev
+
+commit 7eabd640bbaa8d0aef07ebef3b207e2391dcd4c9
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 15:03:11 2016 -0500
+
+    ignoring pylint
+
+commit 4bb7ae40ee53cfd6c946cdb23a3cde1554a7afcd
+Merge: 70bf11d dde2db3
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 14:38:38 2016 -0500
+
+    Merge pull request #11 from cs373gc-fall-2016/dev
+    
+    splash page / deployment test
+
+commit dde2db357e4b697b7686619e674394750c1635dd
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 14:34:01 2016 -0500
+
+    Update README.md
+
+commit 47147304976023befbab927c0af99037385138ba
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 14:30:09 2016 -0500
+
+    fix unused import for pylint
+
+commit f45bff42e64a3442ab7963f67471c71b50a85628
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 14:25:16 2016 -0500
+
+    fix test
+
+commit 70bf11d299254a493c1e6efa6686dcc08bca29e2
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 14:22:19 2016 -0500
+
+    Update README.md
+
+commit df0103bec2880c085f110141e7d7ebecfa3b2b17
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Mon Oct 17 10:37:49 2016 -0500
+
+    removed rounded corners
+
+commit a5708d1946655857dbfa8f99145d481d629641e5
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 16 23:08:05 2016 -0500
+
+    Added title, some buttons, and pictures to splash page
+
+commit bdb73779e2f6f2ff4c6a486faf772c906100fbf9
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 16 18:17:20 2016 -0500
+
+    gotta fix jumbotron size
+
+commit 1ba34fc0e65f120b73e87eca0b3fb9931a5dabe2
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Sun Oct 16 17:47:41 2016 -0500
+
+    Added carousel for splash page
+
+commit 3448c951d6167fcac798f3f40b7c12e234e274ab
+Author: Chenyang Wang <chenyang.wang123@gmail.com>
+Date:   Sat Oct 15 00:09:47 2016 -0500
+
+    Update README.md
+    
+    Links
+
+commit c5842fec347f0fd868b3f139182b663929e16338
+Author: Chenyang Wang <chenyang.wang123@gmail.com>
+Date:   Sat Oct 15 00:05:51 2016 -0500
+
+    Update README.md
+    
+    Information about travis builds.
+
+commit 3cecd27a42d5fa7eaccabff0a6f4778779da18a2
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 18:22:03 2016 -0500
+
+    set up index.html
+
+commit f10f1268d6f08f74169a27d45287f54a3ec7ea39
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 17:44:47 2016 -0500
+
+    Update README.md
+
+commit 051fb2eb32b55e35acb8d46d913cc3ed0ec6b20e
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 17:44:41 2016 -0500
+
+    Update README.md
+
+commit 47621bb72d70e8efb62c3bc8823a74e99e6890ce
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 17:40:43 2016 -0500
+
+    update test
+
+commit 13d3414c5644d148767432441ddb14e64bda6d06
+Merge: 21f7f7d 464da09
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 17:37:54 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit 21f7f7ddb5e0a084b01fa1fb9fb99e91d95f20c6
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 17:37:14 2016 -0500
+
+    update text to test AWS deployment
+
+commit 464da091b5cfe99385fd5976e25386549f7e4356
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 16:38:31 2016 -0500
+
+    Update README.md
+
+commit 607c5dc1659500aac5e2b3f1b9b337dfa4a35bb5
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 16:35:37 2016 -0500
+
+    try encrypting keys again
+
+commit 75dc26b7be7145e46a6c0a2ed40998b8c71e6011
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 16:20:44 2016 -0500
+
+    added keys yet again
+
+commit 75783c8eaf56c367d0708e17b0c408e57239c950
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 16:00:55 2016 -0500
+
+    fix keys?
+
+commit d76572ea57cd8dacf419edac001ad8ee20a2d8bc
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:45:07 2016 -0500
+
+    Try again
+
+commit 275351c3b0ec5cfd432f146126547ab5df4f31a3
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:41:19 2016 -0500
+
+    Push to AWS?
+
+commit 7b08b5a690597686db8a15b8571487b869b878bc
+Merge: 03b050b 7bb43cd
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:39:34 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit 7bb43cdecfea3f4bddce8286772b297550aabee3
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Fri Oct 14 15:39:20 2016 -0500
+
+    added encrypted keys
+
+commit 03b050bd595791f832b39924e8912d1d8bc39f53
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:24:33 2016 -0500
+
+    Add test reqs
+
+commit 35c3ca7b2cad15822cc5bbd372672fc369147d39
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:22:37 2016 -0500
+
+    fixed lint
+
+commit 24658d44d6be9ef482ad08f5e98b1ace33aa9ecc
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:13:55 2016 -0500
+
+    Hopefully connected travis. Fixes #1
+
+commit 80ee3f2a23687bcdb44fa41839241b92ec0bfe90
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Fri Oct 14 15:11:17 2016 -0500
+
+    Automated make targets
+
+commit 22e277240cd3338095583a4ad20c4e32f269afa2
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 12 19:26:02 2016 -0500
+
+    Update readme
+
+commit 6c5f3bca791a88736f19d7c1716661741a7d2dee
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 12 19:23:03 2016 -0500
+
+    Fix markdown
+
+commit 3e31e51993fcec8538ba05b4e6ff339970420265
+Author: Chenyang Wang <chenyang.wang@utexas.edu>
+Date:   Wed Oct 12 19:19:38 2016 -0500
+
+    Restructured code
+
+commit 0d14dee8c0edaf369ee439da1f0f60405304e4c3
+Author: Chenyang Wang <chenyang.wang123@gmail.com>
+Date:   Wed Oct 12 17:01:29 2016 -0500
+
+    Update README.md
+    
+    Fix reamde
+
+commit 54682af65df437f16b0fc435f5ea24be5d64f91c
+Merge: dad6f27 0219577
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 17:00:52 2016 -0500
+
+    Merge branch 'master' of https://github.com/TheFireFerret/interswellar
+
+commit dad6f27613b24b7400453a9d71e502d31eece03d
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 17:00:30 2016 -0500
+
+    Removed things Nathan accidentally pushed
+
+commit 0219577116ea53ea6d987e608b272c9aba436d7d
+Author: David Shi <dshi@utexas.edu>
+Date:   Wed Oct 12 16:36:13 2016 -0500
+
+    rm stuff
+
+commit f2e0600caf2ce8c4518ab943761f8b67942d04d2
+Merge: d95c6a1 43311d7
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 16:06:20 2016 -0500
+
+    Merge branch 'master' of https://github.com/TheFireFerret/interswellar
+
+commit d95c6a17d0ff3648d2dfd6cb19f6699778c91333
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 16:05:59 2016 -0500
+
+    Redacted to original message
+
+commit 43311d76337e41866e77e868a359589a63ad1556
+Merge: 9546edd 7b9fd3e
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 16:05:03 2016 -0500
+
+    Merge branch 'master' of github.com:TheFireFerret/interswellar
+
+commit 9546eddd59fa5931323899dab7b48c238b9ae591
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 16:04:53 2016 -0500
+
+    Readme
+
+commit 7b9fd3ec3e5703346142c31f7b99875382483540
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 16:03:43 2016 -0500
+
+    Changed application py file to test if Nathan can deploy
+
+commit c6fd7052d4c6135a0d5dab3ecb5632a50d77fd4d
+Merge: 2e5c40c 13ef747
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 16:02:58 2016 -0500
+
+    Merge branch 'master' of https://github.com/TheFireFerret/interswellar
+
+commit 2e5c40cfa1ab15cee1a30aceacdde1ea58a0f4cb
+Author: Nathan Poag <npoag@utexas.edu>
+Date:   Wed Oct 12 16:01:46 2016 -0500
+
+    Changed application py file to test if Nathan can deploy
+
+commit 13ef747e32a0adcab082a1680ff1fa3abf0ab6e6
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 15:36:49 2016 -0500
+
+    Add AWS keys
+
+commit d3df4717d1aaeba1e3fa5fc420faed35e3143526
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 15:26:59 2016 -0500
+
+    Instructions
+
+commit d3a5efc8f747e820882cd543e8085c28d9d8480d
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 15:17:25 2016 -0500
+
+    spelling
+
+commit 2b63ec821dcb1dd293d5a425a71c468a9a747d8a
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 15:11:24 2016 -0500
+
+    Renamed variable to make aws happy
+
+commit a8cd331f147ab91db1785746a93f7e678b6361c0
+Author: Chenyang Wang <cwang@cs.utexas.edu>
+Date:   Wed Oct 12 14:56:29 2016 -0500
+
+    Hello World!
+
+commit 9ca358f689b4b8a6853e1abeb8a39e40791b91ac
+Author: Sami Glasco <samiglasco@gmail.com>
+Date:   Wed Oct 12 13:32:12 2016 -0500
+
+    Initial commit
