@@ -1,0 +1,38 @@
+<html><head><title>Epydoc Redirect Page</title>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+var pages = ["interswellar.config.DevelopmentConfig-c", "interswellar.config.IntegrationConfig-c", "interswellar.config.ProductionConfig-c", "interswellar.models_test.ModelsTest-c", "interswellar.config.DefaultConfig-c", "interswellar.config.TestingConfig-c", "interswellar.models.Constellation-c", "interswellar.views_test.ViewsTest-c", "interswellar.models.Publication-c", "interswellar.api_test.APITest-c", "interswellar.models.Exoplanet-c", "interswellar.models_test-m", "interswellar.test_runner-m", "interswellar.models.Star-c", "interswellar.views_test-m", "interswellar.api_test-m", "interswellar.config-m", "interswellar.models-m", "interswellar.views-m", "interswellar.api-m", "interswellar-m"];
+var dottedName = get_anchor();
+if (dottedName) {
+    var target = redirect_url(dottedName);
+    if (target) window.location.replace(target);
+}
+// -->
+</script>
+
+<h3>Epydoc Auto-redirect page</h3>
+
+<p>When javascript is enabled, this page will redirect URLs of
+the form <tt>redirect.html#<i>dotted.name</i></tt> to the
+documentation for the object with the given fully-qualified
+dotted name.</p>
+<p><a id="message"> &nbsp; </a></p>
+
+<script type="text/javascript">
+<!--
+if (dottedName) {
+    var msg = document.getElementById("message");
+    msg.innerHTML = "No documentation found for <tt>"+
+                    dottedName+"</tt>";
+}
+// -->
+</script>
+
+</body>
+</html>
