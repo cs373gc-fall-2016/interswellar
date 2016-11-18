@@ -38,13 +38,13 @@
     </style>
 </head>
 
-<body onload="showAnd();">
+<body onload="showAnd();noResults();">
     {% include 'nav.html' %}
 
     <div id="title" class="table-title">
         {{terms}}
     </div>
-    <div class="search-tabs">
+    <div id = "search-tabs" class="search-tabs">
         <button class="btn" id="and-btn" onclick="showAnd()">AND RESULTS</button>
         <button class="btn" id="or-btn" onclick="showOr()">OR RESULTS</button>
 
@@ -63,6 +63,17 @@
     function showOr(){
         $("#orSearch").show();
         $("#andSearch").hide();
+    }
+
+    function noResults(){
+        if(document.getElementById("not-or-title") !== null)
+        {
+            $("#and-title").hide();
+        }
+        if(document.getElementById("not-and-title") !== null)
+        {
+            $("#or-title").hide();
+        }
     }
 </script>
 
@@ -363,10 +374,48 @@
         }
     })
 
+    var searchTerm = "{{terms}}";
+    var terms = searchTerm.split(" ");
+
     var PublicationItems = React.createClass({
          render: function(){
             var data = this.props.itemDetails;
             var link = "/publication/" + data.id;
+
+            var abstract = data.abstract;
+            console.log(abstract );
+
+            var indices = [];
+            var last = "";
+
+            for (var word in terms){
+                var regex = new RegExp(terms[word], "i");
+                var temp = abstract.match(regex);
+                console.log(temp);
+
+                if (temp != null){
+                    indices.push(temp.index);
+                }
+            }
+
+            indices.sort(function(a, b){ return a - b });
+
+            var margin = 100;
+            var shortened = "";
+            var position = 0;
+            for(var i = 0 ; i < indices.length; i++){
+                var start = indices[i];
+                var end = indices[i] + terms[i].length;
+                if(position < start - (margin + 10)){
+                    shortened += '...' + abstract.substring(start- margin, end+margin);
+                } else {
+                    shortened += abstract.substring(position, end + margin);
+                }
+                position = end + margin;
+            }
+            shortened += "..."
+
+            data.abstract = shortened;
 
             return (
             <a className="detail-link" href={link}>
@@ -583,7 +632,7 @@
     var And = React.createClass({
         getInitialState: function(){
             var searchTerms = "{{terms}}";
-            console.log(searchTerms);
+            // console.log(searchTerms);
             return {
                 terms: searchTerms,
                 resultOfAndSearch: $.getSearchResults(searchTerms, 1, "and")
@@ -596,7 +645,7 @@
 
             if (currAndPage != totalAndPages){
                 currAndPage++;
-                console.log(currAndPage);
+                // console.log(currAndPage);
                 var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
                 
                 $('#andPrev').removeClass("disabled");
@@ -611,7 +660,7 @@
 
             if (currAndPage != 1){
                 currAndPage--;
-                console.log(currAndPage);
+                // console.log(currAndPage);
                 var resultOfAndSearch = $.getSearchResults(this.state.terms, currAndPage, "and");
 
                 $('#andNext').removeClass("disabled");
@@ -625,11 +674,20 @@
         },
         render: function(){
             console.log(this.state.resultOfAndSearch);
-            var andItems = this.state.resultOfAndSearch.results.map(function(item){
-                return (
-                    <Item item={item}/>
-                )
-            });
+            try {
+                var andItems = this.state.resultOfAndSearch.results.map(function(item){
+                    return (
+                        <Item item={item}/>
+                    )
+                });
+            } catch (e){
+            return (
+                <div>
+                    <div className="header-div">
+                        <div className="search-type-header" id="not-and-title">NO AND RESULTS</div>
+                    </div>
+                </div>)
+            }
 
             var limit = currAndPage*10;
             if (numAndResults < limit){
@@ -658,7 +716,7 @@
     var Or = React.createClass({
         getInitialState: function() {
             var searchTerms = "{{terms}}";
-            console.log(searchTerms);
+            // console.log(searchTerms);
             return {
                 terms: searchTerms,
                 resultOfOrSearch: $.getSearchResults(searchTerms, 1, "or")
@@ -671,7 +729,7 @@
 
             if (currOrPage != totalOrPages){
                 currOrPage++;
-                console.log(currOrPage);
+                // console.log(currOrPage);
                 var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
                 
                 $('#orPrev').removeClass("disabled");
@@ -686,7 +744,7 @@
 
             if (currOrPage != 1){
                 currOrPage--;
-                console.log(currOrPage);
+                // console.log(currOrPage);
                 var resultOfOrSearch = $.getSearchResults(this.state.terms, currOrPage, "or");
 
                 $('#orNext').removeClass("disabled");
@@ -700,11 +758,20 @@
         },
         render: function(){
             console.log(this.state.resultOfOrSearch);
+            try{
             var orItems = this.state.resultOfOrSearch.results.map(function(item){
                 return (
                     <Item item={item}/>
                 )
             });
+        } catch (e){
+            return (
+                <div>
+                    <div className="header-div">
+                        <div className="search-type-header" id="not-or-title">NO OR RESULTS</div>
+                    </div>
+                </div>)
+        }
 
             var limit = currOrPage*10;
             if (numOrResults < limit){
@@ -736,14 +803,13 @@
                 <div>
                 <div id="andSearch">
                 <div className="header-div">
-                <div className="search-type-header">And Results</div></div>
+                <div className="search-type-header" id="and-title">AND RESULTS</div></div>
                     <And/>
                 </div>
 
                 <div id="orSearch">
                 <div className="header-div">
-
-                <div className="search-type-header">Or Results</div></div>
+                <div className="search-type-header" id="or-title">OR RESULTS</div></div>
                     <Or/>
                 </div>
                 </div>
