@@ -1,3 +1,15 @@
+commit 5449eb3eef7baf394ea40c0127fb94003335186b
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 20:18:05 2016 -0600
+
+    fixed unit test count
+
+commit 0833112a44332a1974d8283ff3955a76cc05ea93
+Author: Denise Ly <dply95@gmail.com>
+Date:   Thu Nov 17 20:07:08 2016 -0600
+
+    log
+
 commit 8ef1f5d30399ba894cccbec51dc5e73ee3434780
 Merge: 2cc7bc9 88aeadb
 Author: Denise Ly <dply95@gmail.com>
