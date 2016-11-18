@@ -18,6 +18,10 @@ body {
     font-size: 150%;
 }
 
+html{
+    font-family: "lato", sans-serif !important;
+}
+
 .navbar {
     position: relative;
     min-height: 50px;
@@ -64,12 +68,6 @@ a:link, a:visited, a:active{
     font-weight: 500;
     font-size: 30px;
     color: #fff !important;
-}
-
-/* Title text container */
-.title-box {
-    margin-bottom: 2vw;
-    margin-top: 2vw;
 }
 
 /* Navigation bar */

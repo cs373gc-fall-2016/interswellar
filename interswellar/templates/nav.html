@@ -19,9 +19,9 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="q">
                             <!-- <span class="input-group-btn"> -->
-                                <button class="btn btn-search-nav" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
+                            <button class="btn btn-search-nav" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
                             <!-- </span> -->
                         </div>
                     </div>
@@ -42,29 +42,22 @@
     </div><!-- /.container-fluid -->
 
     <style>
-/*    .input-group {
-        width: 50%;
+    .glyphicon {
         position: relative;
-        border-collapse: separate;
-        }*/
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        font-size: 15px;
+        color: white;
+        -webkit-font-smoothing: antialiased;
+    }
+    </style>
+</nav>
 
-        .glyphicon {
-            position: relative;
-            top: 1px;
-            display: inline-block;
-            font-family: 'Glyphicons Halflings';
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1;
-            font-size: 15px;
-            color: white;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        </style>
-    </nav>
-
-    <script type="text/javascript">
+<script type="text/javascript">
 // change nav bar active
 $(function() {
 	$('#'+location.pathname.split("/")[1]+'_li','#nav').addClass('active');

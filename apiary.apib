@@ -305,3 +305,25 @@ Interswellar API is a simple API allowing users to query the Interswellar Databa
                 {"id": 3, "name": "Kepler-9d"}
             ]
         }
+        
+## Search [/search]
+
+### Search [GET /search/?q={query}&page={n}&mode={mode}]
++ Parameters
+    + n (optional, integer, `1`) ... Page Number
+    + query (required, string, `kepler`) ... Search Term
+    + mode (required, string, `and`) ... Search mode, AND or OR
+    
++ Response 200 (application/json)
+
+
+        {
+            "page" : 1,
+            "total_pages" : 1,
+            "num_results": 1000,
+            "results" : [
+                {"model" : "stars", "id": 1},
+                {"model" : "stars", "id": 2},
+                {"model" : "constellations", "id": 5}
+            ]
+        }
