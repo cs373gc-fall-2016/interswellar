@@ -89,7 +89,7 @@ a:link, a:visited, a:active{
 }
 
 /* Nav bar menu collapse */
-@media (max-width: 1250px) {
+@media (max-width: 1260px) {
     .navbar-header {
         float: none;
     }
