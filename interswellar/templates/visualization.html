@@ -1,0 +1,36 @@
+<!DOCTeYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InterSWEllar</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    <div class="table-title">
+        Visualization
+    </div>
+
+    <style>
+    html {
+        background: url(/static/images/star-detail.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
+
+</body>
+</html>

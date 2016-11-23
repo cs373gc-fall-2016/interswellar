@@ -98,6 +98,9 @@ def publication(variable):
         return render_template('404.html', thing='Publication')
     return render_template('publication_detail.html', data=data)
 
+@public_views.route('/visualization')
+def visualization():
+  return render_template('visualization.html')
 
 @public_views.route('/about')
 def about():
