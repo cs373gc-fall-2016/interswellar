@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>InterSWEllar</title>
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+	<style>
+
+	.links line {
+	  stroke-opacity: 0.6;
+	}
+
+	.nodes circle {
+	  stroke: #fff;
+	  stroke-width: 1.5px;
+	}
+
+	.node text {
+	  pointer-events: none;
+	  font: 10px sans-serif;
+	}
+
+
+
+
+	</style>
+
+	<script  src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+</head>
+
+<body>
+<svg style="display: block; margin: auto">
+	<defs>
+		<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="11" refY="2" orient="auto" markerUnits="strokeWidth">
+	      <path d="M0,0 L0,4 L6,2 z" fill="red" />
+	    </marker>
+		<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="11" refY="2" orient="auto" markerUnits="strokeWidth">
+	      <path d="M0,0 L0,4 L6,2 z" fill="blue" />
+	    </marker>
+	</defs>
+</svg>
+<script src='http://d3js.org/d3.v4.js'></script>
+<script>
+	var width = 960;
+	var height = 960;
+	var svg = d3.select("svg").attr("width", width).attr("height", height);
+
+	var force = d3.forceSimulation()
+		.force("link", d3.forceLink()
+			.id(function(d) {
+		 		return d.name 
+		 	})
+			.distance(function(l){
+				if(l.type == "marriage"){
+					return 25;
+				} else {
+					return 55;
+				}
+			})
+		)
+		.force("charge", d3.forceManyBody().strength(-50))
+		.force("center", d3.forceCenter(width/2, height/2))
+		.force("gravX", d3.forceX(width/2).strength(0.05))
+		.force("gravY", d3.forceY(height/2).strength(0.05))
+
+	var data = {{ data|tojson|safe }}
+	console.log(data);
+	var link = svg.append("g")
+		.attr("class", "links")
+		.selectAll("line")
+		.data(data.links)
+		.enter()
+			.append("line")
+			.attr("marker-end", function(d){
+				if(d.type == "father") {
+					return "url(#arrow-blue)"
+				} else if (d.type == "mother") {
+					return "url(#arrow-red)"
+				} else {
+					return ""
+				}
+			})
+			.attr("stroke-width", function(d) { return 1; })
+			.attr("stroke", function(d) { 
+				if(d.type == "marriage"){
+					return "#0000";
+				} else if (d.type == "father") {
+					return "blue";
+				} else if (d.type == "mother") {
+					return "red";
+				}
+			})
+
+	var node = svg.append("g")
+		.attr("class", "nodes")
+		.selectAll(".node")
+		.data(data.nodes)
+		.enter()
+			.append("g")
+			.attr("class", "node")
+			.call(d3.drag()
+				.on("start", dragstarted)
+				.on("drag", dragged)
+				.on("end", dragended)
+				
+			);
+
+	node.append("circle")
+			.attr("r", 5)
+			.attr("fill", function(d) {
+				if(d.type == "god"){
+					return "yellow"
+				} else {
+					return "orange"
+				}
+			})
+
+	node.append("title")
+		.text(function(d) { return d.name })
+
+	node.append("text")
+		.attr("dx", 8)
+		.attr("dy", "0.35em")
+		.text(function(d) { return d.name })
+
+	force
+		.nodes(data.nodes)
+		.on("tick", ticked);
+
+	force.force("link").links(data.links);
+
+	function ticked() {
+	    link
+	        .attr("x1", function(d) { return d.source.x; })
+	        .attr("y1", function(d) { return d.source.y; })
+	        .attr("x2", function(d) { return d.target.x; })
+	        .attr("y2", function(d) { return d.target.y; });
+
+	    node
+    		.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+	}
+
+	function dragstarted(d) {
+	  if (!d3.event.active) force.alphaTarget(0.3).restart();
+	  d.fx = d.x;
+	  d.fy = d.y;
+	}
+
+	function dragged(d) {
+	  d.fx = d3.event.x;
+	  d.fy = d3.event.y;
+	}
+
+	function dragended(d) {
+	  if (!d3.event.active) force.alphaTarget(0);
+	  d.fx = null;
+	  d.fy = null;
+	}
+</script>
+</body>
+
+</html>

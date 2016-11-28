@@ -150,6 +150,55 @@ def search_results():
 
     return render_template('search.html', terms=terms)
 
+@public_views.route('/greek')
+def greek():
+    """ visualization of Greek Mythology site """
+    resp = requests.get('http://greekmythology.me/api/gods')
+    resp.raise_for_status()
+    raw = resp.json()
+    gods = {name for name in raw.keys()}
+    fathers = set()
+    mothers = set()
+    marriages = set()
+    for name, props in raw.items():
+        f = props["father"]
+        m = props["mother"]
+        if f != "None" and m != "None":
+            marriages.add((f, m))
+        if f != "None":
+            gods.add(f)
+            fathers.add((f, name))
+        if m != "None":
+            gods.add(m)
+            mothers.add((m, name))
+
+    resp = requests.get('http://greekmythology.me/api/heroes')
+    resp.raise_for_status();
+    raw = resp.json();
+    heroes = {name for name in raw.keys()}
+    for name, props in raw.items():
+        f = props["father"]
+        m = props["mother"]
+        if f != "None" and m != "None" and f != "N/A" and m != "N/A":
+            marriages.add((f, m))
+        if f != "None" and f != "N/A" :
+            if f not in gods:
+                heroes.add(f)
+            fathers.add((f, name))
+        if m != "None" and m != "N/A":
+            if m not in gods:
+                heroes.add(m)
+            mothers.add((m, name))
+
+
+    nodes = [{"name" : n, "type": "god"} for n in gods] + \
+            [{"name": n, "type": "hero"} for n in heroes]
+    links = [{"source":g1, "target": g2, "type":"marriage"} for g1, g2 in marriages] + \
+        [{"source":f, "target":c, "type":"father"} for f, c in fathers] + \
+        [{"source":m, "target":c, "type":"mother"} for m, c in mothers]
+
+    return render_template('greek.html', data={"nodes": nodes, "links": links});
+
 
 @public_views.errorhandler(404)
 def page_not_found(_):
