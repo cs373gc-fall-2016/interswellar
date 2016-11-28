@@ -77,7 +77,35 @@ var root = {
         }, {
             name: "Uranus",
             id: 11,
-            children: [{
+            children: [
+            {
+                name: "Phoebe",
+                id: 708,
+                no_parent: true
+            },
+            {
+                        name: "",
+                        id: 707,
+                        no_parent: true,
+                        hidden: true,
+                        children: [{
+                            name: "Leto",
+                            id: 706,
+                            children: [{
+                                name: "Apollo",
+                                id: 705
+                            },{
+                                name: "Artemis",
+                                id: 704
+                            }]
+                        }]
+            },
+            {
+                name: "Coeus",
+                id: 709,
+                no_parent: true
+            },
+            {
                 name: "Philyra",
                 id: 733,
                 no_parent: true
@@ -102,6 +130,24 @@ var root = {
                 hidden: true,
                 no_parent: true,
                 children: [{
+                        name: "Dione",
+                        id: 341,
+                        no_parent: true
+                    },
+                    {
+                        name: "",
+                        id: 2,
+                        no_parent: true,
+                        hidden: true,
+                        children: [{
+                            name: "Aphrodite",
+                            id: 340
+                        }]
+                    },
+                     {
+                        name: "Zeus",
+                        id: 345
+                    }, {
                         name: "Hera",
                         id: 342
                     }, {
@@ -112,9 +158,6 @@ var root = {
                         name: "Poseidon",
                         id: 344
                     }, {
-                        name: "Zeus",
-                        id: 345
-                    },{
                         name: "Demeter",
                         id: 346
                     },{
