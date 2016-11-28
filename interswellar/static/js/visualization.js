@@ -47,8 +47,18 @@ var root = {
             name: "Ourea",
             id: 13
         }, {
-            name: "PontusSilenus",
-            id: 3
+            name: "Pontus",
+            id: 3,
+            children: [{
+                name: "Nereus",
+                id: 741,
+            }, {
+                name: "Phorcys",
+                id: 742,
+            },{
+                name: "Thaumas",
+                id: 743,
+            }]
         }, {
             name: "Silenus",
             id: 577
@@ -122,7 +132,36 @@ var root = {
         children: [
 
         ]
-    }]
+    }, 
+        {
+        name: "Chaos",
+        id: 725,
+        no_parent: true,
+        children: [{
+                name: "Nyx",
+                id: 794,
+                children: [{
+                    name: "Eris",
+                    id: 793
+                }, {
+                    name: "Geras",
+                    id: 795
+                }, {
+                    name: "Hypnos",
+                    id: 796
+                }, {
+                    name: "Lyssa",
+                    id: 797
+                }, {
+                    name: "Nemesis",
+                    id: 798
+                }, {
+                    name: "Thanatos",
+                    id: 799
+                }]
+            }]
+    },
+    ]
 }
 var allNodes = flatten(root);
 //This maps the siblings together mapping uses the ID using the blue line
