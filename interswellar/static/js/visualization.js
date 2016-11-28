@@ -1,28 +1,4 @@
-<!DOCTeYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>InterSWEllar</title>
-
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="/static/css/index.css">
-
-    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
-    <script src='https://d3js.org/d3.v3.min.js'></script>
-    <script defer src='/static/js/visualization.js'>
-    
-</head>
-
-<body>
-    {% include 'nav.html' %}
-    
-    <script>
-        var margin = {
+var margin = {
     top: 10,
     right: 10,
     bottom: 10,
@@ -292,44 +268,3 @@ function elbow(d, i) {
     }).interpolate("step-after");
     return fun(linedata);
 }
-   </script>
-    <div class="table-title">
-        Visualization
-    </div>
-    <div id="graph"></div>
-
-    <style>
-    html {
-        background: url(/static/images/star-detail.jpg) no-repeat center center fixed; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-    body {
-        font: 10px sans-serif;
-    }
-    .link {
-        fill: none;
-        stroke: #ffffff;
-    }
-    .sibling {
-        fill: none;
-        stroke: blue;
-    }
-    .border {
-        fill: none;
-        shape-rendering: crispEdges;
-        stroke: #aaa;
-    }
-    .node {
-        stroke: red;
-        fill:white;
-    }
-    </style>
-   
-   
-
-
-</body>
-</html>
