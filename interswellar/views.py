@@ -173,15 +173,15 @@ def greek():
             mothers.add((m, name))
 
     resp = requests.get('http://greekmythology.me/api/heroes')
-    resp.raise_for_status();
-    raw = resp.json();
+    resp.raise_for_status()
+    raw = resp.json()
     heroes = {name for name in raw.keys()}
     for name, props in raw.items():
         f = props["father"]
         m = props["mother"]
         if f != "None" and m != "None" and f != "N/A" and m != "N/A":
             marriages.add((f, m))
-        if f != "None" and f != "N/A" :
+        if f != "None" and f != "N/A":
             if f not in gods:
                 heroes.add(f)
             fathers.add((f, name))
@@ -197,7 +197,7 @@ def greek():
         [{"source":f, "target":c, "type":"father"} for f, c in fathers] + \
         [{"source":m, "target":c, "type":"mother"} for m, c in mothers]
 
-    return render_template('greek.html', data={"nodes": nodes, "links": links});
+    return render_template('greek.html', data={"nodes": nodes, "links": links})
 
 
 @public_views.errorhandler(404)
