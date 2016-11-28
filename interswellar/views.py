@@ -200,7 +200,7 @@ def greek():
     return render_template('greek.html', data={"nodes": nodes, "links": links})
 
 
-@public_views.errorhandler(404)
+@public_views.app_errorhandler(404)
 def page_not_found(_):
     """ 404 page"""
     return render_template('404.html', thing='Page'), 404
