@@ -78,17 +78,71 @@ var root = {
             name: "Uranus",
             id: 11,
             children: [{
+                name: "Philyra",
+                id: 733,
+                no_parent: true
+            },{
+                name: "",
+                id: 716,
+                hidden: true,
+                no_parent: true,
+                children: [{
+                    name: "Ichthyocentaurs",
+                    id: 714
+                },{
+                    name: "Chiron",
+                    id: 715
+                }]
+            },{
                 name: "Cronus",
-                id: 741,
+                id: 741
+            },{
+                name: "",
+                id: 713,
+                hidden: true,
+                no_parent: true,
+                children: [{
+                        name: "Hera",
+                        id: 342
+                    }, {
+                        name: "Hestia",
+                        id: 343
+                    
+                    },{
+                        name: "Poseidon",
+                        id: 344
+                    }, {
+                        name: "Zeus",
+                        id: 345
+                    },{
+                        name: "Demeter",
+                        id: 346
+                    },{
+                        name: "Hades",
+                        id: 347
+                    },{
+                        name: "Hephaestus",
+                        id: 348
+                    },{
+                        name: "Hebe",
+                        id: 349
+                    },{
+                        name: "Ares",
+                        id: 350
+                    },{
+                        name: "Eileithyia",
+                        id: 351
+                }]
             }, {
+                name: "Rhea",
+                id: 744,
+            },
+            {
                 name: "Mnemosyne",
                 id: 742,
             },{
                 name: "Oceanus",
                 id: 743,
-            },{
-                name: "Rhea",
-                id: 744,
             },{
                 name: "Tethys",
                 id: 745,
@@ -142,7 +196,7 @@ var root = {
                 id: 794,
                 children: [{
                     name: "Eris",
-                    id: 793
+                    id: 739
                 }, {
                     name: "Geras",
                     id: 795
