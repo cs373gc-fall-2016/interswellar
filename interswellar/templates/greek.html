@@ -8,7 +8,14 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/details.css">
+
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+
+    <script defer src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
 	<style>
 
@@ -25,16 +32,14 @@
 	  pointer-events: none;
 	  font: 10px sans-serif;
 	}
-
-
-
-
 	</style>
 
 	<script  src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
 </head>
+
+    {% include 'nav.html' %}
 
 <body>
 <svg style="display: block; margin: auto">
@@ -49,8 +54,8 @@
 </svg>
 <script src='http://d3js.org/d3.v4.js'></script>
 <script>
-	var width = 960;
-	var height = 960;
+	var width = window.innerWidth;
+	var height = window.innerHeight;
 	var svg = d3.select("svg").attr("width", width).attr("height", height);
 
 	var force = d3.forceSimulation()
