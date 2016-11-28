@@ -38,13 +38,8 @@ var root = {
     children: [ {
             name: "Gaea",
             id: 16,
-            no_parent: true
-        },{
-        name: "",
-        id: 2,
-        no_parent: true,
-        hidden: true,
-        children: [{
+            no_parent: true,
+            children: [{
             name: "Curetes & Dactyls",
             id: 12,
 
@@ -71,11 +66,37 @@ var root = {
             }]
         }, {
             name: "Uranus",
-            id: 11
+            id: 11,
+            children: [{
+                name: "Cronus",
+                id: 741,
+            }, {
+                name: "Mnemosyne",
+                id: 742,
+            },{
+                name: "Oceanus",
+                id: 743,
+            },{
+                name: "Rhea",
+                id: 744,
+            },{
+                name: "Tethys",
+                id: 745,
+            },{
+                name: "Themis",
+                id: 746,
+            }]
         }, {
             name: "Hydros",
             no_parent: true,
-            id: 764
+            id: 764,
+            children: [{
+                name: "Ananke",
+                id: 787,
+            }, {
+                name: "Chronos Aeon",
+                id: 782,
+            }]
         },
             {
             name: "G",
@@ -88,6 +109,12 @@ var root = {
                 id: 9,
             }]
         }]
+        },{
+        name: "",
+        id: 2,
+        no_parent: true,
+        hidden: true,
+
     }, {
         name: "Psyche",
         id: 10,
