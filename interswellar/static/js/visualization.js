@@ -36,7 +36,7 @@ var root = {
     id: 1,
     hidden: true,
     children: [ {
-            name: "Q",
+            name: "Gaea",
             id: 16,
             no_parent: true
         },{
@@ -45,41 +45,39 @@ var root = {
         no_parent: true,
         hidden: true,
         children: [{
-            name: "J",
+            name: "Curetes & Dactyls",
             id: 12,
 
         }, {
-            name: "L",
-            id: 13,
-            no_parent: true
+            name: "Ourea",
+            id: 13
         }, {
-            name: "C",
+            name: "PontusSilenus",
             id: 3
+        }, {
+            name: "Silenus",
+            id: 577
         }, {
             name: "",
             id: 4,
             hidden: true,
             no_parent: true,
             children: [{
-                name: "D",
+                name: "Ananke",
                 id: 5,
             }, {
-                name: "",
-                id: 14,
-                hidden: true,
-                no_parent: true,
-                children: [{
-                    name: "P",
-                    id: 15,
-                }]
-            }, {
-                name: "E",
+                name: "Chronos Aeon",
                 id: 6,
             }]
         }, {
-            name: "K",
+            name: "Uranus",
             id: 11
         }, {
+            name: "Hydros",
+            no_parent: true,
+            id: 764
+        },
+            {
             name: "G",
             id: 7,
             children: [{
@@ -91,7 +89,7 @@ var root = {
             }]
         }]
     }, {
-        name: "M",
+        name: "Psyche",
         id: 10,
         no_parent: true,
         children: [
